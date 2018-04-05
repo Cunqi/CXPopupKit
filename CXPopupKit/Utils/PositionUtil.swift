@@ -9,7 +9,7 @@
 import Foundation
 
 class PositionUtil {
-    static func inferInitialFrame(from frame: CGRect, direction: CXAnimation.TransitionDirection, based size: CGSize) -> CGRect {
+    static func inferInitialFrame(from frame: CGRect, direction: CXAnimationTransition.Direction, based size: CGSize) -> CGRect {
         switch direction {
         case .center:
             return frame
@@ -24,7 +24,7 @@ class PositionUtil {
         }
     }
     
-    static func inferFinalFrame(from frame: CGRect, direction: CXAnimation.TransitionDirection, based size: CGSize) -> CGRect {
+    static func inferFinalFrame(from frame: CGRect, direction: CXAnimationTransition.Direction, based size: CGSize) -> CGRect {
         switch direction {
         case .center:
             return frame

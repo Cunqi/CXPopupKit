@@ -11,15 +11,15 @@ import UIKit
 open class CXAbstractPopupAnimation {
     public private(set) var context: UIViewControllerContextTransitioning
     public let duration: TimeInterval
-    public let direction: CXAnimation.TransitionDirection
+    public let direction: CXAnimationTransition.Direction
 
     var isPresenting: Bool = true
     
-    init(_ context: UIViewControllerContextTransitioning, _ transition: CXAnimation.Transition, _ duration: CXAnimation.Duration, _ isPresenting: Bool) {
+    init(_ context: UIViewControllerContextTransitioning, _ transition: CXAnimationTransition, _ duration: CXAnimationDuration, _ isPresenting: Bool) {
         self.context = context
         self.isPresenting = isPresenting
-        self.duration = isPresenting ? duration.in : duration.out
-        self.direction = isPresenting ? transition.in : transition.out
+        self.duration = duration.getDuration(isIn: isPresenting)
+        self.direction = transition.getDirection(isIn: isPresenting)
         
         if let mFromViewController = fromViewController {
             fromViewInitialFrame = context.initialFrame(for: mFromViewController)

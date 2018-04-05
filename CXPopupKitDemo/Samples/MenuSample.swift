@@ -10,19 +10,20 @@ import UIKit
 import CXPopupKit
 
 class MenuSample: UIView {
-    var appearance = CXAppearance()
 }
 
 extension MenuSample: CXPopupable {
     func createPopup() -> CXPopup {
-        appearance.window.width = .fixValue(size: 300)
-        appearance.window.height = .equalToParent
-        appearance.window.position = .left
-        appearance.window.maskBackgroundColor = .clear
-        appearance.animation.duration = CXAnimation.Duration(0.35)
-        appearance.animation.style = .fade
-        appearance.animation.transition = CXAnimation.Transition(in: .right, out: .left)
-        return CXPopup(with: self, appearance: appearance)
+        let popup = CXPopup(with: self)
+
+        popup.appearance.dimension.width = .fixValue(size: 300)
+        popup.appearance.dimension.height = .matchPartent
+        popup.appearance.dimension.position = .left
+        popup.appearance.uiStyle.maskBackgroundColor = .clear
+        popup.appearance.animation.duration = .roundTrip(duration: 0.35)
+        popup.appearance.animation.style = .fade
+        popup.appearance.animation.transition = .oneWay(in: .left, out: .right)
+        return popup
     }
 }
 

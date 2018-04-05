@@ -17,12 +17,12 @@ class CXPopupWindow: UIViewController {
         return appearance.orientation.supportedInterfaceOrientations
     }
 
-     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return appearance.orientation.preferredInterfaceOrientationForPresentation
     }
 
     var holder: CXPopup?
-    var appearance = CXAppearance()
+    var appearance = CXPopupAppearance.createAppearance()
     var content: CXPopupable?
 
     var negativeAction: CXPopupHandler?
@@ -41,24 +41,14 @@ class CXPopupWindow: UIViewController {
     }
 
     private func setup() {
-        let window = appearance.window
-        view.backgroundColor = window.backgroundColor
+        let style = appearance.uiStyle
+        view.backgroundColor = style.popupBackgroundColor ?? (content as? UIView)?.backgroundColor
 
-        let strategy = getLayoutStrategy()
-        strategy.install((content as? UIView) ?? UIView(), into: view, basedOn: appearance)
+//        let dimension = appearance.dimension
+        LayoutUtil.fill(view: (content as? UIView) ?? UIView(), at: view)
     }
 
     deinit {
-         print("CXPopupWindow deinit")
-    }
-
-    private func getLayoutStrategy() -> CXPopupLayoutStrategy {
-        let w = appearance.window
-
-        if !w.isSafeAreaEnabled {
-            return LayoutWithoutSafeAreaStrategy()
-        }else {
-            return LayoutWithOutsideSafeAreaStrategy()
-        }
+        print("CXPopupWindow deinit")
     }
 }

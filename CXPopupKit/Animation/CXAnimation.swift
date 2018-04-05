@@ -62,7 +62,7 @@ public struct CXAnimation {
 }
 
 extension CXAnimation {
-    func getAnimation(_ context: UIViewControllerContextTransitioning, _ isPresenting: Bool) -> CXAbstractPopupAnimation {
+    func getAnimation(_ context: UIViewControllerContextTransitioning, _ transition: CXAnimationTransition, _ duration: CXAnimationDuration,  _ isPresenting: Bool) -> CXAbstractPopupAnimation {
         switch self.style {
             case .plain:
                 return CXPlainPopupAnimation(context, transition, duration, isPresenting)

@@ -50,16 +50,6 @@ public final class PopupWindow: UIViewController {
         strategy.install(content ?? UIView(), into: view, basedOn: appearance)
     }
 
-    private func getLayoutStrategy() -> CXPopupLayoutStrategy {
-        let w = appearance.window
-
-        if !w.isSafeAreaEnabled {
-            return LayoutWithoutSafeAreaStrategy()
-        } else {
-            return LayoutWithOutsideSafeAreaStrategy()
-        }
-    }
-
     @objc private func dismissPopup() {
         self.dismiss(animated: true, completion: nil)
     }

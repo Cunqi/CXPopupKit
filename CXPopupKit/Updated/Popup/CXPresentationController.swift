@@ -9,13 +9,18 @@
 import UIKit
 
 final class CXPresentationController: UIPresentationController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
-    var appearance = CXAppearance()
+    var appearance = CXPopupAppearance()
 
     private var presentationWrapperView: UIView?
     private var backgroundView: UIView?
 
     override var frameOfPresentedViewInContainerView: CGRect {
-        return LayoutUtil.presentedViewSize(containerView!, appearance.window, appearance.window.isSafeAreaEnabled)
+        let dimension = appearance.dimension
+        let rect = DimensionUtil.rect(width: dimension.width, height: dimension.height, position: dimension.position, margin: dimension.margin, safeAreaOption: dimension.safeAreaOption, basedOn: containerView!)
+        print("Presenter \(rect)")
+//        let updatedRect = DimensionUtil.updatedRect(rect: rect, position: dimension.position, margin: dimension.margin, safeAreaOption: dimension.safeAreaOption, basedOn: containerView!)
+//        print("Presenter \(updatedRect)")
+        return rect
     }
 
     override var presentedView: UIView? {
@@ -55,17 +60,19 @@ final class CXPresentationController: UIPresentationController, UIViewController
     }
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        let animation = appearance.animation
         guard let fromViewController = transitionContext?.viewController(forKey: .from) else {
-            return appearance.animation.duration.out
+            return animation.duration.getDuration(isIn: false)
         }
         let isPresenting = fromViewController == self.presentingViewController
-        return isPresenting ? appearance.animation.duration.in : appearance.animation.duration.out
+        return animation.duration.getDuration(isIn: isPresenting)
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let animation = appearance.animation
         let isPresenting = transitionContext.viewController(forKey: .from) == self.presentingViewController
-        let animation = appearance.animation.getAnimation(transitionContext, isPresenting)
-        animation.execute()
+        let popupAnimation = animation.style.getAnimation(transitionContext, animation.transition, animation.duration, isPresenting)
+        popupAnimation.execute()
     }
 
     override func containerViewWillLayoutSubviews() {
@@ -96,31 +103,32 @@ final class CXPresentationController: UIPresentationController, UIViewController
 
     private func setupPresentationWrapperView() {
         presentationWrapperView = UIView()
-        presentationWrapperView?.backgroundColor = appearance.window.backgroundColor
+        presentationWrapperView?.backgroundColor = appearance.uiStyle.popupBackgroundColor ?? super.presentedView?.backgroundColor
         updatePresentationWrapperViewFrame()
 
-        if appearance.shadow.isEnabled {
-            presentationWrapperView?.layer.shadowColor = appearance.shadow.color.cgColor
-            presentationWrapperView?.layer.shadowOffset = appearance.shadow.offset
-            presentationWrapperView?.layer.shadowRadius = appearance.shadow.radius
-            presentationWrapperView?.layer.shadowOpacity = appearance.shadow.opacity
+        let shadow = appearance.shadow
+        if shadow.isEnabled {
+            presentationWrapperView?.layer.shadowColor = shadow.color.cgColor
+            presentationWrapperView?.layer.shadowOffset = shadow.offset
+            presentationWrapperView?.layer.shadowRadius = shadow.radius
+            presentationWrapperView?.layer.shadowOpacity = shadow.opacity
         }
     }
 
     private func updatePresentationWrapperViewFrame() {
-        presentationWrapperView?.frame = frameOfPresentedViewInContainerView
-        if appearance.window.enableInsideSafeArea {
-            presentationWrapperView?.frame = LayoutUtil.updateFrameForInsideSafeArea(frame: presentationWrapperView?.frame, at: containerView!, position: appearance.window.position)
-        }
+        let dimension = appearance.dimension
+        let rect = DimensionUtil.rect(width: dimension.width, height: dimension.height, position: dimension.position, margin: dimension.margin, safeAreaOption: dimension.safeAreaOption, basedOn: containerView!)
+        let updatedRect = DimensionUtil.updatedRect(rect: rect, position: dimension.position, margin: dimension.margin, safeAreaOption: dimension.safeAreaOption, basedOn: containerView!)
+        presentationWrapperView?.frame = updatedRect
     }
 
     private func setupBackgroundView() {
         backgroundView = UIView(frame: containerView!.bounds)
-        backgroundView?.backgroundColor = appearance.window.maskBackgroundColor
-        backgroundView?.alpha = appearance.window.maskBackgroundAlpha
+        backgroundView?.backgroundColor = appearance.uiStyle.maskBackgroundColor
+        backgroundView?.alpha = appearance.uiStyle.maskBackgroundAlpha
         backgroundView?.isOpaque = false
 
-        if appearance.window.allowTouchOutsideToDismiss {
+        if appearance.isTouchOutsideDismissEnabled {
             backgroundView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped)))
         }
         containerView?.addSubview(backgroundView!)
@@ -128,7 +136,7 @@ final class CXPresentationController: UIPresentationController, UIViewController
         let coordinator = self.presentingViewController.transitionCoordinator
         backgroundView?.alpha = 0
         coordinator?.animate(alongsideTransition: { [unowned self] context in
-            self.backgroundView?.alpha = self.appearance.window.maskBackgroundAlpha
+            self.backgroundView?.alpha = self.appearance.uiStyle.maskBackgroundAlpha
         }, completion: nil)
     }
 

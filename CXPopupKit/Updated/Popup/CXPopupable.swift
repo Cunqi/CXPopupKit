@@ -11,16 +11,11 @@ import UIKit
 public protocol CXPopupable: CXLifecycleAction  where Self: UIView {
     var popup: CXPopup? { get }
     func createPopup() -> CXPopup
-    func createPopup(_ appearance: CXAppearance) -> CXPopup
 }
 
 extension CXPopupable {
     public func createPopup() -> CXPopup {
-        return CXPopup(with: self, appearance: CXAppearance())
-    }
-
-    public func createPopup(_ appearance: CXAppearance) -> CXPopup {
-        return CXPopup(with: self, appearance: appearance)
+        return CXPopup(with: self)
     }
 
     public var popup: CXPopup? {

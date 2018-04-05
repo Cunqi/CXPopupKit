@@ -74,12 +74,11 @@ extension DemoListViewController: UITableViewDelegate {
 
     private func showBasicPopup() {
         let basicSample = BasicSample()
-        basicSample.backgroundColor = .white
-        basicSample.appearance.window.width = .fixValue(size: 300)
-        basicSample.appearance.window.height = .partOfParent(percent: 0.35)
-        basicSample.appearance.window.position = .center
-        basicSample.appearance.animation.style = .bounceZoom
         let popup = basicSample.createPopup()
+        popup.appearance.uiStyle.popupBackgroundColor = .white
+        popup.appearance.dimension.width = .fixValue(size: 300)
+        popup.appearance.dimension.height = .percentageOfParent(ratio: 0.35)
+        popup.appearance.animation.style = .bounceZoom
         DispatchQueue.main.async {
             popup.show(at: self)
         }
@@ -90,12 +89,14 @@ extension DemoListViewController: UITableViewDelegate {
         basicSample.backgroundColor = .white
         basicSample.layer.cornerRadius = 9.0
         basicSample.layer.masksToBounds = true
-        basicSample.appearance.window.width = .fixValue(size: 300)
-        basicSample.appearance.window.height = .partOfParent(percent: 0.35)
-        basicSample.appearance.window.position = .center
-        basicSample.appearance.animation.style = .bounceZoom
-        basicSample.appearance.orientation.isAutoRotationEnabled = true
         let popup = basicSample.createPopup()
+        popup.appearance.uiStyle.popupBackgroundColor = .white
+        popup.appearance.dimension.width = .fixValue(size: 300)
+        popup.appearance.dimension.height = .percentageOfParent(ratio: 0.35)
+        popup.appearance.dimension.position = .center
+        popup.appearance.animation.style = .bounceZoom
+        popup.appearance.orientation.isAutoRotationEnabled = true
+
         DispatchQueue.main.async {
             popup.show(at: self)
         }
@@ -104,7 +105,7 @@ extension DemoListViewController: UITableViewDelegate {
     private func showSlideMenuPopup() {
         let menuSample = MenuSample()
         menuSample.backgroundColor = .white
-        menuSample.appearance.window.isSafeAreaEnabled = false
+
         let popup = menuSample.createPopup()
         DispatchQueue.main.async {
             popup.show(at: self)
@@ -114,8 +115,7 @@ extension DemoListViewController: UITableViewDelegate {
     private func showSlideMenuWithSafeAreaPopup() {
         let menuSample = MenuSample()
         menuSample.backgroundColor = .white
-        menuSample.appearance.window.backgroundColor = .clear
-        menuSample.appearance.window.isSafeAreaEnabled = true
+
         let popup = menuSample.createPopup()
         DispatchQueue.main.async {
             popup.show(at: self)
@@ -123,30 +123,34 @@ extension DemoListViewController: UITableViewDelegate {
     }
 
     private func showActionSheetPopup() {
-        let actionSheet = CXAlertView(type: .actionSheet, title: nil, message: "Pick a photo from library", cancel: "cancel", actions: ["OK"])
-        DispatchQueue.main.async {
-            actionSheet.show(at: self)
-        }
+//        let actionSheet = CXAlertView(type: .actionSheet, title: nil, message: "Pick a photo from library", cancel: "cancel", actions: ["OK"])
+//        DispatchQueue.main.async {
+//            actionSheet.show(at: self)
+//        }
     }
 
     private func showAlertViewPopup() {
-        let actionSheet = CXAlertView(type: .alert, title: nil, message: "Pick a photo from library", cancel: "cancel", actions: ["OK"])
-        DispatchQueue.main.async {
-            actionSheet.show(at: self)
-        }
+//        let actionSheet = CXAlertView(type: .alert, title: nil, message: "Pick a photo from library", cancel: "cancel", actions: ["OK"])
+//        DispatchQueue.main.async {
+//            actionSheet.show(at: self)
+//        }
     }
 
     private func showBasicSampleWithSafeAreaInsidePopup() {
         let basicSample = BasicSample()
-        basicSample.backgroundColor = .white
-        basicSample.appearance.window.width = .equalToParent
-        basicSample.appearance.window.height = .partOfParent(percent: 0.35)
-        basicSample.appearance.window.position = .bottom
-        basicSample.appearance.window.backgroundColor = .white
-        basicSample.appearance.animation.style = .fade
-        basicSample.appearance.window.isSafeAreaEnabled = true
-        basicSample.appearance.window.enableInsideSafeArea = true
+        basicSample.layer.cornerRadius = 32.0
+        basicSample.layer.masksToBounds = true
+        basicSample.backgroundColor = .red
         let popup = basicSample.createPopup()
+
+        popup.appearance.uiStyle.popupBackgroundColor = .clear
+        popup.appearance.dimension.width = .matchPartent
+        popup.appearance.dimension.height = .fixValue(size: 300)
+        popup.appearance.dimension.position = .bottom
+        popup.appearance.dimension.safeAreaOption = .normal
+        popup.appearance.animation.style = .fade
+        popup.appearance.orientation.isAutoRotationEnabled = true
+
         DispatchQueue.main.async {
             popup.show(at: self)
         }
@@ -156,55 +160,57 @@ extension DemoListViewController: UITableViewDelegate {
         let basicSample = BasicSample()
         basicSample.layer.cornerRadius = 32.0
         basicSample.layer.masksToBounds = true
-        basicSample.backgroundColor = .white
-        basicSample.appearance.window.width = .partOfParent(percent: 0.95)
-        basicSample.appearance.window.height = .partOfParent(percent: 0.35)
-        basicSample.appearance.window.position = .bottom
-        basicSample.appearance.animation.style = .fade
-        basicSample.appearance.window.isSafeAreaEnabled = true
-        basicSample.appearance.window.margin = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: 8)
+        basicSample.backgroundColor = .red
+
         let popup = basicSample.createPopup()
+        popup.appearance.dimension.width = .matchPartent
+        popup.appearance.dimension.height = .fixValue(size: 300)
+        popup.appearance.dimension.position = .bottom
+        popup.appearance.dimension.safeAreaOption = .insidePopup
+        popup.appearance.animation.style = .fade
+        popup.appearance.orientation.isAutoRotationEnabled = true
+
         DispatchQueue.main.async {
             popup.show(at: self)
         }
     }
 
     private func showSingleStringPicker() {
-        let picker = CXPicker(with: ["Yes", "No", "I don't think so"], title: "isGoodEnough", cancelButtonText: "Cancel", doneButtonText: "Done")
-        DispatchQueue.main.async {
-            picker.createPopup().show(at: self)
-        }
+//        let picker = CXPicker(with: ["Yes", "No", "I don't think so"], title: "isGoodEnough", cancelButtonText: "Cancel", doneButtonText: "Done")
+//        DispatchQueue.main.async {
+//            picker.createPopup().show(at: self)
+//        }
     }
 
     private func showSingleCustomPicker() {
-        let personA = Person(name: "Jack", age: 23)
-        let personB = Person(name: "Rose", age: 22)
-        let personC = Person(name: "Pi", age: 18)
-        let picker = CXPicker(with: [personA, personB, personC], title: "Character", cancelButtonText: "Cancel", doneButtonText: "Done")
-        let popup = picker.createPopup()
-        popup.positiveAction = { result in
-            guard let person = result as? Person else {
-                return
-            }
-            print(person.age)
-        }
-        DispatchQueue.main.async {
-            popup.show(at: self)
-        }
+//        let personA = Person(name: "Jack", age: 23)
+//        let personB = Person(name: "Rose", age: 22)
+//        let personC = Person(name: "Pi", age: 18)
+//        let picker = CXPicker(with: [personA, personB, personC], title: "Character", cancelButtonText: "Cancel", doneButtonText: "Done")
+//        let popup = picker.createPopup()
+//        popup.positiveAction = { result in
+//            guard let person = result as? Person else {
+//                return
+//            }
+//            print(person.age)
+//        }
+//        DispatchQueue.main.async {
+//            popup.show(at: self)
+//        }
     }
 
     private func showDatetimePicker() {
-        let picker = CXDatePicker(startDate: nil, mode: .dateAndTime, title: "Start Date", cancelButtonText: "Cancel", doneButtonText: "Done")
-        let popup = picker.createPopup()
-        popup.positiveAction = { result in
-            guard let date = result as? Date else {
-                return
-            }
-            print(date)
-        }
-        DispatchQueue.main.async {
-            popup.show(at: self)
-        }
+//        let picker = CXDatePicker(startDate: nil, mode: .dateAndTime, title: "Start Date", cancelButtonText: "Cancel", doneButtonText: "Done")
+//        let popup = picker.createPopup()
+//        popup.positiveAction = { result in
+//            guard let date = result as? Date else {
+//                return
+//            }
+//            print(date)
+//        }
+//        DispatchQueue.main.async {
+//            popup.show(at: self)
+//        }
     }
 }
 

@@ -10,11 +10,10 @@ import UIKit
 import CXPopupKit
 
 class BasicSample: UIView {
-    var appearance = CXAppearance()
 }
 
 extension BasicSample: CXPopupable {
     func createPopup() -> CXPopup {
-        return CXPopup(with: self, appearance: appearance)
+        return CXPopup(with: self)
     }
 }

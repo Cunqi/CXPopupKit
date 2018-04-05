@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CXPopupLayoutStrategy {
-    func install(_ content: UIView, into parent: UIView, basedOn appearance: CXAppearance)
+    func install(_ content: UIView, into parent: UIView, basedOn appearance: CXPopupAppearance)
 }
 
 class LayoutWithoutSafeAreaStrategy: CXPopupLayoutStrategy {

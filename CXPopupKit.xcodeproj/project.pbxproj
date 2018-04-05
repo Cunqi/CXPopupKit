@@ -11,9 +11,7 @@
 		3C17276F1FE8145A00728374 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C17276E1FE8145A00728374 /* SnapKit.framework */; };
 		3C1727721FE814E500728374 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1727711FE814E500728374 /* CXPopup.swift */; };
 		3C1727741FE81AB100728374 /* CXAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1727731FE81AB100728374 /* CXAppearance.swift */; };
-		3C198D1620521D1300AA1C42 /* CXPopupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C198D1520521D1300AA1C42 /* CXPopupable.swift */; };
 		3C198D1920521E1000AA1C42 /* CXPopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C198D1820521E1000AA1C42 /* CXPopupWindow.swift */; };
-		3C198D1C2052248000AA1C42 /* CXPopupLayoutStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C198D1B2052248000AA1C42 /* CXPopupLayoutStrategy.swift */; };
 		3C1AB8471FEC0F710036C4F4 /* CXAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1AB8461FEC0F710036C4F4 /* CXAnimation.swift */; };
 		3C1AB8531FF1A34B0036C4F4 /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1AB8521FF1A34B0036C4F4 /* CXPresentationController.swift */; };
 		3C1AB8541FF1B6630036C4F4 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C17276E1FE8145A00728374 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -24,24 +22,26 @@
 		3C2A21711FF5F1FA00311FEE /* CXBouncePopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A21701FF5F1FA00311FEE /* CXBouncePopupAnimation.swift */; };
 		3C2A21731FF7301E00311FEE /* CXZoomPopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A21721FF7301E00311FEE /* CXZoomPopupAnimation.swift */; };
 		3C2A21751FF7325C00311FEE /* CXBounceZoomPopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A21741FF7325C00311FEE /* CXBounceZoomPopupAnimation.swift */; };
-		3C2A21811FF8797600311FEE /* CXAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A217E1FF8797600311FEE /* CXAlertView.swift */; };
 		3C2A21851FF879FF00311FEE /* CXAlertAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A21841FF879FF00311FEE /* CXAlertAppearance.swift */; };
+		3C2F688720766C2E0008210D /* CXPopupAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F688620766C2E0008210D /* CXPopupAppearance.swift */; };
+		3C2F688C207671A10008210D /* DimensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F688B207671A10008210D /* DimensionUtil.swift */; };
+		3C2F688F2076722D0008210D /* CXWindowSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F688E2076722D0008210D /* CXWindowSize.swift */; };
+		3C2F6891207674B50008210D /* CXWindowPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F6890207674B50008210D /* CXWindowPosition.swift */; };
+		3C2F6893207679360008210D /* CXWindowSafeAreaOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F6892207679360008210D /* CXWindowSafeAreaOption.swift */; };
+		3C2F68952076913A0008210D /* CXAnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F68942076913A0008210D /* CXAnimationTransition.swift */; };
 		3C2F9C801FEB089E0055A2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F9C7F1FEB089E0055A2F0 /* AppDelegate.swift */; };
 		3C2F9C851FEB089E0055A2F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2F9C831FEB089E0055A2F0 /* Main.storyboard */; };
 		3C2F9C871FEB089E0055A2F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C2F9C861FEB089E0055A2F0 /* Assets.xcassets */; };
 		3C2F9C8A1FEB089E0055A2F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2F9C881FEB089E0055A2F0 /* LaunchScreen.storyboard */; };
 		3C2F9C8F1FEB43CC0055A2F0 /* CXPopupKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1727621FE80F6400728374 /* CXPopupKit.framework */; };
 		3C2F9C901FEB43CC0055A2F0 /* CXPopupKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1727621FE80F6400728374 /* CXPopupKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3CC3F4C92059B1BC001748C7 /* CXDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC3F4C82059B1BC001748C7 /* CXDatePicker.swift */; };
+		3C842E672076A2A0007CF1E9 /* CXPopupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C198D1520521D1300AA1C42 /* CXPopupable.swift */; };
 		3CED126F2058118B001F9574 /* CXAlertViewLayoutStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED126E2058118B001F9574 /* CXAlertViewLayoutStrategy.swift */; };
 		3CED127120581470001F9574 /* CXLifecycleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED127020581470001F9574 /* CXLifecycleAction.swift */; };
 		3CED127320584232001F9574 /* DemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED127220584232001F9574 /* DemoListViewController.swift */; };
 		3CED12762058445C001F9574 /* BasicSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED12752058445C001F9574 /* BasicSample.swift */; };
 		3CED127820584A38001F9574 /* MenuSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED127720584A38001F9574 /* MenuSample.swift */; };
-		3CED127B20599314001F9574 /* CXPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED127A20599314001F9574 /* CXPicker.swift */; };
-		3CED127D2059A3D5001F9574 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED127C2059A3D5001F9574 /* Person.swift */; };
 		5A9F15A85663D1534C4FC8D0 /* LayoutUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F162AD31CE7B55E967EE4 /* LayoutUtil.swift */; };
-		5A9F19595301CBDD5B86AA12 /* PopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F133B90F09142F0C4EF0C /* PopupWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +90,12 @@
 		3C2A21741FF7325C00311FEE /* CXBounceZoomPopupAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXBounceZoomPopupAnimation.swift; sourceTree = "<group>"; };
 		3C2A217E1FF8797600311FEE /* CXAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAlertView.swift; sourceTree = "<group>"; };
 		3C2A21841FF879FF00311FEE /* CXAlertAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAlertAppearance.swift; sourceTree = "<group>"; };
+		3C2F688620766C2E0008210D /* CXPopupAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopupAppearance.swift; sourceTree = "<group>"; };
+		3C2F688B207671A10008210D /* DimensionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionUtil.swift; sourceTree = "<group>"; };
+		3C2F688E2076722D0008210D /* CXWindowSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXWindowSize.swift; sourceTree = "<group>"; };
+		3C2F6890207674B50008210D /* CXWindowPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXWindowPosition.swift; sourceTree = "<group>"; };
+		3C2F6892207679360008210D /* CXWindowSafeAreaOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXWindowSafeAreaOption.swift; sourceTree = "<group>"; };
+		3C2F68942076913A0008210D /* CXAnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXAnimationTransition.swift; sourceTree = "<group>"; };
 		3C2F9C7D1FEB089E0055A2F0 /* CXPopupKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXPopupKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C2F9C7F1FEB089E0055A2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C2F9C841FEB089E0055A2F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 		3C1727641FE80F6400728374 /* CXPopupKit */ = {
 			isa = PBXGroup;
 			children = (
+				3C2F688820766FAA0008210D /* APIUpdate */,
 				3C198D1420521D0600AA1C42 /* Updated */,
 				3C2A21761FF7347300311FEE /* Components */,
 				3C1AB85F1FF334030036C4F4 /* Utils */,
@@ -180,7 +187,6 @@
 		3C198D1720521DAD00AA1C42 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				3C1727711FE814E500728374 /* CXPopup.swift */,
 				3C198D1520521D1300AA1C42 /* CXPopupable.swift */,
 				3C1727731FE81AB100728374 /* CXAppearance.swift */,
 				3C198D1820521E1000AA1C42 /* CXPopupWindow.swift */,
@@ -255,6 +261,28 @@
 				3C2A217E1FF8797600311FEE /* CXAlertView.swift */,
 			);
 			path = AlertView;
+			sourceTree = "<group>";
+		};
+		3C2F688820766FAA0008210D /* APIUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				3C2F688D207672250008210D /* Enums */,
+				3C2F688620766C2E0008210D /* CXPopupAppearance.swift */,
+				3C2F688B207671A10008210D /* DimensionUtil.swift */,
+				3C1727711FE814E500728374 /* CXPopup.swift */,
+			);
+			path = APIUpdate;
+			sourceTree = "<group>";
+		};
+		3C2F688D207672250008210D /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				3C2F688E2076722D0008210D /* CXWindowSize.swift */,
+				3C2F6890207674B50008210D /* CXWindowPosition.swift */,
+				3C2F6892207679360008210D /* CXWindowSafeAreaOption.swift */,
+				3C2F68942076913A0008210D /* CXAnimationTransition.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		3C2F9C7E1FEB089E0055A2F0 /* CXPopupKitDemo */ = {
@@ -408,7 +436,6 @@
 			files = (
 				3C1AB8611FF3343B0036C4F4 /* CXFadePopupAnimation.swift in Sources */,
 				3C1AB8561FF20C630036C4F4 /* CXAbstractPopupAnimation.swift in Sources */,
-				3C198D1C2052248000AA1C42 /* CXPopupLayoutStrategy.swift in Sources */,
 				3CED126F2058118B001F9574 /* CXAlertViewLayoutStrategy.swift in Sources */,
 				3C1AB8581FF212420036C4F4 /* CXPlainPopupAnimation.swift in Sources */,
 				3C1727741FE81AB100728374 /* CXAppearance.swift in Sources */,
@@ -417,17 +444,19 @@
 				3C1AB85C1FF2C35A0036C4F4 /* PositionUtil.swift in Sources */,
 				3C1AB8531FF1A34B0036C4F4 /* CXPresentationController.swift in Sources */,
 				3C2A21851FF879FF00311FEE /* CXAlertAppearance.swift in Sources */,
+				3C2F6891207674B50008210D /* CXWindowPosition.swift in Sources */,
+				3C2F688720766C2E0008210D /* CXPopupAppearance.swift in Sources */,
+				3C2F68952076913A0008210D /* CXAnimationTransition.swift in Sources */,
 				3C1AB8471FEC0F710036C4F4 /* CXAnimation.swift in Sources */,
-				3CED127B20599314001F9574 /* CXPicker.swift in Sources */,
+				3C2F688C207671A10008210D /* DimensionUtil.swift in Sources */,
 				3C2A21711FF5F1FA00311FEE /* CXBouncePopupAnimation.swift in Sources */,
-				3CC3F4C92059B1BC001748C7 /* CXDatePicker.swift in Sources */,
 				3C198D1920521E1000AA1C42 /* CXPopupWindow.swift in Sources */,
 				5A9F15A85663D1534C4FC8D0 /* LayoutUtil.swift in Sources */,
+				3C842E672076A2A0007CF1E9 /* CXPopupable.swift in Sources */,
 				3CED127120581470001F9574 /* CXLifecycleAction.swift in Sources */,
-				5A9F19595301CBDD5B86AA12 /* PopupWindow.swift in Sources */,
-				3C2A21811FF8797600311FEE /* CXAlertView.swift in Sources */,
 				3C2A21751FF7325C00311FEE /* CXBounceZoomPopupAnimation.swift in Sources */,
-				3C198D1620521D1300AA1C42 /* CXPopupable.swift in Sources */,
+				3C2F688F2076722D0008210D /* CXWindowSize.swift in Sources */,
+				3C2F6893207679360008210D /* CXWindowSafeAreaOption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +464,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CED127D2059A3D5001F9574 /* Person.swift in Sources */,
 				3C2F9C801FEB089E0055A2F0 /* AppDelegate.swift in Sources */,
 				3CED127320584232001F9574 /* DemoListViewController.swift in Sources */,
 				3CED127820584A38001F9574 /* MenuSample.swift in Sources */,

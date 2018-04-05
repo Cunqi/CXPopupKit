@@ -13,7 +13,7 @@ public typealias CXPopupHandler = (Any?) -> Void
 public typealias CXPopupLifeCycleAction = () -> Void
 
 public final class CXPopup {
-    public var appearance: CXAppearance {
+    public var appearance: CXPopupAppearance {
         get {
             return window.appearance
         }
@@ -51,9 +51,8 @@ public final class CXPopup {
     private var window = CXPopupWindow()
     private var presentationController: CXPresentationController?
 
-    public init(with popupable: CXPopupable, appearance: CXAppearance? = nil) {
+    public init(with popupable: CXPopupable) {
         window.content = popupable
-        window.appearance = appearance ?? CXAppearance()
         window.holder = self
     }
 
