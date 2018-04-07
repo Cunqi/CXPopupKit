@@ -15,7 +15,7 @@ class DimensionUtil {
         return CGSize(width: w, height: h)
     }
 
-    private static func length(of windowLength: CXWindowLength, basedOn reference: CGFloat, insets: UIEdgeInsets, isWidth: Bool) -> CGFloat {
+    static func length(of windowLength: CXWindowLength, basedOn reference: CGFloat, insets: UIEdgeInsets, isWidth: Bool) -> CGFloat {
         let marginSpace = isWidth ? insets.left + insets.right : insets.top + insets.bottom
         switch windowLength {
         case .matchPartent:

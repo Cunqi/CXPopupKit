@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 public typealias CXPopupHandler = (Any?) -> Void
 public typealias CXPopupLifeCycleAction = () -> Void

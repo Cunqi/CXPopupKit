@@ -47,15 +47,16 @@ public struct CXAlertAppearance {
     }
 
     let alertType: CXAlertType
-    var appearance = CXAppearance()
+    var appearance = CXPopupAppearance()
 
     public var font = Font()
     public var dimension = Dimension()
     public var color = Color()
     public var separator = Separator()
+
     public var isModal = true {
         didSet {
-            appearance.window.allowTouchOutsideToDismiss = !isModal
+            appearance.isTouchOutsideDismissEnabled = !isModal
         }
     }
 
@@ -64,18 +65,18 @@ public struct CXAlertAppearance {
 
         switch alertType {
         case .actionSheet:
-            appearance.window.width = .equalToParent
-            appearance.window.position = .bottom
-            appearance.window.enableInsideSafeArea = true
+            appearance.dimension.width = .matchPartent
+            appearance.dimension.position = .bottom
+            appearance.dimension.safeAreaOption = .normal
             appearance.animation.style = .plain
-            appearance.animation.duration = CXAnimation.Duration(0.35)
-            appearance.animation.transition = CXAnimation.Transition(in: .up, out: .down)
+            appearance.animation.duration = .roundTrip(duration: 0.35)
+            appearance.animation.transition = .oneWay(in: .up, out: .down)
         case .alert:
-            appearance.window.width = .fixValue(size: 300)
+            appearance.dimension.width = .fixValue(size: 300)
             appearance.animation.style = .bounceZoom
-            appearance.animation.duration = CXAnimation.Duration(0.35)
-            appearance.animation.transition = CXAnimation.Transition(.center)
-            appearance.window.allowTouchOutsideToDismiss = false
+            appearance.animation.duration = .roundTrip(duration: 0.35)
+            appearance.animation.transition = .oneWay(in: .up, out: .down)
+            appearance.isTouchOutsideDismissEnabled = false
         }
     }
 }

@@ -10,56 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Demo List View Controller-->
-        <scene sceneID="4sM-5y-Ke0">
-            <objects>
-                <viewController id="sHP-oB-Ima" customClass="DemoListViewController" customModule="CXPopupKitDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1RO-d4-syo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7mh-YG-69E">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DemoItem" textLabel="0ge-jY-b9J" style="IBUITableViewCellStyleDefault" id="LRa-k4-rw1">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LRa-k4-rw1" id="ZMx-Un-mc1">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0ge-jY-b9J">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="7mh-YG-69E" firstAttribute="top" secondItem="Mou-et-eXO" secondAttribute="top" id="Xch-CX-r2V"/>
-                            <constraint firstItem="7mh-YG-69E" firstAttribute="leading" secondItem="Mou-et-eXO" secondAttribute="leading" id="bec-uV-Uit"/>
-                            <constraint firstItem="Mou-et-eXO" firstAttribute="bottom" secondItem="7mh-YG-69E" secondAttribute="bottom" id="gFd-YM-tff"/>
-                            <constraint firstItem="Mou-et-eXO" firstAttribute="trailing" secondItem="7mh-YG-69E" secondAttribute="trailing" id="rDp-lS-Iyv"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Mou-et-eXO"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="6hr-e1-78v"/>
-                    <connections>
-                        <outlet property="tableView" destination="7mh-YG-69E" id="fz3-Ef-0ia"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L4E-IB-z0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="208.80000000000001" y="154.27286356821591"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KDZ-Cy-ZZj">
             <objects>
@@ -71,12 +21,86 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="sHP-oB-Ima" kind="relationship" relationship="rootViewController" id="6Kh-Pi-rno"/>
+                        <segue destination="0DZ-JG-XlA" kind="relationship" relationship="rootViewController" id="Nc5-Pz-uIX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPI-dP-LMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-494" y="154"/>
+        </scene>
+        <!--Demo List View Controller-->
+        <scene sceneID="ZS6-tk-Ke8">
+            <objects>
+                <viewController id="0DZ-JG-XlA" customClass="DemoListViewController" customModule="CXPopupKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gEc-BR-HDR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mry-B0-P4g">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="demoListItem" id="qQy-0Y-gZD">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qQy-0Y-gZD" id="b25-CT-fWG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mry-B0-P4g" firstAttribute="leading" secondItem="MJA-pk-Pmo" secondAttribute="leading" id="K6b-es-D5N"/>
+                            <constraint firstItem="Mry-B0-P4g" firstAttribute="top" secondItem="MJA-pk-Pmo" secondAttribute="top" id="kgI-vn-bEO"/>
+                            <constraint firstItem="MJA-pk-Pmo" firstAttribute="trailing" secondItem="Mry-B0-P4g" secondAttribute="trailing" id="vI3-0i-gEo"/>
+                            <constraint firstItem="MJA-pk-Pmo" firstAttribute="bottom" secondItem="Mry-B0-P4g" secondAttribute="bottom" id="xDP-Xc-nti"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MJA-pk-Pmo"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="v5C-UW-RHQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="Mry-B0-P4g" id="jbi-Nh-uWq"/>
+                        <segue destination="6jW-al-TpQ" kind="show" identifier="BasicDemoViewController" id="VbI-VP-uV1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a05-NZ-Qgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="161"/>
+        </scene>
+        <!--Basic Demo View Controller-->
+        <scene sceneID="bti-hU-3me">
+            <objects>
+                <viewController storyboardIdentifier="BasicDemoViewController" id="6jW-al-TpQ" customClass="BasicDemoViewController" customModule="CXPopupKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eo9-Gf-t97">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oo6-dh-lhn">
+                                <rect key="frame" x="134" y="307.5" width="106" height="51"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <state key="normal" title="Tap Me"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Oo6-dh-lhn" firstAttribute="centerY" secondItem="eo9-Gf-t97" secondAttribute="centerY" id="hic-dv-GMD"/>
+                            <constraint firstItem="Oo6-dh-lhn" firstAttribute="centerX" secondItem="eo9-Gf-t97" secondAttribute="centerX" id="j9D-gr-qHy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GqL-rY-YQ4"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6AI-ta-Yfk">
+                        <barButtonItem key="rightBarButtonItem" title="Option" id="wDa-Rv-Scn"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="button" destination="Oo6-dh-lhn" id="g7q-rC-HHu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A7Y-HX-PiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="-349"/>
         </scene>
     </scenes>
 </document>

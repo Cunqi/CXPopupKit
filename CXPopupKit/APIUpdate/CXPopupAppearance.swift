@@ -16,7 +16,7 @@ public class CXPopupAppearance {
     public init() {}
 
     static func createAppearance() -> CXPopupAppearance {
-        var appearance = CXPopupAppearance()
+        let appearance = CXPopupAppearance()
         appearance.animation = CXPopupAppearance.default.animation
         appearance.shadow = CXPopupAppearance.default.shadow
         appearance.orientation = CXPopupAppearance.default.orientation

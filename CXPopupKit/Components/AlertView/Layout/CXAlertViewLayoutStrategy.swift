@@ -17,9 +17,10 @@ protocol CXAlertViewLayoutStrategy {
 
 extension CXAlertViewLayoutStrategy {
     func layout(titleLabel: UILabel, at parent: UIView, alertAppearance: CXAlertAppearance) -> CGFloat {
+        let dimension = alertAppearance.appearance.dimension
         if let mContent = titleLabel.text as NSString? {
             let margin = alertAppearance.dimension.titleMargin
-            let width = alertAppearance.appearance.window.width.adjustedValue - margin.left - margin.right
+            let width = DimensionUtil.length(of: dimension.width, basedOn: parent.bounds.size.width, insets: margin, isWidth: true)
             let titleLabelHeight = LayoutUtil.getEstimateHeight(for: mContent, with: width, and: titleLabel.font)
             titleLabel.snp.makeConstraints({ (maker) in
                 maker.leading.trailing.top.equalTo(parent).inset(margin)
@@ -36,9 +37,10 @@ extension CXAlertViewLayoutStrategy {
     }
 
     func layout(messageLabel: UILabel, based titleLabel: UILabel, at parent: UIView, alertAppearance: CXAlertAppearance) -> CGFloat {
+        let dimension = alertAppearance.appearance.dimension
         let titleMargin = alertAppearance.dimension.titleMargin
         let margin = alertAppearance.dimension.messageMargin
-        let width = alertAppearance.appearance.window.width.adjustedValue - margin.left - margin.right
+        let width = DimensionUtil.length(of: dimension.width, basedOn: parent.bounds.size.width, insets: margin, isWidth: true)
         if let mContent = messageLabel.text as NSString? {
             let height = LayoutUtil.getEstimateHeight(for: mContent, with: width, and: messageLabel.font)
             messageLabel.snp.makeConstraints({ (maker) in
