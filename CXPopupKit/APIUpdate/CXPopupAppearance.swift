@@ -13,9 +13,9 @@ import UIKit
 public class CXPopupAppearance {
     static let `default` = CXPopupAppearance()
 
-    public init() {}
+    init() {}
 
-    static func createAppearance() -> CXPopupAppearance {
+    public static func createAppearance() -> CXPopupAppearance {
         let appearance = CXPopupAppearance()
         appearance.animation = CXPopupAppearance.default.animation
         appearance.shadow = CXPopupAppearance.default.shadow

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3C1727671FE80F6400728374 /* CXPopupKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C1727651FE80F6400728374 /* CXPopupKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C17276F1FE8145A00728374 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C17276E1FE8145A00728374 /* SnapKit.framework */; };
-		3C1727721FE814E500728374 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1727711FE814E500728374 /* CXPopup.swift */; };
 		3C198D1920521E1000AA1C42 /* CXPopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C198D1820521E1000AA1C42 /* CXPopupWindow.swift */; };
 		3C1AB8471FEC0F710036C4F4 /* CXAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1AB8461FEC0F710036C4F4 /* CXAnimation.swift */; };
 		3C1AB8531FF1A34B0036C4F4 /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1AB8521FF1A34B0036C4F4 /* CXPresentationController.swift */; };
@@ -38,10 +37,12 @@
 		3C842E6920793DD4007CF1E9 /* DemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C842E6820793DD4007CF1E9 /* DemoListViewController.swift */; };
 		3C842E6C20793E90007CF1E9 /* DemoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C842E6B20793E90007CF1E9 /* DemoListItem.swift */; };
 		3C842E6E2079405B007CF1E9 /* BasicDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C842E6D2079405B007CF1E9 /* BasicDemoViewController.swift */; };
+		3CC04B7E20ACCA0F00FEC643 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1727711FE814E500728374 /* CXPopup.swift */; };
 		3CED126F2058118B001F9574 /* CXAlertViewLayoutStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED126E2058118B001F9574 /* CXAlertViewLayoutStrategy.swift */; };
 		3CED127120581470001F9574 /* CXLifecycleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED127020581470001F9574 /* CXLifecycleAction.swift */; };
 		3CED12762058445C001F9574 /* BasicSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED12752058445C001F9574 /* BasicSample.swift */; };
 		5A9F15A85663D1534C4FC8D0 /* LayoutUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F162AD31CE7B55E967EE4 /* LayoutUtil.swift */; };
+		5A9F1A8592ED53FB22F000D8 /* CXAbstractPopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F11536EC66C35A631495D /* CXAbstractPopupWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		3CED127020581470001F9574 /* CXLifecycleAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXLifecycleAction.swift; sourceTree = "<group>"; };
 		3CED12752058445C001F9574 /* BasicSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSample.swift; sourceTree = "<group>"; };
 		3CED127A20599314001F9574 /* CXPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPicker.swift; sourceTree = "<group>"; };
+		5A9F11536EC66C35A631495D /* CXAbstractPopupWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAbstractPopupWindow.swift; sourceTree = "<group>"; };
 		5A9F162AD31CE7B55E967EE4 /* LayoutUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,6 +188,7 @@
 				3C198D1820521E1000AA1C42 /* CXPopupWindow.swift */,
 				3C1AB8521FF1A34B0036C4F4 /* CXPresentationController.swift */,
 				3CED127020581470001F9574 /* CXLifecycleAction.swift */,
+				5A9F11536EC66C35A631495D /* CXAbstractPopupWindow.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -424,7 +427,6 @@
 				3C1AB8561FF20C630036C4F4 /* CXAbstractPopupAnimation.swift in Sources */,
 				3CED126F2058118B001F9574 /* CXAlertViewLayoutStrategy.swift in Sources */,
 				3C1AB8581FF212420036C4F4 /* CXPlainPopupAnimation.swift in Sources */,
-				3C1727721FE814E500728374 /* CXPopup.swift in Sources */,
 				3C2A21731FF7301E00311FEE /* CXZoomPopupAnimation.swift in Sources */,
 				3C1AB85C1FF2C35A0036C4F4 /* PositionUtil.swift in Sources */,
 				3C1AB8531FF1A34B0036C4F4 /* CXPresentationController.swift in Sources */,
@@ -442,6 +444,8 @@
 				3C2A21751FF7325C00311FEE /* CXBounceZoomPopupAnimation.swift in Sources */,
 				3C2F688F2076722D0008210D /* CXWindowSize.swift in Sources */,
 				3C2F6893207679360008210D /* CXWindowSafeAreaOption.swift in Sources */,
+				5A9F1A8592ED53FB22F000D8 /* CXAbstractPopupWindow.swift in Sources */,
+				3CC04B7E20ACCA0F00FEC643 /* CXPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

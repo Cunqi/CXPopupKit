@@ -11,9 +11,3 @@ import CXPopupKit
 
 class BasicSample: UIView {
 }
-
-extension BasicSample: CXPopupable {
-    func createPopup() -> CXPopup {
-        return CXPopup(with: self)
-    }
-}

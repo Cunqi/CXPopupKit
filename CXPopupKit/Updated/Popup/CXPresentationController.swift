@@ -17,9 +17,6 @@ final class CXPresentationController: UIPresentationController, UIViewController
     override var frameOfPresentedViewInContainerView: CGRect {
         let dimension = appearance.dimension
         let rect = DimensionUtil.rect(width: dimension.width, height: dimension.height, position: dimension.position, margin: dimension.margin, safeAreaOption: dimension.safeAreaOption, basedOn: containerView!)
-        print("Presenter \(rect)")
-//        let updatedRect = DimensionUtil.updatedRect(rect: rect, position: dimension.position, margin: dimension.margin, safeAreaOption: dimension.safeAreaOption, basedOn: containerView!)
-//        print("Presenter \(updatedRect)")
         return rect
     }
 

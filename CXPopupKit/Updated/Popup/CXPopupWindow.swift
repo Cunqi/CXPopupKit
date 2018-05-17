@@ -8,47 +8,41 @@
 
 import UIKit
 
-class CXPopupWindow: UIViewController {
-    override var shouldAutorotate: Bool {
-        return appearance.orientation.isAutoRotationEnabled
+public final class CXPopupWindow: CXAbstractPopupWindow, CXPopupWindowDisplayable {
+    public var negativeAction: CXPopupHandler?
+    public var positiveAction: CXPopupHandler?
+
+    var cxPresentationController: CXPresentationController?
+
+    public static func createPopup(with popupable: CXPopupable, appearance: CXPopupAppearance) -> CXPopupWindowDisplayable {
+        return CXPopupWindow(with: popupable, appearance: appearance)
     }
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return appearance.orientation.supportedInterfaceOrientations
+    public func popup(at presenter: UIViewController?, positive: CXPopupHandler? = nil, negative: CXPopupHandler? = nil) {
+        self.negativeAction = negative
+        self.positiveAction = positive
+
+        cxPresentationController = CXPresentationController(presentedViewController: self, presenting: presenter)
+        cxPresentationController?.appearance = appearance
+        self.transitioningDelegate = cxPresentationController
+        presenter?.present(self, animated: true)
     }
 
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return appearance.orientation.preferredInterfaceOrientationForPresentation
+    public func executePositiveAction(with result: Any?) {
+        positiveAction?(result)
     }
 
-    var holder: CXPopup?
-    var appearance = CXPopupAppearance.createAppearance()
-    var content: CXPopupable?
-
-    var negativeAction: CXPopupHandler?
-    var positiveAction: CXPopupHandler?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-        content?.popupWindowDidLoad()
+    public func executeNegativeAction(with result: Any?) {
+        negativeAction?(result)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        holder = nil
-        content?.popupWindowDidDisappear()
+    public func dismissAfterExecutingPositiveAction(with result: Any?) {
+        executePositiveAction(with: result)
+        dismiss(animated: true)
     }
 
-    private func setup() {
-        let style = appearance.uiStyle
-        view.backgroundColor = style.popupBackgroundColor ?? (content as? UIView)?.backgroundColor
-
-//        let dimension = appearance.dimension
-        LayoutUtil.fill(view: (content as? UIView) ?? UIView(), at: view)
-    }
-
-    deinit {
-        print("CXPopupWindow deinit")
+    public func dismissAfterExecutingNegativeAction(with result: Any?) {
+        executeNegativeAction(with: result)
+        dismiss(animated: true)
     }
 }
