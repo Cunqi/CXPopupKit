@@ -18,12 +18,14 @@ class BasicDemoViewController: UIViewController {
         basicView.backgroundColor = .white
 
         let appearance = CXPopupAppearance.createAppearance()
-        appearance.dimension.width = .percentageOfParent(ratio: 0.5)
+        appearance.dimension.width = .matchPartent
         appearance.dimension.height = .percentageOfParent(ratio: 0.5)
-        appearance.dimension.position = .center
+        appearance.dimension.position = .top
+        appearance.dimension.safeAreaOption = .insidePopup
+        appearance.uiStyle.popupBackgroundColor = .white
         appearance.animation.style = .bounceZoom
         appearance.animation.duration = .roundTrip(duration: 0.35)
-        appearance.animation.transition = .roundTrip(direction: .center)
+        appearance.animation.transition = .oneWay(in: .down, out: .up)
         let popup = CXPopupWindow.createPopup(with: basicView, appearance: appearance)
         popup.popup(at: self, positive: nil, negative: nil)
     }
