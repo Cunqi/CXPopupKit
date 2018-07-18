@@ -18,7 +18,7 @@ public class CXPopup {
         popup.contentView = content
     }
     
-    public func withStyle(_ style: CXPopupWindowStyle) -> Self {
+    public func withStyle(_ style: CXPopupAppearance) -> Self {
         popup.windowStyle = style
         return self
     }

@@ -1,5 +1,5 @@
 //
-//  CXPopupWindowStyle.swift
+//  CXPopupAppearance.swift
 //  CXPopupKit
 //
 //  Created by Cunqi on 7/10/18.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-public struct CXPopupWindowStyle {
+public struct CXPopupAppearance {
     /*Dimension*/
     public var width: CXEdgeSize = .full
     public var height: CXEdgeSize = .full
     public var position: CXPosition = .center
-    public var margin: UIEdgeInsets = .zero
+    public var safeAreaType: CXSafeAreaType = .default
     
     /*Shadow*/
     public var isShadowEnabled: Bool = false

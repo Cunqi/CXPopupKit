@@ -1,0 +1,17 @@
+//
+//  CXPresentationController.swift
+//  CXPopupKit
+//
+//  Created by Cunqi Xiao on 7/17/18.
+//  Copyright © 2018 Cunqi. All rights reserved.
+//
+
+import UIKit
+
+class CXPresentationController: UIPresentationController {
+
+    override var frameOfPresentedViewInContainerView: CGRect {
+        return .zero
+    }
+
+}

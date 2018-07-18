@@ -51,7 +51,7 @@ final class CXBaiscPopupWindow: CXAbstractPopupWindow, CXPopupWindow {
 }
 
 class CXAbstractPopupWindow: UIViewController {
-    var windowStyle = CXPopupWindowStyle()
+    var windowStyle = CXPopupAppearance()
     var contentView: CXPopupable?
     
     init() {
