@@ -19,6 +19,9 @@
 		C4EB52FB20FE679600B5E075 /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB52FA20FE679600B5E075 /* CXPresentationController.swift */; };
 		C4EB52FD20FE67FA00B5E075 /* CXDimensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB52FC20FE67FA00B5E075 /* CXDimensionUtil.swift */; };
 		C4EB52FF20FE692E00B5E075 /* CXSafeAreaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB52FE20FE692E00B5E075 /* CXSafeAreaType.swift */; };
+		C4EB5301210008EF00B5E075 /* AnimationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB5300210008EF00B5E075 /* AnimationFactory.swift */; };
+		C4EB5303210009A400B5E075 /* CXBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB5302210009A400B5E075 /* CXBasicAnimation.swift */; };
+		C4EB530621000B8000B5E075 /* CXAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB530521000B8000B5E075 /* CXAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		C4EB52FA20FE679600B5E075 /* CXPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPresentationController.swift; sourceTree = "<group>"; };
 		C4EB52FC20FE67FA00B5E075 /* CXDimensionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXDimensionUtil.swift; sourceTree = "<group>"; };
 		C4EB52FE20FE692E00B5E075 /* CXSafeAreaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXSafeAreaType.swift; sourceTree = "<group>"; };
+		C4EB5300210008EF00B5E075 /* AnimationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFactory.swift; sourceTree = "<group>"; };
+		C4EB5302210009A400B5E075 /* CXBasicAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXBasicAnimation.swift; sourceTree = "<group>"; };
+		C4EB530521000B8000B5E075 /* CXAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,9 @@
 				C4EB52FA20FE679600B5E075 /* CXPresentationController.swift */,
 				C4EB52FC20FE67FA00B5E075 /* CXDimensionUtil.swift */,
 				C4EB52FE20FE692E00B5E075 /* CXSafeAreaType.swift */,
+				C4EB5300210008EF00B5E075 /* AnimationFactory.swift */,
+				C4EB5302210009A400B5E075 /* CXBasicAnimation.swift */,
+				C4EB530521000B8000B5E075 /* CXAnimation.swift */,
 			);
 			path = CXPopupKit;
 			sourceTree = "<group>";
@@ -224,6 +233,7 @@
 			files = (
 				3C87578F20F5B18B0086BC35 /* CXAxisPosition.swift in Sources */,
 				3C87579120F5B4BC0086BC35 /* CXPopupWindow.swift in Sources */,
+				C4EB5303210009A400B5E075 /* CXBasicAnimation.swift in Sources */,
 				3C87578D20F5B0DB0086BC35 /* CXEdgeSize.swift in Sources */,
 				C4EB52FF20FE692E00B5E075 /* CXSafeAreaType.swift in Sources */,
 				3C1313CA20F5A4D5008CF9B9 /* CXPopupAppearance.swift in Sources */,
@@ -231,6 +241,8 @@
 				C4EB52FB20FE679600B5E075 /* CXPresentationController.swift in Sources */,
 				3C87579520F5B5D20086BC35 /* CXPopup.swift in Sources */,
 				C4EB52FD20FE67FA00B5E075 /* CXDimensionUtil.swift in Sources */,
+				C4EB5301210008EF00B5E075 /* AnimationFactory.swift in Sources */,
+				C4EB530621000B8000B5E075 /* CXAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
