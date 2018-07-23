@@ -47,6 +47,7 @@ class CXPresentationController: UIPresentationController {
         self.appearance = appearance
         super.init(presentedViewController: presented, presenting: presenting)
         self.animationController = AnimationFactory.getAnimationInstance(from: appearance, presentationController: self)
+        self.presentedViewController.modalPresentationStyle = .custom
     }
 
     override func presentationTransitionWillBegin() {
