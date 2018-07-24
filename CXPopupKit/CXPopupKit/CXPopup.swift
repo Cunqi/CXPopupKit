@@ -11,15 +11,15 @@ import Foundation
 public typealias CXPopupAction = (Any?) -> Void
 
 public class CXPopup {
-    let popup: CXBaiscPopupWindow
+    let popup: CXBasicPopupWindow
     
     public init(content: CXPopupable) {
-        self.popup = CXBaiscPopupWindow()
+        self.popup = CXBasicPopupWindow()
         popup.contentView = content
     }
     
     public func withStyle(_ style: CXPopupAppearance) -> Self {
-        popup.windowStyle = style
+        popup.popupAppearance = style
         return self
     }
     

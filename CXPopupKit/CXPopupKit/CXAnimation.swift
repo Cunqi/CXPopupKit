@@ -16,12 +16,12 @@ public struct CXAnimationDuration {
     let animateInDuration: TimeInterval
     let animateOutDuration: TimeInterval
 
-    init(`in`: TimeInterval, out: TimeInterval) {
+    public init(`in`: TimeInterval, out: TimeInterval) {
         self.animateInDuration = `in`
         self.animateOutDuration = out
     }
 
-    init(round: TimeInterval) {
+    public init(round: TimeInterval) {
         self.animateInDuration = round
         self.animateOutDuration = round
     }
@@ -54,12 +54,12 @@ public struct CXAnimationTransition {
     let animateInDirection: CXAnimationDirection
     let animateOutDirection: CXAnimationDirection
 
-    init(`in`: CXAnimationDirection, out: CXAnimationDirection) {
+    public init(`in`: CXAnimationDirection, out: CXAnimationDirection) {
         self.animateInDirection = `in`
         self.animateOutDirection = out
     }
 
-    init(`in`: CXAnimationDirection, oppositeDirectionForOut: Bool = true) {
+    public init(`in`: CXAnimationDirection, oppositeDirectionForOut: Bool = true) {
         self.animateInDirection = `in`
         if oppositeDirectionForOut {
             self.animateOutDirection = `in`.opposite

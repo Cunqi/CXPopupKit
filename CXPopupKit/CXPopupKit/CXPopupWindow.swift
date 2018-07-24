@@ -16,14 +16,15 @@ public protocol CXPopupWindow where Self: UIViewController {
     func closeWithNegativeAction(_ result: Any?)
     func invokePositiveAction(_ result: Any?)
     func invokeNegativeAction(_ result: Any?)
-    
+    func show(at presenting: UIViewController?)
 }
 
-final class CXBaiscPopupWindow: CXAbstractPopupWindow, CXPopupWindow {
+final class CXBasicPopupWindow: CXAbstractPopupWindow, CXPopupWindow {
     var positiveAction: CXPopupAction?
     var negativeAction: CXPopupAction?
+    var cxPresentationController: CXPresentationController?
     
-    var viewController: UIViewController? {
+    var vc: UIViewController? {
         return self
     }
     
@@ -48,10 +49,14 @@ final class CXBaiscPopupWindow: CXAbstractPopupWindow, CXPopupWindow {
     func invokePositiveAction(_ result: Any?) {
         positiveAction?(result)
     }
+
+    func show(at presentingVC: UIViewController?) {
+        presentingVC?.present(vc, animated: true, completion: nil)
+    }
 }
 
 class CXAbstractPopupWindow: UIViewController {
-    var windowStyle = CXPopupAppearance()
+    var popupAppearance = CXPopupAppearance()
     var contentView: CXPopupable?
     
     init() {
@@ -72,7 +77,7 @@ class CXAbstractPopupWindow: UIViewController {
     }
     
     private func setup() {
-        self.view.backgroundColor = windowStyle.backgroundColor
+        self.view.backgroundColor = popupAppearance.backgroundColor
 
         guard let contentView = self.contentView as? UIView else {
             return

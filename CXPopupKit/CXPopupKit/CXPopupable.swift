@@ -6,7 +6,7 @@
 //  Copyright © 2018 Cunqi. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol CXPopupable where Self: UIView {
     
