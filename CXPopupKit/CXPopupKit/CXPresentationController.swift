@@ -48,6 +48,7 @@ class CXPresentationController: UIPresentationController {
         super.init(presentedViewController: presented, presenting: presenting)
         self.animationController = AnimationFactory.getAnimationInstance(from: appearance, presentationController: self)
         self.presentedViewController.modalPresentationStyle = .custom
+        self.presentedViewController.transitioningDelegate = self
     }
 
     override func presentationTransitionWillBegin() {
@@ -79,6 +80,7 @@ class CXPresentationController: UIPresentationController {
             dimmingView?.addGestureRecognizer(tapOutsideGestureRecognizer)
         }
         containerView?.addSubview(dimmingView!)
+        containerView?.addSubview(contentView!) // make sure content view is above dimming view
 
         let destinationAlpha = appearance.maskBackgroundAlpha
         coordinator?.animate(alongsideTransition: { [weak self] (context) in

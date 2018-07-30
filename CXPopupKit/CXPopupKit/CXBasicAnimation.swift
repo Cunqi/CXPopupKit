@@ -12,6 +12,17 @@ class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     let duration: CXAnimationDuration
     let transition: CXAnimationTransition
 
+    var animateInFinalFrame: CGRect = .zero
+    var animateOutInitialFrame: CGRect {
+        get {
+            return animateInFinalFrame
+        }
+
+        set {
+            animateInFinalFrame = newValue
+        }
+    }
+
     weak var presentingViewController: UIViewController?
 
     init(presenting: UIViewController, duration: CXAnimationDuration, transition: CXAnimationTransition) {
@@ -42,8 +53,9 @@ class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
             return
         }
         let toViewFinalFrame = context.finalFrame(for: toVC)
-        let toViewInitialFrame = toViewFinalFrame.applyOffset(direction: transition.animateInDirection, offsetSize: container.bounds.size)
+        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.animateInDirection, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
+        animateInFinalFrame = toViewFinalFrame
 
         toView.frame = toViewInitialFrame
         UIView.animate(withDuration: duration, animations: {
@@ -55,11 +67,10 @@ class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     }
 
     func dismissing(_ context: UIViewControllerContextTransitioning, container: UIView) {
-        guard let fromVC = context.viewController(forKey: .from), let fromView = context.view(forKey: .from) else {
+        guard let fromView = context.view(forKey: .from) else {
             return
         }
-        let fromViewInitialFrame = context.initialFrame(for: fromVC)
-        let fromViewFinalFrame = fromViewInitialFrame.applyOffset(direction: transition.animateOutDirection, offsetSize: container.bounds.size)
+        let fromViewFinalFrame = animateOutInitialFrame.offsetForFinalPosition(direction: transition.animateOutDirection, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         UIView.animate(withDuration: duration, animations: {
             fromView.frame = fromViewFinalFrame
@@ -78,8 +89,13 @@ class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 }
 
 extension CGRect {
-    func applyOffset(direction: CXAnimationDirection, offsetSize: CGSize) -> CGRect {
+    func offsetForInitialPosition(direction: CXAnimationDirection, offsetSize: CGSize) -> CGRect {
         let origin = direction.getDeparturePoint(base: self.origin, size: offsetSize)
+        return CGRect(origin: origin, size: self.size)
+    }
+
+    func offsetForFinalPosition(direction: CXAnimationDirection, offsetSize: CGSize) -> CGRect {
+        let origin = direction.getArrivalPoint(base: self.origin, size: offsetSize)
         return CGRect(origin: origin, size: self.size)
     }
 }
@@ -97,6 +113,21 @@ extension CXAnimationDirection {
             return CGPoint(x: base.x + size.width, y: base.y)
         case .right:
             return CGPoint(x: base.x - size.width, y: base.y)
+        }
+    }
+
+    func getArrivalPoint(base: CGPoint, size: CGSize) -> CGPoint {
+        switch self {
+        case .up:
+            return CGPoint(x: base.x, y: base.y - size.height)
+        case .down:
+            return CGPoint(x: base.x, y: base.y + size.height)
+        case .center:
+            return base
+        case .left:
+            return CGPoint(x: base.x - size.width, y: base.y)
+        case .right:
+            return CGPoint(x: base.x + size.width, y: base.y)
         }
     }
 }

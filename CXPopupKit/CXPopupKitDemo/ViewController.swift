@@ -19,18 +19,20 @@ class ViewController: UIViewController {
 
     @IBAction func didTapButton(_ sender: Any) {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .red
         var appearance = CXPopupAppearance()
-        appearance.width = .part(ratio: 0.5)
-        appearance.height = .part(ratio: 0.5)
+        appearance.width = .fixed(value: 150)
+        appearance.height = .fixed(value: 150)
+        appearance.position = CXPosition(x: .left, y: .top)
+        appearance.backgroundColor = .blue
         appearance.animationStyle = .basic
         appearance.animationDuration = CXAnimationDuration(round: 0.35)
         appearance.animationTransition = CXAnimationTransition(in: .down)
         
         let popup = CXPopup(content: view)
-                    .withStyle(appearance)
-                    .build()
-        popup.show(at: self)
+                    .withAppearance(appearance)
+                    .build(at: self)
+        self.present(popup, animated: true, completion: nil)
     }
 }
 
