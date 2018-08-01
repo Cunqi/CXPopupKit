@@ -6,7 +6,7 @@
 //  Copyright © 2018 Cunqi. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol CXAxisPosition {
     func getXisValue(based length: CGFloat, screen: CGFloat, safeArea: UIEdgeInsets) -> CGFloat

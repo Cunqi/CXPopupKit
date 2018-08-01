@@ -81,11 +81,11 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
         view.addSubview(content)
         content.translatesAutoresizingMaskIntoConstraints = false
 
-        
+        let padding = popupAppearance.position.getPaddingInsets(for: popupAppearance.safeAreaType)
 
-        content.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
-        content.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
-        content.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
-        content.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        content.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: padding.left).isActive = true
+        content.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: padding.right).isActive = true
+        content.topAnchor.constraint(equalTo: self.view.topAnchor, constant: padding.top).isActive = true
+        content.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: padding.bottom).isActive = true
     }
 }
