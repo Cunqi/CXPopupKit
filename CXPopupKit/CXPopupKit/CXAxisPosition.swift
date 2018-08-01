@@ -53,18 +53,48 @@ public enum CXYAxisPosition: CXAxisPosition {
 }
 
 public struct CXPosition {
-    public static let center = CXPosition(x: .center, y: .center)
+    public static let center = CXPosition(horizontal: .center, vertical: .center)
     
-    let x: CXXAxisPosition
-    let y: CXYAxisPosition
+    let horizontal: CXXAxisPosition
+    let vertical: CXYAxisPosition
     
-    public init(x: CXXAxisPosition, y: CXYAxisPosition) {
-        self.x = x
-        self.y = y
+    public init(horizontal: CXXAxisPosition, vertical: CXYAxisPosition) {
+        self.horizontal = horizontal
+        self.vertical = vertical
     }
 
     public init(x: CGFloat, y: CGFloat) {
-        self.x = .custom(x: x)
-        self.y = .custom(y: y)
+        self.horizontal = .custom(x: x)
+        self.vertical = .custom(y: y)
+    }
+
+    func getPaddingInsets(for safeAreaType: CXSafeAreaType) -> UIEdgeInsets {
+        let initialInsets = CXDimensionUtil.windowSafeAreaInsets
+        guard safeAreaType == .wrapped, initialInsets != .zero else {
+            return .zero
+        }
+
+        var finalInsets = initialInsets
+
+        switch horizontal {
+        case .left:
+            finalInsets.right = 0
+        case .right:
+            finalInsets.left = 0
+        default:
+            finalInsets.left = 0
+            finalInsets.right = 0
+        }
+
+        switch vertical {
+        case .top:
+            finalInsets.bottom = 0
+        case .bottom:
+            finalInsets.top = 0
+        default:
+            finalInsets.top = 0
+        }
+
+        return finalInsets
     }
 }

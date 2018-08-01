@@ -35,7 +35,7 @@ class CXDimensionUtil {
         }
 
         var result = UIEdgeInsets.zero
-        switch position.x {
+        switch position.horizontal {
         case .left:
             result.left = CXDimensionUtil.windowSafeAreaInsets.left
         case .right:
@@ -44,7 +44,7 @@ class CXDimensionUtil {
             break
         }
 
-        switch position.y {
+        switch position.vertical {
         case .top:
             result.top = CXDimensionUtil.windowSafeAreaInsets.top
         case .bottom:
@@ -58,8 +58,8 @@ class CXDimensionUtil {
 
     private static func getOrigin(_ position: CXPosition, size: CGSize, screen: CGSize, safeAreaType: CXSafeAreaType) -> CGPoint {
         let safeAreaInsets = safeAreaType == .default ? windowSafeAreaInsets : .zero
-        let x = position.x.getXisValue(based: size.width, screen: screen.width, safeArea: safeAreaInsets)
-        let y = position.y.getXisValue(based: size.height, screen: screen.height, safeArea: safeAreaInsets)
+        let x = position.horizontal.getXisValue(based: size.width, screen: screen.width, safeArea: safeAreaInsets)
+        let y = position.vertical.getXisValue(based: size.height, screen: screen.height, safeArea: safeAreaInsets)
         return CGPoint(x: x, y: y)
     }
 }

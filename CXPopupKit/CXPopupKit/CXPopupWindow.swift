@@ -80,6 +80,9 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     private func addAndMakeViewFullScreen(_ content: UIView) {
         view.addSubview(content)
         content.translatesAutoresizingMaskIntoConstraints = false
+
+        
+
         content.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         content.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
         content.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
