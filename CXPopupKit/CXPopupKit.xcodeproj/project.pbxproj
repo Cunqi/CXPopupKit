@@ -23,6 +23,8 @@
 		3C87579120F5B4BC0086BC35 /* CXPopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87579020F5B4BC0086BC35 /* CXPopupWindow.swift */; };
 		3C87579320F5B59D0086BC35 /* CXPopupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87579220F5B59D0086BC35 /* CXPopupable.swift */; };
 		3C87579520F5B5D20086BC35 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87579420F5B5D20086BC35 /* CXPopup.swift */; };
+		C46936ED210797FB00AB7C2D /* CXPopupKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1313AF20F5A461008CF9B9 /* CXPopupKit.framework */; };
+		C46936EE210797FB00AB7C2D /* CXPopupKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1313AF20F5A461008CF9B9 /* CXPopupKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C4EB52FB20FE679600B5E075 /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB52FA20FE679600B5E075 /* CXPresentationController.swift */; };
 		C4EB52FD20FE67FA00B5E075 /* CXDimensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB52FC20FE67FA00B5E075 /* CXDimensionUtil.swift */; };
 		C4EB52FF20FE692E00B5E075 /* CXSafeAreaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB52FE20FE692E00B5E075 /* CXSafeAreaType.swift */; };
@@ -53,7 +55,28 @@
 			remoteGlobalIDString = 3C1C9DB12106E54100DE17A9;
 			remoteInfo = CXPopupKitDemo;
 		};
+		C46936EF210797FB00AB7C2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C1313A620F5A461008CF9B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C1313AE20F5A461008CF9B9;
+			remoteInfo = CXPopupKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C46936F1210797FB00AB7C2D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C46936EE210797FB00AB7C2D /* CXPopupKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3C1313AF20F5A461008CF9B9 /* CXPopupKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CXPopupKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46936ED210797FB00AB7C2D /* CXPopupKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,10 +295,12 @@
 				3C1C9DAE2106E54100DE17A9 /* Sources */,
 				3C1C9DAF2106E54100DE17A9 /* Frameworks */,
 				3C1C9DB02106E54100DE17A9 /* Resources */,
+				C46936F1210797FB00AB7C2D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C46936F0210797FB00AB7C2D /* PBXTargetDependency */,
 			);
 			name = CXPopupKitDemo;
 			productName = CXPopupKitDemo;
@@ -480,6 +506,11 @@
 			isa = PBXTargetDependency;
 			target = 3C1C9DB12106E54100DE17A9 /* CXPopupKitDemo */;
 			targetProxy = 3C1C9DD12106E54300DE17A9 /* PBXContainerItemProxy */;
+		};
+		C46936F0210797FB00AB7C2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C1313AE20F5A461008CF9B9 /* CXPopupKit */;
+			targetProxy = C46936EF210797FB00AB7C2D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -721,6 +752,7 @@
 		3C1C9DD72106E54300DE17A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2PQ63WGMNP;
@@ -740,6 +772,7 @@
 		3C1C9DD82106E54300DE17A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2PQ63WGMNP;
