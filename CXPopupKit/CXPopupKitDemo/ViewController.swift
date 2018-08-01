@@ -21,8 +21,8 @@ class ViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .red
         var appearance = CXPopupAppearance()
-        appearance.width = .fixed(value: 150)
-        appearance.height = .fixed(value: 150)
+        appearance.width = .full
+        appearance.height = .part(ratio: 0.5)
         appearance.position = CXPosition(horizontal: .left, vertical: .top)
         appearance.backgroundColor = .blue
         appearance.animationStyle = .basic

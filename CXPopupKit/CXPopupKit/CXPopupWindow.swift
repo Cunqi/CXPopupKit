@@ -24,6 +24,9 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     var cxPresentationController: CXPresentationController?
     var popupAppearance = CXPopupAppearance()
     var contentView: CXPopupable?
+    override var shouldAutorotate: Bool {
+        return popupAppearance.isAutoRotateEnabled
+    }
     
     var vc: UIViewController {
         return self

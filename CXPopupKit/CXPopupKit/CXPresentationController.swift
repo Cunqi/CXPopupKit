@@ -32,6 +32,7 @@ class CXPresentationController: UIPresentationController {
                                            safeAreaType: appearance.safeAreaType,
                                            screen: containerBounds.size)
         lastPresentedFrame = rect
+        print("last presented frame \(lastPresentedFrame)")
         return rect
     }
 
@@ -69,8 +70,8 @@ class CXPresentationController: UIPresentationController {
         presentedView.frame = contentView?.bounds ?? .zero
 
         // Add dependencies between each view
-        roundedCornerView.addSubview(presentedView)
-        contentView?.addSubview(roundedCornerView)
+        roundedCornerView.addAndFill(presentedView)
+        contentView?.addAndFill(roundedCornerView)
 
         // Dimming view
         dimmingView = UIView()
@@ -114,6 +115,21 @@ class CXPresentationController: UIPresentationController {
         self.dimmingView?.frame = self.containerView?.bounds ?? .zero
         self.contentView?.frame = self.frameOfPresentedViewInContainerView
     }
+
+    override func preferredContentSizeDidChange(forChildContentContainer container: UIContentContainer) {
+        super.preferredContentSizeDidChange(forChildContentContainer: container)
+        if container === self.presentedViewController {
+            self.containerView?.setNeedsLayout()
+        }
+    }
+
+    override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+        if container === self.presentedViewController {
+            return (container as! UIViewController).preferredContentSize
+        } else {
+            return super.size(forChildContentContainer: container, withParentContainerSize: parentSize)
+        }
+    }
 }
 
 extension CXPresentationController: UIViewControllerTransitioningDelegate {
@@ -127,5 +143,16 @@ extension CXPresentationController: UIViewControllerTransitioningDelegate {
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self.animationController
+    }
+}
+
+extension UIView {
+    func addAndFill(_ view: UIView) {
+        self.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 }
