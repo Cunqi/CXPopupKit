@@ -19,14 +19,15 @@ public protocol CXPopupWindow where Self: UIViewController {
 }
 
 final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
+    override var shouldAutorotate: Bool {
+        return popupAppearance.isAutoRotateEnabled
+    }
+
     var positiveAction: CXPopupAction?
     var negativeAction: CXPopupAction?
     var cxPresentationController: CXPresentationController?
     var popupAppearance = CXPopupAppearance()
     var contentView: CXPopupable?
-    override var shouldAutorotate: Bool {
-        return popupAppearance.isAutoRotateEnabled
-    }
     
     var vc: UIViewController {
         return self
@@ -37,13 +38,15 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     }
     
     func closeWithPositiveAction(_ result: Any?) {
-        invokePositiveAction(result)
-        close()
+        self.dismiss(animated: true) { [weak self] in
+            self?.positiveAction?(result)
+        }
     }
     
     func closeWithNegativeAction(_ result: Any?) {
-        invokeNegativeAction(result)
-        close()
+        self.dismiss(animated: true) { [weak self] in
+            self?.negativeAction?(result)
+        }
     }
     
     func invokeNegativeAction(_ result: Any?) {
@@ -71,6 +74,11 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
         super.viewWillAppear(animated)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cleanup()
+    }
+
     private func setup() {
         self.view.backgroundColor = popupAppearance.backgroundColor
 
@@ -78,6 +86,11 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
             return
         }
         addAndMakeViewFullScreen(contentView)
+    }
+
+    private func cleanup() {
+        self.positiveAction = nil
+        self.negativeAction = nil
     }
 
     private func addAndMakeViewFullScreen(_ content: UIView) {
@@ -90,5 +103,11 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
         content.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: padding.right).isActive = true
         content.topAnchor.constraint(equalTo: self.view.topAnchor, constant: padding.top).isActive = true
         content.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: padding.bottom).isActive = true
+    }
+
+    deinit {
+        #if DEBUG
+            print("PopupWindow dealloced.")
+        #endif
     }
 }

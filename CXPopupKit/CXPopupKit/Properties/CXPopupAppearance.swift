@@ -35,7 +35,7 @@ public struct CXPopupAppearance {
     public var allOutsideDismiss: Bool = true
     
     // Animation
-    public var animationStyle: CXAnimation = .basic
+    public var animationStyle: CXAnimationStyle = .basic
     public var animationDuration: CXAnimationDuration = CXAnimationDuration(round: 0.35)
     public var animationTransition: CXAnimationTransition = CXAnimationTransition(in: .center)
     

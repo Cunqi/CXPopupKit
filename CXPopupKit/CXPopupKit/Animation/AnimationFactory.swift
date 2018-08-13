@@ -15,6 +15,9 @@ class AnimationFactory {
             return CXBasicAnimation(presenting: presentationController.presentingViewController,
                                     duration: appearance.animationDuration,
                                     transition: appearance.animationTransition)
+
+        case .custom(let animator):
+            return animator
         }
     }
 }

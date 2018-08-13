@@ -8,9 +8,11 @@
 
 import UIKit
 
-class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+class CXBasicAnimation: NSObject, CXAnimation {
     let duration: CXAnimationDuration
     let transition: CXAnimationTransition
+
+    weak var presentingViewController: UIViewController?
 
     var animateInFinalFrame: CGRect = .zero
     var animateOutInitialFrame: CGRect {
@@ -22,8 +24,6 @@ class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
             animateInFinalFrame = newValue
         }
     }
-
-    weak var presentingViewController: UIViewController?
 
     init(presenting: UIViewController, duration: CXAnimationDuration, transition: CXAnimationTransition) {
         self.presentingViewController = presenting
@@ -40,18 +40,14 @@ class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let container = transitionContext.containerView
-        if isPresenting(transitionContext) {
-            presenting(transitionContext, container: container)
-        } else {
-            dismissing(transitionContext, container: container)
-        }
+        isPresenting(transitionContext) ? presenting(transitionContext) : dismissing(transitionContext)
     }
 
-    func presenting(_ context: UIViewControllerContextTransitioning, container: UIView) {
+    func presenting(_ context: UIViewControllerContextTransitioning) {
         guard let toVC = context.viewController(forKey: .to), let toView = context.view(forKey: .to) else {
             return
         }
+        let container = context.containerView
         let toViewFinalFrame = context.finalFrame(for: toVC)
         let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.animateInDirection, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
@@ -66,10 +62,11 @@ class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
         })
     }
 
-    func dismissing(_ context: UIViewControllerContextTransitioning, container: UIView) {
+    func dismissing(_ context: UIViewControllerContextTransitioning) {
         guard let fromView = context.view(forKey: .from) else {
             return
         }
+        let container = context.containerView
         let fromViewFinalFrame = animateOutInitialFrame.offsetForFinalPosition(direction: transition.animateOutDirection, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         UIView.animate(withDuration: duration, animations: {
@@ -85,49 +82,5 @@ class CXBasicAnimation: NSObject, UIViewControllerAnimatedTransitioning {
             return false
         }
         return from == presenting
-    }
-}
-
-extension CGRect {
-    func offsetForInitialPosition(direction: CXAnimationDirection, offsetSize: CGSize) -> CGRect {
-        let origin = direction.getDeparturePoint(base: self.origin, size: offsetSize)
-        return CGRect(origin: origin, size: self.size)
-    }
-
-    func offsetForFinalPosition(direction: CXAnimationDirection, offsetSize: CGSize) -> CGRect {
-        let origin = direction.getArrivalPoint(base: self.origin, size: offsetSize)
-        return CGRect(origin: origin, size: self.size)
-    }
-}
-
-extension CXAnimationDirection {
-    func getDeparturePoint(base: CGPoint, size: CGSize) -> CGPoint {
-        switch self {
-        case .up:
-            return CGPoint(x: base.x, y: base.y + size.height)
-        case .down:
-            return CGPoint(x: base.x, y: base.y - size.height)
-        case .center:
-            return base
-        case .left:
-            return CGPoint(x: base.x + size.width, y: base.y)
-        case .right:
-            return CGPoint(x: base.x - size.width, y: base.y)
-        }
-    }
-
-    func getArrivalPoint(base: CGPoint, size: CGSize) -> CGPoint {
-        switch self {
-        case .up:
-            return CGPoint(x: base.x, y: base.y - size.height)
-        case .down:
-            return CGPoint(x: base.x, y: base.y + size.height)
-        case .center:
-            return base
-        case .left:
-            return CGPoint(x: base.x - size.width, y: base.y)
-        case .right:
-            return CGPoint(x: base.x + size.width, y: base.y)
-        }
     }
 }
