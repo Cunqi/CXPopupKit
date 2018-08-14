@@ -13,6 +13,10 @@ public protocol CXAnimation: UIViewControllerAnimatedTransitioning {
 
 public enum CXAnimationStyle {
     case basic
+    case fade
+    case bounce
+    case zoom
+    case pop
     case custom(animator: UIViewControllerAnimatedTransitioning)
 }
 

@@ -32,7 +32,6 @@ class CXPresentationController: UIPresentationController {
                                            safeAreaType: appearance.safeAreaType,
                                            screen: containerBounds.size)
         lastPresentedFrame = rect
-        print("last presented frame \(lastPresentedFrame)")
         return rect
     }
 

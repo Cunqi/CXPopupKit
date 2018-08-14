@@ -25,14 +25,14 @@ class ViewController: UIViewController {
         appearance.height = .part(ratio: 0.5)
         appearance.position = CXPosition(horizontal: .left, vertical: .top)
         appearance.backgroundColor = .blue
-        appearance.animationStyle = .basic
+        appearance.animationStyle = .pop
         appearance.animationDuration = CXAnimationDuration(round: 0.35)
-        appearance.animationTransition = CXAnimationTransition(in: .down)
+        appearance.animationTransition = CXAnimationTransition(in: .center)
         appearance.safeAreaType = .wrapped
         
         let popup = CXPopup(content: view)
                     .withAppearance(appearance)
-                    .build(at: self)
+                    .build(on: self)
         self.present(popup, animated: true, completion: nil)
     }
 }

@@ -15,7 +15,22 @@ class AnimationFactory {
             return CXBasicAnimation(presenting: presentationController.presentingViewController,
                                     duration: appearance.animationDuration,
                                     transition: appearance.animationTransition)
-
+        case .fade:
+            return CXFadeAnimation(presenting: presentationController.presentingViewController,
+                                   duration: appearance.animationDuration,
+                                   transition: appearance.animationTransition)
+        case .bounce:
+            return CXBounceAnimation(presenting: presentationController.presentingViewController,
+                                     duration: appearance.animationDuration,
+                                     transition: appearance.animationTransition)
+        case .zoom:
+            return CXZoomAnimation(presenting: presentationController.presentingViewController,
+                                   duration: appearance.animationDuration,
+                                   transition: appearance.animationTransition)
+        case .pop:
+            return CXPopAnimation(presenting: presentationController.presentingViewController,
+                            duration: appearance.animationDuration,
+                            transition: appearance.animationTransition)
         case .custom(let animator):
             return animator
         }

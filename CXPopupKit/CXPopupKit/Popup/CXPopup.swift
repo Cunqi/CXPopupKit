@@ -32,7 +32,7 @@ public class CXPopup {
         return self
     }
     
-    public func build(at presenting: UIViewController?) -> CXPopupWindow & UIViewController {
+    public func build(on presenting: UIViewController?) -> CXPopupWindow & UIViewController {
         popup.cxPresentationController = CXPresentationController(presented: popup, presenting: presenting, appearance: popup.popupAppearance)
         return popup
     }

@@ -95,7 +95,6 @@ public struct CXPosition {
             finalInsets.top = 0
             finalInsets.bottom = 0
         }
-
         return finalInsets
     }
 }

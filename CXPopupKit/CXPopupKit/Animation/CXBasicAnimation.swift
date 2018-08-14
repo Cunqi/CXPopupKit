@@ -9,6 +9,9 @@
 import UIKit
 
 class CXBasicAnimation: NSObject, CXAnimation {
+    static let opaque: CGFloat = 1
+    static let transparent: CGFloat = 0
+
     let duration: CXAnimationDuration
     let transition: CXAnimationTransition
 

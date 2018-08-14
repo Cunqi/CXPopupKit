@@ -91,6 +91,7 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     private func cleanup() {
         self.positiveAction = nil
         self.negativeAction = nil
+        self.cxPresentationController = nil
     }
 
     private func addAndMakeViewFullScreen(_ content: UIView) {
