@@ -10,11 +10,13 @@ import Foundation
 
 public typealias CXPopupAction = (Any?) -> Void
 
-public class CXPopup {
+public class CXPopupBuilder {
     let popup = CXBasicPopupWindow()
+    weak var prsenting: UIViewController?
     
-    public init(content: CXPopupable) {
+    public init(content: CXPopupable, presenting: UIViewController?) {
         popup.contentView = content
+        self.prsenting = presenting
     }
     
     public func withAppearance(_ appearance: CXPopupAppearance) -> Self {
@@ -32,8 +34,8 @@ public class CXPopup {
         return self
     }
     
-    public func build(on presenting: UIViewController?) -> CXPopupWindow & UIViewController {
-        popup.cxPresentationController = CXPresentationController(presented: popup, presenting: presenting, appearance: popup.popupAppearance)
+    public func build() -> CXPopupWindow & UIViewController {
+        popup.cxPresentationController = CXPresentationController(presented: popup, presenting: self.prsenting, appearance: popup.popupAppearance)
         return popup
     }
 }

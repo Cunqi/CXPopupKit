@@ -30,9 +30,9 @@ class ViewController: UIViewController {
         appearance.animationTransition = CXAnimationTransition(in: .center)
         appearance.safeAreaType = .wrapped
         
-        let popup = CXPopup(content: view)
+        let popup = CXPopupBuilder(content: view, presenting: self)
                     .withAppearance(appearance)
-                    .build(on: self)
+                    .build()
         self.present(popup, animated: true, completion: nil)
     }
 }
