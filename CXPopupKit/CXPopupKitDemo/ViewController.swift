@@ -18,25 +18,34 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapButton(_ sender: Any) {
-        let view = UIView()
-        view.backgroundColor = .red
-        var appearance = CXPopupAppearance()
-        appearance.width = .full
-        appearance.height = .part(ratio: 0.5)
-        appearance.position = CXPosition(horizontal: .left, vertical: .top)
-        appearance.backgroundColor = .blue
-        appearance.animationStyle = .pop
-        appearance.animationDuration = CXAnimationDuration(round: 0.35)
-        appearance.animationTransition = CXAnimationTransition(in: .center)
-        appearance.safeAreaType = .wrapped
-        
-        let popup = CXPopupBuilder(content: view, presenting: self)
-                    .withAppearance(appearance)
-                    .build()
-        self.present(popup, animated: true, completion: nil)
+//        let view = MyView()
+//        view.backgroundColor = .red
+//        var appearance = CXPopupAppearance()
+//        appearance.width = .full
+//        appearance.height = .part(ratio: 0.5)
+//        appearance.position = CXPosition(horizontal: .left, vertical: .top)
+//        appearance.backgroundColor = .blue
+//        appearance.animationStyle = .pop
+//        appearance.animationDuration = CXAnimationDuration(round: 0.35)
+//        appearance.animationTransition = CXAnimationTransition(in: .center)
+//        appearance.safeAreaType = .wrapped
+//
+//        let popup = CXPopupBuilder(content: view, presenting: self)
+//                    .withAppearance(appearance)
+//                    .build()
+//        self.present(popup, animated: true, completion: nil)
+
+        let dataSet = ["one", "two", "three"]
+        let picker = CXPickerBuilder<String>(title: "Test", at: self)
+                        .withSimpleData(dataSet)
+                        .withSelectionConfirmed({ indexes in
+                            print(dataSet[indexes[0]])
+                        })
+                        .build()
+        self.present(picker, animated: true, completion: nil)
     }
 }
 
-extension UIView: CXPopupable {
-    
+class MyView: UIView, CXPopupable {
+
 }

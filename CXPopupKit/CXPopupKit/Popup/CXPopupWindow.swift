@@ -13,9 +13,9 @@ public protocol CXPopupWindow where Self: UIViewController {
     
     func close()
     func closeWithPositiveAction(_ result: Any?)
-    func closeWithNegativeAction(_ result: Any?)
+    func closeWithNegativeAction()
     func invokePositiveAction(_ result: Any?)
-    func invokeNegativeAction(_ result: Any?)
+    func invokeNegativeAction()
 }
 
 final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
@@ -24,7 +24,7 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     }
 
     var positiveAction: CXPopupAction?
-    var negativeAction: CXPopupAction?
+    var negativeAction: CXPopupCancelAction?
     var cxPresentationController: CXPresentationController?
     var popupAppearance = CXPopupAppearance()
     var contentView: CXPopupable?
@@ -43,14 +43,14 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
         }
     }
     
-    func closeWithNegativeAction(_ result: Any?) {
+    func closeWithNegativeAction() {
         self.dismiss(animated: true) { [weak self] in
-            self?.negativeAction?(result)
+            self?.negativeAction?()
         }
     }
     
-    func invokeNegativeAction(_ result: Any?) {
-        negativeAction?(result)
+    func invokeNegativeAction() {
+        negativeAction?()
     }
     
     func invokePositiveAction(_ result: Any?) {
