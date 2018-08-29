@@ -35,16 +35,19 @@ class ViewController: UIViewController {
 //                    .build()
 //        self.present(popup, animated: true, completion: nil)
 
-        let dataSet = [["one", "two", "three"], ["one", "two", "three"]]
-        let picker = CXPickerBuilder<String>(title: "Test", at: self)
-                        .withComplexData(dataSet)
-                        .withComplexDataSelected({ actions in
-                            for action in actions {
-                                print(action)
-                            }
-                        })
-                        .build()
-        self.present(picker, animated: true, completion: nil)
+//        let dataSet = [["one", "two", "three"], ["one", "two", "three"]]
+//        let picker = CXPickerBuilder<String>(title: "Test", at: self)
+//                        .withComplexData(dataSet)
+//                        .withComplexDataSelected({ actions in
+//                            for action in actions {
+//                                print(action)
+//                            }
+//                        })
+//                        .build()
+//        self.present(picker, animated: true, completion: nil)
+
+        let toast = CXToastBuilder(message: "Test Message").build()
+        self.present(toast, animated: true, completion: nil)
     }
 }
 

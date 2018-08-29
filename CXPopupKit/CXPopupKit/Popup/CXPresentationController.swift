@@ -54,10 +54,12 @@ class CXPresentationController: UIPresentationController {
     override func presentationTransitionWillBegin() {
         // contentView
         contentView = UIView(frame: self.frameOfPresentedViewInContainerView)
-        contentView?.layer.shadowOpacity = appearance.shadowOpacity
-        contentView?.layer.shadowRadius = appearance.shadowRadius
-        contentView?.layer.shadowOffset = appearance.shadowOffset
-        contentView?.layer.shadowColor = appearance.shadowColor.cgColor
+        if appearance.isShadowEnabled {
+            contentView?.layer.shadowOpacity = appearance.shadowOpacity
+            contentView?.layer.shadowRadius = appearance.shadowRadius
+            contentView?.layer.shadowOffset = appearance.shadowOffset
+            contentView?.layer.shadowColor = appearance.shadowColor.cgColor
+        }
 
         // roundedCornerView
         let roundedCornerView = UIView(frame: contentView?.bounds ?? .zero)

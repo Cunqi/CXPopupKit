@@ -24,10 +24,11 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     }
 
     var positiveAction: CXPopupAction?
-    var negativeAction: CXPopupCancelAction?
+    var negativeAction: CXPlainAction?
     var cxPresentationController: CXPresentationController?
     var popupAppearance = CXPopupAppearance()
     var contentView: CXPopupable?
+    var viewDidAppearAction: CXPlainAction?
     
     var vc: UIViewController {
         return self
@@ -72,6 +73,11 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewDidAppearAction?()
     }
 
     override func viewDidDisappear(_ animated: Bool) {

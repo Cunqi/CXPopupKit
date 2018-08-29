@@ -54,7 +54,7 @@ public class CXPickerBuilder<T: CustomStringConvertible> {
         return self
     }
 
-    public func withCancelAction(_ action: @escaping CXPopupCancelAction) -> Self {
+    public func withCancelAction(_ action: @escaping CXPlainAction) -> Self {
         popupBuilder.withNegativeAction(action)
         return self
     }
