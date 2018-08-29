@@ -29,15 +29,27 @@ public class CXPickerBuilder<T: CustomStringConvertible> {
 
     public func withSimpleData(_ data: [T]) -> Self {
         cxPicker.pickerAdapter = CXPickerAdapter<T>(simple: data)
+        cxPicker.dataType = .simple
         return self
     }
 
     public func withComplexData(_ data: [[T]]) -> Self {
         cxPicker.pickerAdapter = CXPickerAdapter<T>(complex: data)
+        cxPicker.dataType = .complex
         return self
     }
 
-    public func withSelectionConfirmed(_ action: @escaping ([Int]) -> Void) -> Self {
+    public func withSimpleDataSelected(_ action: @escaping (T) -> Void) -> Self {
+        cxPicker.simpleDataSelectedAction = action
+        return self
+    }
+
+    public func withComplexDataSelected(_ action: @escaping ([T]) -> Void) -> Self {
+        cxPicker.complexDataSelectedAction = action
+        return self
+    }
+
+    public func withSelectionConfirmed(_ action: @escaping (UIPickerView) -> Void) -> Self {
         cxPicker.selectionConfirmedAction = action
         return self
     }
@@ -83,7 +95,10 @@ class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
         }
     }
 
-    var selectionConfirmedAction: (([Int]) -> Void)?
+    var dataType: CXPickerDataType = .custom
+    var selectionConfirmedAction: ((UIPickerView) -> Void)?
+    var simpleDataSelectedAction: ((T) -> Void)?
+    var complexDataSelectedAction: (([T]) -> Void)?
     var navigationBarConfiguration: ((UINavigationBar) -> Void)?
 
     init(title: String?) {
@@ -131,14 +146,39 @@ class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
     }
 
     @objc func didTapDoneButton() {
-        let numOfComponents = picker.numberOfComponents
-        var indexes = [Int]()
-        for component in 0 ..< numOfComponents {
-            indexes.append(picker.selectedRow(inComponent: component))
+        switch dataType {
+        case .simple:
+            handleSimpleDataSelectedAction()
+        case .complex:
+            handleComplexDataSelectedAction()
+        case .custom:
+            handleCustomDataSelectedAction()
         }
-        if !indexes.isEmpty {
-            selectionConfirmedAction?(indexes)
+    }
+
+    private func handleSimpleDataSelectedAction() {
+        let row = picker.selectedRow(inComponent: 0)
+        if let data = pickerAdapter?.getSelectedSimpleData(at: row) {
+            self.simpleDataSelectedAction?(data)
         }
+        popupWindow?.close()
+    }
+
+    private func handleComplexDataSelectedAction() {
+        let components = picker.numberOfComponents
+        var result = [T]()
+        for component in 0 ..< components {
+            let row = picker.selectedRow(inComponent: component)
+            if let data = pickerAdapter?.getSelectedComplexData(for: component, at: row) {
+                result.append(data)
+            }
+        }
+        complexDataSelectedAction?(result)
+        popupWindow?.close()
+    }
+
+    private func handleCustomDataSelectedAction() {
+        selectionConfirmedAction?(self.picker)
         popupWindow?.close()
     }
 }
@@ -158,6 +198,18 @@ class CXPickerAdapter<T: CustomStringConvertible>: NSObject, UIPickerViewDataSou
         self.complex = complex
         self.simple = nil
         super.init()
+    }
+
+    var pickerDataType: CXPickerDataType {
+        return simple != nil ? .simple : (complex != nil ? .complex : .custom)
+    }
+
+    func getSelectedSimpleData(at row: Int) -> T? {
+        return simple?[row]
+    }
+
+    func getSelectedComplexData(for component: Int, at row: Int) -> T? {
+        return complex?[component][row]
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -188,4 +240,10 @@ class CXPickerAdapter<T: CustomStringConvertible>: NSObject, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return rowHeight
     }
+}
+
+enum CXPickerDataType {
+    case simple
+    case complex
+    case custom
 }

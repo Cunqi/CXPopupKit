@@ -35,11 +35,13 @@ class ViewController: UIViewController {
 //                    .build()
 //        self.present(popup, animated: true, completion: nil)
 
-        let dataSet = ["one", "two", "three"]
+        let dataSet = [["one", "two", "three"], ["one", "two", "three"]]
         let picker = CXPickerBuilder<String>(title: "Test", at: self)
-                        .withSimpleData(dataSet)
-                        .withSelectionConfirmed({ indexes in
-                            print(dataSet[indexes[0]])
+                        .withComplexData(dataSet)
+                        .withComplexDataSelected({ actions in
+                            for action in actions {
+                                print(action)
+                            }
                         })
                         .build()
         self.present(picker, animated: true, completion: nil)
