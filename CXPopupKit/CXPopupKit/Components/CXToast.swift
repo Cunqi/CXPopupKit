@@ -67,6 +67,11 @@ public class CXToastBuilder {
         return self
     }
 
+    public func withToastLabelConfiguration(_ configuration: @escaping (UILabel) -> Void) -> Self {
+        toast.toastLabelConfiguration = configuration
+        return self
+    }
+
     public func build() -> CXPopupWindow & UIViewController {
         return popupBuilder
             .withViewDidAppear(toast.setupDelayDismiss)
@@ -82,6 +87,7 @@ class CXToast: UIView, CXPopupable {
 
     let toastLabel: UILabel
     var toastDuration: CXToastDuration = .short
+    var toastLabelConfiguration: ((UILabel) -> Void)?
 
     init(message: String) {
         self.toastLabel = UILabel()
@@ -102,7 +108,7 @@ class CXToast: UIView, CXPopupable {
     }
 
     private func setupToastLabel() {
-        toastLabel.backgroundColor = .black
+        toastLabel.backgroundColor = UIColor(white: 0, alpha: 0.8)
         toastLabel.textColor = .white
         toastLabel.numberOfLines = 0
         toastLabel.lineBreakMode = .byWordWrapping
@@ -110,6 +116,7 @@ class CXToast: UIView, CXPopupable {
         toastLabel.textAlignment = .center
         toastLabel.layer.cornerRadius = 4
         toastLabel.layer.masksToBounds = true
+        toastLabelConfiguration?(toastLabel)
         setupLayout()
     }
 
