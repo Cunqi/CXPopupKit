@@ -116,10 +116,10 @@ class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
 
     func setupNavigationBar(_ title: String?) {
         let navigationItem = UINavigationItem()
-        let canelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelButton))
+        let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelButton))
         let doneBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneButton))
         navigationItem.title = title
-        navigationItem.setLeftBarButton(canelBarButtonItem, animated: false)
+        navigationItem.setLeftBarButton(cancelBarButtonItem, animated: false)
         navigationItem.setRightBarButton(doneBarButtonItem, animated: false)
         pickerNavigationBar.pushItem(navigationItem, animated: false)
         navigationBarConfiguration?(pickerNavigationBar)

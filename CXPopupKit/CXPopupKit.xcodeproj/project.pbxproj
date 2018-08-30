@@ -18,6 +18,7 @@
 		3C1C9DBF2106E54300DE17A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1C9DBD2106E54300DE17A9 /* LaunchScreen.storyboard */; };
 		3C1C9DCA2106E54300DE17A9 /* CXPopupKitDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C9DC92106E54300DE17A9 /* CXPopupKitDemoTests.swift */; };
 		3C1C9DD52106E54300DE17A9 /* CXPopupKitDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C9DD42106E54300DE17A9 /* CXPopupKitDemoUITests.swift */; };
+		3C86C36F2137ACCD008EF7BC /* CXDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C86C36E2137ACCD008EF7BC /* CXDatePicker.swift */; };
 		3C87578D20F5B0DB0086BC35 /* CXEdgeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87578C20F5B0DB0086BC35 /* CXEdgeSize.swift */; };
 		3C87578F20F5B18B0086BC35 /* CXAxisPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87578E20F5B18B0086BC35 /* CXAxisPosition.swift */; };
 		3C87579120F5B4BC0086BC35 /* CXPopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87579020F5B4BC0086BC35 /* CXPopupWindow.swift */; };
@@ -106,6 +107,7 @@
 		3C1C9DD02106E54300DE17A9 /* CXPopupKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CXPopupKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1C9DD42106E54300DE17A9 /* CXPopupKitDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopupKitDemoUITests.swift; sourceTree = "<group>"; };
 		3C1C9DD62106E54300DE17A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C86C36E2137ACCD008EF7BC /* CXDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXDatePicker.swift; sourceTree = "<group>"; };
 		3C87578C20F5B0DB0086BC35 /* CXEdgeSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXEdgeSize.swift; sourceTree = "<group>"; };
 		3C87578E20F5B18B0086BC35 /* CXAxisPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXAxisPosition.swift; sourceTree = "<group>"; };
 		3C87579020F5B4BC0086BC35 /* CXPopupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopupWindow.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			children = (
 				C4EB3DBD2135F78E008F5671 /* CXPicker.swift */,
 				C4CD631A21374BC00070F290 /* CXToast.swift */,
+				3C86C36E2137ACCD008EF7BC /* CXDatePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C86C36F2137ACCD008EF7BC /* CXDatePicker.swift in Sources */,
 				3C87578F20F5B18B0086BC35 /* CXAxisPosition.swift in Sources */,
 				C4D915102122495F00D0F7D1 /* CXZoomAnimation.swift in Sources */,
 				3C87579120F5B4BC0086BC35 /* CXPopupWindow.swift in Sources */,

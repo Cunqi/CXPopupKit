@@ -46,8 +46,15 @@ class ViewController: UIViewController {
 //                        .build()
 //        self.present(picker, animated: true, completion: nil)
 
-        let toast = CXToastBuilder(message: "Test Message").build()
-        self.present(toast, animated: true, completion: nil)
+//        let toast = CXToastBuilder(message: "Test Message").build()
+//        self.present(toast, animated: true, completion: nil)
+        
+        let datePicker = CXDatePickerBuilder(title: "Test DateTime", at: self)
+            .withDateTimeSelected { date in
+                print(date)
+            }
+            .build()
+        self.present(datePicker, animated: true, completion: nil)
     }
 }
 
