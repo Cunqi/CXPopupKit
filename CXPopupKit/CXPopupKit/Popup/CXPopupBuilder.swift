@@ -9,7 +9,7 @@
 import Foundation
 
 public typealias CXPopupAction = (Any?) -> Void
-public typealias CXPlainAction = () -> Void
+public typealias CXSimpleAction = () -> Void
 
 public class CXPopupBuilder {
     let popup = CXBasicPopupWindow()
@@ -26,19 +26,7 @@ public class CXPopupBuilder {
     }
 
     @discardableResult
-    public func withPositiveAction(_ action: @escaping CXPopupAction) -> Self {
-        popup.positiveAction = action
-        return self
-    }
-
-    @discardableResult
-    public func withNegativeAction(_ action: @escaping CXPlainAction) -> Self {
-        popup.negativeAction = action
-        return self
-    }
-
-    @discardableResult
-    func withViewDidAppear(_ action: @escaping CXPlainAction) -> Self {
+    func withViewDidAppear(_ action: @escaping CXSimpleAction) -> Self {
         popup.viewDidAppearAction = action
         return self
     }

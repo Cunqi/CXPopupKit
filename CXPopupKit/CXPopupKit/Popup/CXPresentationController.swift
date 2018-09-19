@@ -78,7 +78,7 @@ class CXPresentationController: UIPresentationController {
         dimmingView = UIView()
         dimmingView?.backgroundColor = appearance.maskBackgroundColor
         dimmingView?.alpha = 0
-        if appearance.allOutsideDismiss {
+        if appearance.shouldDismissOnBackgroundTap {
             dimmingView?.addGestureRecognizer(tapOutsideGestureRecognizer)
         }
         containerView?.addSubview(dimmingView!)

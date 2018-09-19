@@ -32,7 +32,7 @@ public struct CXPopupAppearance {
     public var cornerRadius: CGFloat = 4.0
 
     /*Behavior*/
-    public var allOutsideDismiss: Bool = true
+    public var shouldDismissOnBackgroundTap: Bool = true
     
     // Animation
     public var animationStyle: CXAnimationStyle = .basic

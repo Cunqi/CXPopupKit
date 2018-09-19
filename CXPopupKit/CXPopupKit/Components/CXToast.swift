@@ -35,7 +35,7 @@ public class CXToastBuilder {
 
     var popupAppearance: CXPopupAppearance = {
         var appearance = CXPopupAppearance()
-        appearance.allOutsideDismiss = false
+        appearance.shouldDismissOnBackgroundTap = false
         appearance.backgroundColor = .clear
         appearance.isShadowEnabled = false
         appearance.maskBackgroundAlpha = 0
@@ -81,9 +81,9 @@ public class CXToastBuilder {
 }
 
 class CXToast: UIView, CXPopupable {
-    static let maximumWidth = UIScreen.main.bounds.width - 32 * 2
-    static let minimumHeight: CGFloat = 36
-    static let padding: CGFloat = 8 * 2
+    static let maximumWidth = UIScreen.main.bounds.width - CXSpacing.item8.value * 2
+    static let minimumHeight: CGFloat = CXSpacing.item9.value
+    static let padding: CGFloat = CXSpacing.item4.value
 
     let toastLabel: UILabel
     var toastDuration: CXToastDuration = .short
@@ -137,18 +137,12 @@ class CXToast: UIView, CXPopupable {
 
     func calculateHeightAndUpdateWidth() -> CGFloat {
         let estimateSize = CGSize(width: CXToast.maximumWidth, height: CGFloat(Double.greatestFiniteMagnitude))
-        if let text = toastLabel.text as NSString? {
-            let size = text.boundingRect(with: estimateSize,
-                                     options: [.usesLineFragmentOrigin, .usesFontLeading],
-                                     attributes: [.font: toastLabel.font], context: nil)
-                    .size
+        if let text = toastLabel.text {
+            let size = CXTextUtil.getTextSize(for: text, with: estimateSize, font: toastLabel.font)
             toastLabel.widthAnchor.constraint(equalToConstant: min(size.width + CXToast.padding, CXToast.maximumWidth)).isActive = true
             return max(size.height + CXToast.padding, CXToast.minimumHeight)
         } else if let attributedText = toastLabel.attributedText {
-            let size = attributedText.boundingRect(with: estimateSize,
-                                               options: [.usesLineFragmentOrigin, .usesFontLeading],
-                                               context: nil)
-                    .size
+            let size = CXTextUtil.getTextSize(for: attributedText, with: estimateSize)
             toastLabel.widthAnchor.constraint(equalToConstant: min(size.width + CXToast.padding, CXToast.maximumWidth)).isActive = true
             return max(size.height + CXToast.padding, CXToast.minimumHeight)
         } else {

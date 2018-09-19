@@ -12,10 +12,6 @@ public protocol CXPopupWindow where Self: UIViewController {
     var vc: UIViewController { get }
     
     func close()
-    func closeWithPositiveAction(_ result: Any?)
-    func closeWithNegativeAction()
-    func invokePositiveAction(_ result: Any?)
-    func invokeNegativeAction()
 }
 
 final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
@@ -24,11 +20,11 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     }
 
     var positiveAction: CXPopupAction?
-    var negativeAction: CXPlainAction?
+    var negativeAction: CXSimpleAction?
     var cxPresentationController: CXPresentationController?
     var popupAppearance = CXPopupAppearance()
     var contentView: CXPopupable?
-    var viewDidAppearAction: CXPlainAction?
+    var viewDidAppearAction: CXSimpleAction?
     
     var vc: UIViewController {
         return self
@@ -36,26 +32,6 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     
     func close() {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func closeWithPositiveAction(_ result: Any?) {
-        self.dismiss(animated: true) { [weak self] in
-            self?.positiveAction?(result)
-        }
-    }
-    
-    func closeWithNegativeAction() {
-        self.dismiss(animated: true) { [weak self] in
-            self?.negativeAction?()
-        }
-    }
-    
-    func invokeNegativeAction() {
-        negativeAction?()
-    }
-    
-    func invokePositiveAction(_ result: Any?) {
-        positiveAction?(result)
     }
 
     init() {
@@ -103,13 +79,11 @@ final class CXBasicPopupWindow: UIViewController, CXPopupWindow {
     private func addAndMakeViewFullScreen(_ content: UIView) {
         view.addSubview(content)
         content.translatesAutoresizingMaskIntoConstraints = false
-
         let padding = popupAppearance.position.getPaddingInsets(for: popupAppearance.safeAreaType)
-
         content.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: padding.left).isActive = true
         content.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: padding.right).isActive = true
         content.topAnchor.constraint(equalTo: self.view.topAnchor, constant: padding.top).isActive = true
-        content.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: padding.bottom).isActive = true
+        content.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -padding.bottom).isActive = true
     }
 
     deinit {

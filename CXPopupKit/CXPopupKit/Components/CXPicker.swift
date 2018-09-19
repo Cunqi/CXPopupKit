@@ -16,7 +16,7 @@ public class CXPickerBuilder<T: CustomStringConvertible> {
         appearance.height = .part(ratio: 0.33)
         appearance.position = CXPosition(horizontal: .center, vertical: .bottom)
         appearance.safeAreaType = .wrapped
-        appearance.allOutsideDismiss = true
+        appearance.shouldDismissOnBackgroundTap = true
         appearance.backgroundColor = .white
         appearance.animationTransition = CXAnimationTransition(in: .up)
         return appearance
@@ -51,11 +51,6 @@ public class CXPickerBuilder<T: CustomStringConvertible> {
 
     public func withSelectionConfirmed(_ action: @escaping (UIPickerView) -> Void) -> Self {
         cxPicker.selectionConfirmedAction = action
-        return self
-    }
-
-    public func withCancelAction(_ action: @escaping CXPlainAction) -> Self {
-        popupBuilder.withNegativeAction(action)
         return self
     }
 

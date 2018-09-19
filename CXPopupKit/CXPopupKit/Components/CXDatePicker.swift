@@ -17,7 +17,7 @@ public class CXDatePickerBuilder {
         appearance.height = .part(ratio: 0.33)
         appearance.position = CXPosition(horizontal: .center, vertical: .bottom)
         appearance.safeAreaType = .wrapped
-        appearance.allOutsideDismiss = true
+        appearance.shouldDismissOnBackgroundTap = true
         appearance.backgroundColor = .white
         appearance.animationTransition = CXAnimationTransition(in: .up)
         return appearance

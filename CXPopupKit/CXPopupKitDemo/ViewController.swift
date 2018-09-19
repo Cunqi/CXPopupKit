@@ -49,12 +49,20 @@ class ViewController: UIViewController {
 //        let toast = CXToastBuilder(message: "Test Message").build()
 //        self.present(toast, animated: true, completion: nil)
         
-        let datePicker = CXDatePickerBuilder(title: "Test DateTime", at: self)
-            .withDateTimeSelected { date in
-                print(date)
-            }
+//        let datePicker = CXDatePickerBuilder(title: "Test DateTime", at: self)
+//            .withDateTimeSelected { date in
+//                print(date)
+//            }
+//            .build()
+//        self.present(datePicker, animated: true, completion: nil)
+        
+        let alertView = CXAlertBuilder(type: .actionSheet, at: self)
+            .withTitle("Hello World This is a testing title for test CXAlert")
+            .withMessage("Jackson helps you actually communicate with your cat by properly learning their body language. And trust us, your cat’s body language is very different than your dog’s! ")
+            .withCancelText("Cancel")
+            .withConfirmText("Confirm")
             .build()
-        self.present(datePicker, animated: true, completion: nil)
+        self.present(alertView, animated: true, completion: nil)
     }
 }
 

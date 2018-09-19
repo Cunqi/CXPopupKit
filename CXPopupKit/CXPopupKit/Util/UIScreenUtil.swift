@@ -20,4 +20,8 @@ extension UIScreen {
     static func getCustomY(for percentage: CGFloat) -> CGFloat {
         return UIScreen.main.bounds.size.height * (1.0 - percentage)
     }
+    
+    static func screenSize() -> CGSize {
+        return UIScreen.main.bounds.size
+    }
 }
