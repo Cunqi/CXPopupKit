@@ -9,15 +9,22 @@
 import UIKit
 
 class CXPresentationController: UIPresentationController {
-    let appearance: CXPopupAppearance
     var lastPresentedFrame: CGRect = .zero
     var contentView: UIView?
     var dimmingView: UIView?
-    var animationController: UIViewControllerAnimatedTransitioning?
+
+    var appearance: CXPopupAppearance {
+        let popupController = self.presentedViewController as? CXBasePopupController
+        return popupController?.popupAppearance ?? CXPopupAppearance()
+    }
 
     lazy var tapOutsideGestureRecognizer: UITapGestureRecognizer = {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOutsideToDismiss))
         return gesture
+    }()
+
+    lazy var animationController: UIViewControllerAnimatedTransitioning? = {
+        return AnimationFactory.getAnimationInstance(from: appearance, presentationController: self)
     }()
 
     var coordinator: UIViewControllerTransitionCoordinator? {
@@ -43,10 +50,8 @@ class CXPresentationController: UIPresentationController {
         self.presentingViewController.dismiss(animated: true, completion: nil)
     }
 
-    init(presented: UIViewController, presenting: UIViewController?, appearance: CXPopupAppearance) {
-        self.appearance = appearance
-        super.init(presentedViewController: presented, presenting: presenting)
-        self.animationController = AnimationFactory.getAnimationInstance(from: appearance, presentationController: self)
+    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         self.presentedViewController.modalPresentationStyle = .custom
         self.presentedViewController.transitioningDelegate = self
     }
@@ -71,8 +76,8 @@ class CXPresentationController: UIPresentationController {
         presentedView.frame = contentView?.bounds ?? .zero
 
         // Add dependencies between each view
-        roundedCornerView.addAndFill(presentedView)
-        contentView?.addAndFill(roundedCornerView)
+        CXLayoutUtil.fill(presentedView, at: roundedCornerView)
+        CXLayoutUtil.fill(roundedCornerView, at: contentView)
 
         // Dimming view
         dimmingView = UIView()
@@ -144,16 +149,5 @@ extension CXPresentationController: UIViewControllerTransitioningDelegate {
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self.animationController
-    }
-}
-
-extension UIView {
-    func addAndFill(_ view: UIView) {
-        self.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        view.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 }

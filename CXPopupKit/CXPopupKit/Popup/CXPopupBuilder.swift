@@ -8,16 +8,13 @@
 
 import Foundation
 
-public typealias CXPopupAction = (Any?) -> Void
-public typealias CXSimpleAction = () -> Void
+public typealias CXVoidAction = () -> Void
 
 public class CXPopupBuilder {
-    let popup = CXBasicPopupWindow()
-    weak var prsenting: UIViewController?
+    let popup: CXBasePopupController
     
-    public init(content: CXPopupable, presenting: UIViewController?) {
-        popup.contentView = content
-        self.prsenting = presenting
+    public init(content: CXPopupable & UIView, presenting: UIViewController?) {
+        popup = CXBasePopupController(content, presenting)
     }
     
     public func withAppearance(_ appearance: CXPopupAppearance) -> Self {
@@ -26,13 +23,12 @@ public class CXPopupBuilder {
     }
 
     @discardableResult
-    func withViewDidAppear(_ action: @escaping CXSimpleAction) -> Self {
+    func withViewDidAppear(_ action: @escaping CXVoidAction) -> Self {
         popup.viewDidAppearAction = action
         return self
     }
     
-    public func build() -> CXPopupWindow & UIViewController {
-        popup.cxPresentationController = CXPresentationController(presented: popup, presenting: self.prsenting, appearance: popup.popupAppearance)
+    public func build() -> UIViewController {
         return popup
     }
 }

@@ -79,7 +79,7 @@ public class CXAlertBuilder {
         return self
     }
 
-    public func withCancelAction( _ cancelAction: @escaping CXSimpleAction) -> Self {
+    public func withCancelAction( _ cancelAction: @escaping CXVoidAction) -> Self {
         self.alert.cancelAction = cancelAction
         return self
     }
@@ -99,7 +99,7 @@ public class CXAlertBuilder {
         return self
     }
 
-    public func build() -> CXPopupWindow & UIViewController {
+    public func build() -> UIViewController {
         updateAlertAndAppearance()
         return popupBuilder.withAppearance(popupAppearance).build()
     }
@@ -122,7 +122,7 @@ class CXAlert: UIView, CXPopupable {
     var cancelText: String?
 
     var confirmAction: CXAlertAction?
-    var cancelAction: CXSimpleAction?
+    var cancelAction: CXVoidAction?
     var finalHeight: CGFloat = 0
     var actionButtons = [UIButton]()
     var alertConfiguration: ((UILabel, UILabel, [UIButton]) -> Void)?
@@ -293,7 +293,7 @@ class CXAlert: UIView, CXPopupable {
         let index = sender.tag
         let action = actionTexts[index]
         confirmAction?(action)
-        popupWindow?.close()
+        popupController?.close()
     }
     
     required init?(coder aDecoder: NSCoder) {

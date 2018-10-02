@@ -9,15 +9,15 @@
 import UIKit
 
 public protocol CXPopupable where Self: UIView {
-    var popupWindow: (CXPopupWindow & UIViewController)? { get }
+    var popupController: CXPopupController? { get }
 }
 
 public extension CXPopupable {
-    var popupWindow: (CXPopupWindow & UIViewController)? {
+    var popupController: CXPopupController? {
         var responder: UIResponder? = self
         while responder != nil {
             responder = responder?.next
-            if let window = responder as? CXPopupWindow & UIViewController {
+            if let window = responder as? CXPopupController {
                 return window
             }
         }

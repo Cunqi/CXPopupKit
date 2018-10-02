@@ -69,7 +69,7 @@ public class CXPickerBuilder<T: CustomStringConvertible> {
         return self
     }
 
-    public func build() -> CXPopupWindow & UIViewController {
+    public func build() -> UIViewController {
         return popupBuilder.withAppearance(popupAppearance).build()
     }
 }
@@ -137,7 +137,7 @@ class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
     }
 
     @objc func didTapCancelButton() {
-        popupWindow?.close()
+        popupController?.close()
     }
 
     @objc func didTapDoneButton() {
@@ -156,7 +156,7 @@ class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
         if let data = pickerAdapter?.getSelectedSimpleData(at: row) {
             self.simpleDataSelectedAction?(data)
         }
-        popupWindow?.close()
+        popupController?.close()
     }
 
     private func handleComplexDataSelectedAction() {
@@ -169,12 +169,12 @@ class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
             }
         }
         complexDataSelectedAction?(result)
-        popupWindow?.close()
+        popupController?.close()
     }
 
     private func handleCustomDataSelectedAction() {
         selectionConfirmedAction?(self.picker)
-        popupWindow?.close()
+        popupController?.close()
     }
 }
 

@@ -48,7 +48,7 @@ public class CXDatePickerBuilder {
         return self
     }
 
-    public func build() -> CXPopupWindow & UIViewController {
+    public func build() -> UIViewController {
         return popupBuilder.withAppearance(popupAppearance).build()
     }
 }
@@ -107,11 +107,11 @@ class CXDatePicker: UIView, CXPopupable {
     }
 
     @objc func didTapCancelButton() {
-        popupWindow?.close()
+        popupController?.close()
     }
 
     @objc func didTapDoneButton() {
         datetimeSelectedAction?(datePicker.date)
-        popupWindow?.close()
+        popupController?.close()
     }
 }

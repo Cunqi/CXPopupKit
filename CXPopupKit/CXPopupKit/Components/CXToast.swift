@@ -72,7 +72,7 @@ public class CXToastBuilder {
         return self
     }
 
-    public func build() -> CXPopupWindow & UIViewController {
+    public func build() -> UIViewController {
         return popupBuilder
             .withViewDidAppear(toast.setupDelayDismiss)
             .withAppearance(popupAppearance)
@@ -131,7 +131,7 @@ class CXToast: UIView, CXPopupable {
 
     func setupDelayDismiss() {
         DispatchQueue.main.asyncAfter(deadline: .now() + toastDuration.duration) { [weak self] in
-            self?.popupWindow?.close()
+            self?.popupController?.close()
         }
     }
 
