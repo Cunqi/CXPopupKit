@@ -46,8 +46,8 @@ class ViewController: UIViewController {
 //                        .build()
 //        self.present(picker, animated: true, completion: nil)
 
-//        let toast = CXToastBuilder(message: "Test Message").build()
-//        self.present(toast, animated: true, completion: nil)
+        let toast = CXToastBuilder(message: "2018-10-02 19:54:31.682618-0700 CXPopupKitDemo[1874:61352] [AXMediaCommon] Unexpected physical screen orientation").build()
+        self.present(toast, animated: true, completion: nil)
         
 //        let datePicker = CXDatePickerBuilder(title: "Test DateTime", at: self)
 //            .withDateTimeSelected { date in
@@ -56,13 +56,13 @@ class ViewController: UIViewController {
 //            .build()
 //        self.present(datePicker, animated: true, completion: nil)
         
-        let alertView = CXAlertBuilder(type: .actionSheet, at: self)
-            .withTitle("Hello World This is a testing title for test CXAlert")
-            .withMessage("Jackson helps you actually communicate with your cat by properly learning their body language. And trust us, your cat’s body language is very different than your dog’s! ")
-            .withCancelText("Cancel")
-            .withConfirmText("Confirm")
-            .build()
-        self.present(alertView, animated: true, completion: nil)
+//        let alertView = CXAlertBuilder(type: .actionSheet, at: self)
+//            .withTitle("Hello World This is a testing title for test CXAlert")
+//            .withMessage("Jackson helps you actually communicate with your cat by properly learning their body language. And trust us, your cat’s body language is very different than your dog’s! ")
+//            .withCancelText("Cancel")
+//            .withConfirmText("Confirm")
+//            .build()
+//        self.present(alertView, animated: true, completion: nil)
     }
 }
 

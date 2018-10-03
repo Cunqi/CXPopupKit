@@ -8,30 +8,14 @@
 
 import UIKit
 
-public enum CXToastDuration {
-    case short
-    case long
-    case custom(duration: TimeInterval)
+class CXToast: UIView, CXPopupable {
+    static let maximumWidth = UIScreen.main.bounds.width - CXSpacing.item8.value * 2
+    static let minimumHeight: CGFloat = CXSpacing.item9.value
+    static let padding: CGFloat = CXSpacing.item4.value
 
-    var duration: TimeInterval {
-        switch self {
-        case .short:
-            return 1.5
-        case .long:
-            return 3
-        case .custom(let duration):
-            return duration
-        }
-    }
-}
-
-public struct CXToastAppearance {
-
-}
-
-public class CXToastBuilder {
-    let toast: CXToast
-    let popupBuilder: CXPopupBuilder
+    let toastLabel: UILabel
+    var toastDuration: CXToastDuration = .short
+    var toastLabelConfiguration: ((UILabel) -> Void)?
 
     var popupAppearance: CXPopupAppearance = {
         var appearance = CXPopupAppearance()
@@ -44,50 +28,6 @@ public class CXToastBuilder {
         appearance.animationStyle = .fade
         return appearance
     }()
-    
-    public init(message: String) {
-        self.toast = CXToast(message: message)
-        popupBuilder = CXPopupBuilder(content: self.toast, presenting: UIScreen.getMostTopViewController())
-        updateToastAppearance()
-    }
-
-    public init(attributedMessage: NSAttributedString) {
-        self.toast = CXToast(attributedMessage: attributedMessage)
-        popupBuilder = CXPopupBuilder(content: self.toast, presenting: UIScreen.getMostTopViewController())
-        updateToastAppearance()
-    }
-
-    private func updateToastAppearance() {
-        popupAppearance.height = .fixed(value: toast.calculateHeightAndUpdateWidth())
-        popupAppearance.position = CXPosition(horizontal: .center, vertical: .custom(y: UIScreen.getCustomY(for: 0.2)))
-    }
-
-    public func withDuration(duration: CXToastDuration) -> Self {
-        toast.toastDuration = duration
-        return self
-    }
-
-    public func withToastLabelConfiguration(_ configuration: @escaping (UILabel) -> Void) -> Self {
-        toast.toastLabelConfiguration = configuration
-        return self
-    }
-
-    public func build() -> UIViewController {
-        return popupBuilder
-            .withViewDidAppear(toast.setupDelayDismiss)
-            .withAppearance(popupAppearance)
-            .build()
-    }
-}
-
-class CXToast: UIView, CXPopupable {
-    static let maximumWidth = UIScreen.main.bounds.width - CXSpacing.item8.value * 2
-    static let minimumHeight: CGFloat = CXSpacing.item9.value
-    static let padding: CGFloat = CXSpacing.item4.value
-
-    let toastLabel: UILabel
-    var toastDuration: CXToastDuration = .short
-    var toastLabelConfiguration: ((UILabel) -> Void)?
 
     init(message: String) {
         self.toastLabel = UILabel()
@@ -118,6 +58,7 @@ class CXToast: UIView, CXPopupable {
         toastLabel.layer.masksToBounds = true
         toastLabelConfiguration?(toastLabel)
         setupLayout()
+        updateHeightAndPosition()
     }
 
     private func setupLayout() {
@@ -135,18 +76,21 @@ class CXToast: UIView, CXPopupable {
         }
     }
 
-    func calculateHeightAndUpdateWidth() -> CGFloat {
+    func updateHeightAndPosition() {
+        let finalHeight: CGFloat
         let estimateSize = CGSize(width: CXToast.maximumWidth, height: CGFloat(Double.greatestFiniteMagnitude))
         if let text = toastLabel.text {
             let size = CXTextUtil.getTextSize(for: text, with: estimateSize, font: toastLabel.font)
             toastLabel.widthAnchor.constraint(equalToConstant: min(size.width + CXToast.padding, CXToast.maximumWidth)).isActive = true
-            return max(size.height + CXToast.padding, CXToast.minimumHeight)
+            finalHeight = max(size.height + CXToast.padding, CXToast.minimumHeight)
         } else if let attributedText = toastLabel.attributedText {
             let size = CXTextUtil.getTextSize(for: attributedText, with: estimateSize)
             toastLabel.widthAnchor.constraint(equalToConstant: min(size.width + CXToast.padding, CXToast.maximumWidth)).isActive = true
-            return max(size.height + CXToast.padding, CXToast.minimumHeight)
+            finalHeight = max(size.height + CXToast.padding, CXToast.minimumHeight)
         } else {
-            return 0
+            finalHeight = 0
         }
+        popupAppearance.height = .fixed(value: finalHeight)
+        popupAppearance.position = CXPosition(horizontal: .center, vertical: .custom(y: UIScreen.getCustomY(for: 0.2)))
     }
 }
