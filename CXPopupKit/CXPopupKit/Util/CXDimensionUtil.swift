@@ -9,6 +9,8 @@
 import Foundation
 
 class CXDimensionUtil {
+    static let defaultHeight: CGFloat = 44
+
     static func getRect(width: CXEdgeSize, height: CXEdgeSize, position: CXPosition, safeAreaType: CXSafeAreaType, screen: CGSize) -> CGRect {
 
         let calculatedWidth = width.getValue(based: screen.width)

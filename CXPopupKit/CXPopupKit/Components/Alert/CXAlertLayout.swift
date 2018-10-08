@@ -25,7 +25,7 @@ class CXAlertHorizontalLayout: CXAlertActionsLayout {
         stackView.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
-        return CXAlertAction.buttonHeight
+        return CXDimensionUtil.defaultHeight
     }
 }
 
@@ -42,6 +42,6 @@ class CXAlertVerticalLayout: CXAlertActionsLayout {
         stackView.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
-        return CXAlertAction.buttonHeight * CGFloat(buttons.count)
+        return CXDimensionUtil.defaultHeight * CGFloat(buttons.count)
     }
 }

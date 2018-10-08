@@ -21,8 +21,6 @@ enum CXDividerPosition {
 }
 
 class CXAlertAction {
-    static let buttonHeight: CGFloat = 44
-    
     let button: UIButton
     let type: CXAlertActionType
     var handler: CXAlertActionHandler

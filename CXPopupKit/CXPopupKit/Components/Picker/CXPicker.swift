@@ -8,10 +8,21 @@
 
 import UIKit
 
-public class CXPickerBuilder<T: CustomStringConvertible> {
-    let popupBuilder: CXPopupBuilder
-    let cxPicker: CXPicker<T>
-    var popupAppearance: CXPopupAppearance = {
+public struct CXPickerAppearance {
+}
+
+class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
+    let picker: UIPickerView
+    let pickerNavigationBar: UINavigationBar
+
+    var pickerAdapter: CXPickerAdapter<T>? {
+        didSet {
+            self.picker.dataSource = pickerAdapter
+            self.picker.delegate = pickerAdapter
+        }
+    }
+
+    var popupAppearance: CXPopupAppearance {
         var appearance = CXPopupAppearance()
         appearance.height = .part(ratio: 0.33)
         appearance.position = CXPosition(horizontal: .center, vertical: .bottom)
@@ -20,74 +31,6 @@ public class CXPickerBuilder<T: CustomStringConvertible> {
         appearance.backgroundColor = .white
         appearance.animationTransition = CXAnimationTransition(in: .up)
         return appearance
-    }()
-
-    public init(title: String?, at presenting: UIViewController?) {
-        self.cxPicker = CXPicker<T>(title: title)
-        self.popupBuilder = CXPopupBuilder(content: self.cxPicker, presenting: presenting)
-    }
-
-    public func withSimpleData(_ data: [T]) -> Self {
-        cxPicker.pickerAdapter = CXPickerAdapter<T>(simple: data)
-        cxPicker.dataType = .simple
-        return self
-    }
-
-    public func withComplexData(_ data: [[T]]) -> Self {
-        cxPicker.pickerAdapter = CXPickerAdapter<T>(complex: data)
-        cxPicker.dataType = .complex
-        return self
-    }
-
-    public func withSimpleDataSelected(_ action: @escaping (T) -> Void) -> Self {
-        cxPicker.simpleDataSelectedAction = action
-        return self
-    }
-
-    public func withComplexDataSelected(_ action: @escaping ([T]) -> Void) -> Self {
-        cxPicker.complexDataSelectedAction = action
-        return self
-    }
-
-    public func withSelectionConfirmed(_ action: @escaping (UIPickerView) -> Void) -> Self {
-        cxPicker.selectionConfirmedAction = action
-        return self
-    }
-
-    public func withDataSource(_ dataSource: UIPickerViewDataSource) -> Self {
-        cxPicker.picker.dataSource = dataSource
-        return self
-    }
-
-    public func withDelegate(_ delegate: UIPickerViewDelegate) -> Self {
-        cxPicker.picker.delegate = delegate
-        return self
-    }
-
-    public func withNavigationBarConfiguration(_ configuration: @escaping (UINavigationBar) -> Void) -> Self {
-        cxPicker.navigationBarConfiguration = configuration
-        return self
-    }
-
-    public func build() -> UIViewController {
-        return popupBuilder.withAppearance(popupAppearance).build()
-    }
-}
-
-public struct CXPickerAppearance {
-}
-
-class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
-    let picker: UIPickerView
-    let pickerNavigationBar: UINavigationBar
-
-    let navigationBarHeight: CGFloat = 44
-
-    var pickerAdapter: CXPickerAdapter<T>? {
-        didSet {
-            self.picker.dataSource = pickerAdapter
-            self.picker.delegate = pickerAdapter
-        }
     }
 
     var dataType: CXPickerDataType = .custom
@@ -126,7 +69,7 @@ class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
         pickerNavigationBar.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         pickerNavigationBar.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         pickerNavigationBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        pickerNavigationBar.heightAnchor.constraint(equalToConstant: navigationBarHeight).isActive = true
+        pickerNavigationBar.heightAnchor.constraint(equalToConstant: CXDimensionUtil.defaultHeight).isActive = true
 
         self.addSubview(picker)
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -179,7 +122,6 @@ class CXPicker<T: CustomStringConvertible>: UIView, CXPopupable {
 }
 
 class CXPickerAdapter<T: CustomStringConvertible>: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    let rowHeight: CGFloat = 44
     let simple: [T]?
     let complex: [[T]]?
 
@@ -233,7 +175,7 @@ class CXPickerAdapter<T: CustomStringConvertible>: NSObject, UIPickerViewDataSou
     }
 
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return rowHeight
+        return CXDimensionUtil.defaultHeight
     }
 }
 

@@ -8,9 +8,12 @@
 
 import UIKit
 
-public class CXDatePickerBuilder {
-    let cxDatePicker: CXDatePicker
-    let popupBuilder: CXPopupBuilder
+class CXDatePicker: UIView, CXPopupable {
+    let datePicker: UIDatePicker
+    let pickerNavigationBar: UINavigationBar
+    var navigationBarConfiguration: ((UINavigationBar) -> Void)?
+    var datePickerConfiguration: ((UIDatePicker) -> Void)?
+    var datetimeSelectedAction: ((Date) -> Void)?
 
     var popupAppearance: CXPopupAppearance = {
         var appearance = CXPopupAppearance()
@@ -22,44 +25,6 @@ public class CXDatePickerBuilder {
         appearance.animationTransition = CXAnimationTransition(in: .up)
         return appearance
     }()
-
-    public init(title: String?, at presenting: UIViewController?) {
-        self.cxDatePicker = CXDatePicker(title: title)
-        self.popupBuilder = CXPopupBuilder(content: cxDatePicker, presenting: presenting)
-    }
-
-    public func withDateTimeSelected(_ action: @escaping (Date) -> Void) -> Self {
-        self.cxDatePicker.datetimeSelectedAction = action
-        return self
-    }
-
-    public func withNavigationBarConfiguration(_ configuration: @escaping (UINavigationBar) -> Void) -> Self {
-        cxDatePicker.navigationBarConfiguration = configuration
-        return self
-    }
-
-    public func withDatePickerConfiguration(_ configuration: @escaping  (UIDatePicker) -> Void) -> Self {
-        cxDatePicker.datePickerConfiguration = configuration
-        return self
-    }
-
-    public func withStartDate(_ date: Date) -> Self {
-        self.cxDatePicker.datePicker.date = date
-        return self
-    }
-
-    public func build() -> UIViewController {
-        return popupBuilder.withAppearance(popupAppearance).build()
-    }
-}
-
-class CXDatePicker: UIView, CXPopupable {
-    let navigationBarHeight: CGFloat = 44
-    let datePicker: UIDatePicker
-    let pickerNavigationBar: UINavigationBar
-    var navigationBarConfiguration: ((UINavigationBar) -> Void)?
-    var datePickerConfiguration: ((UIDatePicker) -> Void)?
-    var datetimeSelectedAction: ((Date) -> Void)?
 
     init(title: String?) {
         self.datePicker = UIDatePicker()
@@ -96,7 +61,7 @@ class CXDatePicker: UIView, CXPopupable {
         pickerNavigationBar.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         pickerNavigationBar.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         pickerNavigationBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        pickerNavigationBar.heightAnchor.constraint(equalToConstant: navigationBarHeight).isActive = true
+        pickerNavigationBar.heightAnchor.constraint(equalToConstant: CXDimensionUtil.defaultHeight).isActive = true
 
         self.addSubview(datePicker)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
