@@ -1,0 +1,22 @@
+{
+  "name": "CXPopupKit",
+  "version": "0.1.0",
+  "summary": "A short description of CXPopupKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Cunqi/CXPopupKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Cunqi": "cunqi.xiao@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Cunqi/CXPopupKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "CXPopupKit/Classes/**/*"
+}

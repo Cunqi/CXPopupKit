@@ -1,0 +1,6 @@
+framework module CXPopupKit {
+  umbrella header "CXPopupKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
