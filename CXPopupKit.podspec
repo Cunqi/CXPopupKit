@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CXPopupKit"
-  s.version      = "1.1.2"
+  s.version      = "1.1.3"
   s.summary      = "iOS popup kit written by swift"
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-                    iOS popup kit written by swift, support iOS 10 and above
+                    iOS popup kit written by swift, support iOS 9 and above
                    DESC
 
   s.homepage     = "https://github.com/Cunqi/CXPopupKit"
@@ -133,5 +133,5 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
-
+  s.swift_version = '4.2'
 end
