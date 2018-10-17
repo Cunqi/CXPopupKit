@@ -13,7 +13,7 @@ class CXPresentationController: UIPresentationController {
     var contentView: UIView?
     var dimmingView: UIView?
 
-    var appearance: CXPopupAppearance {
+    var popupAppearance: CXPopupAppearance {
         let popupController = self.presentedViewController as? CXBasePopupController
         return popupController?.popupAppearance ?? CXPopupAppearance()
     }
@@ -24,7 +24,7 @@ class CXPresentationController: UIPresentationController {
     }()
 
     lazy var animationController: UIViewControllerAnimatedTransitioning? = {
-        return AnimationFactory.getAnimationInstance(from: appearance, presentationController: self)
+        return AnimationFactory.getAnimationInstance(from: popupAppearance, presentationController: self)
     }()
 
     var coordinator: UIViewControllerTransitionCoordinator? {
@@ -33,10 +33,10 @@ class CXPresentationController: UIPresentationController {
 
     override var frameOfPresentedViewInContainerView: CGRect {
         let containerBounds = self.containerView?.bounds ?? .zero
-        let rect = CXDimensionUtil.getRect(width: appearance.width,
-                                           height: appearance.height,
-                                           position: appearance.position,
-                                           safeAreaType: appearance.safeAreaType,
+        let rect = CXDimensionUtil.getRect(width: popupAppearance.width,
+                                           height: popupAppearance.height,
+                                           position: popupAppearance.position,
+                                           safeAreaType: popupAppearance.safeAreaType,
                                            screen: containerBounds.size)
         lastPresentedFrame = rect
         return rect
@@ -59,16 +59,16 @@ class CXPresentationController: UIPresentationController {
     override func presentationTransitionWillBegin() {
         // contentView
         contentView = UIView(frame: self.frameOfPresentedViewInContainerView)
-        if appearance.isShadowEnabled {
-            contentView?.layer.shadowOpacity = appearance.shadowOpacity
-            contentView?.layer.shadowRadius = appearance.shadowRadius
-            contentView?.layer.shadowOffset = appearance.shadowOffset
-            contentView?.layer.shadowColor = appearance.shadowColor.cgColor
+        if popupAppearance.isShadowEnabled {
+            contentView?.layer.shadowOpacity = popupAppearance.shadowOpacity
+            contentView?.layer.shadowRadius = popupAppearance.shadowRadius
+            contentView?.layer.shadowOffset = popupAppearance.shadowOffset
+            contentView?.layer.shadowColor = popupAppearance.shadowColor.cgColor
         }
 
         // roundedCornerView
         let roundedCornerView = UIView(frame: contentView?.bounds ?? .zero)
-        roundedCornerView.layer.cornerRadius = appearance.cornerRadius
+        roundedCornerView.layer.cornerRadius = popupAppearance.cornerRadius
         roundedCornerView.layer.masksToBounds = true
 
         // super.presentedView
@@ -81,15 +81,15 @@ class CXPresentationController: UIPresentationController {
 
         // Dimming view
         dimmingView = UIView()
-        dimmingView?.backgroundColor = appearance.maskBackgroundColor
+        dimmingView?.backgroundColor = popupAppearance.maskBackgroundColor
         dimmingView?.alpha = 0
-        if appearance.shouldDismissOnBackgroundTap {
+        if popupAppearance.shouldDismissOnBackgroundTap {
             dimmingView?.addGestureRecognizer(tapOutsideGestureRecognizer)
         }
         containerView?.addSubview(dimmingView!)
         containerView?.addSubview(contentView!) // make sure content view is above dimming view
 
-        let destinationAlpha = appearance.maskBackgroundAlpha
+        let destinationAlpha = popupAppearance.maskBackgroundAlpha
         coordinator?.animate(alongsideTransition: { [weak self] (context) in
             self?.dimmingView?.alpha = destinationAlpha
         }, completion: nil)

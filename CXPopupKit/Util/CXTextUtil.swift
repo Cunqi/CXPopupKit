@@ -6,7 +6,7 @@
 //  Copyright © 2018 Cunqi. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class CXTextUtil {
     static func getTextSize(for text: String, with estimateSize: CGSize, font: UIFont) -> CGSize {
