@@ -2,30 +2,24 @@
 //  CXDialog.swift
 //  CXPopupKit
 //
-//  Created by Cunqi on 1/20/19.
+//  Created by Cunqi Xiao on 1/22/19.
 //
 
-import UIKit
+import Foundation
 
-class CXDialog: UIViewController {
-    private let customView: UIView
-    private let config: CXPopupConfig
-    private weak var delegate: CXPopupLifeCycleDelegate?
-    
-    init(_ view: UIView, _ config: CXPopupConfig, _ delegate: CXPopupLifeCycleDelegate?) {
-        self.customView = view
-        self.config = config
-        self.delegate = delegate
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        CXLayoutUtil.fill(customView, at: view)
-        delegate?.viewDidLoad()
+public protocol CXDialog where Self: UIView {
+    var cxPopup: CXPopupInteractable? { get }
+}
+
+public extension CXDialog {
+    var cxPopup: CXPopupInteractable? {
+        var responder: UIResponder? = self
+        while responder != nil {
+            responder = responder?.next
+            if let window = responder as? CXPopup {
+                return window
+            }
+        }
+        return nil
     }
 }

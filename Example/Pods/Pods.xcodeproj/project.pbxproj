@@ -14,31 +14,14 @@
 		387D066A1A34ED7DF0F716CB3A8B746D /* UIImage+Snapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B161931541BFE46DFEA2092EDDDA815 /* UIImage+Snapshot.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3CBE84C321770CCD00974927 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3CBE84C221770CCD00974927 /* .gitkeep */; };
 		3CBE84CA21770CEE00974927 /* CXColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C521770CEE00974927 /* CXColorStyle.swift */; };
-		3CBE84CB21770CEE00974927 /* CXDimensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C621770CEE00974927 /* CXDimensionUtil.swift */; };
 		3CBE84CC21770CEE00974927 /* CXLayoutUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */; };
 		3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C821770CEE00974927 /* CXTextUtil.swift */; };
 		3CBE84CE21770CEE00974927 /* UIScreenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C921770CEE00974927 /* UIScreenUtil.swift */; };
-		3CBE84D321770D5100974927 /* CXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84D121770D5100974927 /* CXToast.swift */; };
-		3CBE84D421770D5100974927 /* CXToastBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84D221770D5100974927 /* CXToastBuilder.swift */; };
-		3CBE84DC21770D6900974927 /* CXAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84D621770D6800974927 /* CXAlert.swift */; };
-		3CBE84DD21770D6900974927 /* CXAbstractAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84D721770D6800974927 /* CXAbstractAlertView.swift */; };
-		3CBE84DE21770D6900974927 /* CXActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84D821770D6800974927 /* CXActionSheet.swift */; };
-		3CBE84DF21770D6900974927 /* CXAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84D921770D6900974927 /* CXAlertAction.swift */; };
-		3CBE84E021770D6900974927 /* CXAlertLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84DA21770D6900974927 /* CXAlertLayout.swift */; };
-		3CBE84E121770D6900974927 /* CXAlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84DB21770D6900974927 /* CXAlertBuilder.swift */; };
-		3CBE84E721770D8200974927 /* CXPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84E321770D8100974927 /* CXPicker.swift */; };
-		3CBE84E821770D8200974927 /* CXDatePickerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84E421770D8100974927 /* CXDatePickerBuilder.swift */; };
-		3CBE84E921770D8200974927 /* CXPickerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84E521770D8200974927 /* CXPickerBuilder.swift */; };
-		3CBE84EA21770D8200974927 /* CXDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84E621770D8200974927 /* CXDatePicker.swift */; };
 		3CBE84F121770DC400974927 /* CXAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84EC21770DC300974927 /* CXAnimation.swift */; };
 		3CBE84F221770DC400974927 /* CXEdgeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84ED21770DC300974927 /* CXEdgeSize.swift */; };
-		3CBE84F321770DC400974927 /* CXPopupAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84EE21770DC300974927 /* CXPopupAppearance.swift */; };
-		3CBE84F421770DC400974927 /* CXAxisPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84EF21770DC300974927 /* CXAxisPosition.swift */; };
-		3CBE84F521770DC400974927 /* CXSafeAreaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84F021770DC400974927 /* CXSafeAreaType.swift */; };
+		3CBE84F521770DC400974927 /* CXSafeAreaStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84F021770DC400974927 /* CXSafeAreaStyle.swift */; };
 		3CBE84FC21770DE100974927 /* CXPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84F721770DE100974927 /* CXPopupController.swift */; };
 		3CBE84FD21770DE100974927 /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84F821770DE100974927 /* CXPresentationController.swift */; };
-		3CBE84FE21770DE100974927 /* CXBasePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84F921770DE100974927 /* CXBasePopupController.swift */; };
-		3CBE84FF21770DE100974927 /* CXPopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84FA21770DE100974927 /* CXPopupBuilder.swift */; };
 		3CBE850021770DE100974927 /* CXPopupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84FB21770DE100974927 /* CXPopupable.swift */; };
 		3CBE850821770DFB00974927 /* CXBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850221770DFB00974927 /* CXBounceAnimation.swift */; };
 		3CBE850921770DFB00974927 /* CXZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850321770DFB00974927 /* CXZoomAnimation.swift */; };
@@ -47,9 +30,7 @@
 		3CBE850C21770DFB00974927 /* CXBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850621770DFB00974927 /* CXBasicAnimation.swift */; };
 		3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850721770DFB00974927 /* CXPopAnimation.swift */; };
 		3CD5FC7021F49AA1007C8668 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */; };
-		3CD5FC7221F49E40007C8668 /* CXAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */; };
 		3CD5FC7421F4A3E2007C8668 /* CXPopupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */; };
-		3CD5FC7621F4AB4A007C8668 /* CXDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7521F4AB4A007C8668 /* CXDialog.swift */; };
 		459F58959A5C947E77A424BF94098D08 /* FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792533D7EE0F440EE722DA4999E845C /* FBSnapshotTestCase-dummy.m */; };
 		4C022C88B9E8D527B1426B5281756EDE /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E22F9517F21D3A0251F88FCAB281E /* UIImage+Compare.m */; };
 		4CF5865BAF828AB9A7C56F3A1B1C856F /* FBSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A11D5B54955E3381F067364E427B571A /* FBSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -69,6 +50,7 @@
 		B114E9CAF8CB401F41DAC0358E98D281 /* CXPopupKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C45B0D21DD991EC5247EAC5CA3B2E317 /* CXPopupKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5A42E4B34E5002311A192F407B1D56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */; };
 		BCDA265400AF5BCF21074C5AF1FD09A8 /* UIApplication+StrictKeyWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B9109B8B333B5A1A3E92EFC09EDC10AC /* UIApplication+StrictKeyWindow.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C446345421F7984500A7B64D /* CXDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446345321F7984500A7B64D /* CXDialog.swift */; };
 		CC32E2CEBB260BCBF01083981F259F21 /* Pods-CXPopupKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0318CA022265DC610CAF9E11CEEA03 /* Pods-CXPopupKit_Tests-dummy.m */; };
 		DFFD48AE758F51494A7A1AC0CE178CA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */; };
 		E2E2BC984CCC1978CB9E22B72258C641 /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 052258A488A96C35531FAC73C4F42924 /* FBSnapshotTestController.m */; };
@@ -138,7 +120,7 @@
 		3CBE84ED21770DC300974927 /* CXEdgeSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXEdgeSize.swift; sourceTree = "<group>"; };
 		3CBE84EE21770DC300974927 /* CXPopupAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopupAppearance.swift; sourceTree = "<group>"; };
 		3CBE84EF21770DC300974927 /* CXAxisPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAxisPosition.swift; sourceTree = "<group>"; };
-		3CBE84F021770DC400974927 /* CXSafeAreaType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXSafeAreaType.swift; sourceTree = "<group>"; };
+		3CBE84F021770DC400974927 /* CXSafeAreaStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXSafeAreaStyle.swift; sourceTree = "<group>"; };
 		3CBE84F721770DE100974927 /* CXPopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopupController.swift; sourceTree = "<group>"; };
 		3CBE84F821770DE100974927 /* CXPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPresentationController.swift; sourceTree = "<group>"; };
 		3CBE84F921770DE100974927 /* CXBasePopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXBasePopupController.swift; sourceTree = "<group>"; };
@@ -153,7 +135,6 @@
 		3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopup.swift; sourceTree = "<group>"; };
 		3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXAlertPopup.swift; sourceTree = "<group>"; };
 		3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopupConfig.swift; sourceTree = "<group>"; };
-		3CD5FC7521F4AB4A007C8668 /* CXDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXDialog.swift; sourceTree = "<group>"; };
 		3D840127F9BE22E9026C48E100F5084A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBFBDCC891B770A2AC9EF0FB164B751 /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
 		3F697CCF9CE268F9C2B2FAC7FBC9EB29 /* Pods_CXPopupKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CXPopupKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +163,7 @@
 		B9CEF7D6C5E08AB80E58DABC75D882BC /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
 		BBB6A925DF90E5500E7BDCC094FEBEA7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C446345321F7984500A7B64D /* CXDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXDialog.swift; sourceTree = "<group>"; };
 		C45B0D21DD991EC5247EAC5CA3B2E317 /* CXPopupKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CXPopupKit-umbrella.h"; sourceTree = "<group>"; };
 		C5A0883DA0E3507B27DF6E6064ACCCA8 /* Pods-CXPopupKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CXPopupKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		D006D59C62DA0F6DE9A2C954E7B0982A /* Pods-CXPopupKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CXPopupKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -300,7 +282,6 @@
 			children = (
 				3CBE84C521770CEE00974927 /* CXColorStyle.swift */,
 				3CBE84C621770CEE00974927 /* CXDimensionUtil.swift */,
-				3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */,
 				3CBE84C821770CEE00974927 /* CXTextUtil.swift */,
 				3CBE84C921770CEE00974927 /* UIScreenUtil.swift */,
 			);
@@ -357,7 +338,7 @@
 				3CBE84EF21770DC300974927 /* CXAxisPosition.swift */,
 				3CBE84ED21770DC300974927 /* CXEdgeSize.swift */,
 				3CBE84EE21770DC300974927 /* CXPopupAppearance.swift */,
-				3CBE84F021770DC400974927 /* CXSafeAreaType.swift */,
+				3CBE84F021770DC400974927 /* CXSafeAreaStyle.swift */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -368,7 +349,6 @@
 				3CBE84F721770DE100974927 /* CXPopupController.swift */,
 				3CBE84FB21770DE100974927 /* CXPopupable.swift */,
 				3CBE84FA21770DE100974927 /* CXPopupBuilder.swift */,
-				3CBE84F821770DE100974927 /* CXPresentationController.swift */,
 				3CBE84F921770DE100974927 /* CXBasePopupController.swift */,
 			);
 			path = Popup;
@@ -377,7 +357,6 @@
 		3CBE850121770DF000974927 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				3CBE850421770DFB00974927 /* AnimationFactory.swift */,
 				3CBE850621770DFB00974927 /* CXBasicAnimation.swift */,
 				3CBE850221770DFB00974927 /* CXBounceAnimation.swift */,
 				3CBE850521770DFB00974927 /* CXFadeAnimation.swift */,
@@ -393,7 +372,10 @@
 				3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */,
 				3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */,
 				3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */,
-				3CD5FC7521F4AB4A007C8668 /* CXDialog.swift */,
+				C446345321F7984500A7B64D /* CXDialog.swift */,
+				3CBE84F821770DE100974927 /* CXPresentationController.swift */,
+				3CBE850421770DFB00974927 /* AnimationFactory.swift */,
+				3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */,
 			);
 			path = V2;
 			sourceTree = "<group>";
@@ -772,43 +754,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CBE84F421770DC400974927 /* CXAxisPosition.swift in Sources */,
 				3CBE84FD21770DE100974927 /* CXPresentationController.swift in Sources */,
 				3CBE84F121770DC400974927 /* CXAnimation.swift in Sources */,
 				3CD5FC7021F49AA1007C8668 /* CXPopup.swift in Sources */,
 				3CBE84CC21770CEE00974927 /* CXLayoutUtil.swift in Sources */,
-				3CBE84FE21770DE100974927 /* CXBasePopupController.swift in Sources */,
 				3CBE84CE21770CEE00974927 /* UIScreenUtil.swift in Sources */,
-				3CBE84E821770D8200974927 /* CXDatePickerBuilder.swift in Sources */,
-				3CD5FC7621F4AB4A007C8668 /* CXDialog.swift in Sources */,
 				3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */,
-				3CBE84FF21770DE100974927 /* CXPopupBuilder.swift in Sources */,
 				3CBE84FC21770DE100974927 /* CXPopupController.swift in Sources */,
-				3CBE84E921770D8200974927 /* CXPickerBuilder.swift in Sources */,
-				3CBE84DD21770D6900974927 /* CXAbstractAlertView.swift in Sources */,
 				3CBE84CA21770CEE00974927 /* CXColorStyle.swift in Sources */,
-				3CBE84D321770D5100974927 /* CXToast.swift in Sources */,
 				3CBE850C21770DFB00974927 /* CXBasicAnimation.swift in Sources */,
 				3CBE850821770DFB00974927 /* CXBounceAnimation.swift in Sources */,
-				3CBE84D421770D5100974927 /* CXToastBuilder.swift in Sources */,
-				3CBE84E721770D8200974927 /* CXPicker.swift in Sources */,
 				3CBE850921770DFB00974927 /* CXZoomAnimation.swift in Sources */,
-				3CBE84F321770DC400974927 /* CXPopupAppearance.swift in Sources */,
-				3CBE84DC21770D6900974927 /* CXAlert.swift in Sources */,
 				3CD5FC7421F4A3E2007C8668 /* CXPopupConfig.swift in Sources */,
-				3CBE84F521770DC400974927 /* CXSafeAreaType.swift in Sources */,
-				3CBE84E121770D6900974927 /* CXAlertBuilder.swift in Sources */,
-				3CBE84DF21770D6900974927 /* CXAlertAction.swift in Sources */,
-				3CBE84EA21770D8200974927 /* CXDatePicker.swift in Sources */,
+				3CBE84F521770DC400974927 /* CXSafeAreaStyle.swift in Sources */,
 				3CBE84F221770DC400974927 /* CXEdgeSize.swift in Sources */,
 				3CBE850A21770DFB00974927 /* AnimationFactory.swift in Sources */,
-				3CD5FC7221F49E40007C8668 /* CXAlertPopup.swift in Sources */,
 				3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */,
 				3CBE850021770DE100974927 /* CXPopupable.swift in Sources */,
 				3CBE850B21770DFB00974927 /* CXFadeAnimation.swift in Sources */,
-				3CBE84CB21770CEE00974927 /* CXDimensionUtil.swift in Sources */,
-				3CBE84E021770D6900974927 /* CXAlertLayout.swift in Sources */,
-				3CBE84DE21770D6900974927 /* CXActionSheet.swift in Sources */,
+				C446345421F7984500A7B64D /* CXDialog.swift in Sources */,
 				6892C5E58FC7B7645BEBC35FC513944E /* CXPopupKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -68,7 +68,7 @@ public struct CXPosition {
         self.vertical = .custom(y: y)
     }
 
-    func getPaddingInsets(for safeAreaType: CXSafeAreaType) -> UIEdgeInsets {
+    func getPaddingInsets(for safeAreaType: CXSafeAreaStyle) -> UIEdgeInsets {
         let initialInsets = CXDimensionUtil.windowSafeAreaInsets
         guard safeAreaType == .wrapped, initialInsets != .zero else {
             return .zero

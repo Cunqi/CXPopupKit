@@ -11,7 +11,7 @@ import Foundation
 class CXDimensionUtil {
     static let defaultHeight: CGFloat = 44
 
-    static func getRect(width: CXEdgeSize, height: CXEdgeSize, position: CXPosition, safeAreaType: CXSafeAreaType, screen: CGSize) -> CGRect {
+    static func getRect(width: CXEdgeSize, height: CXEdgeSize, position: CXPosition, safeAreaType: CXSafeAreaStyle, screen: CGSize) -> CGRect {
 
         let calculatedWidth = width.getValue(based: screen.width)
         let calculatedwHeight = height.getValue(based: screen.height)
@@ -31,7 +31,7 @@ class CXDimensionUtil {
         }
     }
 
-    private static func getSafeAreaMargin(_ position: CXPosition, _ safeAreaType: CXSafeAreaType) -> UIEdgeInsets {
+    private static func getSafeAreaMargin(_ position: CXPosition, _ safeAreaType: CXSafeAreaStyle) -> UIEdgeInsets {
         guard safeAreaType == .wrapped else {
             return .zero
         }
@@ -58,7 +58,7 @@ class CXDimensionUtil {
         return result
     }
 
-    private static func getOrigin(_ position: CXPosition, size: CGSize, screen: CGSize, safeAreaType: CXSafeAreaType) -> CGPoint {
+    private static func getOrigin(_ position: CXPosition, size: CGSize, screen: CGSize, safeAreaType: CXSafeAreaStyle) -> CGPoint {
         let safeAreaInsets = safeAreaType == .default ? windowSafeAreaInsets : .zero
         let x = position.horizontal.getXisValue(based: size.width, screen: screen.width, safeArea: safeAreaInsets)
         let y = position.vertical.getXisValue(based: size.height, screen: screen.height, safeArea: safeAreaInsets)

@@ -13,7 +13,7 @@ public struct CXPopupAppearance {
     public var width: CXEdgeSize = .full
     public var height: CXEdgeSize = .full
     public var position: CXPosition = .center
-    public var safeAreaType: CXSafeAreaType = .default
+    public var safeAreaType: CXSafeAreaStyle = .on
     
     /*Shadow*/
     public var isShadowEnabled: Bool = false

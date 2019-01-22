@@ -16,7 +16,7 @@ public typealias CXButtonAction = (String) -> Void
 
 public class CXAlertPopup: CXPopup {
     init(style: CXAlertStyle, title: String?, message: String?) {
-        super.init()
+        super.init(<#T##view: UIView & CXCustomPopup##UIView & CXCustomPopup#>, <#T##config: CXPopupConfig##CXPopupConfig#>, nil)
     }
     
     public class Builder {

@@ -7,43 +7,76 @@
 
 import UIKit
 
+public typealias CXView = UIView & CXDialog
+
 public protocol CXPopupLifeCycleDelegate: class {
     func viewDidLoad()
+    func viewDidDisappear()
 }
 
-public class CXPopup {
-    private let dialog: UIViewController
-    init(_ view: UIView, _ config: CXPopupConfig, _ delegate: CXPopupLifeCycleDelegate?) {
-        dialog = CXDialog(view, config, delegate)
+public protocol CXPopupInteractable: class {
+    func dismiss()
+}
+
+public class CXPopup: UIViewController, CXPopupInteractable {
+    override public var shouldAutorotate: Bool {
+        return config.isAutoRotateEnabled
     }
-    
-    public func show() {
-        
+
+    private let customView: CXView
+    private let config: CXPopupConfig
+    private weak var delegate: CXPopupLifeCycleDelegate?
+
+    private var _presentationController: CXPresentationController?
+
+    init(_ view: CXView, _ config: CXPopupConfig, _ delegate: CXPopupLifeCycleDelegate?, _ presenting: UIViewController?) {
+        self.customView = view
+        self.config = config
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+        self._presentationController = CXPresentationController(presentedViewController: self, presenting: presenting, config: config)
     }
-    
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        CXLayoutUtil.fill(customView, at: view)
+        delegate?.viewDidLoad()
+    }
+
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.viewDidDisappear()
+        _presentationController = nil
+    }
+
     public func dismiss() {
-        
     }
     
     public class Builder {
-        public init(view: UIView) {
+        public init(view: CXView) {
             self.view = view
         }
         
-        private var view: UIView
+        private let view: CXView
         private var config: CXPopupConfig = CXPopupConfig()
         private weak var delegate: CXPopupLifeCycleDelegate?
         
-        public func withConfig(_ config: CXPopupConfig) {
+        public func withConfig(_ config: CXPopupConfig) -> Self {
             self.config = config
+            return self
         }
         
-        public func withDelegate(_ delegate: CXPopupLifeCycleDelegate) {
+        public func withDelegate(_ delegate: CXPopupLifeCycleDelegate) -> Self {
             self.delegate = delegate
+            return self
         }
         
-        public func create() -> CXPopup {
-            return CXPopup(view, config, delegate)
+        public func create(on vc: UIViewController?) -> UIViewController {
+            return CXPopup(view, config, delegate, vc)
         }
     }
 }

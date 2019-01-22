@@ -25,8 +25,10 @@ public enum CXLayoutStyle {
 }
 
 public struct CXPopupConfig {
+    public init() {}
     // MARK - Properties: LayoutStyle
-    public var layoutStyle = CXLayoutStyle.center
+    public var layoutStyle = CXLayoutStyle.center(size: .zero)
+    public var layoutInsets = UIEdgeInsets.zero
     
     // MARK - Properties: Shadow
     public var isShadowEnabled: Bool = false
@@ -40,9 +42,14 @@ public struct CXPopupConfig {
     public var allTapOutsideToDismiss: Bool = true
     
     // MARK - Properties: SafeArea
-    public var safeAreaType: CXSafeAreaType = .default
+    public var safeAreaStyle: CXSafeAreaStyle = .on
     
-    /*UI*/
+    // MARK - Properties: UI
     public var maskBackgroundColor: UIColor = UIColor(white: 0, alpha: 0.8)
     public var cornerRadius: CGFloat = 4.0
+
+    // MARK - Properties: Animation
+    public var animationStyle: CXAnimationStyle = .basic
+    public var animationDuration: CXAnimationDuration = CXAnimationDuration(round: 0.35)
+    public var animationTransition: CXAnimationTransition = CXAnimationTransition(in: .center)
 }

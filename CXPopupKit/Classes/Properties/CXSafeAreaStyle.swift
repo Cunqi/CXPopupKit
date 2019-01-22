@@ -8,8 +8,7 @@
 
 import UIKit
 
-public enum CXSafeAreaType {
-    case `default`
-    case wrapped
-    case disabled
+public enum CXSafeAreaStyle {
+    case on
+    case off
 }
