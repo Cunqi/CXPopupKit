@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapButton(_ sender: Any) {
+        let builder = CXPopup.Builder()
         //        let view = MyView()
         //        view.backgroundColor = .red
         //        var appearance = CXPopupAppearance()

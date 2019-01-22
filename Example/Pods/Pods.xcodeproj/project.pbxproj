@@ -46,6 +46,10 @@
 		3CBE850B21770DFB00974927 /* CXFadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850521770DFB00974927 /* CXFadeAnimation.swift */; };
 		3CBE850C21770DFB00974927 /* CXBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850621770DFB00974927 /* CXBasicAnimation.swift */; };
 		3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850721770DFB00974927 /* CXPopAnimation.swift */; };
+		3CD5FC7021F49AA1007C8668 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */; };
+		3CD5FC7221F49E40007C8668 /* CXAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */; };
+		3CD5FC7421F4A3E2007C8668 /* CXPopupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */; };
+		3CD5FC7621F4AB4A007C8668 /* CXDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7521F4AB4A007C8668 /* CXDialog.swift */; };
 		459F58959A5C947E77A424BF94098D08 /* FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792533D7EE0F440EE722DA4999E845C /* FBSnapshotTestCase-dummy.m */; };
 		4C022C88B9E8D527B1426B5281756EDE /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E22F9517F21D3A0251F88FCAB281E /* UIImage+Compare.m */; };
 		4CF5865BAF828AB9A7C56F3A1B1C856F /* FBSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A11D5B54955E3381F067364E427B571A /* FBSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -146,6 +150,10 @@
 		3CBE850521770DFB00974927 /* CXFadeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXFadeAnimation.swift; sourceTree = "<group>"; };
 		3CBE850621770DFB00974927 /* CXBasicAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXBasicAnimation.swift; sourceTree = "<group>"; };
 		3CBE850721770DFB00974927 /* CXPopAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopAnimation.swift; sourceTree = "<group>"; };
+		3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopup.swift; sourceTree = "<group>"; };
+		3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXAlertPopup.swift; sourceTree = "<group>"; };
+		3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopupConfig.swift; sourceTree = "<group>"; };
+		3CD5FC7521F4AB4A007C8668 /* CXDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXDialog.swift; sourceTree = "<group>"; };
 		3D840127F9BE22E9026C48E100F5084A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBFBDCC891B770A2AC9EF0FB164B751 /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
 		3F697CCF9CE268F9C2B2FAC7FBC9EB29 /* Pods_CXPopupKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CXPopupKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +283,7 @@
 		3CBE84C121770CCD00974927 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3CD5FC6E21F49A97007C8668 /* V2 */,
 				3CBE850121770DF000974927 /* Animation */,
 				3CBE84F621770DD000974927 /* Popup */,
 				3CBE84EB21770DA900974927 /* Properties */,
@@ -376,6 +385,17 @@
 				3CBE850321770DFB00974927 /* CXZoomAnimation.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		3CD5FC6E21F49A97007C8668 /* V2 */ = {
+			isa = PBXGroup;
+			children = (
+				3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */,
+				3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */,
+				3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */,
+				3CD5FC7521F4AB4A007C8668 /* CXDialog.swift */,
+			);
+			path = V2;
 			sourceTree = "<group>";
 		};
 		3EB1A8839A654B1F16EF9E6F67243337 /* iOS */ = {
@@ -755,10 +775,12 @@
 				3CBE84F421770DC400974927 /* CXAxisPosition.swift in Sources */,
 				3CBE84FD21770DE100974927 /* CXPresentationController.swift in Sources */,
 				3CBE84F121770DC400974927 /* CXAnimation.swift in Sources */,
+				3CD5FC7021F49AA1007C8668 /* CXPopup.swift in Sources */,
 				3CBE84CC21770CEE00974927 /* CXLayoutUtil.swift in Sources */,
 				3CBE84FE21770DE100974927 /* CXBasePopupController.swift in Sources */,
 				3CBE84CE21770CEE00974927 /* UIScreenUtil.swift in Sources */,
 				3CBE84E821770D8200974927 /* CXDatePickerBuilder.swift in Sources */,
+				3CD5FC7621F4AB4A007C8668 /* CXDialog.swift in Sources */,
 				3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */,
 				3CBE84FF21770DE100974927 /* CXPopupBuilder.swift in Sources */,
 				3CBE84FC21770DE100974927 /* CXPopupController.swift in Sources */,
@@ -773,12 +795,14 @@
 				3CBE850921770DFB00974927 /* CXZoomAnimation.swift in Sources */,
 				3CBE84F321770DC400974927 /* CXPopupAppearance.swift in Sources */,
 				3CBE84DC21770D6900974927 /* CXAlert.swift in Sources */,
+				3CD5FC7421F4A3E2007C8668 /* CXPopupConfig.swift in Sources */,
 				3CBE84F521770DC400974927 /* CXSafeAreaType.swift in Sources */,
 				3CBE84E121770D6900974927 /* CXAlertBuilder.swift in Sources */,
 				3CBE84DF21770D6900974927 /* CXAlertAction.swift in Sources */,
 				3CBE84EA21770D8200974927 /* CXDatePicker.swift in Sources */,
 				3CBE84F221770DC400974927 /* CXEdgeSize.swift in Sources */,
 				3CBE850A21770DFB00974927 /* AnimationFactory.swift in Sources */,
+				3CD5FC7221F49E40007C8668 /* CXAlertPopup.swift in Sources */,
 				3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */,
 				3CBE850021770DE100974927 /* CXPopupable.swift in Sources */,
 				3CBE850B21770DFB00974927 /* CXFadeAnimation.swift in Sources */,
