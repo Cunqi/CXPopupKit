@@ -31,6 +31,7 @@
 		3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850721770DFB00974927 /* CXPopAnimation.swift */; };
 		3CD5FC7021F49AA1007C8668 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */; };
 		3CD5FC7421F4A3E2007C8668 /* CXPopupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */; };
+		3CD5FC7721F8B7DE007C8668 /* CXAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */; };
 		459F58959A5C947E77A424BF94098D08 /* FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792533D7EE0F440EE722DA4999E845C /* FBSnapshotTestCase-dummy.m */; };
 		4C022C88B9E8D527B1426B5281756EDE /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E22F9517F21D3A0251F88FCAB281E /* UIImage+Compare.m */; };
 		4CF5865BAF828AB9A7C56F3A1B1C856F /* FBSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A11D5B54955E3381F067364E427B571A /* FBSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -761,6 +762,7 @@
 				3CBE84CE21770CEE00974927 /* UIScreenUtil.swift in Sources */,
 				3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */,
 				3CBE84FC21770DE100974927 /* CXPopupController.swift in Sources */,
+				3CD5FC7721F8B7DE007C8668 /* CXAlertPopup.swift in Sources */,
 				3CBE84CA21770CEE00974927 /* CXColorStyle.swift in Sources */,
 				3CBE850C21770DFB00974927 /* CXBasicAnimation.swift in Sources */,
 				3CBE850821770DFB00974927 /* CXBounceAnimation.swift in Sources */,
