@@ -78,7 +78,7 @@ class CXPresentationController: UIPresentationController {
         dimmingView?.alpha = 0
 
         // Behavior
-        if config.allTapOutsideToDismiss {
+        if config.allowTouchOutsideToDismiss {
             dimmingView?.addGestureRecognizer(tapOutsideGestureRecognizer)
         }
         containerView?.addSubview(dimmingView!)

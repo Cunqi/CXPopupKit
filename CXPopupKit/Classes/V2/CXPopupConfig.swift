@@ -39,7 +39,7 @@ public struct CXPopupConfig {
     
     // MARK - Properties: Behavior
     public var isAutoRotateEnabled: Bool = false
-    public var allTapOutsideToDismiss: Bool = true
+    public var allowTouchOutsideToDismiss: Bool = true
     
     // MARK - Properties: SafeArea
     public var safeAreaStyle: CXSafeAreaStyle = .on

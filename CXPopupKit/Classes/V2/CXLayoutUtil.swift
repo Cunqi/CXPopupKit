@@ -8,20 +8,15 @@
 
 import UIKit
 
-enum CXSpacing: Int {
-    case item1 = 1
-    case item2
-    case item3
-    case item4
-    case item5
-    case item6
-    case item7
-    case item8
-    case item9
-    
-    var value: CGFloat {
-        return CGFloat(self.rawValue * 4)
-    }
+enum CXSpacing {
+    static let spacing1: CGFloat = 2
+    static let spacing2: CGFloat = 4
+    static let spacing3: CGFloat = 8
+    static let spacing4: CGFloat = 16
+    static let spacing5: CGFloat = 32
+    static let spacing6: CGFloat = 64
+    static let spacing7: CGFloat = 80
+    static let spacing8: CGFloat = 96
 }
 
 class CXLayoutUtil {
@@ -40,7 +35,7 @@ class CXLayoutUtil {
         parent.addSubview(content)
         content.translatesAutoresizingMaskIntoConstraints = false
         content.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: insets.left).isActive = true
-        content.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: insets.right).isActive = true
+        content.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -insets.right).isActive = true
         content.topAnchor.constraint(equalTo: parent.topAnchor, constant: insets.top).isActive = true
         content.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -insets.bottom).isActive = true
     }

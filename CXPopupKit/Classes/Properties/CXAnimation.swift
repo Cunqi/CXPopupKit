@@ -67,9 +67,9 @@ public struct CXAnimationTransition {
         self.animateOutDirection = out
     }
 
-    public init(`in`: CXAnimationDirection, oppositeDirectionForOut: Bool = true) {
+    public init(`in`: CXAnimationDirection, reverseForOut: Bool = true) {
         self.animateInDirection = `in`
-        if oppositeDirectionForOut {
+        if reverseForOut {
             self.animateOutDirection = `in`.opposite
         } else {
             self.animateOutDirection = `in`

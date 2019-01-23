@@ -33,6 +33,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapConfigButton(_ sender: Any) {
+        let alertView = CXAlertPopup.Builder(.alert)
+            .withTitle("Hello")
+            .withMessage("This is a test message from Simulator.")
+            .create(on: self)
+        self.present(alertView, animated: true, completion: nil)
     }
 }
 
