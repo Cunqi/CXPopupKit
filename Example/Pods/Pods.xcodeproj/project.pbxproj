@@ -31,7 +31,7 @@
 		3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850721770DFB00974927 /* CXPopAnimation.swift */; };
 		3CD5FC7021F49AA1007C8668 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */; };
 		3CD5FC7421F4A3E2007C8668 /* CXPopupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */; };
-		3CD5FC7721F8B7DE007C8668 /* CXAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */; };
+		3CD5FC7721F8B7DE007C8668 /* CXAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7121F49E40007C8668 /* CXAlert.swift */; };
 		3CD5FC7921F964A9007C8668 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7821F964A9007C8668 /* AlertView.swift */; };
 		459F58959A5C947E77A424BF94098D08 /* FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792533D7EE0F440EE722DA4999E845C /* FBSnapshotTestCase-dummy.m */; };
 		4C022C88B9E8D527B1426B5281756EDE /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E22F9517F21D3A0251F88FCAB281E /* UIImage+Compare.m */; };
@@ -53,6 +53,7 @@
 		B5A42E4B34E5002311A192F407B1D56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */; };
 		BCDA265400AF5BCF21074C5AF1FD09A8 /* UIApplication+StrictKeyWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B9109B8B333B5A1A3E92EFC09EDC10AC /* UIApplication+StrictKeyWindow.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C446345421F7984500A7B64D /* CXDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446345321F7984500A7B64D /* CXDialog.swift */; };
+		C4E0DDE121FA447300C2F6A1 /* CXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0DDE021FA447300C2F6A1 /* CXToast.swift */; };
 		CC32E2CEBB260BCBF01083981F259F21 /* Pods-CXPopupKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0318CA022265DC610CAF9E11CEEA03 /* Pods-CXPopupKit_Tests-dummy.m */; };
 		DFFD48AE758F51494A7A1AC0CE178CA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */; };
 		E2E2BC984CCC1978CB9E22B72258C641 /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 052258A488A96C35531FAC73C4F42924 /* FBSnapshotTestController.m */; };
@@ -106,14 +107,6 @@
 		3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXLayoutUtil.swift; sourceTree = "<group>"; };
 		3CBE84C821770CEE00974927 /* CXTextUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXTextUtil.swift; sourceTree = "<group>"; };
 		3CBE84C921770CEE00974927 /* UIScreenUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenUtil.swift; sourceTree = "<group>"; };
-		3CBE84D121770D5100974927 /* CXToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXToast.swift; sourceTree = "<group>"; };
-		3CBE84D221770D5100974927 /* CXToastBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXToastBuilder.swift; sourceTree = "<group>"; };
-		3CBE84D621770D6800974927 /* CXAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAlert.swift; sourceTree = "<group>"; };
-		3CBE84D721770D6800974927 /* CXAbstractAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAbstractAlertView.swift; sourceTree = "<group>"; };
-		3CBE84D821770D6800974927 /* CXActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXActionSheet.swift; sourceTree = "<group>"; };
-		3CBE84D921770D6900974927 /* CXAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAlertAction.swift; sourceTree = "<group>"; };
-		3CBE84DA21770D6900974927 /* CXAlertLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAlertLayout.swift; sourceTree = "<group>"; };
-		3CBE84DB21770D6900974927 /* CXAlertBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAlertBuilder.swift; sourceTree = "<group>"; };
 		3CBE84E321770D8100974927 /* CXPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPicker.swift; sourceTree = "<group>"; };
 		3CBE84E421770D8100974927 /* CXDatePickerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXDatePickerBuilder.swift; sourceTree = "<group>"; };
 		3CBE84E521770D8200974927 /* CXPickerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPickerBuilder.swift; sourceTree = "<group>"; };
@@ -135,7 +128,7 @@
 		3CBE850621770DFB00974927 /* CXBasicAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXBasicAnimation.swift; sourceTree = "<group>"; };
 		3CBE850721770DFB00974927 /* CXPopAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopAnimation.swift; sourceTree = "<group>"; };
 		3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopup.swift; sourceTree = "<group>"; };
-		3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXAlertPopup.swift; sourceTree = "<group>"; };
+		3CD5FC7121F49E40007C8668 /* CXAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXAlert.swift; sourceTree = "<group>"; };
 		3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopupConfig.swift; sourceTree = "<group>"; };
 		3CD5FC7821F964A9007C8668 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		3D840127F9BE22E9026C48E100F5084A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -168,6 +161,7 @@
 		C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C446345321F7984500A7B64D /* CXDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXDialog.swift; sourceTree = "<group>"; };
 		C45B0D21DD991EC5247EAC5CA3B2E317 /* CXPopupKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CXPopupKit-umbrella.h"; sourceTree = "<group>"; };
+		C4E0DDE021FA447300C2F6A1 /* CXToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXToast.swift; sourceTree = "<group>"; };
 		C5A0883DA0E3507B27DF6E6064ACCCA8 /* Pods-CXPopupKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CXPopupKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		D006D59C62DA0F6DE9A2C954E7B0982A /* Pods-CXPopupKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CXPopupKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D77B07CA7D221E3EC46B93C00BF37CDE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -295,32 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				3CBE84E221770D7300974927 /* Picker */,
-				3CBE84D521770D5E00974927 /* Alert */,
-				3CBE84D021770D3800974927 /* Toast */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		3CBE84D021770D3800974927 /* Toast */ = {
-			isa = PBXGroup;
-			children = (
-				3CBE84D121770D5100974927 /* CXToast.swift */,
-				3CBE84D221770D5100974927 /* CXToastBuilder.swift */,
-			);
-			path = Toast;
-			sourceTree = "<group>";
-		};
-		3CBE84D521770D5E00974927 /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				3CBE84D721770D6800974927 /* CXAbstractAlertView.swift */,
-				3CBE84D821770D6800974927 /* CXActionSheet.swift */,
-				3CBE84D621770D6800974927 /* CXAlert.swift */,
-				3CBE84D921770D6900974927 /* CXAlertAction.swift */,
-				3CBE84DB21770D6900974927 /* CXAlertBuilder.swift */,
-				3CBE84DA21770D6900974927 /* CXAlertLayout.swift */,
-			);
-			path = Alert;
 			sourceTree = "<group>";
 		};
 		3CBE84E221770D7300974927 /* Picker */ = {
@@ -373,13 +343,14 @@
 			isa = PBXGroup;
 			children = (
 				3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */,
-				3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */,
+				3CD5FC7121F49E40007C8668 /* CXAlert.swift */,
 				3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */,
 				C446345321F7984500A7B64D /* CXDialog.swift */,
 				3CBE84F821770DE100974927 /* CXPresentationController.swift */,
 				3CBE850421770DFB00974927 /* AnimationFactory.swift */,
 				3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */,
 				3CD5FC7821F964A9007C8668 /* AlertView.swift */,
+				C4E0DDE021FA447300C2F6A1 /* CXToast.swift */,
 			);
 			path = V2;
 			sourceTree = "<group>";
@@ -766,7 +737,7 @@
 				3CBE84CE21770CEE00974927 /* UIScreenUtil.swift in Sources */,
 				3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */,
 				3CBE84FC21770DE100974927 /* CXPopupController.swift in Sources */,
-				3CD5FC7721F8B7DE007C8668 /* CXAlertPopup.swift in Sources */,
+				3CD5FC7721F8B7DE007C8668 /* CXAlert.swift in Sources */,
 				3CBE84CA21770CEE00974927 /* CXColorStyle.swift in Sources */,
 				3CBE850C21770DFB00974927 /* CXBasicAnimation.swift in Sources */,
 				3CBE850821770DFB00974927 /* CXBounceAnimation.swift in Sources */,
@@ -775,6 +746,7 @@
 				3CBE84F521770DC400974927 /* CXSafeAreaStyle.swift in Sources */,
 				3CBE84F221770DC400974927 /* CXEdgeSize.swift in Sources */,
 				3CBE850A21770DFB00974927 /* AnimationFactory.swift in Sources */,
+				C4E0DDE121FA447300C2F6A1 /* CXToast.swift in Sources */,
 				3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */,
 				3CBE850021770DE100974927 /* CXPopupable.swift in Sources */,
 				3CBE850B21770DFB00974927 /* CXFadeAnimation.swift in Sources */,

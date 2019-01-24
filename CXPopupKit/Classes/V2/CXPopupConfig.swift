@@ -51,5 +51,5 @@ public struct CXPopupConfig {
     // MARK - Properties: Animation
     public var animationStyle: CXAnimationStyle = .basic
     public var animationDuration: CXAnimationDuration = CXAnimationDuration(round: 0.35)
-    public var animationTransition: CXAnimationTransition = CXAnimationTransition(in: .center)
+    public var animationTransition: CXAnimationTransition = CXAnimationTransition(.center)
 }

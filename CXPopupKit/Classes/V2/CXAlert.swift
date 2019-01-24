@@ -1,5 +1,5 @@
 //
-//  CXAlertPopup.swift
+//  CXAlert.swift
 //  CXPopupKit
 //
 //  Created by Cunqi on 1/20/19.
@@ -12,14 +12,10 @@ public enum CXAlertStyle {
     case actionSheet
 }
 
-public typealias CXButtonAction = (target: Any?, selector: Selector)
 public typealias CXButtonHandler = (String) -> Void
+typealias CXButtonAction = (target: Any?, selector: Selector)
 
-class PlaceholderView: UIView, CXDialog {
-    
-}
-
-public class CXAlertPopup: CXPopup {
+public class CXAlert: CXPopup {
     init(config: CXAlertConfig,
         title: String?,
         message: String?,
@@ -104,7 +100,7 @@ public class CXAlertPopup: CXPopup {
         }
         
         public func create(on vc: UIViewController?) -> UIViewController {
-            return CXAlertPopup(
+            return CXAlert(
                 config: CXAlertConfig(with: style),
                 title: title,
                 message: message,
@@ -154,13 +150,13 @@ struct CXAlertConfig {
         case .actionSheet:
             config.allowTouchOutsideToDismiss = true
             config.layoutStyle = .bottom(height: finalHeight)
-            config.animationTransition = CXAnimationTransition(in: .up)
+            config.animationTransition = CXAnimationTransition(.up)
             config.maskBackgroundColor = UIColor(white: 0.7, alpha: 0.8)
         case .alert:
             config.allowTouchOutsideToDismiss = false
             config.layoutStyle = .center(size: CGSize(width: CXAlertConfig.alertViewWidth, height: finalHeight))
             config.animationStyle = .pop
-            config.animationTransition = CXAnimationTransition(in: .center)
+            config.animationTransition = CXAnimationTransition(.center)
             config.maskBackgroundColor = .clear
         }
         return config
