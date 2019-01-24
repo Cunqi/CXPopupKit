@@ -35,7 +35,16 @@ class ViewController: UIViewController {
     @IBAction func didTapConfigButton(_ sender: Any) {
         let alertView = CXAlertPopup.Builder(.alert)
             .withTitle("Hello")
-            .withMessage("This is a test message from Simulator.")
+            .withMessage("Returns a Context with the appropriate theme for dialogs created by this Builder. Applications should use this Context for obtaining LayoutInflaters for inflating views that will be used in the resulting dialogs, as it will cause views to be inflated with the correct theme.")
+            .withButton1("Cancel", { (title) in
+                print(title)
+            })
+            .withButton2("OK", { (title) in
+                print(title)
+            })
+            .withButton3("Skip", { (title) in
+                print(title)
+            })
             .create(on: self)
         self.present(alertView, animated: true, completion: nil)
     }

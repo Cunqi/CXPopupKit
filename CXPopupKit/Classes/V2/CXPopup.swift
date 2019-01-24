@@ -15,7 +15,7 @@ public protocol CXPopupLifeCycleDelegate: class {
 }
 
 public protocol CXPopupInteractable: class {
-    func dismiss()
+    func dismiss(completion: (() -> Void)?)
 }
 
 public class CXPopup: UIViewController, CXPopupInteractable {
@@ -53,7 +53,8 @@ public class CXPopup: UIViewController, CXPopupInteractable {
         _presentationController = nil
     }
 
-    public func dismiss() {
+    public func dismiss(completion: (() -> Void)?) {
+        self.dismiss(animated: true, completion: completion)
     }
     
     public class Builder {

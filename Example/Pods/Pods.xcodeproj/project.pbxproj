@@ -32,6 +32,7 @@
 		3CD5FC7021F49AA1007C8668 /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */; };
 		3CD5FC7421F4A3E2007C8668 /* CXPopupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */; };
 		3CD5FC7721F8B7DE007C8668 /* CXAlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */; };
+		3CD5FC7921F964A9007C8668 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FC7821F964A9007C8668 /* AlertView.swift */; };
 		459F58959A5C947E77A424BF94098D08 /* FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792533D7EE0F440EE722DA4999E845C /* FBSnapshotTestCase-dummy.m */; };
 		4C022C88B9E8D527B1426B5281756EDE /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E22F9517F21D3A0251F88FCAB281E /* UIImage+Compare.m */; };
 		4CF5865BAF828AB9A7C56F3A1B1C856F /* FBSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A11D5B54955E3381F067364E427B571A /* FBSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -136,6 +137,7 @@
 		3CD5FC6F21F49AA1007C8668 /* CXPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopup.swift; sourceTree = "<group>"; };
 		3CD5FC7121F49E40007C8668 /* CXAlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXAlertPopup.swift; sourceTree = "<group>"; };
 		3CD5FC7321F4A3E2007C8668 /* CXPopupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPopupConfig.swift; sourceTree = "<group>"; };
+		3CD5FC7821F964A9007C8668 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		3D840127F9BE22E9026C48E100F5084A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DBFBDCC891B770A2AC9EF0FB164B751 /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
 		3F697CCF9CE268F9C2B2FAC7FBC9EB29 /* Pods_CXPopupKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CXPopupKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,6 +379,7 @@
 				3CBE84F821770DE100974927 /* CXPresentationController.swift */,
 				3CBE850421770DFB00974927 /* AnimationFactory.swift */,
 				3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */,
+				3CD5FC7821F964A9007C8668 /* AlertView.swift */,
 			);
 			path = V2;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				3CBE84FD21770DE100974927 /* CXPresentationController.swift in Sources */,
 				3CBE84F121770DC400974927 /* CXAnimation.swift in Sources */,
 				3CD5FC7021F49AA1007C8668 /* CXPopup.swift in Sources */,
+				3CD5FC7921F964A9007C8668 /* AlertView.swift in Sources */,
 				3CBE84CC21770CEE00974927 /* CXLayoutUtil.swift in Sources */,
 				3CBE84CE21770CEE00974927 /* UIScreenUtil.swift in Sources */,
 				3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */,

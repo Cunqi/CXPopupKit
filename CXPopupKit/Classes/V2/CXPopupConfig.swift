@@ -31,11 +31,11 @@ public struct CXPopupConfig {
     public var layoutInsets = UIEdgeInsets.zero
     
     // MARK - Properties: Shadow
-    public var isShadowEnabled: Bool = false
+    public var isShadowEnabled: Bool = true
     public var shadowColor: UIColor = .black
     public var shadowOpacity: Float = 0.8
-    public var shadowRadius: CGFloat = 13.0
-    public var shadowOffset: CGSize = CGSize(width: 0, height: 6.0)
+    public var shadowRadius: CGFloat = 26.0
+    public var shadowOffset: CGSize = CGSize(width: 0, height: 13.0)
     
     // MARK - Properties: Behavior
     public var isAutoRotateEnabled: Bool = false
