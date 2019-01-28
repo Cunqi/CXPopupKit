@@ -68,7 +68,7 @@ class Toast: UIView, CXDialog {
         label.textColor = config.toastTextColor
         label.backgroundColor = .clear
 
-        let maximumWidth = UIScreen.main.bounds.size.width - CXSpacing.spacing6
+        let maximumWidth = UIScreen.main.bounds.size.width - CXSpacing.spacing7
         let estimatedSize = CXTextUtil.getTextSize(
             for: toast,
             with: CGSize(width: maximumWidth, height: CGFloat(Double.greatestFiniteMagnitude)),
@@ -77,11 +77,10 @@ class Toast: UIView, CXDialog {
 
         let layout = self
         layout.backgroundColor = config.backgroundColor
-        layout.heightAnchor.constraint(equalToConstant: height).isActive = true
 
         CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(top: CXSpacing.spacing3, left: CXSpacing.spacing3, bottom: CXSpacing.spacing3, right: CXSpacing.spacing3))
         self.config.finalHeight = height
-        self.config.finalWidth = estimatedSize.width //+ CXSpacing.spacing4
+        self.config.finalWidth = ceil(estimatedSize.width) + CXSpacing.spacing4
     }
 }
 

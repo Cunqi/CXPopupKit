@@ -112,7 +112,32 @@ class CXLayoutUtil {
                     y: screenHeight - insets.bottom - size.height - saInsets.bottom),
                 size: size)
         case .custom(let rect):
-            return rect
+            let bounds = UIScreen.main.bounds
+            var x = rect.origin.x
+            var y = rect.origin.y
+            let w = rect.size.width
+            let h = rect.size.height
+
+            //  |- [] ----|
+            var fx: CGFloat = x
+            var fy: CGFloat = y
+
+            if x + w > bounds.size.width {
+                fx = x - w
+            }
+
+            if fx < 0 && w < bounds.size.width {
+                fx = (bounds.size.width - w) / 2.0
+            }
+
+            if y + h > bounds.size.height {
+                fy = y - h
+            }
+
+            if fy < 0 && h < bounds.size.height {
+                fy = (bounds.size.height - h) / 2.0
+            }
+            return CGRect(x: fx, y: fy, width: w, height: h)
         }
     }
 
