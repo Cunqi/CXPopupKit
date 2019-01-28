@@ -7,14 +7,11 @@
 
 import UIKit
 
-public protocol CXPickable {
-    func getOptionText() -> String
-}
-
-public class CXPicker<T: CXPickable>: CXPopup {
-    init(_ options: [T], _ config: CXPopupConfig, _ defaultIndex: Int?, _ message: String?, _ handler: ((T) -> Void)?, _ checkmarkEnabled: Bool,  _ vc: UIViewController?) {
-        let picker = Picker(options, config, defaultIndex, message, handler, checkmarkEnabled)
-        super.init(picker, config, picker, vc)
+public class CXPicker<T: CustomStringConvertible>: CXPopup {
+    private let picker: Picker
+    init(_ options: [T], _ config: CXPickerConfig, _ defaultIndex: Int?, _ message: String?, _ handler: ((T) -> Void)?, _ configuration: ((UITableView) -> Void)?, _ vc: UIViewController?) {
+        picker = Picker(options, config, defaultIndex, message, handler, configuration)
+        super.init(picker, config.popupConfig, picker, vc)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -26,8 +23,8 @@ public class CXPicker<T: CXPickable>: CXPopup {
         private var defaultIndex: Int?
         private var message: String?
         private var handler: ((T) -> Void)?
-        private var config: CXPopupConfig = CXPopupConfig()
-        private var checkmarkEnabled: Bool = false
+        private var configuration: ((UITableView) -> Void)?
+        private var config: CXPickerConfig = CXPickerConfig()
 
         public init(_ options: [T]) {
             self.options = options
@@ -48,39 +45,40 @@ public class CXPicker<T: CXPickable>: CXPopup {
             return self
         }
 
-        public func withConfig(_ config: CXPopupConfig) -> Self {
+        public func withConfig(_ config: CXPickerConfig) -> Self {
             self.config = config
             return self
         }
 
-        public func withCheckMarkEnabled(_ enabled: Bool) -> Self {
-            self.checkmarkEnabled = enabled
+        public func withConfiguration(_ configuration: @escaping (UITableView) -> Void) -> Self {
+            self.configuration = configuration
             return self
         }
 
         public func create(on vc: UIViewController?) -> CXPicker {
-            return CXPicker(options, config, defaultIndex, message, handler, checkmarkEnabled, vc)
+            return CXPicker(options, config, defaultIndex, message, handler, configuration, vc)
         }
     }
 
     class Picker: UIView, CXDialog, UITableViewDataSource, UITableViewDelegate {
+        private let config: CXPickerConfig
         private let optionIdentifier = "_optionIdentifier"
 
         private let options: [T]
         private var message: String?
         private var handler: ((T) -> Void)?
+        private var configuration: ((UITableView) -> Void)?
 
         private let layout = UIStackView()
 
         private var tableView: UITableView!
         private var selectedIndex: IndexPath?
-        private var checkmarkEnabled: Bool = false
 
-        init(_ options: [T], _ config: CXPopupConfig, _ defaultIndex: Int?, _ message: String?, _ handler: ((T) -> Void)?, _ checkmarkEnabled: Bool) {
+        init(_ options: [T], _ config: CXPickerConfig, _ defaultIndex: Int?, _ message: String?, _ handler: ((T) -> Void)?, _ configuration: ((UITableView) -> Void)?) {
+            self.config = config
             self.options = options
             self.message = message
             self.handler = handler
-            self.checkmarkEnabled = checkmarkEnabled
             super.init(frame: .zero)
 
             if let index = defaultIndex {
@@ -93,23 +91,30 @@ public class CXPicker<T: CXPickable>: CXPopup {
             fatalError("init(coder:) has not been implemented")
         }
 
-        private func build(_ config: CXPopupConfig) {
+        private func build(_ config: CXPickerConfig) {
+            self.backgroundColor = .white
             layout.axis = .vertical
             layout.distribution = .fill
 
-            if let messageLayout = Picker.createMessageLayout(message, layoutStyle: config.layoutStyle) {
+            if let messageLayout = Picker.createMessageLayout(message, config: config) {
                 layout.addArrangedSubview(messageLayout)
+                layout.spacing = 1.0
+                self.backgroundColor = config.separatorColor
             }
             tableView = UITableView(frame: .zero, style: .plain)
             tableView.dataSource = self
             tableView.delegate = self
             tableView.tableFooterView = UIView()
-            tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .middle)
+            tableView.rowHeight = config.optionRowHeight
+            tableView.backgroundColor = config.optionBackgroundColor
+            tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .top)
+            tableView.separatorColor = config.separatorColor
+            configuration?(tableView)
             layout.addArrangedSubview(tableView)
             CXLayoutUtil.fill(layout, at: self)
         }
 
-        private static func createMessageLayout(_ message: String?, layoutStyle: CXLayoutStyle) -> UIView? {
+        private static func createMessageLayout(_ message: String?, config: CXPickerConfig) -> UIView? {
             var height: CGFloat = 0
             guard let message = message else {
                 return nil
@@ -119,21 +124,22 @@ public class CXPicker<T: CXPickable>: CXPopup {
             label.textAlignment = .center
             label.numberOfLines = 0
             label.lineBreakMode = .byWordWrapping
-            label.font = UIFont.systemFont(ofSize: 14.0)
-            label.textColor = .darkGray
+            label.font = config.messageFont
+            label.textColor = config.messageTextColor
+            label.backgroundColor = .clear
 
-            let width = layoutStyle.size.width
+            let width = config.popupConfig.layoutStyle.size.width
             let estimatedHeight = CXTextUtil.getTextSize(
                 for: message,
                 with: CGSize(width: width - CXSpacing.spacing4, height: CGFloat(Double.greatestFiniteMagnitude)),
                 font: label.font).height
-            height = estimatedHeight + CXSpacing.spacing4
+            height = estimatedHeight + CXSpacing.spacing5
 
             let layout = UIView()
-            layout.backgroundColor = .white
+            layout.backgroundColor = config.messageBackgroundColor
             layout.heightAnchor.constraint(equalToConstant: height).isActive = true
 
-            CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(top: CXSpacing.spacing3, left: CXSpacing.spacing3, bottom: CXSpacing.spacing3, right: CXSpacing.spacing3))
+            CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(top: CXSpacing.spacing4, left: CXSpacing.spacing3, bottom: CXSpacing.spacing4, right: CXSpacing.spacing3))
             return layout
         }
 
@@ -150,20 +156,19 @@ public class CXPicker<T: CXPickable>: CXPopup {
             if cell == nil {
                 cell = UITableViewCell(style: .default, reuseIdentifier: optionIdentifier)
                 cell?.selectionStyle = .default
+                cell?.textLabel?.textColor = config.optionTextColor
+                cell?.textLabel?.textAlignment = config.optionTextAligment
+                cell?.contentView.backgroundColor = config.optionBackgroundColor
             }
             let option = options[indexPath.row]
-            cell?.textLabel?.text = option.getOptionText()
+            cell?.textLabel?.text = option.description
 
             if let selectedIndex = self.selectedIndex, selectedIndex == indexPath {
-                cell?.accessoryType = checkmarkEnabled ? .checkmark : .none
+                cell?.accessoryType = config.accessoryType
             } else {
                 cell?.accessoryType = .none
             }
             return cell!
-        }
-
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 44.0
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -181,11 +186,22 @@ extension CXPicker.Picker: CXPopupLifeCycleDelegate {
 
     func viewDidDisappear() {
         handler = nil
+        configuration = nil
     }
 }
 
-extension String: CXPickable {
-    public func getOptionText() -> String {
-        return self
-    }
+public struct CXPickerConfig {
+    public var popupConfig = CXPopupConfig()
+
+    public var accessoryType = UITableViewCellAccessoryType.none
+    public var messageFont = UIFont.systemFont(ofSize: 14.0)
+    public var messageTextColor = UIColor.darkGray
+    public var messageBackgroundColor = UIColor.white
+    public var separatorColor = UIColor(white: 0.85, alpha: 1.0)
+    public var optionRowHeight: CGFloat = 44.0
+    public var optionTextColor = UIColor.black
+    public var optionTextAligment = NSTextAlignment.left
+    public var optionBackgroundColor = UIColor.white
+
+    public init() {}
 }

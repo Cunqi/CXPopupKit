@@ -36,10 +36,20 @@ class ViewController: UIViewController {
         globalConfig.animationStyle = .basic
         globalConfig.animationTransition = CXAnimationTransition(.up)
         globalConfig.maskBackgroundColor = .clear
+
+        var config = CXPickerConfig()
+        config.popupConfig = globalConfig
+        config.messageBackgroundColor = .black
+        config.optionBackgroundColor = .black
+        config.separatorColor = .white
+        config.optionTextColor = .white
+        config.messageTextColor = .white
+
         let array = ["A", "B", "C", "D"]
         let picker = CXPicker<String>.Builder(array)
-            .withConfig(globalConfig)
+            .withConfig(config)
             .withDefault(array.firstIndex(of: "C"))
+            .withMessage("Confirm Pickup")
             .create(on: self)
         self.present(picker, animated: true, completion: nil)
     }
@@ -55,10 +65,14 @@ class ViewController: UIViewController {
         globalConfig.animationStyle = .pop
         globalConfig.animationTransition = CXAnimationTransition(.center)
         globalConfig.maskBackgroundColor = .clear
-        let array = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
-        let picker = CXPicker<String>.Builder(array)
-            .withConfig(globalConfig)
-            .withDefault(array.firstIndex(of: "H"))
+
+        var config = CXPickerConfig()
+        config.popupConfig = globalConfig
+
+        let array = [1, 2, 3, 4, 5, 6, 7]
+        let picker = CXPicker<Int>.Builder(array)
+            .withConfig(config)
+            .withDefault(array.firstIndex(of: 7))
             .create(on: self)
         self.present(picker, animated: true, completion: nil)
     }
