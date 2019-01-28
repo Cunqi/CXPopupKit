@@ -22,6 +22,43 @@ public enum CXLayoutStyle {
     case topCenter(size: CGSize)
     case bottomCenter(size: CGSize)
     case custom(rect: CGRect)
+
+    var size: CGSize {
+        switch self {
+        case .left(let width):
+            let bounds = UIScreen.main.bounds.size
+            return CGSize(width: width, height: bounds.height)
+        case .right(let width):
+            let bounds = UIScreen.main.bounds.size
+            return CGSize(width: width, height: bounds.height)
+        case .top(let height):
+            let bounds = UIScreen.main.bounds.size
+            return CGSize(width: bounds.width, height: height)
+        case .bottom(let height):
+            let bounds = UIScreen.main.bounds.size
+            return CGSize(width: bounds.width, height: height)
+        case .center(let size):
+            return size
+        case .topLeft(let size):
+            return size
+        case .topRight(let size):
+            return size
+        case .bottomLeft(let size):
+            return size
+        case .bottomRight(let size):
+            return size
+        case .centerLeft(let size):
+            return size
+        case .centerRight(let size):
+            return size
+        case .topCenter(let size):
+            return size
+        case .bottomCenter(let size):
+            return size
+        case .custom(let rect):
+            return rect.size
+        }
+    }
 }
 
 public struct CXPopupConfig {

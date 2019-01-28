@@ -53,6 +53,7 @@
 		B5A42E4B34E5002311A192F407B1D56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */; };
 		BCDA265400AF5BCF21074C5AF1FD09A8 /* UIApplication+StrictKeyWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B9109B8B333B5A1A3E92EFC09EDC10AC /* UIApplication+StrictKeyWindow.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C446345421F7984500A7B64D /* CXDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446345321F7984500A7B64D /* CXDialog.swift */; };
+		C46FFC7B21FE816100C3F6A9 /* CXPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46FFC7A21FE816100C3F6A9 /* CXPicker.swift */; };
 		C4E0DDE121FA447300C2F6A1 /* CXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0DDE021FA447300C2F6A1 /* CXToast.swift */; };
 		CC32E2CEBB260BCBF01083981F259F21 /* Pods-CXPopupKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0318CA022265DC610CAF9E11CEEA03 /* Pods-CXPopupKit_Tests-dummy.m */; };
 		DFFD48AE758F51494A7A1AC0CE178CA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */; };
@@ -161,6 +162,7 @@
 		C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C446345321F7984500A7B64D /* CXDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXDialog.swift; sourceTree = "<group>"; };
 		C45B0D21DD991EC5247EAC5CA3B2E317 /* CXPopupKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CXPopupKit-umbrella.h"; sourceTree = "<group>"; };
+		C46FFC7A21FE816100C3F6A9 /* CXPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPicker.swift; sourceTree = "<group>"; };
 		C4E0DDE021FA447300C2F6A1 /* CXToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXToast.swift; sourceTree = "<group>"; };
 		C5A0883DA0E3507B27DF6E6064ACCCA8 /* Pods-CXPopupKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CXPopupKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		D006D59C62DA0F6DE9A2C954E7B0982A /* Pods-CXPopupKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CXPopupKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */,
 				3CD5FC7821F964A9007C8668 /* AlertView.swift */,
 				C4E0DDE021FA447300C2F6A1 /* CXToast.swift */,
+				C46FFC7A21FE816100C3F6A9 /* CXPicker.swift */,
 			);
 			path = V2;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				3CBE84F221770DC400974927 /* CXEdgeSize.swift in Sources */,
 				3CBE850A21770DFB00974927 /* AnimationFactory.swift in Sources */,
 				C4E0DDE121FA447300C2F6A1 /* CXToast.swift in Sources */,
+				C46FFC7B21FE816100C3F6A9 /* CXPicker.swift in Sources */,
 				3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */,
 				3CBE850021770DE100974927 /* CXPopupable.swift in Sources */,
 				3CBE850B21770DFB00974927 /* CXFadeAnimation.swift in Sources */,

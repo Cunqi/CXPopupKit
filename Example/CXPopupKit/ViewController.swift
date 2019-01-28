@@ -32,8 +32,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapButton(_ sender: Any) {
-        let popup = CXPopup.Builder(view: customView).withConfig(globalConfig).create(on: self)
-        self.present(popup, animated: true, completion: nil)
+        globalConfig.layoutStyle = .bottom(height: 200)
+        globalConfig.animationStyle = .basic
+        globalConfig.animationTransition = CXAnimationTransition(.up)
+        globalConfig.maskBackgroundColor = .clear
+        let picker = CXPicker<String>.Builder(["A", "B", "C", "D"])
+            .withConfig(globalConfig)
+            .withDefault("C")
+            .create(on: self)
+        self.present(picker, animated: true, completion: nil)
     }
 
     @IBAction func didTapConfigButton(_ sender: Any) {
@@ -47,8 +54,11 @@ class ViewController: UIViewController {
         globalConfig.animationStyle = .pop
         globalConfig.animationTransition = CXAnimationTransition(.center)
         globalConfig.maskBackgroundColor = .clear
-        let popup = CXPopup.Builder(view: customView).withConfig(globalConfig).create(on: self)
-        self.present(popup, animated: true, completion: nil)
+        let picker = CXPicker<String>.Builder(["A", "B", "C", "D"])
+            .withConfig(globalConfig)
+            .withDefault("C")
+            .create(on: self)
+        self.present(picker, animated: true, completion: nil)
     }
 }
 
