@@ -12,8 +12,8 @@ public protocol CXPickable {
 }
 
 public class CXPicker<T: CXPickable>: CXPopup {
-    init(_ options: [T], _ config: CXPopupConfig, _ defaultValue: T?, _ message: String?, _ handler: ((T) -> Void)?, _ vc: UIViewController?) {
-        let picker = Picker(options, config, defaultValue, message, handler)
+    init(_ options: [T], _ config: CXPopupConfig, _ defaultIndex: Int?, _ message: String?, _ handler: ((T) -> Void)?, _ checkmarkEnabled: Bool,  _ vc: UIViewController?) {
+        let picker = Picker(options, config, defaultIndex, message, handler, checkmarkEnabled)
         super.init(picker, config, picker, vc)
     }
 
@@ -23,17 +23,18 @@ public class CXPicker<T: CXPickable>: CXPopup {
 
     public class Builder {
         private var options: [T]
-        private var defaultValue: T?
+        private var defaultIndex: Int?
         private var message: String?
         private var handler: ((T) -> Void)?
         private var config: CXPopupConfig = CXPopupConfig()
+        private var checkmarkEnabled: Bool = false
 
         public init(_ options: [T]) {
             self.options = options
         }
 
-        public func withDefault(_ value: T) -> Self {
-            self.defaultValue = value
+        public func withDefault(_ index: Int?) -> Self {
+            self.defaultIndex = index
             return self
         }
 
@@ -52,8 +53,13 @@ public class CXPicker<T: CXPickable>: CXPopup {
             return self
         }
 
-        public func create(on vc: UIViewController?) -> UIViewController {
-            return CXPicker(options, config, defaultValue, message, handler, vc)
+        public func withCheckMarkEnabled(_ enabled: Bool) -> Self {
+            self.checkmarkEnabled = enabled
+            return self
+        }
+
+        public func create(on vc: UIViewController?) -> CXPicker {
+            return CXPicker(options, config, defaultIndex, message, handler, checkmarkEnabled, vc)
         }
     }
 
@@ -61,18 +67,25 @@ public class CXPicker<T: CXPickable>: CXPopup {
         private let optionIdentifier = "_optionIdentifier"
 
         private let options: [T]
-        private var defaultValue: T?
         private var message: String?
         private var handler: ((T) -> Void)?
 
-        private var layout: UIStackView?
+        private let layout = UIStackView()
 
-        init(_ options: [T], _ config: CXPopupConfig, _ defaultValue: T?, _ message: String?, _ handler: ((T) -> Void)?) {
+        private var tableView: UITableView!
+        private var selectedIndex: IndexPath?
+        private var checkmarkEnabled: Bool = false
+
+        init(_ options: [T], _ config: CXPopupConfig, _ defaultIndex: Int?, _ message: String?, _ handler: ((T) -> Void)?, _ checkmarkEnabled: Bool) {
             self.options = options
-            self.defaultValue = defaultValue
             self.message = message
             self.handler = handler
+            self.checkmarkEnabled = checkmarkEnabled
             super.init(frame: .zero)
+
+            if let index = defaultIndex {
+                self.selectedIndex = IndexPath(row: index, section: 0)
+            }
             build(config)
         }
 
@@ -81,20 +94,19 @@ public class CXPicker<T: CXPickable>: CXPopup {
         }
 
         private func build(_ config: CXPopupConfig) {
-            layout = UIStackView()
-            layout?.axis = .vertical
-            layout?.distribution = .fill
+            layout.axis = .vertical
+            layout.distribution = .fill
 
             if let messageLayout = Picker.createMessageLayout(message, layoutStyle: config.layoutStyle) {
-                layout?.addArrangedSubview(messageLayout)
+                layout.addArrangedSubview(messageLayout)
             }
-
-            let tableView = UITableView(frame: .zero, style: .plain)
+            tableView = UITableView(frame: .zero, style: .plain)
             tableView.dataSource = self
             tableView.delegate = self
             tableView.tableFooterView = UIView()
-            layout?.addArrangedSubview(tableView)
-            CXLayoutUtil.fill(layout!, at: self)
+            tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .middle)
+            layout.addArrangedSubview(tableView)
+            CXLayoutUtil.fill(layout, at: self)
         }
 
         private static func createMessageLayout(_ message: String?, layoutStyle: CXLayoutStyle) -> UIView? {
@@ -137,17 +149,16 @@ public class CXPicker<T: CXPickable>: CXPopup {
             var cell = tableView.dequeueReusableCell(withIdentifier: optionIdentifier)
             if cell == nil {
                 cell = UITableViewCell(style: .default, reuseIdentifier: optionIdentifier)
+                cell?.selectionStyle = .default
             }
             let option = options[indexPath.row]
             cell?.textLabel?.text = option.getOptionText()
 
-            if let defaultText = defaultValue?.getOptionText(), defaultText == option.getOptionText() {
-//                cell?.accessoryType = .checkmark
-                cell?.setHighlighted(true, animated: true)
+            if let selectedIndex = self.selectedIndex, selectedIndex == indexPath {
+                cell?.accessoryType = checkmarkEnabled ? .checkmark : .none
             } else {
-//                cell?.accessoryType = .none
+                cell?.accessoryType = .none
             }
-
             return cell!
         }
 

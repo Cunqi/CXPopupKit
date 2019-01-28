@@ -36,9 +36,10 @@ class ViewController: UIViewController {
         globalConfig.animationStyle = .basic
         globalConfig.animationTransition = CXAnimationTransition(.up)
         globalConfig.maskBackgroundColor = .clear
-        let picker = CXPicker<String>.Builder(["A", "B", "C", "D"])
+        let array = ["A", "B", "C", "D"]
+        let picker = CXPicker<String>.Builder(array)
             .withConfig(globalConfig)
-            .withDefault("C")
+            .withDefault(array.firstIndex(of: "C"))
             .create(on: self)
         self.present(picker, animated: true, completion: nil)
     }
@@ -54,9 +55,10 @@ class ViewController: UIViewController {
         globalConfig.animationStyle = .pop
         globalConfig.animationTransition = CXAnimationTransition(.center)
         globalConfig.maskBackgroundColor = .clear
-        let picker = CXPicker<String>.Builder(["A", "B", "C", "D"])
+        let array = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+        let picker = CXPicker<String>.Builder(array)
             .withConfig(globalConfig)
-            .withDefault("C")
+            .withDefault(array.firstIndex(of: "H"))
             .create(on: self)
         self.present(picker, animated: true, completion: nil)
     }
