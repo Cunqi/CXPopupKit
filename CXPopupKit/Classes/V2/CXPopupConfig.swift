@@ -7,6 +7,11 @@
 
 import UIKit
 
+public enum CXSafeAreaStyle {
+    case on
+    case off
+}
+
 public enum CXLayoutStyle {
     case left(width: CGFloat)
     case right(width: CGFloat)

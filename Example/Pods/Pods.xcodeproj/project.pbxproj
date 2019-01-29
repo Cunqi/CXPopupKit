@@ -18,11 +18,7 @@
 		3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C821770CEE00974927 /* CXTextUtil.swift */; };
 		3CBE84CE21770CEE00974927 /* UIScreenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C921770CEE00974927 /* UIScreenUtil.swift */; };
 		3CBE84F121770DC400974927 /* CXAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84EC21770DC300974927 /* CXAnimation.swift */; };
-		3CBE84F221770DC400974927 /* CXEdgeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84ED21770DC300974927 /* CXEdgeSize.swift */; };
-		3CBE84F521770DC400974927 /* CXSafeAreaStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84F021770DC400974927 /* CXSafeAreaStyle.swift */; };
-		3CBE84FC21770DE100974927 /* CXPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84F721770DE100974927 /* CXPopupController.swift */; };
 		3CBE84FD21770DE100974927 /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84F821770DE100974927 /* CXPresentationController.swift */; };
-		3CBE850021770DE100974927 /* CXPopupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84FB21770DE100974927 /* CXPopupable.swift */; };
 		3CBE850821770DFB00974927 /* CXBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850221770DFB00974927 /* CXBounceAnimation.swift */; };
 		3CBE850921770DFB00974927 /* CXZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850321770DFB00974927 /* CXZoomAnimation.swift */; };
 		3CBE850A21770DFB00974927 /* AnimationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE850421770DFB00974927 /* AnimationFactory.swift */; };
@@ -108,20 +104,8 @@
 		3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXLayoutUtil.swift; sourceTree = "<group>"; };
 		3CBE84C821770CEE00974927 /* CXTextUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXTextUtil.swift; sourceTree = "<group>"; };
 		3CBE84C921770CEE00974927 /* UIScreenUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenUtil.swift; sourceTree = "<group>"; };
-		3CBE84E321770D8100974927 /* CXPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPicker.swift; sourceTree = "<group>"; };
-		3CBE84E421770D8100974927 /* CXDatePickerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXDatePickerBuilder.swift; sourceTree = "<group>"; };
-		3CBE84E521770D8200974927 /* CXPickerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPickerBuilder.swift; sourceTree = "<group>"; };
-		3CBE84E621770D8200974927 /* CXDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXDatePicker.swift; sourceTree = "<group>"; };
 		3CBE84EC21770DC300974927 /* CXAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAnimation.swift; sourceTree = "<group>"; };
-		3CBE84ED21770DC300974927 /* CXEdgeSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXEdgeSize.swift; sourceTree = "<group>"; };
-		3CBE84EE21770DC300974927 /* CXPopupAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopupAppearance.swift; sourceTree = "<group>"; };
-		3CBE84EF21770DC300974927 /* CXAxisPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXAxisPosition.swift; sourceTree = "<group>"; };
-		3CBE84F021770DC400974927 /* CXSafeAreaStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXSafeAreaStyle.swift; sourceTree = "<group>"; };
-		3CBE84F721770DE100974927 /* CXPopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopupController.swift; sourceTree = "<group>"; };
 		3CBE84F821770DE100974927 /* CXPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPresentationController.swift; sourceTree = "<group>"; };
-		3CBE84F921770DE100974927 /* CXBasePopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXBasePopupController.swift; sourceTree = "<group>"; };
-		3CBE84FA21770DE100974927 /* CXPopupBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopupBuilder.swift; sourceTree = "<group>"; };
-		3CBE84FB21770DE100974927 /* CXPopupable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopupable.swift; sourceTree = "<group>"; };
 		3CBE850221770DFB00974927 /* CXBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXBounceAnimation.swift; sourceTree = "<group>"; };
 		3CBE850321770DFB00974927 /* CXZoomAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXZoomAnimation.swift; sourceTree = "<group>"; };
 		3CBE850421770DFB00974927 /* AnimationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFactory.swift; sourceTree = "<group>"; };
@@ -266,9 +250,6 @@
 			children = (
 				3CD5FC6E21F49A97007C8668 /* V2 */,
 				3CBE850121770DF000974927 /* Animation */,
-				3CBE84F621770DD000974927 /* Popup */,
-				3CBE84EB21770DA900974927 /* Properties */,
-				3CBE84CF21770D2100974927 /* Components */,
 				3CBE84C421770CD900974927 /* Util */,
 				3CBE84C221770CCD00974927 /* .gitkeep */,
 			);
@@ -287,51 +268,10 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		3CBE84CF21770D2100974927 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				3CBE84E221770D7300974927 /* Picker */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		3CBE84E221770D7300974927 /* Picker */ = {
-			isa = PBXGroup;
-			children = (
-				3CBE84E621770D8200974927 /* CXDatePicker.swift */,
-				3CBE84E421770D8100974927 /* CXDatePickerBuilder.swift */,
-				3CBE84E321770D8100974927 /* CXPicker.swift */,
-				3CBE84E521770D8200974927 /* CXPickerBuilder.swift */,
-			);
-			path = Picker;
-			sourceTree = "<group>";
-		};
-		3CBE84EB21770DA900974927 /* Properties */ = {
-			isa = PBXGroup;
-			children = (
-				3CBE84EC21770DC300974927 /* CXAnimation.swift */,
-				3CBE84EF21770DC300974927 /* CXAxisPosition.swift */,
-				3CBE84ED21770DC300974927 /* CXEdgeSize.swift */,
-				3CBE84EE21770DC300974927 /* CXPopupAppearance.swift */,
-				3CBE84F021770DC400974927 /* CXSafeAreaStyle.swift */,
-			);
-			path = Properties;
-			sourceTree = "<group>";
-		};
-		3CBE84F621770DD000974927 /* Popup */ = {
-			isa = PBXGroup;
-			children = (
-				3CBE84F721770DE100974927 /* CXPopupController.swift */,
-				3CBE84FB21770DE100974927 /* CXPopupable.swift */,
-				3CBE84FA21770DE100974927 /* CXPopupBuilder.swift */,
-				3CBE84F921770DE100974927 /* CXBasePopupController.swift */,
-			);
-			path = Popup;
-			sourceTree = "<group>";
-		};
 		3CBE850121770DF000974927 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				3CBE84EC21770DC300974927 /* CXAnimation.swift */,
 				3CBE850621770DFB00974927 /* CXBasicAnimation.swift */,
 				3CBE850221770DFB00974927 /* CXBounceAnimation.swift */,
 				3CBE850521770DFB00974927 /* CXFadeAnimation.swift */,
@@ -739,20 +679,16 @@
 				3CBE84CC21770CEE00974927 /* CXLayoutUtil.swift in Sources */,
 				3CBE84CE21770CEE00974927 /* UIScreenUtil.swift in Sources */,
 				3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */,
-				3CBE84FC21770DE100974927 /* CXPopupController.swift in Sources */,
 				3CD5FC7721F8B7DE007C8668 /* CXAlert.swift in Sources */,
 				3CBE84CA21770CEE00974927 /* CXColorStyle.swift in Sources */,
 				3CBE850C21770DFB00974927 /* CXBasicAnimation.swift in Sources */,
 				3CBE850821770DFB00974927 /* CXBounceAnimation.swift in Sources */,
 				3CBE850921770DFB00974927 /* CXZoomAnimation.swift in Sources */,
 				3CD5FC7421F4A3E2007C8668 /* CXPopupConfig.swift in Sources */,
-				3CBE84F521770DC400974927 /* CXSafeAreaStyle.swift in Sources */,
-				3CBE84F221770DC400974927 /* CXEdgeSize.swift in Sources */,
 				3CBE850A21770DFB00974927 /* AnimationFactory.swift in Sources */,
 				C4E0DDE121FA447300C2F6A1 /* CXToast.swift in Sources */,
 				C46FFC7B21FE816100C3F6A9 /* CXPicker.swift in Sources */,
 				3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */,
-				3CBE850021770DE100974927 /* CXPopupable.swift in Sources */,
 				3CBE850B21770DFB00974927 /* CXFadeAnimation.swift in Sources */,
 				C446345421F7984500A7B64D /* CXDialog.swift in Sources */,
 				6892C5E58FC7B7645BEBC35FC513944E /* CXPopupKit-dummy.m in Sources */,
