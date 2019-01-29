@@ -55,7 +55,7 @@ public class CXPicker<T: CustomStringConvertible>: CXPopup {
             return self
         }
 
-        public func create(on vc: UIViewController?) -> CXPicker {
+        public func create(on vc: UIViewController?) -> UIViewController {
             return CXPicker(options, config, defaultIndex, message, handler, configuration, vc)
         }
     }

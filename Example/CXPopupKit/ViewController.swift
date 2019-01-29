@@ -55,8 +55,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapConfigButton(_ sender: Any) {
-        let toast = CXToast("Downloading...", .short)
-        self.present(toast, animated: true, completion: nil)
+        let datePicker = CXDatePicker.Builder().create(on: self)
+        self.present(datePicker, animated: true, completion: nil)
     }
 
     @objc private func handleTapGesture(_ gesture: UITapGestureRecognizer) {
