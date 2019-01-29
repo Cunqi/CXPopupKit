@@ -10,6 +10,7 @@ import UIKit
 public enum CXSafeAreaStyle {
     case on
     case off
+    case wrap
 }
 
 public enum CXLayoutStyle {
@@ -87,8 +88,9 @@ public struct CXPopupConfig {
     public var safeAreaStyle: CXSafeAreaStyle = .on
     
     // MARK - Properties: UI
-    public var maskBackgroundColor: UIColor = UIColor(white: 0, alpha: 0.8)
+    public var maskBackgroundColor = UIColor(white: 0, alpha: 0.8)
     public var cornerRadius: CGFloat = 4.0
+    public var safeAreaGapColor: UIColor? = nil
 
     // MARK - Properties: Animation
     public var animationStyle: CXAnimationStyle = .basic

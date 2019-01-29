@@ -55,8 +55,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapConfigButton(_ sender: Any) {
-        let datePicker = CXDatePicker.Builder().create(on: self)
-        self.present(datePicker, animated: true, completion: nil)
+        let actionSheet = CXAlert.Builder(.actionSheet)
+            .withTitle("Warning!")
+            .withMessage("Select a photo to upload")
+            .withButton1("OK") { _ in }
+            .withButton2("Skip") { _ in }
+            .create(on: self)
+        self.present(actionSheet, animated: true, completion: nil)
     }
 
     @objc private func handleTapGesture(_ gesture: UITapGestureRecognizer) {

@@ -31,7 +31,8 @@ class CXPresentationController: UIPresentationController {
     }
 
     override var frameOfPresentedViewInContainerView: CGRect {
-        return CXLayoutUtil.layout(layoutStyle: config.layoutStyle, safeAreaStyle: config.safeAreaStyle, insets: config.layoutInsets)
+        let rect = CXLayoutUtil.layout(layoutStyle: config.layoutStyle, safeAreaStyle: config.safeAreaStyle, insets: config.layoutInsets)
+        return rect
     }
 
     override var presentedView: UIView? {

@@ -122,7 +122,7 @@ struct CXAlertConfig {
 
     let style: CXAlertStyle
     var buttonHeight: CGFloat = 44
-    var buttonColor = UIColor.white
+    var buttonColor = UIColor(white: 0.98, alpha: 1.0)
     var buttonHighlightColor = UIColor(white: 0.9, alpha: 1.0)
     var buttonDividerColor = UIColor(white: 0.7, alpha: 1.0)
     var defaultAxis: UILayoutConstraintAxis? = nil
@@ -135,7 +135,7 @@ struct CXAlertConfig {
     var buttonFont = UIFont.systemFont(ofSize: 14.0)
     var buttonTitleColor = UIColor.black
 
-    var alertBackgroundColor = UIColor.white
+    var alertBackgroundColor = UIColor(white: 0.98, alpha: 1.0)
 
     var finalHeight: CGFloat = 0
     var popupConfig = CXPopupConfig()
@@ -152,6 +152,8 @@ struct CXAlertConfig {
             config.layoutStyle = .bottom(height: finalHeight)
             config.animationTransition = CXAnimationTransition(.up)
             config.maskBackgroundColor = UIColor(white: 0.7, alpha: 0.8)
+            config.safeAreaStyle = .wrap
+            config.safeAreaGapColor = alertBackgroundColor
         case .alert:
             config.allowTouchOutsideToDismiss = false
             config.layoutStyle = .center(size: CGSize(width: CXAlertConfig.alertViewWidth, height: finalHeight))

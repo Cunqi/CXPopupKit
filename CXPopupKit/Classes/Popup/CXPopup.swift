@@ -43,7 +43,14 @@ public class CXPopup: UIViewController, CXPopupInteractable {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        CXLayoutUtil.fill(customView, at: view)
+
+        if config.safeAreaStyle == .wrap {
+            let wrapper = CXLayoutUtil.createWrapperView(customView, layoutStyle: config.layoutStyle)
+            wrapper.backgroundColor = config.safeAreaGapColor ?? customView.backgroundColor
+            CXLayoutUtil.fill(wrapper, at: view)
+        } else {
+            CXLayoutUtil.fill(customView, at: view)
+        }
         delegate?.viewDidLoad()
     }
 

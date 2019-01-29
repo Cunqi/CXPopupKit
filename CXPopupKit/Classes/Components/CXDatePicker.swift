@@ -169,5 +169,6 @@ public struct CXDatePickerConfig {
         popupConfig.layoutStyle = .bottom(height: 240)
         popupConfig.animationStyle = .basic
         popupConfig.animationTransition = CXAnimationTransition(.up)
+        popupConfig.safeAreaStyle = .wrap
     }
 }
