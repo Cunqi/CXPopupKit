@@ -52,7 +52,7 @@ class CXBasicAnimation: NSObject, CXAnimation {
         }
         let container = context.containerView
         let toViewFinalFrame = context.finalFrame(for: toVC)
-        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.animateInDirection, offsetSize: container.bounds.size)
+        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.`in`, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         animateInFinalFrame = toViewFinalFrame
 
@@ -70,7 +70,7 @@ class CXBasicAnimation: NSObject, CXAnimation {
             return
         }
         let container = context.containerView
-        let fromViewFinalFrame = animateOutInitialFrame.offsetForFinalPosition(direction: transition.animateOutDirection, offsetSize: container.bounds.size)
+        let fromViewFinalFrame = animateOutInitialFrame.offsetForFinalPosition(direction: transition.out, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         UIView.animate(withDuration: duration, animations: {
             fromView.frame = fromViewFinalFrame

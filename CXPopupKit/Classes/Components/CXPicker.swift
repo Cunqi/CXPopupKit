@@ -11,7 +11,7 @@ public class CXPicker<T: CustomStringConvertible>: CXPopup {
     private let picker: Picker
     init(_ options: [T], _ config: CXPickerConfig, _ defaultIndex: Int?, _ message: String?, _ handler: ((T) -> Void)?, _ configuration: ((UITableView) -> Void)?, _ vc: UIViewController?) {
         picker = Picker(options, config, defaultIndex, message, handler, configuration)
-        super.init(picker, config.popupConfig, picker, vc)
+        super.init(picker, config.popupConfig, nil, vc)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -175,18 +175,14 @@ public class CXPicker<T: CustomStringConvertible>: CXPopup {
             let option = options[indexPath.row]
             self.cxPopup?.dismiss(completion: { [weak self] in
                 self?.handler?(option)
+                self?.cleanup()
             })
         }
-    }
-}
-
-extension CXPicker.Picker: CXPopupLifeCycleDelegate {
-    func viewDidLoad() {
-    }
-
-    func viewDidDisappear() {
-        handler = nil
-        configuration = nil
+        
+        private func cleanup() {
+            handler = nil
+            configuration = nil
+        }
     }
 }
 

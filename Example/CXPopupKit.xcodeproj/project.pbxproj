@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		11CFC7D3A95862A652F5F51B /* Pods_CXPopupKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D3EB336F41E0F53991450E /* Pods_CXPopupKit_Example.framework */; };
+		3C08AC1C2201589B00E56CE9 /* DemoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C08AC1B2201589B00E56CE9 /* DemoHomeViewController.swift */; };
+		3C08AC1E22015D3200E56CE9 /* CustomViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C08AC1D22015D3200E56CE9 /* CustomViewDemoViewController.swift */; };
+		3C08AC202201766900E56CE9 /* AnimationChooser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C08AC1F2201766900E56CE9 /* AnimationChooser.xib */; };
+		3C08AC222201767C00E56CE9 /* AnimationChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C08AC212201767C00E56CE9 /* AnimationChooser.swift */; };
 		5DEAE2A151059D4427DBDFB7 /* Pods_CXPopupKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201FC527657A18DBC33FFFBE /* Pods_CXPopupKit_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -29,6 +33,10 @@
 
 /* Begin PBXFileReference section */
 		201FC527657A18DBC33FFFBE /* Pods_CXPopupKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CXPopupKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C08AC1B2201589B00E56CE9 /* DemoHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoHomeViewController.swift; sourceTree = "<group>"; };
+		3C08AC1D22015D3200E56CE9 /* CustomViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewDemoViewController.swift; sourceTree = "<group>"; };
+		3C08AC1F2201766900E56CE9 /* AnimationChooser.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationChooser.xib; sourceTree = "<group>"; };
+		3C08AC212201767C00E56CE9 /* AnimationChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationChooser.swift; sourceTree = "<group>"; };
 		3F6142380EA2DE32EEEE8677 /* Pods-CXPopupKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPopupKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CXPopupKit_Example/Pods-CXPopupKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		424E8FE11855E22F51EC725A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CXPopupKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXPopupKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,9 +101,13 @@
 		607FACD21AFB9204008FA782 /* Example for CXPopupKit */ = {
 			isa = PBXGroup;
 			children = (
+				3C08AC1B2201589B00E56CE9 /* DemoHomeViewController.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				3C08AC1D22015D3200E56CE9 /* CustomViewDemoViewController.swift */,
+				3C08AC1F2201766900E56CE9 /* AnimationChooser.xib */,
+				3C08AC212201767C00E56CE9 /* AnimationChooser.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -248,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C08AC202201766900E56CE9 /* AnimationChooser.xib in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -359,8 +372,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C08AC222201767C00E56CE9 /* AnimationChooser.swift in Sources */,
+				3C08AC1C2201589B00E56CE9 /* DemoHomeViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				3C08AC1E22015D3200E56CE9 /* CustomViewDemoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

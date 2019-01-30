@@ -109,7 +109,7 @@ class CXLayoutUtil {
             return CGRect(origin: CGPoint(x: saInsets.left + insets.left, y: saInsets.top + insets.top), size: size).grow(delta)
         case .topRight(let size):
             let screenWidth = UIScreen.main.bounds.size.width
-            return CGRect(origin: CGPoint(x: screenWidth - insets.left - size.width - saInsets.right, y: saInsets.top + insets.top), size: size).grow(delta)
+            return CGRect(origin: CGPoint(x: screenWidth - insets.right - size.width - saInsets.right, y: saInsets.top + insets.top), size: size).grow(delta)
         case .bottomLeft(let size):
             let screenHeight = UIScreen.main.bounds.size.height
             return CGRect(origin: CGPoint(x: saInsets.left + insets.left, y: screenHeight - insets.bottom - size.height - saInsets.bottom), size: size).grow(delta)
@@ -118,7 +118,7 @@ class CXLayoutUtil {
             let screenWidth = UIScreen.main.bounds.size.width
             return CGRect(
                 origin: CGPoint(
-                    x: screenWidth - insets.left - size.width - saInsets.right,
+                    x: screenWidth - insets.right - size.width - saInsets.right,
                     y: screenHeight - insets.bottom - size.height - saInsets.bottom),
                 size: size).grow(delta)
         case .centerLeft(let size):

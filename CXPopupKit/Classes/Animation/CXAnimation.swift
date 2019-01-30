@@ -59,17 +59,17 @@ public enum CXAnimationDirection {
 }
 
 public struct CXAnimationTransition {
-    let animateInDirection: CXAnimationDirection
-    let animateOutDirection: CXAnimationDirection
+    public let `in`: CXAnimationDirection
+    public let out: CXAnimationDirection
 
     public init(_ `in`: CXAnimationDirection, _ out: CXAnimationDirection) {
-        self.animateInDirection = `in`
-        self.animateOutDirection = out
+        self.`in` = `in`
+        self.out = out
     }
 
     public init(_ in: CXAnimationDirection) {
-        self.animateInDirection = `in`
-        self.animateOutDirection = `in`.opposite
+        self.`in` = `in`
+        self.out = `in`.opposite
     }
 }
 
