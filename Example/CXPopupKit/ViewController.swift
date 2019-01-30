@@ -60,6 +60,7 @@ class ViewController: UIViewController {
             .withMessage("Select a photo to upload")
             .withButton1("OK") { _ in }
             .withButton2("Skip") { _ in }
+            .withConfig(CXAlertConfig(with: .alert))
             .create(on: self)
         self.present(actionSheet, animated: true, completion: nil)
     }

@@ -60,9 +60,11 @@ public class CXAlert: CXPopup {
         private var buttonHandler3: CXButtonHandler?
         private var buttonTextArray: [String]?
         private var buttonInArrayHandler: CXButtonHandler?
+        private var config: CXAlertConfig
         
         public init(_ style: CXAlertStyle) {
             self.style = style
+            self.config = CXAlertConfig(with: style)
         }
         
         public func withTitle(_ title: String) -> Self {
@@ -98,10 +100,15 @@ public class CXAlert: CXPopup {
             self.buttonInArrayHandler = buttonInArrayHandler
             return self
         }
+
+        public func withConfig(_ config: CXAlertConfig) -> Self {
+            self.config = config
+            return self
+        }
         
         public func create(on vc: UIViewController?) -> UIViewController {
             return CXAlert(
-                config: CXAlertConfig(with: style),
+                config: config,
                 title: title,
                 message: message,
                 buttonText1: buttonText1,
@@ -117,30 +124,29 @@ public class CXAlert: CXPopup {
     }
 }
 
-struct CXAlertConfig {
+public struct CXAlertConfig {
     static let alertViewWidth: CGFloat = 270
 
-    let style: CXAlertStyle
-    var buttonHeight: CGFloat = 44
-    var buttonColor = UIColor(white: 0.98, alpha: 1.0)
-    var buttonHighlightColor = UIColor(white: 0.9, alpha: 1.0)
-    var buttonDividerColor = UIColor(white: 0.7, alpha: 1.0)
-    var defaultAxis: UILayoutConstraintAxis? = nil
+    public let style: CXAlertStyle
+    public var buttonHeight: CGFloat = 44
+    public var buttonColor = UIColor(white: 0.98, alpha: 1.0)
+    public var buttonHighlightColor = UIColor(white: 0.9, alpha: 1.0)
+    public var buttonDividerColor = UIColor(white: 0.7, alpha: 1.0)
+    public var defaultAxis: UILayoutConstraintAxis? = nil
 
-    var titleFont = UIFont.systemFont(ofSize: 17.0, weight: .medium)
-    var titleColor = UIColor.black
-    var messageFont = UIFont.systemFont(ofSize: 14.0)
-    var messageColor = UIColor.darkGray
-    var messageTextAlignment = NSTextAlignment.center
-    var buttonFont = UIFont.systemFont(ofSize: 14.0)
-    var buttonTitleColor = UIColor.black
+    public var titleFont = UIFont.systemFont(ofSize: 17.0, weight: .medium)
+    public var titleColor = UIColor.black
+    public var messageFont = UIFont.systemFont(ofSize: 14.0)
+    public var messageColor = UIColor.darkGray
+    public var messageTextAlignment = NSTextAlignment.center
+    public var buttonFont = UIFont.systemFont(ofSize: 14.0)
+    public var buttonTitleColor = UIColor.black
 
-    var alertBackgroundColor = UIColor(white: 0.98, alpha: 1.0)
+    public var alertBackgroundColor = UIColor(white: 0.98, alpha: 1.0)
 
     var finalHeight: CGFloat = 0
-    var popupConfig = CXPopupConfig()
 
-    init(with style: CXAlertStyle) {
+    public init(with style: CXAlertStyle) {
         self.style = style
     }
 
