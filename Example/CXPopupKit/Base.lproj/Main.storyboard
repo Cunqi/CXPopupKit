@@ -97,11 +97,50 @@
                     <connections>
                         <outlet property="tableView" destination="ioq-P3-oNC" id="nwx-Zc-4mP"/>
                         <segue destination="WEV-ax-1I2" kind="show" identifier="CustomView" id="HA3-6f-UuZ"/>
+                        <segue destination="jxK-r8-K0h" kind="show" identifier="Alert View" id="a4H-cx-3dE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbd-Ho-juH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1439" y="-600"/>
+        </scene>
+        <!--Alert View Demo View Controller-->
+        <scene sceneID="rGK-WO-zVU">
+            <objects>
+                <viewController id="jxK-r8-K0h" customClass="AlertViewDemoViewController" customModule="CXPopupKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YYK-jY-b8l"/>
+                        <viewControllerLayoutGuide type="bottom" id="BhI-2A-9AF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uLi-R5-vIP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gi5-iq-kw8">
+                                <rect key="frame" x="154.5" y="192" width="66" height="30"/>
+                                <state key="normal" title="AlertView"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0i-9S-8Ms">
+                                <rect key="frame" x="145.5" y="509" width="84" height="30"/>
+                                <state key="normal" title="ActionSheet"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="n0i-9S-8Ms" firstAttribute="centerX" secondItem="uLi-R5-vIP" secondAttribute="centerX" id="Kh3-Yn-UPK"/>
+                            <constraint firstItem="Gi5-iq-kw8" firstAttribute="centerX" secondItem="uLi-R5-vIP" secondAttribute="centerX" id="RmI-8a-h8O"/>
+                            <constraint firstItem="Gi5-iq-kw8" firstAttribute="top" secondItem="YYK-jY-b8l" secondAttribute="bottom" constant="128" id="l2Q-4I-qMf"/>
+                            <constraint firstItem="BhI-2A-9AF" firstAttribute="top" secondItem="n0i-9S-8Ms" secondAttribute="bottom" constant="128" id="yaW-3B-dgB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="actionSheetButton" destination="n0i-9S-8Ms" id="ssM-wK-rvA"/>
+                        <outlet property="alertViewButton" destination="Gi5-iq-kw8" id="6dy-aa-Rhf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Do-T5-T9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-412" y="-600"/>
         </scene>
         <!--Custom View Demo View Controller-->
         <scene sceneID="5G6-Yp-jqX">

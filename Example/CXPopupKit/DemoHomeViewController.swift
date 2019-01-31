@@ -59,17 +59,6 @@ extension DemoHomeViewController: UITableViewDataSource {
 extension DemoHomeViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = demoItemArray[indexPath.row]
-        switch item {
-        case DemoItem.customView:
-            self.performSegue(withIdentifier: item, sender: nil)
-        case DemoItem.alertView:
-            break
-        case DemoItem.picker:
-            break
-        case DemoItem.datePicker:
-            break
-        default:
-            break
-        }
+        self.performSegue(withIdentifier: item, sender: nil)
     }
 }

@@ -19,6 +19,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		C49DBE8322037FCC002F058A /* AlertViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49DBE8222037FCC002F058A /* AlertViewDemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		8029E950F1E25EC877255E53 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		91D3EB336F41E0F53991450E /* Pods_CXPopupKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CXPopupKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FAFBE7896062E3AD31AD84 /* Pods-CXPopupKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPopupKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CXPopupKit_Example/Pods-CXPopupKit_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C49DBE8222037FCC002F058A /* AlertViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewDemoViewController.swift; sourceTree = "<group>"; };
 		CBE4158A288421199CBCEB65 /* Pods-CXPopupKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPopupKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CXPopupKit_Tests/Pods-CXPopupKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCEC3113EC460A49ED0BC19E /* Pods-CXPopupKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPopupKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CXPopupKit_Tests/Pods-CXPopupKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +108,7 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				3C08AC1D22015D3200E56CE9 /* CustomViewDemoViewController.swift */,
+				C49DBE8222037FCC002F058A /* AlertViewDemoViewController.swift */,
 				3C08AC1F2201766900E56CE9 /* AnimationChooser.xib */,
 				3C08AC212201767C00E56CE9 /* AnimationChooser.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -375,6 +378,7 @@
 				3C08AC222201767C00E56CE9 /* AnimationChooser.swift in Sources */,
 				3C08AC1C2201589B00E56CE9 /* DemoHomeViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				C49DBE8322037FCC002F058A /* AlertViewDemoViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				3C08AC1E22015D3200E56CE9 /* CustomViewDemoViewController.swift in Sources */,
 			);
