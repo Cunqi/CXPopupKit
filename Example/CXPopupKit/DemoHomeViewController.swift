@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CXPopupKit
 
 enum DemoItem {
     static let customView = "CustomView"
     static let alertView = "Alert View"
     static let picker = "Picker"
     static let datePicker = "DatePicker"
+    static let toast = "Toast"
 }
 
 class DemoHomeViewController: UIViewController {
@@ -22,7 +24,8 @@ class DemoHomeViewController: UIViewController {
         DemoItem.customView,
         DemoItem.alertView,
         DemoItem.picker,
-        DemoItem.datePicker
+        DemoItem.datePicker,
+        DemoItem.toast
     ]
     private static let itemIdentifier = "_demoItemIdentifier"
     
@@ -59,6 +62,10 @@ extension DemoHomeViewController: UITableViewDataSource {
 extension DemoHomeViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = demoItemArray[indexPath.row]
-        self.performSegue(withIdentifier: item, sender: nil)
+        if item == DemoItem.toast {
+            self.present(CXToast("Downloading..."), animated: true, completion: nil)
+        } else {
+            self.performSegue(withIdentifier: item, sender: nil)
+        }
     }
 }
