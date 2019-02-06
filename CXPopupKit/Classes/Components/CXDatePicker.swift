@@ -100,14 +100,14 @@ public class CXDatePicker: CXPopup {
                 messageLabel = UILabel()
                 messageLabel?.textColor = config.messageTextColor
                 messageLabel?.font = config.messageFont
-                messageLabel?.backgroundColor = config.messageBackgroundColor
-
+                messageLabel?.backgroundColor = config.pickerBackgroundColor
+                messageLabel?.textAlignment = .center
+                messageLabel?.text = message
+                
                 messageLayout = UIView()
-
                 layout.spacing = 1.0
                 layout.addArrangedSubview(messageLayout!)
             }
-
             configuration?(self, datePicker, messageLabel)
 
             if let mLayout = setupMessageLayout(messageLayout, messageLabel, message) {
@@ -139,6 +139,7 @@ public class CXDatePicker: CXPopup {
         }
 
         private func setupDatePicker() {
+            datePicker.backgroundColor = config.pickerBackgroundColor
             datePicker.setDate(defaultDate ?? Date(), animated: true)
             layout.addArrangedSubview(datePicker)
         }
@@ -156,11 +157,11 @@ extension CXDatePicker.DatePickerView: CXPopupLifeCycleDelegate {
 }
 
 public struct CXDatePickerConfig {
-    var popupConfig = CXPopupConfig()
+    public var popupConfig = CXPopupConfig()
 
     public var messageFont = UIFont.systemFont(ofSize: 14.0)
-    public var messageTextColor = UIColor.darkGray
-    public var messageBackgroundColor = UIColor.white
+    public var messageTextColor = UIColor.black
+    public var pickerBackgroundColor = UIColor.white
     public var dividerColor = UIColor(white: 0.85, alpha: 1.0)
 
     private var datePickerMode = UIDatePickerMode.date
@@ -170,5 +171,6 @@ public struct CXDatePickerConfig {
         popupConfig.animationStyle = .basic
         popupConfig.animationTransition = CXAnimationTransition(.up)
         popupConfig.safeAreaStyle = .wrap
+        popupConfig.safeAreaGapColor = .white
     }
 }
