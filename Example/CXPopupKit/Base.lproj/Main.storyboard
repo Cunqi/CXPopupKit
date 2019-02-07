@@ -52,6 +52,49 @@
             </objects>
             <point key="canvasLocation" x="-412" y="842"/>
         </scene>
+        <!--Progress Bar Demo View Controller-->
+        <scene sceneID="iAK-vY-qbM">
+            <objects>
+                <viewController id="ZRm-7W-XCO" customClass="ProgressBarDemoViewController" customModule="CXPopupKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LNR-9Q-PuZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="yJY-jC-AaP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0r3-x4-Ifx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSU-GX-96I">
+                                <rect key="frame" x="155.5" y="301.5" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="AMa-cb-6TN"/>
+                                    <constraint firstAttribute="width" constant="64" id="Zza-r3-ZYr"/>
+                                </constraints>
+                                <state key="normal" title="TAP ME">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="32"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uSU-GX-96I" firstAttribute="centerX" secondItem="0r3-x4-Ifx" secondAttribute="centerX" id="08e-2s-vZX"/>
+                            <constraint firstItem="uSU-GX-96I" firstAttribute="centerY" secondItem="0r3-x4-Ifx" secondAttribute="centerY" id="pXC-KS-ngU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tapMeButton" destination="uSU-GX-96I" id="mwI-eb-JLw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4rx-IV-m70" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-412" y="1583"/>
+        </scene>
         <!--Picker Demo View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -137,6 +180,7 @@
                         <segue destination="jxK-r8-K0h" kind="show" identifier="Alert View" id="a4H-cx-3dE"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="Picker" id="Nu4-XP-TXq"/>
                         <segue destination="9Nn-PM-c1X" kind="show" identifier="DatePicker" id="EPq-yx-PkS"/>
+                        <segue destination="ZRm-7W-XCO" kind="show" identifier="ProgressBar" id="0bz-3t-zkv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbd-Ho-juH" userLabel="First Responder" sceneMemberID="firstResponder"/>

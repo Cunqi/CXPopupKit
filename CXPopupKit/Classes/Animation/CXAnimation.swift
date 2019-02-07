@@ -21,17 +21,17 @@ public enum CXAnimationStyle {
 }
 
 public struct CXAnimationDuration {
-    let animateInDuration: TimeInterval
-    let animateOutDuration: TimeInterval
+    let `in`: TimeInterval
+    let out: TimeInterval
 
-    public init(`in`: TimeInterval, out: TimeInterval) {
-        self.animateInDuration = `in`
-        self.animateOutDuration = out
+    public init(_ `in`: TimeInterval, _ out: TimeInterval) {
+        self.`in` = `in`
+        self.out = out
     }
 
-    public init(round: TimeInterval) {
-        self.animateInDuration = round
-        self.animateOutDuration = round
+    public init(_ duration: TimeInterval) {
+        self.`in` = duration
+        self.out = duration
     }
 }
 

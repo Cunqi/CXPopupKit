@@ -15,6 +15,7 @@ enum DemoItem {
     static let picker = "Picker"
     static let datePicker = "DatePicker"
     static let toast = "Toast"
+    static let progressBar = "ProgressBar"
 }
 
 class DemoHomeViewController: UIViewController {
@@ -25,7 +26,8 @@ class DemoHomeViewController: UIViewController {
         DemoItem.alertView,
         DemoItem.picker,
         DemoItem.datePicker,
-        DemoItem.toast
+        DemoItem.toast,
+        DemoItem.progressBar
     ]
     private static let itemIdentifier = "_demoItemIdentifier"
     

@@ -43,13 +43,14 @@ public class CXPopup: UIViewController, CXPopupInteractable {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = config.popupBackgroundColor
 
         if config.safeAreaStyle == .wrap {
             let wrapper = CXLayoutUtil.createWrapperView(customView, layoutStyle: config.layoutStyle)
             wrapper.backgroundColor = config.safeAreaGapColor ?? customView.backgroundColor
-            CXLayoutUtil.fill(wrapper, at: view)
+            CXLayoutUtil.fill(wrapper, at: view, with: config.padding)
         } else {
-            CXLayoutUtil.fill(customView, at: view)
+            CXLayoutUtil.fill(customView, at: view, with: config.padding)
         }
         delegate?.viewDidLoad()
     }
@@ -57,7 +58,6 @@ public class CXPopup: UIViewController, CXPopupInteractable {
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.viewDidDisappear()
-        _presentationController = nil
     }
 
     public func dismiss(completion: (() -> Void)?) {
@@ -87,4 +87,9 @@ public class CXPopup: UIViewController, CXPopupInteractable {
             return CXPopup(view, config, delegate, vc)
         }
     }
+}
+
+public extension CXPopupLifeCycleDelegate {
+    func viewDidLoad(){}
+    func viewDidDisappear(){}
 }

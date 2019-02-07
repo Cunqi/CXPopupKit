@@ -12,6 +12,7 @@
 		163DC390363C339936B3114C72FE6716 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97545C39C4A5EE2631DD9FFECE76A40 /* SwiftSupport.swift */; };
 		293F9960B08003218B222D258FE77581 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77B07CA7D221E3EC46B93C00BF37CDE /* QuartzCore.framework */; };
 		387D066A1A34ED7DF0F716CB3A8B746D /* UIImage+Snapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B161931541BFE46DFEA2092EDDDA815 /* UIImage+Snapshot.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3C6BB9F42213D9D800C686AA /* CXActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6BB9F32213D9D800C686AA /* CXActivityIndicator.swift */; };
 		3CBE84C321770CCD00974927 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3CBE84C221770CCD00974927 /* .gitkeep */; };
 		3CBE84CC21770CEE00974927 /* CXLayoutUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */; };
 		3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE84C821770CEE00974927 /* CXTextUtil.swift */; };
@@ -41,6 +42,9 @@
 		B114E9CAF8CB401F41DAC0358E98D281 /* CXPopupKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C45B0D21DD991EC5247EAC5CA3B2E317 /* CXPopupKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5A42E4B34E5002311A192F407B1D56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */; };
 		BCDA265400AF5BCF21074C5AF1FD09A8 /* UIApplication+StrictKeyWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B9109B8B333B5A1A3E92EFC09EDC10AC /* UIApplication+StrictKeyWindow.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C44E8D75220E4B2F00637D48 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E8D74220E4B2F00637D48 /* ProgressBarView.swift */; };
+		C44E8D78220E4B5600637D48 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E8D77220E4B5600637D48 /* CGRect+Extension.swift */; };
+		C4AD4644220B725900C685AC /* CXProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD4643220B725900C685AC /* CXProgressBar.swift */; };
 		C4BB6440220123BD009480FA /* CXPopupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB6436220123BD009480FA /* CXPopupConfig.swift */; };
 		C4BB6441220123BD009480FA /* CXPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB6437220123BD009480FA /* CXPopup.swift */; };
 		C4BB6442220123BD009480FA /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB6438220123BD009480FA /* CXPresentationController.swift */; };
@@ -97,6 +101,7 @@
 		3823AB9AA73861F3A7FC23210C46558E /* CXPopupKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CXPopupKit-prefix.pch"; sourceTree = "<group>"; };
 		39577E2B806B8B2D019998DE60728F63 /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
 		3B5E22F9517F21D3A0251F88FCAB281E /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
+		3C6BB9F32213D9D800C686AA /* CXActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXActivityIndicator.swift; sourceTree = "<group>"; };
 		3CBE84C221770CCD00974927 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		3CBE84C721770CEE00974927 /* CXLayoutUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXLayoutUtil.swift; sourceTree = "<group>"; };
 		3CBE84C821770CEE00974927 /* CXTextUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXTextUtil.swift; sourceTree = "<group>"; };
@@ -135,7 +140,10 @@
 		B9CEF7D6C5E08AB80E58DABC75D882BC /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
 		BBB6A925DF90E5500E7BDCC094FEBEA7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C1A94602875A48A997AD3F08A33E6EAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C44E8D74220E4B2F00637D48 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		C44E8D77220E4B5600637D48 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		C45B0D21DD991EC5247EAC5CA3B2E317 /* CXPopupKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CXPopupKit-umbrella.h"; sourceTree = "<group>"; };
+		C4AD4643220B725900C685AC /* CXProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXProgressBar.swift; sourceTree = "<group>"; };
 		C4BB6436220123BD009480FA /* CXPopupConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopupConfig.swift; sourceTree = "<group>"; };
 		C4BB6437220123BD009480FA /* CXPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPopup.swift; sourceTree = "<group>"; };
 		C4BB6438220123BD009480FA /* CXPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXPresentationController.swift; sourceTree = "<group>"; };
@@ -400,6 +408,36 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
+		C44E8D71220E4B0100637D48 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				C4BB643B220123BD009480FA /* CXPicker.swift */,
+				C4BB643E220123BD009480FA /* CXDatePicker.swift */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		C44E8D72220E4B1100637D48 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				C4BB643C220123BD009480FA /* CXToast.swift */,
+				C4BB643D220123BD009480FA /* CXAlert.swift */,
+				C4BB643F220123BD009480FA /* AlertView.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		C44E8D73220E4B1C00637D48 /* ProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				C4AD4643220B725900C685AC /* CXProgressBar.swift */,
+				C44E8D74220E4B2F00637D48 /* ProgressBarView.swift */,
+				C44E8D77220E4B5600637D48 /* CGRect+Extension.swift */,
+				3C6BB9F32213D9D800C686AA /* CXActivityIndicator.swift */,
+			);
+			path = ProgressBar;
+			sourceTree = "<group>";
+		};
 		C4BB6435220123BD009480FA /* Popup */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,11 +452,9 @@
 		C4BB643A220123BD009480FA /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				C4BB643B220123BD009480FA /* CXPicker.swift */,
-				C4BB643C220123BD009480FA /* CXToast.swift */,
-				C4BB643D220123BD009480FA /* CXAlert.swift */,
-				C4BB643E220123BD009480FA /* CXDatePicker.swift */,
-				C4BB643F220123BD009480FA /* AlertView.swift */,
+				C44E8D73220E4B1C00637D48 /* ProgressBar */,
+				C44E8D72220E4B1100637D48 /* Alerts */,
+				C44E8D71220E4B0100637D48 /* Pickers */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -680,12 +716,15 @@
 				3CBE84F121770DC400974927 /* CXAnimation.swift in Sources */,
 				C4BB6442220123BD009480FA /* CXPresentationController.swift in Sources */,
 				C4BB6446220123BD009480FA /* CXAlert.swift in Sources */,
+				C44E8D75220E4B2F00637D48 /* ProgressBarView.swift in Sources */,
+				C44E8D78220E4B5600637D48 /* CGRect+Extension.swift in Sources */,
 				3CBE84CC21770CEE00974927 /* CXLayoutUtil.swift in Sources */,
 				3CBE850D21770DFB00974927 /* CXPopAnimation.swift in Sources */,
 				3CBE850C21770DFB00974927 /* CXBasicAnimation.swift in Sources */,
 				C4BB6444220123BD009480FA /* CXPicker.swift in Sources */,
 				3CBE850821770DFB00974927 /* CXBounceAnimation.swift in Sources */,
 				3CBE850921770DFB00974927 /* CXZoomAnimation.swift in Sources */,
+				C4AD4644220B725900C685AC /* CXProgressBar.swift in Sources */,
 				3CBE850A21770DFB00974927 /* AnimationFactory.swift in Sources */,
 				3CBE84CD21770CEE00974927 /* CXTextUtil.swift in Sources */,
 				C4BB6447220123BD009480FA /* CXDatePicker.swift in Sources */,
@@ -694,6 +733,7 @@
 				6892C5E58FC7B7645BEBC35FC513944E /* CXPopupKit-dummy.m in Sources */,
 				C4BB6445220123BD009480FA /* CXToast.swift in Sources */,
 				C4BB6441220123BD009480FA /* CXPopup.swift in Sources */,
+				3C6BB9F42213D9D800C686AA /* CXActivityIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

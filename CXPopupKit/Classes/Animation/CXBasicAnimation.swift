@@ -36,9 +36,9 @@ class CXBasicAnimation: NSObject, CXAnimation {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         if isPresenting(transitionContext) {
-            return duration.animateInDuration
+            return duration.`in`
         } else {
-            return duration.animateOutDuration
+            return duration.out
         }
     }
 

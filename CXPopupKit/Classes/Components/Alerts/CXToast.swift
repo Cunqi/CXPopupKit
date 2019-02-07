@@ -28,7 +28,7 @@ public class CXToast: CXPopup {
     public init(_ text: String, _ duration: CXToastDuration = .short) {
         let toast = Toast(text, duration)
         let presenting = CXToast.getMostTopViewController()
-        super.init(toast, toast.config.exportPopupConfig(), toast, presenting)
+        super.init(toast, toast.config.popupConfig, toast, presenting)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -109,13 +109,14 @@ struct CXToastConfig {
     var finalHeight: CGFloat = 0
     var finalWidth: CGFloat = 0
 
-    func exportPopupConfig() -> CXPopupConfig {
-        var popupConfig = CXPopupConfig()
+    var popupConfig: CXPopupConfig
+
+    init() {
+        popupConfig = CXPopupConfig()
         popupConfig.layoutStyle = .bottomCenter(size: CGSize(width: finalWidth, height: finalHeight))
         popupConfig.layoutInsets = UIEdgeInsets(top: 0, left: 0, bottom: CXSpacing.spacing6, right: 0)
         popupConfig.animationStyle = .fade
         popupConfig.animationTransition = CXAnimationTransition(.center)
         popupConfig.maskBackgroundColor = .clear
-        return popupConfig
     }
 }

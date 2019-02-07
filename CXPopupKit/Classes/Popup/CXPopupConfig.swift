@@ -71,14 +71,14 @@ public struct CXPopupConfig {
     public init() {}
     // MARK - Properties: LayoutStyle
     public var layoutStyle = CXLayoutStyle.center(size: .zero)
-    public var layoutInsets = UIEdgeInsets.zero
+    public var layoutInsets: UIEdgeInsets = .zero
     
     // MARK - Properties: Shadow
     public var isShadowEnabled: Bool = true
     public var shadowColor: UIColor = .black
     public var shadowOpacity: Float = 0.8
     public var shadowRadius: CGFloat = 26.0
-    public var shadowOffset: CGSize = CGSize(width: 0, height: 13.0)
+    public var shadowOffset = CGSize(width: 0, height: 13.0)
     
     // MARK - Properties: Behavior
     public var isAutoRotateEnabled: Bool = false
@@ -94,6 +94,10 @@ public struct CXPopupConfig {
 
     // MARK - Properties: Animation
     public var animationStyle: CXAnimationStyle = .basic
-    public var animationDuration: CXAnimationDuration = CXAnimationDuration(round: 0.35)
+    public var animationDuration: CXAnimationDuration = CXAnimationDuration(0.35, 0.12)
     public var animationTransition: CXAnimationTransition = CXAnimationTransition(.center)
+    
+    // MARK - Properties: Internal Usage
+    var padding: UIEdgeInsets = .zero
+    var popupBackgroundColor: UIColor? = nil
 }
