@@ -42,8 +42,7 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-        let popup = CXPopup.Builder(view: customView).withConfig(config).create(on: self)
-        self.present(popup, animated: true, completion: nil)
+        CXPopup.Builder(view: customView).withConfig(config).create(on: self).pop()
     }
     
     
@@ -122,10 +121,10 @@ class CustomViewDemoViewController: UIViewController {
                 self?.config.animationStyle = animationStyle
                 self?.config.animationTransition = transition
             }
-            let popup = CXPopup.Builder(view: animationChooser)
+            CXPopup.Builder(view: animationChooser)
                 .withConfig(animationPopupConfig)
                 .create(on: self)
-            self.present(popup, animated: true, completion: nil)
+                .pop()
         }
     }
     

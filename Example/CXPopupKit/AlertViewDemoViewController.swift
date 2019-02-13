@@ -22,22 +22,22 @@ class AlertViewDemoViewController: UIViewController {
     }
 
     @objc private func didTapAlertViewButton() {
-        let actionSheet = CXAlert.Builder(.alert)
+        CXAlert.Builder(.alert)
             .withTitle("Warning!")
             .withMessage("A or B")
             .withButton1("A") { _ in }
             .withButton2("B") { _ in }
             .create(on: self)
-        self.present(actionSheet, animated: true, completion: nil)
+            .pop()
     }
 
     @objc private func didTapActionSheetButton() {
-        let actionSheet = CXAlert.Builder(.actionSheet)
+        CXAlert.Builder(.actionSheet)
             .withTitle("Warning!")
             .withMessage("Select a photo to upload")
             .withButton1("OK") { _ in }
             .withButton2("Skip") { _ in }
             .create(on: self)
-        self.present(actionSheet, animated: true, completion: nil)
+            .pop()
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 public typealias CXView = UIView & CXDialog
+public typealias CXPopupAction = () -> Void
 
 public protocol CXPopupLifeCycleDelegate: class {
     func viewDidLoad()
@@ -15,7 +16,10 @@ public protocol CXPopupLifeCycleDelegate: class {
 }
 
 public protocol CXPopupInteractable: class {
-    func dismiss(completion: (() -> Void)?)
+    func dismiss()
+    func dismiss(_ completion: CXPopupAction?)
+    func pop()
+    func pop(_ completion: CXPopupAction?)
 }
 
 public class CXPopup: UIViewController, CXPopupInteractable {
@@ -26,13 +30,14 @@ public class CXPopup: UIViewController, CXPopupInteractable {
     private let customView: CXView
     private let config: CXPopupConfig
     private weak var delegate: CXPopupLifeCycleDelegate?
-
+    private weak var presenting: UIViewController?
     private var _presentationController: CXPresentationController?
 
     init(_ view: CXView, _ config: CXPopupConfig, _ delegate: CXPopupLifeCycleDelegate?, _ presenting: UIViewController?) {
         self.customView = view
         self.config = config
         self.delegate = delegate
+        self.presenting = presenting
         super.init(nibName: nil, bundle: nil)
         self._presentationController = CXPresentationController(presentedViewController: self, presenting: presenting, config: config)
     }
@@ -41,7 +46,11 @@ public class CXPopup: UIViewController, CXPopupInteractable {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override public func viewDidLoad() {
+    deinit {
+        print("CXPopup was destroyed.")
+    }
+
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = config.popupBackgroundColor
 
@@ -58,10 +67,24 @@ public class CXPopup: UIViewController, CXPopupInteractable {
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.viewDidDisappear()
+        _presentationController = nil
     }
 
-    public func dismiss(completion: (() -> Void)?) {
+    public func dismiss() {
+        dismiss(nil)
+    }
+
+    public func dismiss(_ completion: CXPopupAction? = nil) {
         self.dismiss(animated: true, completion: completion)
+    }
+
+    public func pop() {
+        pop(nil)
+    }
+
+    public func pop(_ completion: CXPopupAction? = nil) {
+        _presentationController = CXPresentationController(presentedViewController: self, presenting: presenting, config: config)
+        self.presenting?.present(self, animated: true, completion: completion)
     }
     
     public class Builder {
@@ -83,7 +106,7 @@ public class CXPopup: UIViewController, CXPopupInteractable {
             return self
         }
         
-        public func create(on vc: UIViewController?) -> UIViewController {
+        public func create(on vc: UIViewController?) -> CXPopup {
             return CXPopup(view, config, delegate, vc)
         }
     }

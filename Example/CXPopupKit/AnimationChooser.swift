@@ -160,7 +160,7 @@ class AnimationChooser: UIView, CXDialog {
     }
     
     @objc private func didTapApplyButton() {
-        self.cxPopup?.dismiss(completion: { [weak self] in
+        self.cxPopup?.dismiss({ [weak self] in
             guard let strongSelf = self else {
                 return
             }

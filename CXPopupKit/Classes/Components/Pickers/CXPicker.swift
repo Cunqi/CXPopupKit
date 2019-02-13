@@ -173,7 +173,7 @@ public class CXPicker<T: CustomStringConvertible>: CXPopup {
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let option = options[indexPath.row]
-            self.cxPopup?.dismiss(completion: { [weak self] in
+            self.cxPopup?.dismiss({ [weak self] in
                 self?.handler?(option)
                 self?.cleanup()
             })

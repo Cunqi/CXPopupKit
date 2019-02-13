@@ -106,7 +106,7 @@ public class CXAlert: CXPopup {
             return self
         }
         
-        public func create(on vc: UIViewController?) -> UIViewController {
+        public func create(on vc: UIViewController?) -> CXPopupInteractable {
             return CXAlert(
                 config: config,
                 title: title,

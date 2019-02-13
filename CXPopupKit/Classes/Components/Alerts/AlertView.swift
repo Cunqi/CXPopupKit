@@ -136,7 +136,7 @@ class AlertView: UIView, CXDialog {
         guard let title = sender.title(for: .normal) else {
             return
         }
-        self.cxPopup?.dismiss(completion: { [weak self] in
+        self.cxPopup?.dismiss({ [weak self] in
             self?.buttonHandler1?(title)
             self?.cleanup()
         })
@@ -146,7 +146,7 @@ class AlertView: UIView, CXDialog {
         guard let title = sender.title(for: .normal) else {
             return
         }
-        self.cxPopup?.dismiss(completion: { [weak self] in
+        self.cxPopup?.dismiss({ [weak self] in
             self?.buttonHandler2?(title)
             self?.cleanup()
         })
@@ -156,7 +156,7 @@ class AlertView: UIView, CXDialog {
         guard let title = sender.title(for: .normal) else {
             return
         }
-        self.cxPopup?.dismiss(completion: { [weak self] in
+        self.cxPopup?.dismiss({ [weak self] in
             self?.buttonHandler3?(title)
             self?.cleanup()
         })
@@ -166,7 +166,7 @@ class AlertView: UIView, CXDialog {
         guard let title = sender.title(for: .normal) else {
             return
         }
-        self.cxPopup?.dismiss(completion: { [weak self] in
+        self.cxPopup?.dismiss({ [weak self] in
             self?.buttonInArrayHandler?(title)
             self?.cleanup()
         })

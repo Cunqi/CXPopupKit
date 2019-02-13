@@ -8,7 +8,12 @@
 import UIKit
 
 public typealias CXActivityIndicatorStyle = CXProgressBarSize
-public class CXActivityIndicator: CXPopup {
+public protocol CXActivityIndicatorInteractable {
+    func startAnimating()
+    func stopAnimating()
+}
+
+public class CXActivityIndicator: CXPopup, CXActivityIndicatorInteractable {
     private var config: CXProgressConfig
     private let activityIndicatorView: CXActivityIndicatorView
     
@@ -35,7 +40,7 @@ public class CXActivityIndicator: CXPopup {
     }
     
     public func stopAnimating() {
-        self.dismiss(completion: nil)
+        self.dismiss()
     }
     
     public class Builder {

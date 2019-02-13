@@ -22,7 +22,7 @@ class ProgressBarDemoViewController: UIViewController {
         var config = CXProgressConfig()
         config.progressBarSize = .medium
 //        progressBar = CXProgressBar.Builder(.line).withConfig(config).create(on: self)
-        progressBar = CXProgressBar.Builder(.ring).withMessageFormat("Current progress %.0f%%").create(on: self)
+//        progressBar = CXProgressBar.Builder(.ring).withMessageFormat("Current progress %.0f%%").create(on: self)
         activityIndicator = CXActivityIndicator.Builder().withStyle(.large).create(on: self)
     }
 
@@ -30,7 +30,8 @@ class ProgressBarDemoViewController: UIViewController {
 //        self.present(progressBar, animated: true, completion: nil)
         timer = Timer(timeInterval: 8.0, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: false)
         RunLoop.current.add(timer, forMode: .defaultRunLoopMode)
-        self.present(activityIndicator, animated: true) { [weak self] in
+
+        activityIndicator.pop { [weak self] in
             self?.activityIndicator.startAnimating()
         }
     }

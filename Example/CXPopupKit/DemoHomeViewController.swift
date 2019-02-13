@@ -65,7 +65,7 @@ extension DemoHomeViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = demoItemArray[indexPath.row]
         if item == DemoItem.toast {
-            self.present(CXToast("Downloading..."), animated: true, completion: nil)
+            CXToast.Builder("Downloading...").create().pop()
         } else {
             self.performSegue(withIdentifier: item, sender: nil)
         }
