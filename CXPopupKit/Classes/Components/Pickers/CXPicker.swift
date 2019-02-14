@@ -189,7 +189,7 @@ public class CXPicker<T: CustomStringConvertible>: CXPopup {
 public struct CXPickerConfig {
     public var popupConfig = CXPopupConfig()
 
-    public var accessoryType = UITableViewCellAccessoryType.none
+    public var accessoryType = UITableViewCell.AccessoryType.none
     public var messageFont = UIFont.systemFont(ofSize: 14.0)
     public var messageTextColor = UIColor.darkGray
     public var messageBackgroundColor = UIColor.white

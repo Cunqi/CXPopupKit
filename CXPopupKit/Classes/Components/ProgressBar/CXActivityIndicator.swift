@@ -17,7 +17,7 @@ public class CXActivityIndicator: CXPopup, CXActivityIndicatorInteractable {
     private var config: CXProgressConfig
     private let activityIndicatorView: CXActivityIndicatorView
     
-    public init(_ config: CXProgressConfig, _ vc: UIViewController?) {
+    init(_ config: CXProgressConfig, _ vc: UIViewController?) {
         self.config = config
         
         let finalSize = CGSize(

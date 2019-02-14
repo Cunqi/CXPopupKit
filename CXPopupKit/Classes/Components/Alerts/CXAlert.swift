@@ -132,7 +132,7 @@ public struct CXAlertConfig {
     public var buttonColor = UIColor(white: 0.98, alpha: 1.0)
     public var buttonHighlightColor = UIColor(white: 0.9, alpha: 1.0)
     public var buttonDividerColor = UIColor(white: 0.7, alpha: 1.0)
-    public var defaultAxis: UILayoutConstraintAxis? = nil
+    public var defaultAxis: NSLayoutConstraint.Axis? = nil
 
     public var titleFont = UIFont.systemFont(ofSize: 17.0, weight: .medium)
     public var titleColor = UIColor.black

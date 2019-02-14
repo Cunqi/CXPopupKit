@@ -60,7 +60,7 @@ class CXLineProgressBar: CXProgressBarView {
         backgroundLayer.fillColor = config.barBackgroundColor.cgColor
         backgroundLayer.strokeColor = config.barForegroundColor.cgColor
         backgroundLayer.lineWidth = config.lineProgressBarBorderWidth
-        backgroundLayer.lineCap = kCALineCapRound
+        backgroundLayer.lineCap = CAShapeLayerLineCap.round
         backgroundLayer.path = UIBezierPath(roundedRect: rect, cornerRadius: config.lineProgressBarCornerRadius).cgPath
 
         progressLayer.fillColor = config.barForegroundColor.cgColor
@@ -123,12 +123,12 @@ class CXRingProgressBar: CXProgressBarView {
         backgroundLayer.strokeColor = config.barBackgroundColor.cgColor
         backgroundLayer.fillColor = UIColor.clear.cgColor
         backgroundLayer.path = UIBezierPath(ovalIn: backgroundRect).cgPath
-        backgroundLayer.lineCap = kCALineCapRound
+        backgroundLayer.lineCap = CAShapeLayerLineCap.round
         backgroundLayer.lineWidth = borderWidth
         
         progressLayer.strokeColor = config.barForegroundColor.cgColor
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.lineCap = kCALineCapRound
+        progressLayer.lineCap = CAShapeLayerLineCap.round
         progressLayer.lineWidth = borderWidth
         updateProgress(progress)
     }
@@ -166,12 +166,12 @@ class CXActivityIndicatorView: CXProgressBarView, CXPopupLifeCycleDelegate {
         backgroundLayer.strokeColor = config.barBackgroundColor.cgColor
         backgroundLayer.fillColor = UIColor.clear.cgColor
         backgroundLayer.path = UIBezierPath(ovalIn: backgroundRect).cgPath
-        backgroundLayer.lineCap = kCALineCapRound
+        backgroundLayer.lineCap = CAShapeLayerLineCap.round
         backgroundLayer.lineWidth = borderWidth
         
         progressLayer.strokeColor = config.barForegroundColor.cgColor
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.lineCap = kCALineCapRound
+        progressLayer.lineCap = CAShapeLayerLineCap.round
         progressLayer.lineWidth = borderWidth
         updateProgress(progress)
     }
@@ -202,7 +202,7 @@ class CXActivityIndicatorView: CXProgressBarView, CXPopupLifeCycleDelegate {
             link.isPaused = false
         } else {
             displayLink = CADisplayLink(target: self, selector: #selector(executeAnimation))
-            displayLink?.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
+            displayLink?.add(to: RunLoop.current, forMode: .default)
             displayLink?.isPaused = false
         }
     }

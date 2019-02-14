@@ -21,12 +21,10 @@ public enum CXProgressBarSize {
 }
 
 public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
-    private var progressBarView: ProgressBarWrapperView
-    private var config: CXProgressConfig
+    private let progressBarView: ProgressBarWrapperView
     init(_ style: CXProgressBarStyle, _ format: String?, _ config: CXProgressConfig, _ vc: UIViewController?) {
         self.progressBarView = ProgressBarWrapperView(style, format, config)
-        self.config = progressBarView.updateConfig()
-        super.init(progressBarView, self.config.popupConfig, progressBarView, vc)
+        super.init(progressBarView, progressBarView.config.popupConfig, progressBarView, vc)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -34,23 +32,21 @@ public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
     }
 
     public func updateProgress(_ progress: CGFloat) {
-        if Thread.isMainThread {
-            progressBarView.updateProgress(progress)
-        } else {
-            DispatchQueue.main.async { [weak self] in
-                self?.progressBarView.updateProgress(progress)
-            }
+        guard Thread.isMainThread else {
+            return
         }
+        progressBarView.updateProgress(progress)
     }
 
     class ProgressBarWrapperView: UIView, CXDialog, CXProgressBarUpdatable, CXPopupLifeCycleDelegate {
         typealias Layout = (view: UIView, size: CGSize)
+        
+        var config: CXProgressConfig
         private(set) var progressBar: CXProgressBarView
         private(set) var messageLabel: UILabel?
         private let style: CXProgressBarStyle
         private var msgFormat: String?
-        private var config: CXProgressConfig
-
+        
         init(_ style: CXProgressBarStyle, _ format: String?, _ config: CXProgressConfig) {
             self.style = style
             self.msgFormat = format
@@ -68,18 +64,13 @@ public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
         private func setup() {
             backgroundColor = config.backgroundColor
 
-            let stackView = UIStackView()
-            stackView.axis = .vertical
-            stackView.distribution = .fill
-
             let msgLayout = createMessageLayout(msgFormat, config)
             let msgLayoutSize = msgLayout?.size ?? .zero
             let progressBarLayout = createProgressBarLayout(config.progressBarSize, msgLayoutSize.width)
-            stackView.addArrangedSubview(progressBarLayout.view)
-            if let msgView = msgLayout?.view {
-                stackView.addArrangedSubview(msgView)
-            }
-
+            
+            let stackView = UIStackView(arrangedSubviews: [msgLayout?.view, progressBarLayout.view].compactMap { $0 })
+            stackView.axis = .vertical
+            stackView.distribution = .fill
             CXLayoutUtil.fill(stackView, at: self)
 
             let finalSize = CGSize(
@@ -91,6 +82,7 @@ public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
         private func createProgressBarLayout(_ barSize: CXProgressBarSize, _ msgWidth: CGFloat) -> Layout {
             let layout = UIView()
             layout.backgroundColor = .clear
+            
             switch style {
             case .line:
                 let height = 3 * CXSpacing.spacing3
@@ -150,9 +142,7 @@ public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
             guard let format = msgFormat else {
                 return
             }
-            let p = progress * 100
-            let str = String(format: format, p)
-            messageLabel?.text = str
+            messageLabel?.text = String(format: format, progress * 100)
         }
 
         func updateConfig() -> CXProgressConfig {
@@ -238,41 +228,6 @@ extension CXProgressBarSize {
             return CGSize(width: CXSpacing.spacing8, height: CXSpacing.spacing8)
         case .custom(let size):
             return size.square
-        }
-    }
-}
-
-extension CXLayoutStyle {
-    mutating func update(size: CGSize) {
-        switch self {
-        case .left:
-            self = .left(width: size.width)
-        case .right:
-            self = .right(width: size.width)
-        case .top:
-            self = .top(height: size.height)
-        case .bottom:
-            self = .bottom(height: size.height)
-        case .topLeft:
-            self = .topLeft(size: size)
-        case .topRight:
-            self = .topRight(size: size)
-        case .bottomLeft:
-            self = .bottomLeft(size: size)
-        case .bottomRight:
-            self = .bottomRight(size: size)
-        case .centerLeft:
-            self = .centerLeft(size: size)
-        case .centerRight:
-            self = .centerRight(size: size)
-        case .center:
-            self = .center(size: size)
-        case .topCenter:
-            self = .topCenter(size: size)
-        case .bottomCenter:
-            self = .bottomCenter(size: size)
-        case .custom(let rect):
-            self = .custom(rect: CGRect(origin: rect.origin, size: size))
         }
     }
 }

@@ -164,7 +164,7 @@ public struct CXDatePickerConfig {
     public var pickerBackgroundColor = UIColor.white
     public var dividerColor = UIColor(white: 0.85, alpha: 1.0)
 
-    private var datePickerMode = UIDatePickerMode.date
+    private var datePickerMode = UIDatePicker.Mode.date
 
     public init() {
         popupConfig.layoutStyle = .bottom(height: 240)
