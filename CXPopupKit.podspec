@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CXPopupKit'
-  s.version          = '1.1.4'
+  s.version          = '2.0.0'
   s.summary          = 'iOS popup kit written by swift'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-iOS popup kit written by swift, support iOS 9 and above
+iOS popup kit written by swift, support iOS 10 and above
                        DESC
 
   s.homepage         = 'https://github.com/Cunqi/CXPopupKit'
@@ -28,7 +28,7 @@ iOS popup kit written by swift, support iOS 9 and above
   s.source           = { :git => 'https://github.com/Cunqi/CXPopupKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'CXPopupKit/Classes/**/*'
   
