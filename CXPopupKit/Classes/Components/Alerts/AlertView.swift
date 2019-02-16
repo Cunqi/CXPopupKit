@@ -9,7 +9,7 @@ import UIKit
 
 class AlertView: UIView, CXDialog {
     var config: CXAlertConfig
-    private var alertViewHeight: CGFloat = 0
+    private var finalHeight: CGFloat = 0
     private var buttonHandler1: CXButtonHandler?
     private var buttonHandler2: CXButtonHandler?
     private var buttonHandler3: CXButtonHandler?
@@ -38,17 +38,7 @@ class AlertView: UIView, CXDialog {
         stackView.axis = .vertical
         stackView.distribution = .fill
         
-        let titleLayout = AlertView.createTitleLayout(title, config)
-        if let layout = titleLayout.layout {
-            stackView.addArrangedSubview(layout)
-            alertViewHeight += titleLayout.height
-        }
-        
-        let messageLayout = AlertView.createMessageLayout(title, message, config)
-        if let layout = messageLayout.layout {
-            stackView.addArrangedSubview(layout)
-            alertViewHeight += messageLayout.height
-        }
+        setupLabelLayout(title, message, at: stackView)
         
         let buttonLayout = ButtonLayout(
             config,
@@ -62,74 +52,47 @@ class AlertView: UIView, CXDialog {
             CXButtonAction(self, #selector(didTapButtonInArray(sender:))))
         if let layout = buttonLayout.layout {
             stackView.addArrangedSubview(layout)
-            alertViewHeight += buttonLayout.height
+            finalHeight += buttonLayout.height
         }
         
         CXLayoutUtil.fill(stackView, at: self)
-        self.config.finalHeight = alertViewHeight
+        self.config.popupConfig.layoutStyle.update(size: CGSize(width: config.style.width, height: finalHeight))
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private static func createTitleLayout(_ title: String?, _ config: CXAlertConfig) -> (layout: UIView?, height: CGFloat) {
-        var height: CGFloat = 0
-        guard let title = title else {
-            return (nil, height)
+
+    private func setupLabelLayout(_ title: String?, _ message: String?, at stackView: UIStackView) {
+        if let title = title {
+            let titleLabelLayout = LabelLayoutBuilder(title)
+                    .withBackgroundColor(config.backgroundColor)
+                    .withEstimateWidth(config.style.width - CXSpacing.spacing5)
+                    .withInsets(UIEdgeInsets(CXSpacing.spacing4))
+                    .withTextColor(config.titleColor)
+                    .withFont(config.titleFont)
+                    .build()
+            stackView.addArrangedSubview(titleLabelLayout.view)
+            titleLabelLayout.view.heightAnchor.constraint(equalToConstant: titleLabelLayout.size.height).isActive = true
+            finalHeight += titleLabelLayout.size.height
         }
-        let label = UILabel()
-        label.text = title
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.font = config.titleFont
-        label.textColor = config.titleColor
-        
-        let width = config.style == .alert ? CXAlertConfig.alertViewWidth : UIScreen.main.bounds.size.width
-        let estimatedHeight = CXTextUtil.getTextSize(
-            for: title,
-            with: CGSize(width: width - CXSpacing.spacing5, height: CGFloat(Double.greatestFiniteMagnitude)),
-            font: config.titleFont).height
-        height = estimatedHeight + CXSpacing.spacing4
-        
-        let layout = UIView()
-        layout.backgroundColor = config.alertBackgroundColor
-        layout.heightAnchor.constraint(equalToConstant: height).isActive = true
-        CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(top: CXSpacing.spacing4 - CXSpacing.spacing2, left: CXSpacing.spacing4, bottom: CXSpacing.spacing2, right: CXSpacing.spacing4))
-        return (layout, height)
-    }
-    
-    private static func createMessageLayout(_ title: String?, _ message: String?, _ config: CXAlertConfig) -> (layout: UIView?, height: CGFloat) {
-        var height: CGFloat = 0
-        guard let message = message else {
-            return (nil, height)
+
+        if let message = message {
+            let messageInsets = title == nil ? UIEdgeInsets(CXSpacing.spacing4) :
+                    UIEdgeInsets(top: 0, left: CXSpacing.spacing4, bottom: CXSpacing.spacing4, right: CXSpacing.spacing4)
+            let messageLabelLayout = LabelLayoutBuilder(message)
+                    .withBackgroundColor(config.backgroundColor)
+                    .withEstimateWidth(config.style.width)
+                    .withInsets(messageInsets)
+                    .withTextColor(config.messageColor)
+                    .withFont(config.messageFont)
+                    .withTextAlignment(config.messageTextAlignment)
+                    .build()
+
+            stackView.addArrangedSubview(messageLabelLayout.view)
+            messageLabelLayout.view.heightAnchor.constraint(equalToConstant: messageLabelLayout.size.height).isActive = true
+            finalHeight += messageLabelLayout.size.height
         }
-        let label = UILabel()
-        label.text = message
-        label.textAlignment = config.messageTextAlignment
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.font = config.messageFont
-        label.textColor = config.messageColor
-        
-        let width = config.style == .alert ? CXAlertConfig.alertViewWidth : UIScreen.main.bounds.size.width
-        let estimatedHeight = CXTextUtil.getTextSize(
-            for: message,
-            with: CGSize(width: width - CXSpacing.spacing4, height: CGFloat(Double.greatestFiniteMagnitude)),
-            font: config.messageFont).height
-        height = estimatedHeight + CXSpacing.spacing4
-        
-        let layout = UIView()
-        layout.backgroundColor = config.alertBackgroundColor
-        layout.heightAnchor.constraint(equalToConstant: height).isActive = true
-        
-        if title == nil {
-            CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(top: CXSpacing.spacing3, left: CXSpacing.spacing3, bottom: CXSpacing.spacing3, right: CXSpacing.spacing3))
-        } else {
-            CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(top: 0, left: CXSpacing.spacing3, bottom: CXSpacing.spacing4, right: CXSpacing.spacing3))
-        }
-        return (layout, height)
     }
     
     @objc private func didTapButton1(sender: UIButton) {

@@ -10,6 +10,15 @@ import UIKit
 public enum CXAlertStyle {
     case alert
     case actionSheet
+    
+    var width: CGFloat {
+        switch self {
+        case .alert:
+            return 270
+        case .actionSheet:
+            return UIScreen.main.bounds.width
+        }
+    }
 }
 
 public typealias CXButtonHandler = (String) -> Void
@@ -41,7 +50,7 @@ public class CXAlert: CXPopup {
             buttonHandler3: buttonHandler3,
             buttonTextArray: buttonTextArray,
             buttonInArrayHandler: buttonInArrayHandler)
-        super.init(alertView, alertView.config.exportPopupConfig(), nil, presenting)
+        super.init(alertView, alertView.config.popupConfig, nil, presenting)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -125,8 +134,6 @@ public class CXAlert: CXPopup {
 }
 
 public struct CXAlertConfig {
-    static let alertViewWidth: CGFloat = 270
-
     public let style: CXAlertStyle
     public var buttonHeight: CGFloat = 44
     public var buttonColor = UIColor(white: 0.98, alpha: 1.0)
@@ -142,31 +149,27 @@ public struct CXAlertConfig {
     public var buttonFont = UIFont.systemFont(ofSize: 14.0)
     public var buttonTitleColor = UIColor.black
 
-    public var alertBackgroundColor = UIColor(white: 0.98, alpha: 1.0)
-
-    var finalHeight: CGFloat = 0
+    public var backgroundColor = UIColor(white: 0.98, alpha: 1.0)
+    
+    var popupConfig: CXPopupConfig
 
     public init(with style: CXAlertStyle) {
         self.style = style
-    }
-
-    func exportPopupConfig() -> CXPopupConfig {
-        var config = CXPopupConfig()
+        self.popupConfig = CXPopupConfig()
         switch style {
         case .actionSheet:
-            config.allowTouchOutsideToDismiss = true
-            config.layoutStyle = .bottom(height: finalHeight)
-            config.animationTransition = CXAnimationTransition(.up)
-            config.maskBackgroundColor = UIColor(white: 0.7, alpha: 0.8)
-            config.safeAreaStyle = .wrap
-            config.safeAreaGapColor = alertBackgroundColor
+            popupConfig.allowTouchOutsideToDismiss = true
+            popupConfig.layoutStyle = .bottom(height: 0)
+            popupConfig.animationTransition = CXAnimationTransition(.up)
+            popupConfig.maskBackgroundColor = UIColor(white: 0.7, alpha: 0.8)
+            popupConfig.safeAreaStyle = .wrap
+            popupConfig.safeAreaGapColor = backgroundColor
         case .alert:
-            config.allowTouchOutsideToDismiss = false
-            config.layoutStyle = .center(size: CGSize(width: CXAlertConfig.alertViewWidth, height: finalHeight))
-            config.animationStyle = .pop
-            config.animationTransition = CXAnimationTransition(.center)
-            config.maskBackgroundColor = .clear
+            popupConfig.allowTouchOutsideToDismiss = false
+            popupConfig.layoutStyle = .center(size: .zero)
+            popupConfig.animationStyle = .pop
+            popupConfig.animationTransition = CXAnimationTransition(.center)
+            popupConfig.maskBackgroundColor = .clear
         }
-        return config
     }
 }

@@ -48,28 +48,15 @@ public class CXToast: CXPopup {
         }
 
         private func setupToastLayout(_ toast: String) {
-            let label = UILabel()
-            label.text = toast
-            label.textAlignment = config.toastTextAligment
-            label.numberOfLines = 0
-            label.lineBreakMode = .byWordWrapping
-            label.font = config.toastFont
-            label.textColor = config.toastTextColor
-            label.backgroundColor = .clear
-
-            let layout = self
-            layout.backgroundColor = config.backgroundColor
-
-            let maximumWidth = UIScreen.main.bounds.size.width - CXSpacing.spacing7
-            let estimatedSize = CXTextUtil.getTextSize(
-                for: toast,
-                with: CGSize(width: maximumWidth, height: CGFloat(Double.greatestFiniteMagnitude)),
-                font: config.toastFont)
-
-            CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(CXSpacing.spacing3))
-            let height = estimatedSize.height + CXSpacing.spacing4
-            let finalSize = CGSize(width: ceil(estimatedSize.width) + CXSpacing.spacing4, height: height)
-            self.config.popupConfig.layoutStyle.update(size: finalSize)
+            let labelLayout = LabelLayoutBuilder(toast)
+                    .withFont(config.toastFont)
+                    .withTextColor(config.toastTextColor)
+                    .withBackgroundColor(config.backgroundColor)
+                    .withEstimateWidth(UIScreen.main.bounds.width * 0.8)
+                    .withInsets(UIEdgeInsets(CXSpacing.spacing3))
+                    .build()
+            CXLayoutUtil.fill(labelLayout.view, at: self)
+            self.config.popupConfig.layoutStyle.update(size: labelLayout.size)
         }
     }
 
@@ -117,7 +104,7 @@ struct CXToastConfig {
     var backgroundColor = UIColor(white: 0, alpha: 0.8)
     var toastFont = UIFont.systemFont(ofSize: 13.0)
     var toastTextColor: UIColor = .white
-    var toastTextAligment: NSTextAlignment = .center
+    var toastTextAlignment: NSTextAlignment = .center
     var toastMinimumHeight: CGFloat = 44.0
     var toastDuration: CXToastDuration = .short
 

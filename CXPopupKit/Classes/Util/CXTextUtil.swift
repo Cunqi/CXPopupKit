@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias LabelLayout = (label: UILabel, view: UIView, size: CGSize)
+
 class CXTextUtil {
     static func getTextSize(for text: String, with estimateSize: CGSize, font: UIFont) -> CGSize {
         let _text = text as NSString
