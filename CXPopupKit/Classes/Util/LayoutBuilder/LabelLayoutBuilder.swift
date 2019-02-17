@@ -68,7 +68,7 @@ class LabelLayoutBuilder {
         let finalSize = calculateSize()
         let layout = UIView()
         layout.backgroundColor = backgroundColor
-        CXLayoutUtil.fill(label, at: layout, with: insets)
+        CXLayoutUtil.fill(label, at: layout, insets: insets)
         return (label, layout, finalSize)
     }
     

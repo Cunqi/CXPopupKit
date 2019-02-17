@@ -88,7 +88,7 @@ public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
                 let height = 3 * CXSpacing.spacing3
                 let minimumWidth = UIScreen.main.bounds.size.width * 0.6 + CXSpacing.spacing4
 
-                CXLayoutUtil.fill(progressBar, at: layout, with: UIEdgeInsets(CXSpacing.spacing3))
+                CXLayoutUtil.fill(progressBar, at: layout, insets: UIEdgeInsets(CXSpacing.spacing3))
                 layout.heightAnchor.constraint(equalToConstant: height).isActive = true
                 return (layout, CGSize(width: max(msgWidth, minimumWidth), height: height))
             case .ring, .circle:
@@ -99,7 +99,7 @@ public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
                 CXLayoutUtil.fill(
                     progressBar,
                     at: layout,
-                    with: UIEdgeInsets(top: vPadding, left: hPadding, bottom: vPadding, right: hPadding))
+                    insets: UIEdgeInsets(top: vPadding, left: hPadding, bottom: vPadding, right: hPadding))
                 layout.heightAnchor.constraint(equalToConstant: height).isActive = true
                 return (layout, CGSize(width: max(msgWidth, barWidth), height: height))
             }
@@ -133,7 +133,7 @@ public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
             CXLayoutUtil.fill(
                 label,
                 at: layout,
-                with: UIEdgeInsets(top: 0, left: CXSpacing.spacing3, bottom: CXSpacing.spacing3, right: CXSpacing.spacing3))
+                insets: UIEdgeInsets(top: 0, left: CXSpacing.spacing3, bottom: CXSpacing.spacing3, right: CXSpacing.spacing3))
             return (layout, CGSize(width: ceil(estimatedSize.width) + CXSpacing.spacing4, height: height))
         }
 

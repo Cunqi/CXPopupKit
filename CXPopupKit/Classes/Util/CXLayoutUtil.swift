@@ -28,7 +28,7 @@ class CXLayoutUtil {
         }
     }
 
-    static func fill(_ content: UIView, at parent: UIView?, with insets: UIEdgeInsets = .zero) {
+    static func fill(_ content: UIView, at parent: UIView?, insets insets: UIEdgeInsets = .zero) {
         guard let parent = parent else {
             return
         }
@@ -43,7 +43,7 @@ class CXLayoutUtil {
     static func createWrapperView(_ content: UIView, layoutStyle: CXLayoutStyle) -> UIView {
         let wrapper = UIView()
         let insets = createInsetsOffset(layoutStyle, .wrap)
-        fill(content, at: wrapper, with: insets)
+        fill(content, at: wrapper, insets: insets)
         return wrapper
     }
 

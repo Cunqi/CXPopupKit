@@ -139,7 +139,7 @@ public class CXPicker<T: CustomStringConvertible>: CXPopup {
             layout.backgroundColor = config.messageBackgroundColor
             layout.heightAnchor.constraint(equalToConstant: height).isActive = true
 
-            CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(top: CXSpacing.spacing4, left: CXSpacing.spacing3, bottom: CXSpacing.spacing4, right: CXSpacing.spacing3))
+            CXLayoutUtil.fill(label, at: layout, insets: UIEdgeInsets(top: CXSpacing.spacing4, left: CXSpacing.spacing3, bottom: CXSpacing.spacing4, right: CXSpacing.spacing3))
             return layout
         }
 

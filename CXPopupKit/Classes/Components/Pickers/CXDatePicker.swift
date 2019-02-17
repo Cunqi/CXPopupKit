@@ -134,7 +134,7 @@ public class CXDatePicker: CXPopup {
             height = estimatedHeight + CXSpacing.spacing5
             layout.heightAnchor.constraint(equalToConstant: height).isActive = true
 
-            CXLayoutUtil.fill(label, at: layout, with: UIEdgeInsets(top: CXSpacing.spacing4, left: CXSpacing.spacing3, bottom: CXSpacing.spacing4, right: CXSpacing.spacing3))
+            CXLayoutUtil.fill(label, at: layout, insets: UIEdgeInsets(top: CXSpacing.spacing4, left: CXSpacing.spacing3, bottom: CXSpacing.spacing4, right: CXSpacing.spacing3))
             return layout
         }
 

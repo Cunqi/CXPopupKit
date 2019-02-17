@@ -57,9 +57,9 @@ public class CXPopup: UIViewController, CXPopupInteractable {
         if config.safeAreaStyle == .wrap {
             let wrapper = CXLayoutUtil.createWrapperView(customView, layoutStyle: config.layoutStyle)
             wrapper.backgroundColor = config.safeAreaGapColor ?? customView.backgroundColor
-            CXLayoutUtil.fill(wrapper, at: view, with: config.padding)
+            CXLayoutUtil.fill(wrapper, at: view, insets: config.padding)
         } else {
-            CXLayoutUtil.fill(customView, at: view, with: config.padding)
+            CXLayoutUtil.fill(customView, at: view, insets: config.padding)
         }
         delegate?.viewDidLoad()
     }

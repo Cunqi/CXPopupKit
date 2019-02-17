@@ -94,7 +94,7 @@ class AlertView: UIView, CXDialog {
         }
         
         buttonLayout.backgroundColor = config.buttonDividerColor
-        CXLayoutUtil.fill(buttonStackView, at: buttonLayout, with: UIEdgeInsets(top: 1.0, left: 0, bottom: 0, right: 0))
+        CXLayoutUtil.fill(buttonStackView, at: buttonLayout, insets: UIEdgeInsets(top: 1.0, left: 0, bottom: 0, right: 0))
         stackView.addArrangedSubview(buttonLayout)
         finalHeight += isVertical ? config.buttonHeight * CGFloat(buttons.count) : config.buttonHeight
     }
