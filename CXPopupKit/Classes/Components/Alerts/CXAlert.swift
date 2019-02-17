@@ -21,26 +21,6 @@ public enum CXAlertStyle {
     }
 }
 
-public typealias CXButtonHandler = (String) -> Void
-
-class CXTappable: Equatable, Hashable {
-    let text: String
-    var handler: CXButtonHandler
-    
-    var hashValue: Int {
-        return text.hashValue
-    }
-    
-    init(_ text: String, _ handler: @escaping CXButtonHandler) {
-        self.text = text
-        self.handler = handler
-    }
-
-    static func ==(lhs: CXTappable, rhs: CXTappable) -> Bool {
-        return lhs.text == rhs.text
-    }
-}
-
 public class CXAlert: CXPopup {
     init(config: CXAlertConfig, title: String?, message: String?, tappableArray: [CXTappable], presenting: UIViewController?) {
         let alertView = AlertView(config: config, title: title, message: message, tappableArray: tappableArray)
@@ -77,22 +57,22 @@ public class CXAlert: CXPopup {
             return self
         }
         
-        public func withButton1(_ buttonText1: String, _ buttonHandler1: @escaping CXButtonHandler) -> Self {
+        public func withButton1(_ buttonText1: String, _ buttonHandler1: @escaping CXTappableHandler) -> Self {
             self.tappable1 = CXTappable(buttonText1, buttonHandler1)
             return self
         }
         
-        public func withButton2(_ buttonText2: String, _ buttonHandler2: @escaping CXButtonHandler) -> Self {
+        public func withButton2(_ buttonText2: String, _ buttonHandler2: @escaping CXTappableHandler) -> Self {
             self.tappable2 = CXTappable(buttonText2, buttonHandler2)
             return self
         }
         
-        public func withButton3(_ buttonText3: String, _ buttonHandler3: @escaping CXButtonHandler) -> Self {
+        public func withButton3(_ buttonText3: String, _ buttonHandler3: @escaping CXTappableHandler) -> Self {
             self.tappable3 = CXTappable(buttonText3, buttonHandler3)
             return self
         }
         
-        public func withButtonArray(_ buttonTextSet: Set<String>, _ buttonInArrayHandler: @escaping CXButtonHandler) -> Self {
+        public func withButtonArray(_ buttonTextSet: Set<String>, _ buttonInArrayHandler: @escaping CXTappableHandler) -> Self {
             self.tappableArray = buttonTextSet.map { CXTappable($0, buttonInArrayHandler) }
             return self
         }

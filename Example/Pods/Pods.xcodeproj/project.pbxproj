@@ -18,6 +18,8 @@
 		3C33C22D2218C92200636D6D /* LabelLayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33C22C2218C92200636D6D /* LabelLayoutBuilder.swift */; };
 		3C33C22F2218CEE000636D6D /* ButtonLayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33C22E2218CEE000636D6D /* ButtonLayoutBuilder.swift */; };
 		3C33C2332218D71200636D6D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33C2322218D71200636D6D /* UIColor+Extension.swift */; };
+		3C33C23522192C3C00636D6D /* CXControlablePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33C23422192C3C00636D6D /* CXControlablePopup.swift */; };
+		3C33C23722192D6D00636D6D /* CXTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33C23622192D6D00636D6D /* CXTappable.swift */; };
 		5B21C6C43799B0F1ECABC18880815A09 /* CXZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED18B92F0C78E6DC6BEE865178BC87F /* CXZoomAnimation.swift */; };
 		5BDEEEA1FB667F3782CDD2004636E741 /* CXAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9074D33BA20920E979DA09AE7A0C614C /* CXAlert.swift */; };
 		5E341C37F76A983ABCAFEA7127470D79 /* CXTextUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7735E2F37CB973B903F3F44AB1C2A38C /* CXTextUtil.swift */; };
@@ -78,6 +80,8 @@
 		3C33C22C2218C92200636D6D /* LabelLayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelLayoutBuilder.swift; sourceTree = "<group>"; };
 		3C33C22E2218CEE000636D6D /* ButtonLayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLayoutBuilder.swift; sourceTree = "<group>"; };
 		3C33C2322218D71200636D6D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		3C33C23422192C3C00636D6D /* CXControlablePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXControlablePopup.swift; sourceTree = "<group>"; };
+		3C33C23622192D6D00636D6D /* CXTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXTappable.swift; sourceTree = "<group>"; };
 		3D840127F9BE22E9026C48E100F5084A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FBEB9C3654AE903CA48BBF3382487F6 /* CXBasicAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXBasicAnimation.swift; sourceTree = "<group>"; };
 		47E73AFF50D52A5CDB624D8BD391D47B /* Pods-CXPopupKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CXPopupKit_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				AEF5DA4DED5B03437834BC23A35282FF /* CXPopup.swift */,
 				9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupConfig.swift */,
 				38FBAD573BD14B0935D00AFFBD47731C /* CXPresentationController.swift */,
+				3C33C23422192C3C00636D6D /* CXControlablePopup.swift */,
+				3C33C23622192D6D00636D6D /* CXTappable.swift */,
 			);
 			name = Popup;
 			path = CXPopupKit/Classes/Popup;
@@ -521,9 +527,11 @@
 				E7C0C6AFB14A2F03091A92D873B32119 /* AlertView.swift in Sources */,
 				DA2B4B984D48C1162292B991C170E419 /* AnimationFactory.swift in Sources */,
 				C99ABC6C9A559BBCB082815D1451F2D8 /* CXActivityIndicator.swift in Sources */,
+				3C33C23722192D6D00636D6D /* CXTappable.swift in Sources */,
 				5BDEEEA1FB667F3782CDD2004636E741 /* CXAlert.swift in Sources */,
 				1389227ECF8DEAE0A25F2733405AA5FB /* CXAnimation.swift in Sources */,
 				9C56BE6D9FAF03A26EE8BE979C53970A /* CXBasicAnimation.swift in Sources */,
+				3C33C23522192C3C00636D6D /* CXControlablePopup.swift in Sources */,
 				306B1C0DF79F11653E344EF394E39E52 /* CXBounceAnimation.swift in Sources */,
 				712617619A05901AC2F196B20E0348F1 /* CXDatePicker.swift in Sources */,
 				3C33C22D2218C92200636D6D /* LabelLayoutBuilder.swift in Sources */,

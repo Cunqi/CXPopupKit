@@ -27,9 +27,8 @@ class CustomViewDemoViewController: UIViewController {
         config.layoutStyle = .topLeft(size: CustomViewDemoViewController.customViewSize)
         config.animationStyle = .bounce
         config.animationTransition = CXAnimationTransition(.down)
-        config.safeAreaStyle = .on
+        config.safeAreaStyle = .wrap
         config.isAutoRotateEnabled = true
-        config.safeAreaGapColor = UIColor(red: 1, green: 38 / 255.0, blue: 0, alpha: 1.0)
     }
 
     private func setupNavigator() {
@@ -42,7 +41,16 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-        CXPopup.Builder(view: customView).withConfig(config).create(on: self).pop()
+//        CXPopup.Builder(view: customView).withConfig(config).create(on: self).pop()
+        CXControlablePopup<CustomView>.Builder(customView)
+            .withTitle("Title")
+            .withLeft("Cancel", nil)
+            .withRight("OK") { customView in
+                print(customView.backgroundColor)
+            }
+            .withConfig(config)
+            .create(on: self)
+            .pop()
     }
     
     
@@ -121,7 +129,7 @@ class CustomViewDemoViewController: UIViewController {
                 self?.config.animationStyle = animationStyle
                 self?.config.animationTransition = transition
             }
-            CXPopup.Builder(view: animationChooser)
+            CXPopup.Builder(animationChooser)
                 .withConfig(animationPopupConfig)
                 .create(on: self)
                 .pop()

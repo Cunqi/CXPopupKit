@@ -104,10 +104,10 @@ class AlertView: UIView, CXDialog {
             return
         }
         
-        let responsers = tappableArray.filter { $0.text == title }
+        let responsors = tappableArray.filter { $0.text == title }
         
         self.cxPopup?.dismiss({
-            responsers.forEach { $0.handler(title) }
+            responsors.forEach { $0.handler(title) }
         })
     }
 }

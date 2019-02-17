@@ -88,13 +88,14 @@ public class CXPopup: UIViewController, CXPopupInteractable {
     }
     
     public class Builder {
-        public init(view: CXView) {
+        let view: CXView
+        var config: CXPopupConfig
+        weak var delegate: CXPopupLifeCycleDelegate?
+
+        public init(_ view: CXView) {
             self.view = view
+            self.config = CXPopupConfig()
         }
-        
-        private let view: CXView
-        private var config: CXPopupConfig = CXPopupConfig()
-        private weak var delegate: CXPopupLifeCycleDelegate?
         
         public func withConfig(_ config: CXPopupConfig) -> Self {
             self.config = config
