@@ -22,34 +22,28 @@ public enum CXAlertStyle {
 }
 
 public typealias CXButtonHandler = (String) -> Void
-typealias CXButtonAction = (target: Any?, selector: Selector)
+
+class CXTappable: Equatable, Hashable {
+    let text: String
+    var handler: CXButtonHandler
+    
+    var hashValue: Int {
+        return text.hashValue
+    }
+    
+    init(_ text: String, _ handler: @escaping CXButtonHandler) {
+        self.text = text
+        self.handler = handler
+    }
+
+    static func ==(lhs: CXTappable, rhs: CXTappable) -> Bool {
+        return lhs.text == rhs.text
+    }
+}
 
 public class CXAlert: CXPopup {
-    init(config: CXAlertConfig,
-        title: String?,
-        message: String?,
-        buttonText1: String?,
-        buttonHandler1: CXButtonHandler?,
-        buttonText2: String?,
-        buttonHandler2: CXButtonHandler?,
-        buttonText3: String?,
-        buttonHandler3: CXButtonHandler?,
-        buttonTextArray: [String]?,
-        buttonInArrayHandler: CXButtonHandler?,
-        presenting: UIViewController?) {
-        
-        let alertView = AlertView(
-            config: config,
-            title: title,
-            message: message,
-            buttonText1: buttonText1,
-            buttonHandler1: buttonHandler1,
-            buttonText2: buttonText2,
-            buttonHandler2: buttonHandler2,
-            buttonText3: buttonText3,
-            buttonHandler3: buttonHandler3,
-            buttonTextArray: buttonTextArray,
-            buttonInArrayHandler: buttonInArrayHandler)
+    init(config: CXAlertConfig, title: String?, message: String?, tappableArray: [CXTappable], presenting: UIViewController?) {
+        let alertView = AlertView(config: config, title: title, message: message, tappableArray: tappableArray)
         super.init(alertView, alertView.config.popupConfig, nil, presenting)
     }
     
@@ -61,14 +55,11 @@ public class CXAlert: CXPopup {
         private var style: CXAlertStyle
         private var title: String?
         private var message: String?
-        private var buttonText1: String?
-        private var buttonText2: String?
-        private var buttonText3: String?
-        private var buttonHandler1: CXButtonHandler?
-        private var buttonHandler2: CXButtonHandler?
-        private var buttonHandler3: CXButtonHandler?
-        private var buttonTextArray: [String]?
-        private var buttonInArrayHandler: CXButtonHandler?
+        
+        private var tappable1: CXTappable?
+        private var tappable2: CXTappable?
+        private var tappable3: CXTappable?
+        private var tappableArray: [CXTappable]?
         private var config: CXAlertConfig
         
         public init(_ style: CXAlertStyle) {
@@ -87,26 +78,22 @@ public class CXAlert: CXPopup {
         }
         
         public func withButton1(_ buttonText1: String, _ buttonHandler1: @escaping CXButtonHandler) -> Self {
-            self.buttonText1 = buttonText1
-            self.buttonHandler1 = buttonHandler1
+            self.tappable1 = CXTappable(buttonText1, buttonHandler1)
             return self
         }
         
         public func withButton2(_ buttonText2: String, _ buttonHandler2: @escaping CXButtonHandler) -> Self {
-            self.buttonText2 = buttonText2
-            self.buttonHandler2 = buttonHandler2
+            self.tappable2 = CXTappable(buttonText2, buttonHandler2)
             return self
         }
         
         public func withButton3(_ buttonText3: String, _ buttonHandler3: @escaping CXButtonHandler) -> Self {
-            self.buttonText3 = buttonText3
-            self.buttonHandler3 = buttonHandler3
+            self.tappable3 = CXTappable(buttonText3, buttonHandler3)
             return self
         }
         
-        public func withButtonArray(_ buttonTextArray: [String], _ buttonInArrayHandler: @escaping CXButtonHandler) -> Self {
-            self.buttonTextArray = buttonTextArray
-            self.buttonInArrayHandler = buttonInArrayHandler
+        public func withButtonArray(_ buttonTextSet: Set<String>, _ buttonInArrayHandler: @escaping CXButtonHandler) -> Self {
+            self.tappableArray = buttonTextSet.map { CXTappable($0, buttonInArrayHandler) }
             return self
         }
 
@@ -116,18 +103,12 @@ public class CXAlert: CXPopup {
         }
         
         public func create(on vc: UIViewController?) -> CXPopupInteractable {
+            let tappableArray = self.tappableArray ?? [tappable1, tappable2, tappable3].compactMap { $0 }
             return CXAlert(
                 config: config,
                 title: title,
                 message: message,
-                buttonText1: buttonText1,
-                buttonHandler1: buttonHandler1,
-                buttonText2: buttonText2,
-                buttonHandler2: buttonHandler2,
-                buttonText3: buttonText3,
-                buttonHandler3: buttonHandler3,
-                buttonTextArray: buttonTextArray,
-                buttonInArrayHandler: buttonInArrayHandler,
+                tappableArray: tappableArray,
                 presenting: vc)
         }
     }

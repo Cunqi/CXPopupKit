@@ -10,28 +10,15 @@ import UIKit
 class AlertView: UIView, CXDialog {
     var config: CXAlertConfig
     private var finalHeight: CGFloat = 0
-    private var buttonHandler1: CXButtonHandler?
-    private var buttonHandler2: CXButtonHandler?
-    private var buttonHandler3: CXButtonHandler?
-    private var buttonInArrayHandler: CXButtonHandler?
+    private var tappableArray: [CXTappable]
     
     init(
         config: CXAlertConfig,
         title: String?,
         message: String?,
-        buttonText1: String?,
-        buttonHandler1: CXButtonHandler?,
-        buttonText2: String?,
-        buttonHandler2: CXButtonHandler?,
-        buttonText3: String?,
-        buttonHandler3: CXButtonHandler?,
-        buttonTextArray: [String]?,
-        buttonInArrayHandler: CXButtonHandler?) {
+        tappableArray: [CXTappable]) {
         self.config = config
-        self.buttonHandler1 = buttonHandler1
-        self.buttonHandler2 = buttonHandler2
-        self.buttonHandler3 = buttonHandler3
-        self.buttonInArrayHandler = buttonInArrayHandler
+        self.tappableArray = tappableArray
         super.init(frame: .zero)
         
         let stackView = UIStackView()
@@ -39,22 +26,7 @@ class AlertView: UIView, CXDialog {
         stackView.distribution = .fill
         
         setupLabelLayout(title, message, at: stackView)
-        
-        let buttonLayout = ButtonLayout(
-            config,
-            buttonText1,
-            CXButtonAction(self, #selector(didTapButton1(sender:))),
-            buttonText2,
-            CXButtonAction(self, #selector(didTapButton2(sender:))),
-            buttonText3,
-            CXButtonAction(self, #selector(didTapButton3(sender:))),
-            buttonTextArray,
-            CXButtonAction(self, #selector(didTapButtonInArray(sender:))))
-        if let layout = buttonLayout.layout {
-            stackView.addArrangedSubview(layout)
-            finalHeight += buttonLayout.height
-        }
-        
+        setupButtonLayout(at: stackView, config: self.config)
         CXLayoutUtil.fill(stackView, at: self)
         self.config.popupConfig.layoutStyle.update(size: CGSize(width: config.style.width, height: finalHeight))
     }
@@ -95,126 +67,47 @@ class AlertView: UIView, CXDialog {
         }
     }
     
-    @objc private func didTapButton1(sender: UIButton) {
-        guard let title = sender.title(for: .normal) else {
-            return
-        }
-        self.cxPopup?.dismiss({ [weak self] in
-            self?.buttonHandler1?(title)
-            self?.cleanup()
-        })
-    }
-    
-    @objc private func didTapButton2(sender: UIButton) {
-        guard let title = sender.title(for: .normal) else {
-            return
-        }
-        self.cxPopup?.dismiss({ [weak self] in
-            self?.buttonHandler2?(title)
-            self?.cleanup()
-        })
-    }
-    
-    @objc private func didTapButton3(sender: UIButton) {
-        guard let title = sender.title(for: .normal) else {
-            return
-        }
-        self.cxPopup?.dismiss({ [weak self] in
-            self?.buttonHandler3?(title)
-            self?.cleanup()
-        })
-    }
-    
-    @objc private func didTapButtonInArray(sender: UIButton) {
-        guard let title = sender.title(for: .normal) else {
-            return
-        }
-        self.cxPopup?.dismiss({ [weak self] in
-            self?.buttonInArrayHandler?(title)
-            self?.cleanup()
-        })
-    }
-    
-    private func cleanup() {
-        buttonHandler1 = nil
-        buttonHandler2 = nil
-        buttonHandler3 = nil
-        buttonInArrayHandler = nil
-    }
-    
-    class ButtonLayout {
-        let layout: UIView?
-        var height: CGFloat = 0
-        
-        init(
-            _ config: CXAlertConfig,
-            _ buttonText1: String?,
-            _ buttonAction1: CXButtonAction?,
-            _ buttonText2: String?,
-            _ buttonAction2: CXButtonAction?,
-            _ buttonText3: String?,
-            _ buttonAction3: CXButtonAction?,
-            _ buttonTextArray: [String]?,
-            _ buttonTextArraySelectedAction: CXButtonAction?) {
-            
-            let buttonStack = UIStackView()
-            if let array = buttonTextArray, !array.isEmpty {
-                for text in array {
-                    buttonStack.addArrangedSubview(ButtonLayout.createButton(text, buttonTextArraySelectedAction!, config.buttonColor, config.buttonHighlightColor, config.buttonTitleColor, config.buttonFont))
-                }
-            } else {
-                if let text = buttonText1, let action = buttonAction1 {
-                    buttonStack.addArrangedSubview(ButtonLayout.createButton(text, action, config.buttonColor, config.buttonHighlightColor, config.buttonTitleColor, config.buttonFont))
-                }
-                if let text = buttonText2, let action = buttonAction2 {
-                    buttonStack.addArrangedSubview(ButtonLayout.createButton(text, action, config.buttonColor, config.buttonHighlightColor, config.buttonTitleColor, config.buttonFont))
-                }
-                if let text = buttonText3, let action = buttonAction3 {
-                    buttonStack.addArrangedSubview(ButtonLayout.createButton(text, action, config.buttonColor, config.buttonHighlightColor, config.buttonTitleColor, config.buttonFont))
-                }
-            }
-            
-            guard !buttonStack.arrangedSubviews.isEmpty else {
-                layout = nil
-                return
-            }
-            
-            if config.style == .actionSheet || buttonStack.arrangedSubviews.count > 2 {
-                buttonStack.axis = .vertical
-                buttonStack.distribution = .fillEqually
-                height = CGFloat(buttonStack.arrangedSubviews.count) * config.buttonHeight
-            } else {
-                buttonStack.axis = config.defaultAxis ?? .horizontal
-                buttonStack.distribution = .fillEqually
-                height = buttonStack.arrangedSubviews.isEmpty ? 0 : config.buttonHeight
-            }
-            buttonStack.spacing = 1.0
-            
-            layout = UIView()
-            layout?.backgroundColor = config.buttonDividerColor
-            CXLayoutUtil.fill(buttonStack, at: layout, with: UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0))
+    private func setupButtonLayout(at stackView: UIStackView, config: CXAlertConfig) {
+        let buttons = tappableArray.map {
+            return ButtonLayoutBuilder()
+                .withFont(config.buttonFont)
+                .withTitle($0.text, state: .normal)
+                .withTitleColor(config.buttonTitleColor, state: .normal)
+                .withBackgroundImage(config.buttonColor.asImage(), state: .normal)
+                .withBackgroundImage(config.buttonHighlightColor.asImage(), state: .highlighted)
+                .withTarget(self, action: #selector(didTapButton(sender:)))
+                .build()
         }
         
-        private static func createButton(_ title: String, _ action: CXButtonAction, _ bgColor: UIColor, _ bgHighlightColor: UIColor, _ titleColor: UIColor, _ titleFont: UIFont) -> UIButton {
-            let button = UIButton(type: .custom)
-            button.setBackgroundImage(createButtonBackgroundColorImage(for: bgColor), for: .normal)
-            button.setBackgroundImage(createButtonBackgroundColorImage(for: bgHighlightColor), for: .highlighted)
-            button.setTitleColor(titleColor, for: .normal)
-            button.titleLabel?.font = titleFont
-            button.setTitle(title, for: .normal)
-            button.addTarget(action.target, action: action.selector, for: .touchUpInside)
-            return button
+        guard !buttons.isEmpty else {
+            return
         }
         
-        private static func createButtonBackgroundColorImage(for color: UIColor) -> UIImage? {
-            let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-            UIGraphicsBeginImageContext(rect.size)
-            let context = UIGraphicsGetCurrentContext()
-            context!.setFillColor(color.cgColor)
-            context!.fill(rect)
-            let img = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            return img
+        let buttonLayout = UIView()
+        let buttonStackView = UIStackView()
+        let isVertical = config.style == .actionSheet || buttons.count > 2
+        buttonStackView.distribution = .fillEqually
+        buttonStackView.spacing = 1.0
+        buttonStackView.axis = isVertical ? .vertical : .horizontal
+        buttons.forEach {
+            buttonStackView.addArrangedSubview($0)
         }
+        
+        buttonLayout.backgroundColor = config.buttonDividerColor
+        CXLayoutUtil.fill(buttonStackView, at: buttonLayout, with: UIEdgeInsets(top: 1.0, left: 0, bottom: 0, right: 0))
+        stackView.addArrangedSubview(buttonLayout)
+        finalHeight += isVertical ? config.buttonHeight * CGFloat(buttons.count) : config.buttonHeight
+    }
+    
+    @objc private func didTapButton(sender: UIButton) {
+        guard let title = sender.title(for: .normal) else {
+            return
+        }
+        
+        let responsers = tappableArray.filter { $0.text == title }
+        
+        self.cxPopup?.dismiss({
+            responsers.forEach { $0.handler(title) }
+        })
     }
 }

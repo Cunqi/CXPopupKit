@@ -16,6 +16,8 @@
 		2FEE25460D22A998056D190BDD4DD54B /* CXPopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D60DB5ED19D1A77348634DFE6AE4C /* CXPopAnimation.swift */; };
 		306B1C0DF79F11653E344EF394E39E52 /* CXBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26541A34E092BFF1302DDE0C93943D40 /* CXBounceAnimation.swift */; };
 		3C33C22D2218C92200636D6D /* LabelLayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33C22C2218C92200636D6D /* LabelLayoutBuilder.swift */; };
+		3C33C22F2218CEE000636D6D /* ButtonLayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33C22E2218CEE000636D6D /* ButtonLayoutBuilder.swift */; };
+		3C33C2332218D71200636D6D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33C2322218D71200636D6D /* UIColor+Extension.swift */; };
 		5B21C6C43799B0F1ECABC18880815A09 /* CXZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED18B92F0C78E6DC6BEE865178BC87F /* CXZoomAnimation.swift */; };
 		5BDEEEA1FB667F3782CDD2004636E741 /* CXAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9074D33BA20920E979DA09AE7A0C614C /* CXAlert.swift */; };
 		5E341C37F76A983ABCAFEA7127470D79 /* CXTextUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7735E2F37CB973B903F3F44AB1C2A38C /* CXTextUtil.swift */; };
@@ -74,6 +76,8 @@
 		38FBAD573BD14B0935D00AFFBD47731C /* CXPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXPresentationController.swift; sourceTree = "<group>"; };
 		392529A12A03319B091EE7C868844646 /* CXAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXAnimation.swift; sourceTree = "<group>"; };
 		3C33C22C2218C92200636D6D /* LabelLayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelLayoutBuilder.swift; sourceTree = "<group>"; };
+		3C33C22E2218CEE000636D6D /* ButtonLayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLayoutBuilder.swift; sourceTree = "<group>"; };
+		3C33C2322218D71200636D6D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3D840127F9BE22E9026C48E100F5084A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FBEB9C3654AE903CA48BBF3382487F6 /* CXBasicAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXBasicAnimation.swift; sourceTree = "<group>"; };
 		47E73AFF50D52A5CDB624D8BD391D47B /* Pods-CXPopupKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CXPopupKit_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				3C33C22C2218C92200636D6D /* LabelLayoutBuilder.swift */,
+				3C33C22E2218CEE000636D6D /* ButtonLayoutBuilder.swift */,
 			);
 			path = LayoutBuilder;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				3C33C22B2218C91500636D6D /* LayoutBuilder */,
 				08E37586F63178D074E1AC1BBEC76244 /* CXLayoutUtil.swift */,
 				7735E2F37CB973B903F3F44AB1C2A38C /* CXTextUtil.swift */,
+				3C33C2322218D71200636D6D /* UIColor+Extension.swift */,
 			);
 			name = Util;
 			path = CXPopupKit/Classes/Util;
@@ -535,7 +541,9 @@
 				B81FBA3633ED7D618B67D52F70A7F342 /* CXToast.swift in Sources */,
 				5B21C6C43799B0F1ECABC18880815A09 /* CXZoomAnimation.swift in Sources */,
 				E299A2E471ABF13F4F3CDD45CEFD44E6 /* ProgressBarView.swift in Sources */,
+				3C33C2332218D71200636D6D /* UIColor+Extension.swift in Sources */,
 				2E04E90FCDD39152446F8B8F1EA53E6D /* UIKit+Extension.swift in Sources */,
+				3C33C22F2218CEE000636D6D /* ButtonLayoutBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
