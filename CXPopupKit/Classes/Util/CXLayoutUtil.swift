@@ -28,7 +28,7 @@ class CXLayoutUtil {
         }
     }
 
-    static func fill(_ content: UIView, at parent: UIView?, insets insets: UIEdgeInsets = .zero) {
+    static func fill(_ content: UIView, at parent: UIView?, insets: UIEdgeInsets = .zero) {
         guard let parent = parent else {
             return
         }
