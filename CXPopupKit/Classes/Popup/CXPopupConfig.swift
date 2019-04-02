@@ -28,7 +28,54 @@ public enum CXLayoutStyle {
     case topCenter(size: CGSize)
     case bottomCenter(size: CGSize)
     case custom(rect: CGRect)
+}
 
+public struct CXPopupConfig {
+    public init() {}
+
+    /// MARK - Layout Position & Size
+
+    public var layoutStyle = CXLayoutStyle.center(size: .zero)
+    public var layoutInsets: UIEdgeInsets = .zero
+    
+    /// MARK - Shadow
+
+    public var isShadowEnabled: Bool = true
+    public var shadowColor: UIColor = .black
+    public var shadowOpacity: Float = 0.8
+    public var shadowRadius: CGFloat = 26.0
+    public var shadowOffset = CGSize(width: 0, height: 13.0)
+    
+    /// MARK - Rotation
+
+    public var isAutoRotateEnabled = false
+
+    /// MARK - Tap behavior
+
+    public var allowTouchOutsideToDismiss = true
+    
+    /// MARK - Safe area
+
+    public var safeAreaStyle = CXSafeAreaStyle.on
+    
+    /// MARK - UI
+
+    public var maskBackgroundColor = UIColor(white: 0, alpha: 0.8)
+    public var cornerRadius: CGFloat = 4.0
+    public var safeAreaGapColor: UIColor? = nil
+
+    /// MARK - Animation
+
+    public var animationStyle = CXAnimationStyle.basic
+    public var animationDuration = CXAnimationDuration(0.35, 0.12)
+    public var animationTransition = CXAnimationTransition(.center)
+    
+    // MARK - Properties: Internal Usage
+    var padding: UIEdgeInsets = .zero
+    var popupBackgroundColor: UIColor? = nil
+}
+
+extension CXLayoutStyle {
     var size: CGSize {
         switch self {
         case .left(let width):
@@ -65,44 +112,7 @@ public enum CXLayoutStyle {
             return rect.size
         }
     }
-}
-
-public struct CXPopupConfig {
-    public init() {}
-    // MARK - Properties: LayoutStyle
-    public var layoutStyle = CXLayoutStyle.center(size: .zero)
-    public var layoutInsets: UIEdgeInsets = .zero
     
-    // MARK - Properties: Shadow
-    public var isShadowEnabled: Bool = true
-    public var shadowColor: UIColor = .black
-    public var shadowOpacity: Float = 0.8
-    public var shadowRadius: CGFloat = 26.0
-    public var shadowOffset = CGSize(width: 0, height: 13.0)
-    
-    // MARK - Properties: Behavior
-    public var isAutoRotateEnabled: Bool = false
-    public var allowTouchOutsideToDismiss: Bool = true
-    
-    // MARK - Properties: SafeArea
-    public var safeAreaStyle: CXSafeAreaStyle = .on
-    
-    // MARK - Properties: UI
-    public var maskBackgroundColor = UIColor(white: 0, alpha: 0.8)
-    public var cornerRadius: CGFloat = 4.0
-    public var safeAreaGapColor: UIColor? = nil
-
-    // MARK - Properties: Animation
-    public var animationStyle: CXAnimationStyle = .basic
-    public var animationDuration: CXAnimationDuration = CXAnimationDuration(0.35, 0.12)
-    public var animationTransition: CXAnimationTransition = CXAnimationTransition(.center)
-    
-    // MARK - Properties: Internal Usage
-    var padding: UIEdgeInsets = .zero
-    var popupBackgroundColor: UIColor? = nil
-}
-
-extension CXLayoutStyle {
     mutating func update(size: CGSize) {
         switch self {
         case .left:
