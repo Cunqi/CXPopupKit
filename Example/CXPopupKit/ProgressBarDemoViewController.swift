@@ -29,7 +29,7 @@ class ProgressBarDemoViewController: UIViewController {
     @objc private func didTapTapMeButton() {
 //        self.present(progressBar, animated: true, completion: nil)
         timer = Timer(timeInterval: 8.0, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: false)
-        RunLoop.current.add(timer, forMode: .defaultRunLoopMode)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.default)
 
         activityIndicator.pop { [weak self] in
             self?.activityIndicator.startAnimating()

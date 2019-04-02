@@ -13,10 +13,6 @@ class CXTappable: Equatable, Hashable {
     let text: String
     var handler: CXTappableHandler
     
-    var hashValue: Int {
-        return text.hashValue
-    }
-    
     init(_ text: String, _ handler: @escaping CXTappableHandler) {
         self.text = text
         self.handler = handler
@@ -24,5 +20,9 @@ class CXTappable: Equatable, Hashable {
     
     static func ==(lhs: CXTappable, rhs: CXTappable) -> Bool {
         return lhs.text == rhs.text
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(text)
     }
 }
