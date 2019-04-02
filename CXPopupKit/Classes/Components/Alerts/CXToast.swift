@@ -24,40 +24,74 @@ public enum CXToastDuration {
     }
 }
 
-public class CXToast: CXPopup {
-    init(_ text: String, _ config: CXToastConfig, _ vc: UIViewController?) {
-        let toast = Toast(text, config)
-        super.init(toast, toast.config.popupConfig, toast, vc)
+public class CXToast: UIView, CXDialog {
+    @objc public dynamic var font: UIFont {
+        get { return label.font }
+        set { label.font = newValue }
+    }
+
+    @objc public dynamic var textColor: UIColor {
+        get { return label.textColor }
+        set { label.textColor = newValue }
+    }
+
+    @objc public dynamic var textAlignment: NSTextAlignment {
+        get { return label.textAlignment }
+        set { label.textAlignment = newValue }
+    }
+
+    @objc public dynamic var numberOfLines: Int {
+        get { return label.numberOfLines }
+        set { label.numberOfLines = newValue }
+    }
+
+    @objc public dynamic var lineBreakMode: NSLineBreakMode {
+        get { return label.lineBreakMode }
+        set { label.lineBreakMode = newValue }
+    }
+
+    lazy var label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 13.0)
+        label.textColor = UIColor.white
+        label.backgroundColor = .clear
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        return label
+    }()
+
+    var duration: CXToastDuration = .short
+    private let estimateWidth: CGFloat = 340
+
+    lazy var config: CXPopupConfig = {
+        var popupConfig = CXPopupConfig()
+        popupConfig.layoutStyle = .bottomCenter(size: .zero)
+        popupConfig.layoutInsets = UIEdgeInsets(top: 0, left: 0, bottom: CXSpacing.spacing6, right: 0)
+        popupConfig.animationStyle = .fade
+        popupConfig.animationTransition = CXAnimationTransition(.center)
+        popupConfig.maskBackgroundColor = .clear
+        return popupConfig
+    }()
+
+    public init(_ text: String, _ duration: CXToastDuration = .short) {
+        super.init(frame: .zero)
+        label.text = text
+        self.duration = duration
+        self.backgroundColor = .black
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    class Toast: UIView, CXDialog {
-        private(set) var config: CXToastConfig
-
-        init(_ text: String, _ config: CXToastConfig) {
-            self.config = config
-            super.init(frame: .zero)
-            setupToastLayout(text)
-        }
-
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-        private func setupToastLayout(_ toast: String) {
-            let labelLayout = LabelLayoutBuilder(toast)
-                    .withFont(config.toastFont)
-                    .withTextColor(config.toastTextColor)
-                    .withBackgroundColor(config.backgroundColor)
-                    .withEstimateWidth(UIScreen.main.bounds.width * 0.8)
-                    .withInsets(UIEdgeInsets(CXSpacing.spacing3))
-                    .build()
-            CXLayoutUtil.fill(labelLayout.view, at: self)
-            self.config.popupConfig.layoutStyle.update(size: labelLayout.size)
-        }
+    private func setupLayout() {
+        let insets: UIEdgeInsets = UIEdgeInsets(top: CXSpacing.spacing3, left: CXSpacing.spacing4, bottom: CXSpacing.spacing3, right: CXSpacing.spacing4)
+        let estimateSize = CGSize(width: estimateWidth, height: CGFloat(Double.greatestFiniteMagnitude))
+        let calculatedSize = CXTextUtil.getTextSize(for: label.text ?? "", with: estimateSize, font: label.font)
+        let finalSize = CGSize(width: ceil(calculatedSize.width) + insets.horizontal, height: ceil(calculatedSize.height) + insets.vertical)
+        CXLayoutUtil.fill(label, at: self, insets: insets)
+        config.layoutStyle.update(size: finalSize)
     }
 
     private static func getMostTopViewController() -> UIViewController? {
@@ -68,54 +102,24 @@ public class CXToast: CXPopup {
         return topVC
     }
 
-    public class Builder {
-        private let message: String
-        private var config = CXToastConfig()
-
-        public init(_ message: String) {
-            self.message = message
-        }
-
-        public func withDuration(_ duration: CXToastDuration) -> Self {
-            self.config.toastDuration = duration
-            return self
-        }
-
-        public func create() -> CXToast {
-            let vc = CXToast.getMostTopViewController()
-            return CXToast(message, config, vc)
-        }
+    public func toast() {
+        setupLayout()
+        CXPopup.Builder(self)
+            .withConfig(config)
+            .withDelegate(self)
+            .create(on: CXToast.getMostTopViewController())
+            .pop()
     }
 }
 
-extension CXToast.Toast: CXPopupLifeCycleDelegate {
-    func viewDidLoad() {
+extension CXToast: CXPopupLifeCycleDelegate {
+    public func viewDidLoad() {
         setupDelayDismiss()
     }
 
     private func setupDelayDismiss() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + config.toastDuration.duration) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + self.duration.duration) { [weak self] in
             self?.cxPopup?.dismiss()
         }
-    }
-}
-
-struct CXToastConfig {
-    var backgroundColor = UIColor(white: 0, alpha: 0.8)
-    var toastFont = UIFont.systemFont(ofSize: 13.0)
-    var toastTextColor: UIColor = .white
-    var toastTextAlignment: NSTextAlignment = .center
-    var toastMinimumHeight: CGFloat = 44.0
-    var toastDuration: CXToastDuration = .short
-
-    var popupConfig: CXPopupConfig
-
-    init() {
-        popupConfig = CXPopupConfig()
-        popupConfig.layoutStyle = .bottomCenter(size: .zero)
-        popupConfig.layoutInsets = UIEdgeInsets(top: 0, left: 0, bottom: CXSpacing.spacing6, right: 0)
-        popupConfig.animationStyle = .fade
-        popupConfig.animationTransition = CXAnimationTransition(.center)
-        popupConfig.maskBackgroundColor = .clear
     }
 }

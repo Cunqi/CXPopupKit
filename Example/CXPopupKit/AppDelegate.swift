@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CXPopupKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        CXToast.appearance().font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
         return true
     }
 
