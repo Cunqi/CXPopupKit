@@ -27,6 +27,6 @@ class DatePickerDemoViewController: UIViewController {
                 print("Current Date: \(date)")
             })
             .create(on: self)
-            .pop()
+            .pop(on: self)
     }
 }

@@ -31,9 +31,7 @@ class ProgressBarDemoViewController: UIViewController {
         timer = Timer(timeInterval: 8.0, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: false)
         RunLoop.current.add(timer, forMode: RunLoop.Mode.default)
 
-        activityIndicator.pop { [weak self] in
-            self?.activityIndicator.startAnimating()
-        }
+        activityIndicator.pop(on: self)
     }
 
     @objc private func updateProgress() {

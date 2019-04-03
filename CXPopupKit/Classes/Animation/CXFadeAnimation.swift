@@ -8,38 +8,33 @@
 
 import Foundation
 
-class CXFadeAnimation: CXBasicAnimation {
-    override func presenting(_ context: UIViewControllerContextTransitioning) {
-        guard let toVC = context.viewController(forKey: .to), let toView = context.view(forKey: .to) else {
-            return
-        }
+class CXFadeAnimation: CXAnimation {
+    override func presenting(_ context: UIViewControllerContextTransitioning, _ from: UIViewController, _ to: UIViewController) {
         let container = context.containerView
-        let toViewFinalFrame = context.finalFrame(for: toVC)
-        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.`in`, offsetSize: container.bounds.size)
+        let toViewFinalFrame = context.finalFrame(for: to)
+        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: direction, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
-        animateInFinalFrame = toViewFinalFrame
 
-        toView.frame = toViewInitialFrame
-        toView.alpha = CXBasicAnimation.transparent
+        to.view.frame = toViewInitialFrame
+        to.view.alpha = CXBasicAnimation.transparent
         UIView.animate(withDuration: duration, animations: {
-            toView.frame = toViewFinalFrame
-            toView.alpha = CXBasicAnimation.opaque
+            to.view.frame = toViewFinalFrame
+            to.view.alpha = CXBasicAnimation.opaque
         }, completion: { finished in
             let wasCancelled = context.transitionWasCancelled
             context.completeTransition(!wasCancelled)
         })
+
     }
 
-    override func dismissing(_ context: UIViewControllerContextTransitioning) {
-        guard let fromView = context.view(forKey: .from) else {
-            return
-        }
+    override func dismissing(_ context: UIViewControllerContextTransitioning, _ from: UIViewController, _ to: UIViewController) {
         let container = context.containerView
-        let fromViewFinalFrame = animateOutInitialFrame.offsetForFinalPosition(direction: transition.out, offsetSize: container.bounds.size)
+        let fromViewInitialFrame = context.initialFrame(for: from)
+        let fromViewFinalFrame = fromViewInitialFrame.offsetForFinalPosition(direction: direction, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         UIView.animate(withDuration: duration, animations: {
-            fromView.frame = fromViewFinalFrame
-            fromView.alpha = CXBasicAnimation.transparent
+            from.view.frame = fromViewFinalFrame
+            from.view.alpha = CXBasicAnimation.transparent
         }, completion: { finished in
             let wasCancelled = context.transitionWasCancelled
             context.completeTransition(!wasCancelled)

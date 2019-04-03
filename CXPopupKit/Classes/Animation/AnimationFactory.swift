@@ -9,18 +9,18 @@
 import UIKit
 
 class AnimationFactory {
-    static func getAnimation(presenting: UIViewController, style: CXAnimationStyle, duration: CXAnimationDuration, transition: CXAnimationTransition) -> UIViewControllerAnimatedTransitioning? {
+    static func animation(for style: CXAnimationStyle, _ duration: TimeInterval, _ direction: CXAnimationDirection, _ directionType: CXAnimationDirectionType) -> UIViewControllerAnimatedTransitioning {
         switch style {
         case .basic:
-            return CXBasicAnimation(presenting: presenting, duration: duration, transition: transition)
+            return CXBasicAnimation(duration: duration, direction: direction, directionType: directionType)
         case .fade:
-            return CXFadeAnimation(presenting: presenting, duration: duration, transition: transition)
+            return CXFadeAnimation(duration: duration, direction: direction, directionType: directionType)
         case .bounce:
-            return CXBounceAnimation(presenting: presenting, duration: duration, transition: transition)
+            return CXBounceAnimation(duration: duration, direction: direction, directionType: directionType)
         case .zoom:
-            return CXZoomAnimation(presenting: presenting, duration: duration, transition: transition)
+            return CXZoomAnimation(duration: duration, direction: direction, directionType: directionType)
         case .pop:
-            return CXPopAnimation(presenting: presenting, duration: duration, transition: transition)
+            return CXPopAnimation(duration: duration, direction: direction, directionType: directionType)
         case .custom(let animator):
             return animator
         }

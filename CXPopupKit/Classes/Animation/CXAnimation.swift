@@ -8,7 +8,41 @@
 
 import UIKit
 
-public protocol CXAnimation: UIViewControllerAnimatedTransitioning {
+class CXAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+    let duration: TimeInterval
+    let direction: CXAnimationDirection
+    let directionType: CXAnimationDirectionType
+
+    init(duration: TimeInterval, direction: CXAnimationDirection, directionType: CXAnimationDirectionType) {
+        self.duration = duration
+        self.direction = direction
+        self.directionType = directionType
+    }
+
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return duration
+    }
+
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        switch directionType {
+        case .in:
+            guard let to = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
+                let from = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
+
+            let container = transitionContext.containerView
+            container.addSubview(to.view)
+
+            presenting(transitionContext, from, to)
+        case .out:
+            guard let to = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
+                let from = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
+
+            dismissing(transitionContext, from, to)
+        }
+    }
+
+    func presenting(_ context: UIViewControllerContextTransitioning, _ from: UIViewController, _ to: UIViewController) {}
+    func dismissing(_ context: UIViewControllerContextTransitioning, _ from: UIViewController, _ to: UIViewController) {}
 }
 
 public enum CXAnimationStyle {

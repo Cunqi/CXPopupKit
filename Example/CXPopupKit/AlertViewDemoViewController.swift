@@ -28,7 +28,7 @@ class AlertViewDemoViewController: UIViewController {
             .withButton1("A") { _ in }
             .withButton2("B") { _ in }
             .create(on: self)
-            .pop()
+            .dismiss()
     }
 
     @objc private func didTapActionSheetButton() {
@@ -38,6 +38,6 @@ class AlertViewDemoViewController: UIViewController {
             .withButton1("OK") { _ in }
             .withButton2("Skip") { _ in }
             .create(on: self)
-            .pop()
+            .dismiss()
     }
 }

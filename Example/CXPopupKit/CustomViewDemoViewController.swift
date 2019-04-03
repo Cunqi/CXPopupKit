@@ -41,16 +41,7 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-//        CXPopup.Builder(view: customView).withConfig(config).create(on: self).pop()
-        CXControlablePopup<CustomView>.Builder(customView)
-            .withTitle("Title")
-            .withLeft("Cancel", nil)
-            .withRight("OK") { customView in
-                print(customView.backgroundColor)
-            }
-            .withConfig(config)
-            .create(on: self)
-            .pop()
+        CXPopup.Builder(customView).withConfig(config).create().pop(on: self)
     }
     
     
@@ -131,8 +122,8 @@ class CustomViewDemoViewController: UIViewController {
             }
             CXPopup.Builder(animationChooser)
                 .withConfig(animationPopupConfig)
-                .create(on: self)
-                .pop()
+                .create()
+                .pop(on: self)
         }
     }
     

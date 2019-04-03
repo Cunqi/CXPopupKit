@@ -107,8 +107,8 @@ public class CXToast: UIView, CXDialog {
         CXPopup.Builder(self)
             .withConfig(config)
             .withDelegate(self)
-            .create(on: CXToast.getMostTopViewController())
-            .pop()
+            .create()
+            .pop(on: CXToast.getMostTopViewController())
     }
 }
 

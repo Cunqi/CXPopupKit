@@ -11,7 +11,6 @@
 		086359C15C3791D98FB74AD3C7A080A5 /* CXPopupKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC59086DB85D4879688EC9F1F1A6E53 /* CXPopupKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1389227ECF8DEAE0A25F2733405AA5FB /* CXAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392529A12A03319B091EE7C868844646 /* CXAnimation.swift */; };
 		150429E710AC54B4875E46E627BCD029 /* Pods-CXPopupKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5A0883DA0E3507B27DF6E6064ACCCA8 /* Pods-CXPopupKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		202E849E9436996728D0700ABBC1FF72 /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FBAD573BD14B0935D00AFFBD47731C /* CXPresentationController.swift */; };
 		2E04E90FCDD39152446F8B8F1EA53E6D /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89914A47043AA99E92FEEDD8A15EC6E3 /* UIKit+Extension.swift */; };
 		2FEE25460D22A998056D190BDD4DD54B /* CXPopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D60DB5ED19D1A77348634DFE6AE4C /* CXPopAnimation.swift */; };
 		306B1C0DF79F11653E344EF394E39E52 /* CXBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26541A34E092BFF1302DDE0C93943D40 /* CXBounceAnimation.swift */; };
@@ -34,6 +33,10 @@
 		B5535A5A97C2B1A90DB616CEB7DEF5B3 /* CXLayoutUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E37586F63178D074E1AC1BBEC76244 /* CXLayoutUtil.swift */; };
 		B5A42E4B34E5002311A192F407B1D56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		B81FBA3633ED7D618B67D52F70A7F342 /* CXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23803572A7086E08892EF97AF70FAD7C /* CXToast.swift */; };
+		C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */; };
+		C46ED00D225551CD00DB8432 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00C225551CD00DB8432 /* PresentationController.swift */; };
+		C46ED00F225558D600DB8432 /* PopupBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00E225558D600DB8432 /* PopupBackgroundView.swift */; };
+		C46ED0112255659000DB8432 /* CXPopup+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */; };
 		C785D64848024E87BAB685970A3DEA33 /* CXProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A950BB0C8AA7F601CF26E81CD232B960 /* CXProgressBar.swift */; };
 		C99ABC6C9A559BBCB082815D1451F2D8 /* CXActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4229E5C81AE6FB6783FB442E706E5 /* CXActivityIndicator.swift */; };
 		C9FD1FD0C1B6ED8C8013C9E90C33F61E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
@@ -75,7 +78,6 @@
 		310745E14A1F63122D37BFF7D66B69AA /* CXPopupKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CXPopupKit-prefix.pch"; sourceTree = "<group>"; };
 		32EF3287736066102368CA98A1AE611E /* Pods-CXPopupKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CXPopupKit_Example-dummy.m"; sourceTree = "<group>"; };
 		347015E017F1354BE7C6EE71A4070357 /* Pods-CXPopupKit_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CXPopupKit_Tests-resources.sh"; sourceTree = "<group>"; };
-		38FBAD573BD14B0935D00AFFBD47731C /* CXPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXPresentationController.swift; sourceTree = "<group>"; };
 		392529A12A03319B091EE7C868844646 /* CXAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXAnimation.swift; sourceTree = "<group>"; };
 		3C33C22C2218C92200636D6D /* LabelLayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelLayoutBuilder.swift; sourceTree = "<group>"; };
 		3C33C22E2218CEE000636D6D /* ButtonLayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLayoutBuilder.swift; sourceTree = "<group>"; };
@@ -110,6 +112,10 @@
 		B54A75FE3B7FE9B7C1B3A93864F8764E /* AlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B86F58B066C07BA6D4FA81CC49B38F10 /* Pods-CXPopupKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CXPopupKit_Example-resources.sh"; sourceTree = "<group>"; };
 		C16E1C12B1F01D4A716EBACE7738CC1B /* CXPopupKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = CXPopupKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPresentationManager.swift; sourceTree = "<group>"; };
+		C46ED00C225551CD00DB8432 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		C46ED00E225558D600DB8432 /* PopupBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupBackgroundView.swift; sourceTree = "<group>"; };
+		C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CXPopup+Lifecycle.swift"; sourceTree = "<group>"; };
 		C5A0883DA0E3507B27DF6E6064ACCCA8 /* Pods-CXPopupKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CXPopupKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		CCE4229E5C81AE6FB6783FB442E706E5 /* CXActivityIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXActivityIndicator.swift; sourceTree = "<group>"; };
 		D006D59C62DA0F6DE9A2C954E7B0982A /* Pods-CXPopupKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CXPopupKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -220,9 +226,12 @@
 				8947542B7073A78FE0680D1F3E015CF3 /* CXDialog.swift */,
 				AEF5DA4DED5B03437834BC23A35282FF /* CXPopup.swift */,
 				9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupConfig.swift */,
-				38FBAD573BD14B0935D00AFFBD47731C /* CXPresentationController.swift */,
 				3C33C23422192C3C00636D6D /* CXControlablePopup.swift */,
 				3C33C23622192D6D00636D6D /* CXTappable.swift */,
+				C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */,
+				C46ED00C225551CD00DB8432 /* PresentationController.swift */,
+				C46ED00E225558D600DB8432 /* PopupBackgroundView.swift */,
+				C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */,
 			);
 			name = Popup;
 			path = CXPopupKit/Classes/Popup;
@@ -544,20 +553,23 @@
 				F41E2851F3A8F1D63B5A760B323CF1F2 /* CXDialog.swift in Sources */,
 				6F2728CD3BBB46228ADCA4F21BD418BA /* CXFadeAnimation.swift in Sources */,
 				B5535A5A97C2B1A90DB616CEB7DEF5B3 /* CXLayoutUtil.swift in Sources */,
+				C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */,
 				AFE21377BAC5324528411558D10755ED /* CXPicker.swift in Sources */,
 				2FEE25460D22A998056D190BDD4DD54B /* CXPopAnimation.swift in Sources */,
 				FD896DE2E57C03E309201D608325D47E /* CXPopup.swift in Sources */,
 				B153E5B399D90A12CBA34BF18CC233B9 /* CXPopupConfig.swift in Sources */,
 				6C62B1D2E1984E420B4A36517250BC30 /* CXPopupKit-dummy.m in Sources */,
-				202E849E9436996728D0700ABBC1FF72 /* CXPresentationController.swift in Sources */,
 				C785D64848024E87BAB685970A3DEA33 /* CXProgressBar.swift in Sources */,
 				5E341C37F76A983ABCAFEA7127470D79 /* CXTextUtil.swift in Sources */,
 				B81FBA3633ED7D618B67D52F70A7F342 /* CXToast.swift in Sources */,
 				5B21C6C43799B0F1ECABC18880815A09 /* CXZoomAnimation.swift in Sources */,
 				E299A2E471ABF13F4F3CDD45CEFD44E6 /* ProgressBarView.swift in Sources */,
 				3C33C2332218D71200636D6D /* UIColor+Extension.swift in Sources */,
+				C46ED00F225558D600DB8432 /* PopupBackgroundView.swift in Sources */,
+				C46ED0112255659000DB8432 /* CXPopup+Lifecycle.swift in Sources */,
 				2E04E90FCDD39152446F8B8F1EA53E6D /* UIKit+Extension.swift in Sources */,
 				3C33C22F2218CEE000636D6D /* ButtonLayoutBuilder.swift in Sources */,
+				C46ED00D225551CD00DB8432 /* PresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
