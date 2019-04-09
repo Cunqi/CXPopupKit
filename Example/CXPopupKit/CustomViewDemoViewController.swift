@@ -28,7 +28,6 @@ class CustomViewDemoViewController: UIViewController {
         config.animationStyle = .bounce
         config.animationTransition = CXAnimationTransition(.down)
         config.safeAreaStyle = .wrap
-        config.safeAreaGapColor = .white
         config.isAutoRotateEnabled = true
     }
 

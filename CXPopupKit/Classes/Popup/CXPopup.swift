@@ -15,7 +15,7 @@ public protocol CXPopupInteractable: class {
     func pop(on vc: UIViewController?)
 }
 
-public class CXPopup: UIViewController, CXPopupInteractable {
+public class CXPopup: UIViewController {
     override public var shouldAutorotate: Bool {
         return config.isAutoRotateEnabled
     }
@@ -25,6 +25,12 @@ public class CXPopup: UIViewController, CXPopupInteractable {
     private weak var delegate: CXPopupLifeCycleDelegate?
     private var presentationManager: CXPresentationManager!
     private var action: CXPopupAction?
+
+    private lazy var tapOutsideGestureRecognizer: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOutsideToDismiss))
+        gesture.delegate = self
+        return gesture
+    }()
 
     private lazy var shadowContainer: UIView = {
         let view = UIView()
@@ -76,16 +82,28 @@ public class CXPopup: UIViewController, CXPopupInteractable {
             wrapper.backgroundColor = config.safeAreaGapColor ?? customView.backgroundColor
             CXLayoutBuilder.addToSafeAreaContainer(customView, wrapper, config.layoutStyle)
             CXLayoutBuilder.setSizeConstraint(customView, wrapper, config.layoutStyle)
-            CXLayoutBuilder.addToRoundedCornerContainer(wrapper, roundedCornerContainer, config.layoutStyle, config.layoutInsets)
+            CXLayoutBuilder.addToRoundedCornerContainer(wrapper, roundedCornerContainer, config.layoutStyle)
         } else {
-            CXLayoutBuilder.addToRoundedCornerContainer(customView, roundedCornerContainer, config.layoutStyle, config.layoutInsets)
+            CXLayoutBuilder.addToRoundedCornerContainer(customView, roundedCornerContainer, config.layoutStyle)
             CXLayoutBuilder.setSizeConstraint(customView, roundedCornerContainer, config.layoutStyle)
+            
         }
 
         CXLayoutBuilder.fillToShadowContainer(roundedCornerContainer, shadowContainer)
-        CXLayoutBuilder.attachToRootView(shadowContainer, self.view, config.layoutStyle, config.layoutInsets)
+        
+        let safeAreaInsets = config.safeAreaStyle == .on ? CXSafeAreaStyle.safeAreaInsets : .zero
+        let layoutInsets = config.layoutInsets
+        CXLayoutBuilder.attachToRootView(shadowContainer, self.view, config.layoutStyle, layoutInsets.merge(safeAreaInsets))
+
+        if config.allowTouchOutsideToDismiss {
+            self.view.addGestureRecognizer(tapOutsideGestureRecognizer)
+        }
 
         delegate?.viewDidLoad()
+    }
+
+    @objc private func tapOutsideToDismiss() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -94,23 +112,33 @@ public class CXPopup: UIViewController, CXPopupInteractable {
     }
 
     public override func viewDidDisappear(_ animated: Bool) {
-        delegate?.viewDidDisappear()
         super.viewDidDisappear(animated)
+        delegate?.viewDidDisappear()
     }
+}
 
+extension CXPopup: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view == gestureRecognizer.view
+    }
+}
+
+extension CXPopup: CXPopupInteractable {
     public func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     public func pop(on vc: UIViewController?) {
         vc?.present(self, animated: true, completion: nil)
     }
-    
+}
+
+extension CXPopup {
     public class Builder {
         let view: CXView
         var config: CXPopupConfig
         weak var delegate: CXPopupLifeCycleDelegate?
-
+        
         public init(_ view: CXView) {
             self.view = view
             self.config = CXPopupConfig()

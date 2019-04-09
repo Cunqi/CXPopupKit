@@ -9,7 +9,7 @@ import UIKit
 
 class CXLayoutBuilder {
 
-    static func addToRoundedCornerContainer(_ view: UIView, _ container: UIView, _ layoutStyle: CXLayoutStyle, _ layoutInsets: UIEdgeInsets) {
+    static func addToRoundedCornerContainer(_ view: UIView, _ container: UIView, _ layoutStyle: CXLayoutStyle) {
         fill(view, container, .zero)
     }
 
@@ -84,5 +84,14 @@ class CXLayoutBuilder {
             content.widthAnchor.constraint(equalToConstant: size.width).isActive = true
             content.heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
+    }
+}
+
+extension UIEdgeInsets {
+    func merge(_ another: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets(top: top + another.top,
+                            left: left + another.left,
+                            bottom: bottom + another.bottom,
+                            right: right + another.right)
     }
 }

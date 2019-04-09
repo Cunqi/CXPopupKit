@@ -173,7 +173,7 @@ public class CXPicker<T: CustomStringConvertible>: CXPopup {
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             print("Dismisss")
-//            self.cxPopup?.dismiss()
+            self.cxPopup?.dismiss()
         }
     }
 }
