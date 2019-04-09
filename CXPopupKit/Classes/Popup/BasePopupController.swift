@@ -63,15 +63,14 @@ public class BasePopupController: UIViewController {
         presentationManager = CXPresentationManager(appearance: appearance)
         transitioningDelegate = presentationManager
         modalPresentationStyle = .custom
-
-        // Add child view controller
-        addChild(viewController)
-        popupContainer.install(viewController.view)
-        viewController.didMove(toParent: self)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        print(String(describing: self) + "was destroyed.")
     }
 
     override public func viewDidLoad() {

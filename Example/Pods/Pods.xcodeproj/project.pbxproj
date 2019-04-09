@@ -35,7 +35,6 @@
 		B81FBA3633ED7D618B67D52F70A7F342 /* CXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23803572A7086E08892EF97AF70FAD7C /* CXToast.swift */; };
 		C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */; };
 		C46ED00D225551CD00DB8432 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00C225551CD00DB8432 /* PresentationController.swift */; };
-		C46ED00F225558D600DB8432 /* PopupBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00E225558D600DB8432 /* PopupBackgroundView.swift */; };
 		C46ED0112255659000DB8432 /* CXPopup+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */; };
 		C4CE5271225C0BD3008AD6E2 /* CXSafeAreaStyle+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CE526D225C0BD3008AD6E2 /* CXSafeAreaStyle+Internal.swift */; };
 		C4CE5272225C0BD3008AD6E2 /* CXLayoutStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CE526E225C0BD3008AD6E2 /* CXLayoutStyle.swift */; };
@@ -125,7 +124,6 @@
 		C16E1C12B1F01D4A716EBACE7738CC1B /* CXPopupKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = CXPopupKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPresentationManager.swift; sourceTree = "<group>"; };
 		C46ED00C225551CD00DB8432 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
-		C46ED00E225558D600DB8432 /* PopupBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupBackgroundView.swift; sourceTree = "<group>"; };
 		C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CXPopup+Lifecycle.swift"; sourceTree = "<group>"; };
 		C4CE526D225C0BD3008AD6E2 /* CXSafeAreaStyle+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CXSafeAreaStyle+Internal.swift"; sourceTree = "<group>"; };
 		C4CE526E225C0BD3008AD6E2 /* CXLayoutStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXLayoutStyle.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 				3C33C23622192D6D00636D6D /* CXTappable.swift */,
 				C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */,
 				C46ED00C225551CD00DB8432 /* PresentationController.swift */,
-				C46ED00E225558D600DB8432 /* PopupBackgroundView.swift */,
 				C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */,
 				C4CE527D225D1955008AD6E2 /* PopupContentContainer.swift */,
 				C4CE527F225D2DD6008AD6E2 /* CXPopupController.swift */,
@@ -613,7 +610,6 @@
 				E299A2E471ABF13F4F3CDD45CEFD44E6 /* ProgressBarView.swift in Sources */,
 				3C33C2332218D71200636D6D /* UIColor+Extension.swift in Sources */,
 				C4CE5284225D33B9008AD6E2 /* PopupContainer.swift in Sources */,
-				C46ED00F225558D600DB8432 /* PopupBackgroundView.swift in Sources */,
 				C46ED0112255659000DB8432 /* CXPopup+Lifecycle.swift in Sources */,
 				2E04E90FCDD39152446F8B8F1EA53E6D /* UIKit+Extension.swift in Sources */,
 				3C33C22F2218CEE000636D6D /* ButtonLayoutBuilder.swift in Sources */,

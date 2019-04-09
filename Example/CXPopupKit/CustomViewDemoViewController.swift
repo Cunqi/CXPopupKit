@@ -27,7 +27,7 @@ class CustomViewDemoViewController: UIViewController {
         config.layoutStyle = .bottomLeft(size: CustomViewDemoViewController.customViewSize)
         config.animationStyle = .bounce
         config.animationTransition = CXAnimationTransition(.down)
-        config.safeAreaStyle = .wrap
+        config.safeAreaStyle = .on
         config.isAutoRotateEnabled = true
     }
 
@@ -41,7 +41,6 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-//        CXPopup.Builder(customView).withAppearance(config).create().pop(on: self)
         CXPopupController(customView, appearance: config).pop(on: self)
     }
     

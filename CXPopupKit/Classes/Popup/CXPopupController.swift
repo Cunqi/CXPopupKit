@@ -8,9 +8,13 @@
 import UIKit
 
 public class CXPopupController: BasePopupController {
-    
 
     public override func viewDidLoad() {
+        // Add child view controller
+        addChild(viewController)
+        popupContainer.install(viewController.view)
+        viewController.didMove(toParent: self)
+
         let layoutStyle = appearance.layoutStyle
         let safeAreaInsets = appearance.safeAreaStyle.insets(layoutStyle)
         let layoutInsets = appearance.layoutInsets
