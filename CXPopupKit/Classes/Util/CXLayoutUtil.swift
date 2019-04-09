@@ -28,8 +28,6 @@ class CXLayoutUtil {
         }
     }
 
-//    static func layout(_ content: UIView, at parent: UIView?, layout)
-
     static func fill(_ content: UIView, at parent: UIView?, insets: UIEdgeInsets = .zero) {
         guard let parent = parent else {
             return
@@ -89,32 +87,32 @@ class CXLayoutUtil {
         switch layoutStyle {
         case .left(let width):
             return CGRect(x: saInsets.left + insets.left, y: saInsets.top + insets.top, width: width, height: getHeight(safeAreaStyle, insets: insets))
-                .grow(delta)
+                .increase(delta)
         case .right(let width):
             let screenWidth = UIScreen.main.bounds.size.width
             return CGRect(
                 x: screenWidth - insets.right - width - saInsets.right,
                 y: saInsets.top + insets.top,
                 width: width,
-                height: getHeight(safeAreaStyle, insets: insets)).grow(delta)
+                height: getHeight(safeAreaStyle, insets: insets)).increase(delta)
         case .top(let height):
             return CGRect(x: saInsets.left + insets.left, y: saInsets.top + insets.top, width: getWidth(safeAreaStyle, insets: insets), height: height)
-                .grow(delta)
+                .increase(delta)
         case .bottom(let height):
             let screenHeight = UIScreen.main.bounds.size.height
             return CGRect(
                 x: saInsets.left + insets.left,
                 y: screenHeight - insets.bottom - height - saInsets.bottom,
                 width: getWidth(safeAreaStyle, insets: insets),
-                height: height).grow(delta)
+                height: height).increase(delta)
         case .topLeft(let size):
-            return CGRect(origin: CGPoint(x: saInsets.left + insets.left, y: saInsets.top + insets.top), size: size).grow(delta)
+            return CGRect(origin: CGPoint(x: saInsets.left + insets.left, y: saInsets.top + insets.top), size: size).increase(delta)
         case .topRight(let size):
             let screenWidth = UIScreen.main.bounds.size.width
-            return CGRect(origin: CGPoint(x: screenWidth - insets.right - size.width - saInsets.right, y: saInsets.top + insets.top), size: size).grow(delta)
+            return CGRect(origin: CGPoint(x: screenWidth - insets.right - size.width - saInsets.right, y: saInsets.top + insets.top), size: size).increase(delta)
         case .bottomLeft(let size):
             let screenHeight = UIScreen.main.bounds.size.height
-            return CGRect(origin: CGPoint(x: saInsets.left + insets.left, y: screenHeight - insets.bottom - size.height - saInsets.bottom), size: size).grow(delta)
+            return CGRect(origin: CGPoint(x: saInsets.left + insets.left, y: screenHeight - insets.bottom - size.height - saInsets.bottom), size: size).increase(delta)
         case .bottomRight(let size):
             let screenHeight = UIScreen.main.bounds.size.height
             let screenWidth = UIScreen.main.bounds.size.width
@@ -122,10 +120,10 @@ class CXLayoutUtil {
                 origin: CGPoint(
                     x: screenWidth - insets.right - size.width - saInsets.right,
                     y: screenHeight - insets.bottom - size.height - saInsets.bottom),
-                size: size).grow(delta)
+                size: size).increase(delta)
         case .centerLeft(let size):
             let screenHeight = UIScreen.main.bounds.size.height
-            return CGRect(origin: CGPoint(x: saInsets.left + insets.left, y: (screenHeight - size.height) / 2.0), size: size).grow(delta)
+            return CGRect(origin: CGPoint(x: saInsets.left + insets.left, y: (screenHeight - size.height) / 2.0), size: size).increase(delta)
         case .centerRight(let size):
             let screenHeight = UIScreen.main.bounds.size.height
             let screenWidth = UIScreen.main.bounds.size.width
@@ -133,7 +131,7 @@ class CXLayoutUtil {
                 origin: CGPoint(
                     x: screenWidth - insets.left - size.width - saInsets.right,
                     y: (screenHeight - size.height) / 2.0),
-                size: size).grow(delta)
+                size: size).increase(delta)
         case .center(let size):
             let screenHeight = UIScreen.main.bounds.size.height
             let screenWidth = UIScreen.main.bounds.size.width
@@ -141,14 +139,14 @@ class CXLayoutUtil {
                 origin: CGPoint(
                     x: (screenWidth - size.width) / 2.0,
                     y: (screenHeight - size.height) / 2.0),
-                size: size).grow(delta)
+                size: size).increase(delta)
         case .topCenter(let size):
             let screenWidth = UIScreen.main.bounds.size.width
             return CGRect(
                 origin: CGPoint(
                     x: (screenWidth - size.width) / 2.0,
                     y: saInsets.top + insets.top),
-                size: size).grow(delta)
+                size: size).increase(delta)
         case .bottomCenter(let size):
             let screenHeight = UIScreen.main.bounds.size.height
             let screenWidth = UIScreen.main.bounds.size.width
@@ -156,7 +154,7 @@ class CXLayoutUtil {
                 origin: CGPoint(
                     x: (screenWidth - size.width) / 2.0,
                     y: screenHeight - insets.bottom - size.height - saInsets.bottom),
-                size: size).grow(delta)
+                size: size).increase(delta)
         case .custom(let rect):
             let bounds = UIScreen.main.bounds
             let x = rect.origin.x
@@ -182,8 +180,23 @@ class CXLayoutUtil {
             if fy < 0 && h < bounds.size.height {
                 fy = (bounds.size.height - h) / 2.0
             }
-            return CGRect(x: fx, y: fy, width: w, height: h).grow(delta)
+            return CGRect(x: fx, y: fy, width: w, height: h).increase(delta)
         }
+    }
+
+    static func layout(_ content: UIView, at parent: UIView?, layoutStyle: CXLayoutStyle, _ safeAreaStyle: CXSafeAreaStyle, insets: UIEdgeInsets = .zero) {
+        guard let parent = parent else {
+            return
+        }
+        parent.addSubview(content)
+        let rect = layout(layoutStyle: layoutStyle, safeAreaStyle: safeAreaStyle, insets: insets)
+
+        content.translatesAutoresizingMaskIntoConstraints = false
+        content.translatesAutoresizingMaskIntoConstraints = false
+        content.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: rect.origin.x).isActive = true
+        content.topAnchor.constraint(equalTo: parent.topAnchor, constant: rect.origin.y).isActive = true
+        content.widthAnchor.constraint(equalToConstant: rect.size.width).isActive = true
+        content.heightAnchor.constraint(equalToConstant: rect.size.height).isActive = true
     }
 
     private static func getHeight(_ safeAreaStyle: CXSafeAreaStyle, insets: UIEdgeInsets) -> CGFloat {
@@ -216,7 +229,7 @@ class CXLayoutUtil {
 }
 
 extension CGRect {
-    func grow(_ insets: UIEdgeInsets) -> CGRect {
+    func increase(_ insets: UIEdgeInsets) -> CGRect {
         var origin = self.origin
         if insets.left == 0 && insets.right != 0 {
             origin.x -= insets.right

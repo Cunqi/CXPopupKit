@@ -62,24 +62,24 @@ public class CXControlablePopup<T: CXDialog>: CXPopup {
             guard let left = leftTappable else {
                 return
             }
-            self.cxPopup?.dismiss({ [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
-                left.action?(strongSelf.content)
-            })
+//            self.cxPopup?.dismiss({ [weak self] in
+//                guard let strongSelf = self else {
+//                    return
+//                }
+//                left.action?(strongSelf.content)
+//            })
         }
         
         @objc private func didTapRight() {
             guard let right = rightTappable else {
                 return
             }
-            self.cxPopup?.dismiss({ [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
-                right.action?(strongSelf.content)
-            })
+//            self.cxPopup?.dismiss({ [weak self] in
+//                guard let strongSelf = self else {
+//                    return
+//                }
+//                right.action?(strongSelf.content)
+//            })
         }
         
         required init?(coder aDecoder: NSCoder) {

@@ -160,13 +160,14 @@ class AnimationChooser: UIView, CXDialog {
     }
     
     @objc private func didTapApplyButton() {
-        self.cxPopup?.dismiss({ [weak self] in
-            guard let strongSelf = self else {
-                return
-            }
-            let transition = CXAnimationTransition(strongSelf.inDirection, strongSelf.outDirection)
-            strongSelf.handler?(strongSelf.animationStyle, transition)
-        })
+        self.cxPopup?.dismiss()
+    }
+}
+
+extension AnimationChooser: CXPopupLifeCycleDelegate {
+    func viewDidDisappear() {
+        let transition = CXAnimationTransition(inDirection, outDirection)
+        handler?(animationStyle, transition)
     }
 }
 

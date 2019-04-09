@@ -24,10 +24,11 @@ class CustomViewDemoViewController: UIViewController {
         
         customView.backgroundColor = UIColor(red: 1, green: 126 / 255.0, blue: 121 / 255.0, alpha: 1.0)
 
-        config.layoutStyle = .topLeft(size: CustomViewDemoViewController.customViewSize)
+        config.layoutStyle = .bottomLeft(size: CustomViewDemoViewController.customViewSize)
         config.animationStyle = .bounce
         config.animationTransition = CXAnimationTransition(.down)
         config.safeAreaStyle = .wrap
+        config.safeAreaGapColor = .white
         config.isAutoRotateEnabled = true
     }
 
@@ -122,6 +123,7 @@ class CustomViewDemoViewController: UIViewController {
             }
             CXPopup.Builder(animationChooser)
                 .withConfig(animationPopupConfig)
+                .withDelegate(animationChooser)
                 .create()
                 .pop(on: self)
         }
@@ -146,6 +148,7 @@ class CustomViewDemoViewController: UIViewController {
             .withConfig(pickerConfig)
             .withDefault(array.firstIndex(of: config.safeAreaStyle.desc))
             .withOptionHandler { [weak self] (safeAreaName) in
+                print("executed")
                 switch safeAreaName {
                 case "On":
                     self?.config.safeAreaStyle = .on
