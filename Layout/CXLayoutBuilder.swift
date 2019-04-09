@@ -55,7 +55,7 @@ class CXLayoutBuilder {
         }
     }
 
-    private static func fill(_ view: UIView, _ parent: UIView, _ insets: UIEdgeInsets) {
+    static func fill(_ view: UIView, _ parent: UIView, _ insets: UIEdgeInsets) {
         addSubView(view, parent)
         view.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: insets.left).isActive = true
         view.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -insets.right).isActive = true
@@ -73,6 +73,9 @@ class CXLayoutBuilder {
 
     static func setSizeConstraint(_ content: UIView, _ parent: UIView, _ layoutStyle: CXLayoutStyle) {
         let size = layoutStyle.size
+        guard size != .zero else {
+            return
+        }
         switch layoutStyle {
         case .left, .right:
             content.widthAnchor.constraint(equalToConstant: size.width).isActive = true

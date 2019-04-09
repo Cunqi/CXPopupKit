@@ -27,7 +27,11 @@ public class BasePopupController: UIViewController {
     public weak var delegate: CXPopupLifecycleDelegate?
 
     /// Appearance for popup controller
-    let appearance: CXPopupAppearance
+    var appearance: CXPopupAppearance {
+        didSet {
+            popupContainer.appearance = appearance
+        }
+    }
 
     let popupContainer: PopupContainer
 
@@ -75,14 +79,12 @@ public class BasePopupController: UIViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-
         // Allow user to tap outside of content to dismiss the popup
         if appearance.allowTouchOutsideToDismiss {
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOutsideToDismiss))
             gestureRecognizer.delegate = self
             view.addGestureRecognizer(gestureRecognizer)
         }
-
         delegate?.viewDidLoad()
     }
 

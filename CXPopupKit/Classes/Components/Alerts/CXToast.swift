@@ -71,28 +71,28 @@ public class CXToast: UIView, CXDialog {
         return popupAppearance
     }()
 
-    var duration: CXToastDuration = .short
-
-    private let estimateWidth: CGFloat = 340
+    private let duration: CXToastDuration
+    private let estimateSize: CGSize = CGSize(width: 340, height: CGFloat(Double.greatestFiniteMagnitude))
 
     public init(_ text: String, _ duration: CXToastDuration = .short) {
+        self.duration = duration
         super.init(frame: .zero)
         self.label.text = text
-        self.duration = duration
-        self.backgroundColor = .black
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupLayout() {
-        let insets: UIEdgeInsets = UIEdgeInsets(top: CXSpacing.spacing3, left: CXSpacing.spacing4, bottom: CXSpacing.spacing3, right: CXSpacing.spacing4)
-        let estimateSize = CGSize(width: estimateWidth, height: CGFloat(Double.greatestFiniteMagnitude))
-        let calculatedSize = CXTextUtil.getTextSize(for: label.text ?? "", with: estimateSize, font: label.font)
-        let finalSize = CGSize(width: ceil(calculatedSize.width) + insets.horizontal, height: ceil(calculatedSize.height) + insets.vertical)
-        CXLayoutUtil.fill(label, at: self, insets: insets)
-        appearance.layoutStyle.update(size: finalSize)
+    private func layout() {
+        let insets: UIEdgeInsets = UIEdgeInsets(top: CXSpacing.spacing3,
+                                                left: CXSpacing.spacing4,
+                                                bottom: CXSpacing.spacing3,
+                                                right: CXSpacing.spacing4)
+
+        CXLayoutBuilder.fill(label, self, insets)
+        let constraint = label.widthAnchor.constraint(lessThanOrEqualToConstant: 340)
+        constraint.isActive = true
     }
 
     private static func getMostTopViewController() -> UIViewController? {
@@ -104,12 +104,8 @@ public class CXToast: UIView, CXDialog {
     }
 
     public func toast() {
-        setupLayout()
-        CXPopup.Builder(self)
-            .withAppearance(appearance)
-            .withDelegate(self)
-            .create()
-            .pop(on: CXToast.getMostTopViewController())
+        layout()
+        CXPopupController(self, appearance: appearance, self).pop(on: CXToast.getMostTopViewController())
     }
 }
 
@@ -120,7 +116,7 @@ extension CXToast: CXPopupLifecycleDelegate {
 
     private func setupDelayDismiss() {
         DispatchQueue.main.asyncAfter(deadline: .now() + self.duration.duration) { [weak self] in
-            self?.cxPopup?.dismiss()
+            self?.popupController?.dismiss()
         }
     }
 }

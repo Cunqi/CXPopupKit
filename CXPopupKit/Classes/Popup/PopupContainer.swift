@@ -8,7 +8,7 @@
 import UIKit
 
 class PopupContainer {
-    let appearance: CXPopupAppearance
+    var appearance: CXPopupAppearance
 
     lazy var shadowContainer: UIView = {
         let view = UIView()
@@ -68,5 +68,8 @@ class PopupContainer {
         if content.isDescendant(of: roundedCornerContainer) {
             content.removeFromSuperview()
         }
+        safeAreaContainer.removeFromSuperview()
+        roundedCornerContainer.removeFromSuperview()
+        shadowContainer.removeFromSuperview()
     }
 }

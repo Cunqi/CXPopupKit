@@ -65,7 +65,7 @@ extension DemoHomeViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = demoItemArray[indexPath.row]
         if item == DemoItem.toast {
-            CXToast("Downloading...").toast()
+            CXToast("In many apps that use a UITableView, when a UITableViewCell is ... This can be done programmatically in tableView:didSelectRowAtIndexPath:, but .... We'll do that with the tableView method “indexPathForSelectedRow()").toast()
         } else {
             self.performSegue(withIdentifier: item, sender: nil)
         }

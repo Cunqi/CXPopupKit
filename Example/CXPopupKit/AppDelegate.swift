@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         CXToast.appearance().font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
+        CXToast.appearance().backgroundColor = .black
+        CXToast.appearance().textAlignment = .natural
         return true
     }
 
