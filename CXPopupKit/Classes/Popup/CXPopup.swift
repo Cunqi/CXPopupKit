@@ -26,11 +26,6 @@ public class CXPopup: UIViewController, CXPopupInteractable {
     private var presentationManager: CXPresentationManager!
     private var action: CXPopupAction?
 
-    private lazy var tapOutsideGestureRecognizer: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOutsideToDismiss))
-        return gesture
-    }()
-
     private lazy var shadowContainer: UIView = {
         let view = UIView()
         if self.config.isShadowEnabled {
@@ -90,15 +85,7 @@ public class CXPopup: UIViewController, CXPopupInteractable {
         CXLayoutBuilder.fillToShadowContainer(roundedCornerContainer, shadowContainer)
         CXLayoutBuilder.attachToRootView(shadowContainer, self.view, config.layoutStyle, config.layoutInsets)
 
-        if config.allowTouchOutsideToDismiss {
-            self.view.addGestureRecognizer(tapOutsideGestureRecognizer)
-        }
-
         delegate?.viewDidLoad()
-    }
-
-    @objc private func tapOutsideToDismiss() {
-        self.dismiss(animated: true, completion: nil)
     }
 
     public override func viewWillAppear(_ animated: Bool) {

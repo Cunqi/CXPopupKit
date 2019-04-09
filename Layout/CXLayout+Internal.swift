@@ -46,44 +46,6 @@ extension CXLayoutStyle {
         }
     }
 
-    var origin: CGPoint {
-        switch self {
-        case .left(_):
-            return .zero
-        case .right(let width):
-            return CGPoint(x: screen.width - width, y: 0)
-        case .top(_):
-            return .zero
-        case .bottom(let height):
-            return CGPoint(x: 0, y: screen.height - height)
-        case .center(let size):
-            return CGPoint(x: (screen.width - size.width) / 2.0,
-                           y: (screen.height - size.height) / 2.0)
-        case .topLeft(_):
-            return .zero
-        case .topRight(let size):
-            return CGPoint(x: screen.width - size.width, y: 0)
-        case .bottomLeft(let size):
-            return CGPoint(x: 0, y: screen.height - size.height)
-        case .bottomRight(let size):
-            return CGPoint(x: screen.width - size.width, y: screen.height - size.height)
-        case .centerLeft(let size):
-            return CGPoint(x: 0, y: (screen.height - size.height) / 2.0)
-        case .centerRight(let size):
-            return CGPoint(x: screen.width - size.width, y: (screen.height - size.height) / 2.0)
-        case .topCenter(let size):
-            return CGPoint(x: (screen.width - size.width) / 2.0, y: 0)
-        case .bottomCenter(let size):
-            return CGPoint(x: (screen.width - size.width) / 2.0, y: screen.height - size.height)
-        case .custom(let rect):
-            return rect.origin
-        }
-    }
-
-    var rect: CGRect {
-        return CGRect(origin: origin, size: size)
-    }
-
     func insets(_ origin: UIEdgeInsets) -> UIEdgeInsets {
         switch self {
         case .left:

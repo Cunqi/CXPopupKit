@@ -52,7 +52,7 @@ public struct CXPopupConfig {
     var popupBackgroundColor: UIColor? = nil
 }
 
-extension CXLayoutStyle {
+extension CXLayoutStyle {    
     mutating func update(size: CGSize) {
         switch self {
         case .left:
