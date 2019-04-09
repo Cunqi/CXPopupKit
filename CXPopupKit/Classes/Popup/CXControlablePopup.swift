@@ -9,7 +9,7 @@ import UIKit
 
 public class CXControlablePopup<T: CXDialog>: CXPopup {
     
-    init(_ view: T, _ title: String?, _ leftTappable: (text: String, action: ((T) -> Void)?)?, _ rightTappable: (text: String, action: ((T) -> Void)?)?, _ config: CXPopupConfig, _ delegate: CXPopupLifeCycleDelegate?, _ configuration: ((UINavigationBar) -> Void)?, _ vc: UIViewController?) {
+    init(_ view: T, _ title: String?, _ leftTappable: (text: String, action: ((T) -> Void)?)?, _ rightTappable: (text: String, action: ((T) -> Void)?)?, _ config: CXPopupConfig, _ delegate: CXPopupLifecycleDelegate?, _ configuration: ((UINavigationBar) -> Void)?, _ vc: UIViewController?) {
         let wrapperView = ControlWrapperView(view, title, leftTappable, rightTappable, config, configuration)
         super.init(wrapperView, wrapperView.config, delegate, vc)
     }
@@ -96,7 +96,7 @@ public class CXControlablePopup<T: CXDialog>: CXPopup {
         var leftTappable: (text: String, action: ((T) -> Void)?)?
         var rightTappable: (text: String, action: ((T) -> Void)?)?
         
-        weak var delegate: CXPopupLifeCycleDelegate?
+        weak var delegate: CXPopupLifecycleDelegate?
         
         public init(_ view: T) {
             self.view = view
@@ -123,7 +123,7 @@ public class CXControlablePopup<T: CXDialog>: CXPopup {
             return self
         }
         
-        public func withDelegate(_ delegate: CXPopupLifeCycleDelegate) -> Self {
+        public func withDelegate(_ delegate: CXPopupLifecycleDelegate) -> Self {
             self.delegate = delegate
             return self
         }

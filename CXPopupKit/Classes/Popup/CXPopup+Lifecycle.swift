@@ -7,13 +7,13 @@
 
 import UIKit
 
-public protocol CXPopupLifeCycleDelegate: class {
+public protocol CXPopupLifecycleDelegate: class {
     func viewDidLoad()
     func viewWillAppear()
     func viewDidDisappear()
 }
 
-public extension CXPopupLifeCycleDelegate {
+public extension CXPopupLifecycleDelegate {
     func viewDidLoad(){}
     func viewWillAppear(){}
     func viewDidDisappear(){}

@@ -141,7 +141,7 @@ class CXRingProgressBar: CXProgressBarView {
     }
 }
 
-class CXActivityIndicatorView: CXProgressBarView, CXPopupLifeCycleDelegate {
+class CXActivityIndicatorView: CXProgressBarView, CXPopupLifecycleDelegate {
     private let highSpeedThreshold: CGFloat = 0.8
     private let highSpeedInterval: CGFloat = 0.96 / 60
     private let lowSpeedInterval: CGFloat = 0.24 / 60

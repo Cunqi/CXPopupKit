@@ -178,7 +178,7 @@ public class CXPicker<T: CustomStringConvertible>: CXPopup {
     }
 }
 
-extension CXPicker.Picker: CXPopupLifeCycleDelegate {
+extension CXPicker.Picker: CXPopupLifecycleDelegate {
     public func viewDidDisappear() {
         if let indexPath = tableView.indexPathForSelectedRow {
             let option = options[indexPath.row]

@@ -22,7 +22,7 @@ public class CXPopup: UIViewController {
 
     private let customView: CXView
     private let config: CXPopupConfig
-    private weak var delegate: CXPopupLifeCycleDelegate?
+    private weak var delegate: CXPopupLifecycleDelegate?
     private var presentationManager: CXPresentationManager!
     private var action: CXPopupAction?
 
@@ -51,11 +51,11 @@ public class CXPopup: UIViewController {
         return view
     }()
 
-    convenience init(_ view: CXView, _ config: CXPopupConfig, _ delegate: CXPopupLifeCycleDelegate?) {
+    convenience init(_ view: CXView, _ config: CXPopupConfig, _ delegate: CXPopupLifecycleDelegate?) {
         self.init(view, config, delegate, nil)
     }
 
-    init(_ view: CXView, _ config: CXPopupConfig, _ delegate: CXPopupLifeCycleDelegate?, _ presenting: UIViewController?) {
+    init(_ view: CXView, _ config: CXPopupConfig, _ delegate: CXPopupLifecycleDelegate?, _ presenting: UIViewController?) {
         self.customView = view
         self.config = config
         self.delegate = delegate
@@ -86,9 +86,7 @@ public class CXPopup: UIViewController {
         } else {
             CXLayoutBuilder.addToRoundedCornerContainer(customView, roundedCornerContainer, config.layoutStyle)
             CXLayoutBuilder.setSizeConstraint(customView, roundedCornerContainer, config.layoutStyle)
-            
         }
-
         CXLayoutBuilder.fillToShadowContainer(roundedCornerContainer, shadowContainer)
         
         let safeAreaInsets = config.safeAreaStyle == .on ? CXSafeAreaStyle.safeAreaInsets : .zero
@@ -137,7 +135,7 @@ extension CXPopup {
     public class Builder {
         let view: CXView
         var config: CXPopupConfig
-        weak var delegate: CXPopupLifeCycleDelegate?
+        weak var delegate: CXPopupLifecycleDelegate?
         
         public init(_ view: CXView) {
             self.view = view
@@ -149,7 +147,7 @@ extension CXPopup {
             return self
         }
         
-        public func withDelegate(_ delegate: CXPopupLifeCycleDelegate) -> Self {
+        public func withDelegate(_ delegate: CXPopupLifecycleDelegate) -> Self {
             self.delegate = delegate
             return self
         }

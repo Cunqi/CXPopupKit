@@ -112,7 +112,7 @@ public class CXToast: UIView, CXDialog {
     }
 }
 
-extension CXToast: CXPopupLifeCycleDelegate {
+extension CXToast: CXPopupLifecycleDelegate {
     public func viewDidLoad() {
         setupDelayDismiss()
     }

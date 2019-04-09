@@ -164,7 +164,7 @@ class AnimationChooser: UIView, CXDialog {
     }
 }
 
-extension AnimationChooser: CXPopupLifeCycleDelegate {
+extension AnimationChooser: CXPopupLifecycleDelegate {
     func viewDidDisappear() {
         let transition = CXAnimationTransition(inDirection, outDirection)
         handler?(animationStyle, transition)

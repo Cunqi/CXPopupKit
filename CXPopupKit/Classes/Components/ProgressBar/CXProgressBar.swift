@@ -38,7 +38,7 @@ public class CXProgressBar: CXPopup, CXProgressBarUpdatable {
         progressBarView.updateProgress(progress)
     }
 
-    class ProgressBarWrapperView: UIView, CXDialog, CXProgressBarUpdatable, CXPopupLifeCycleDelegate {
+    class ProgressBarWrapperView: UIView, CXDialog, CXProgressBarUpdatable, CXPopupLifecycleDelegate {
         typealias Layout = (view: UIView, size: CGSize)
         
         var config: CXProgressConfig
