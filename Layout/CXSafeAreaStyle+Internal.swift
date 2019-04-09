@@ -19,9 +19,9 @@ extension CXSafeAreaStyle {
 
     func insets(_ layoutStyle: CXLayoutStyle) -> UIEdgeInsets {
         switch self {
-        case .off:
+        case .off, .wrap:
             return .zero
-        case .on, .wrap:
+        case .on:
             return layoutStyle.safeAreaInsets()
         }
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class CXControlablePopup<T: CXDialog>: CXPopup {
+public class CXControlablePopup<T: CXView>: CXPopup {
     
     init(_ view: T, _ title: String?, _ leftTappable: (text: String, action: ((T) -> Void)?)?, _ rightTappable: (text: String, action: ((T) -> Void)?)?, _ config: CXPopupAppearance, _ delegate: CXPopupLifecycleDelegate?, _ configuration: ((UINavigationBar) -> Void)?, _ vc: UIViewController?) {
         let wrapperView = ControlWrapperView(view, title, leftTappable, rightTappable, config, configuration)

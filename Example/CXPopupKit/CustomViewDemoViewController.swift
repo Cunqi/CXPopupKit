@@ -41,7 +41,8 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-        CXPopup.Builder(customView).withAppearance(config).create().pop(on: self)
+//        CXPopup.Builder(customView).withAppearance(config).create().pop(on: self)
+        CXPopupController(customView, appearance: config).pop(on: self)
     }
     
     

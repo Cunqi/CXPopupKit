@@ -7,13 +7,7 @@
 
 import UIKit
 
-public typealias CXView = UIView & CXDialog
 public typealias CXPopupAction = () -> Void
-
-public protocol CXPopupInteractable: class {
-    func dismiss()
-    func pop(on vc: UIViewController?)
-}
 
 public class CXPopup: UIViewController {
     override public var shouldAutorotate: Bool {
@@ -60,7 +54,7 @@ public class CXPopup: UIViewController {
         self.config = config
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
-        presentationManager = CXPresentationManager(config: config)
+        presentationManager = CXPresentationManager(appearance: config)
         transitioningDelegate = presentationManager
         modalPresentationStyle = .custom
     }
@@ -121,16 +115,6 @@ extension CXPopup: UIGestureRecognizerDelegate {
     }
 }
 
-extension CXPopup: CXPopupInteractable {
-    public func dismiss() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    public func pop(on vc: UIViewController?) {
-        vc?.present(self, animated: true, completion: nil)
-    }
-}
-
 extension CXPopup {
     public class Builder {
         let view: CXView
@@ -155,5 +139,15 @@ extension CXPopup {
         public func create() -> CXPopup {
             return CXPopup(view, appearance, delegate)
         }
+    }
+}
+
+extension CXPopup: CXPopupInteractable {
+    public func dismiss() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    public func pop(on vc: UIViewController?) {
+        vc?.present(self, animated: true, completion: nil)
     }
 }

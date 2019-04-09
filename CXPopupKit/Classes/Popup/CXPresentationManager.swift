@@ -8,21 +8,21 @@
 import UIKit
 
 final class CXPresentationManager: NSObject, UIViewControllerTransitioningDelegate {
-    let config: CXPopupAppearance
+    let appearance: CXPopupAppearance
 
-    init(config: CXPopupAppearance) {
-        self.config = config
+    init(appearance: CXPopupAppearance) {
+        self.appearance = appearance
     }
 
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PresentationController(presentedViewController: presented, presenting: source, config: config)
+        return PresentationController(presentedViewController: presented, presenting: source, config: appearance)
     }
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationFactory.animation(for: config.animationStyle, config.animationDuration.in, config.animationTransition.in, .in)
+        return AnimationFactory.animation(for: appearance.animationStyle, appearance.animationDuration.in, appearance.animationTransition.in, .in)
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationFactory.animation(for: config.animationStyle, config.animationDuration.out, config.animationTransition.out, .out)
+        return AnimationFactory.animation(for: appearance.animationStyle, appearance.animationDuration.out, appearance.animationTransition.out, .out)
     }
 }
