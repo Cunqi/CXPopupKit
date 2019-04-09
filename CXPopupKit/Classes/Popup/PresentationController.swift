@@ -8,7 +8,7 @@
 import UIKit
 
 class PresentationController: UIPresentationController {
-    let config: CXPopupConfig
+    let config: CXPopupAppearance
 
     private lazy var backgroundView: PopupBackgroundView = {
         let view = PopupBackgroundView(frame: .zero)
@@ -16,7 +16,7 @@ class PresentationController: UIPresentationController {
         return view
     }()
 
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, config: CXPopupConfig) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, config: CXPopupAppearance) {
         self.config = config
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }

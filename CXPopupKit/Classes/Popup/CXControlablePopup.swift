@@ -9,7 +9,7 @@ import UIKit
 
 public class CXControlablePopup<T: CXDialog>: CXPopup {
     
-    init(_ view: T, _ title: String?, _ leftTappable: (text: String, action: ((T) -> Void)?)?, _ rightTappable: (text: String, action: ((T) -> Void)?)?, _ config: CXPopupConfig, _ delegate: CXPopupLifecycleDelegate?, _ configuration: ((UINavigationBar) -> Void)?, _ vc: UIViewController?) {
+    init(_ view: T, _ title: String?, _ leftTappable: (text: String, action: ((T) -> Void)?)?, _ rightTappable: (text: String, action: ((T) -> Void)?)?, _ config: CXPopupAppearance, _ delegate: CXPopupLifecycleDelegate?, _ configuration: ((UINavigationBar) -> Void)?, _ vc: UIViewController?) {
         let wrapperView = ControlWrapperView(view, title, leftTappable, rightTappable, config, configuration)
         super.init(wrapperView, wrapperView.config, delegate, vc)
     }
@@ -19,13 +19,13 @@ public class CXControlablePopup<T: CXDialog>: CXPopup {
     }
     
     class ControlWrapperView: UIView, CXDialog {
-        var config: CXPopupConfig
+        var config: CXPopupAppearance
         private var navigationBar: UINavigationBar
         private let content: T
         var leftTappable: (text: String, action: ((T) -> Void)?)?
         var rightTappable: (text: String, action: ((T) -> Void)?)?
         
-        init(_ view: T, _ title: String?, _ leftTappable: (text: String, action: ((T) -> Void)?)?, _ rightTappable: (text: String, action: ((T) -> Void)?)?, _ config: CXPopupConfig, _ configuration: ((UINavigationBar) -> Void)?) {
+        init(_ view: T, _ title: String?, _ leftTappable: (text: String, action: ((T) -> Void)?)?, _ rightTappable: (text: String, action: ((T) -> Void)?)?, _ config: CXPopupAppearance, _ configuration: ((UINavigationBar) -> Void)?) {
             self.content = view
             self.config = config
             self.leftTappable = leftTappable
@@ -90,7 +90,7 @@ public class CXControlablePopup<T: CXDialog>: CXPopup {
     
     public class Builder {
         let view: T
-        var config: CXPopupConfig
+        var config: CXPopupAppearance
         var title: String?
         var configuration: ((UINavigationBar) -> Void)?
         var leftTappable: (text: String, action: ((T) -> Void)?)?
@@ -100,7 +100,7 @@ public class CXControlablePopup<T: CXDialog>: CXPopup {
         
         public init(_ view: T) {
             self.view = view
-            self.config = CXPopupConfig()
+            self.config = CXPopupAppearance()
         }
         
         public func withTitle(_ title: String) -> Self {
@@ -118,7 +118,7 @@ public class CXControlablePopup<T: CXDialog>: CXPopup {
             return self
         }
         
-        public func withConfig(_ config: CXPopupConfig) -> Self {
+        public func withConfig(_ config: CXPopupAppearance) -> Self {
             self.config = config
             return self
         }

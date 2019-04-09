@@ -31,7 +31,7 @@
 		8D3521282CF246111BC0B1D4D49D791A /* Pods-CXPopupKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EF3287736066102368CA98A1AE611E /* Pods-CXPopupKit_Example-dummy.m */; };
 		9C56BE6D9FAF03A26EE8BE979C53970A /* CXBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEB9C3654AE903CA48BBF3382487F6 /* CXBasicAnimation.swift */; };
 		AFE21377BAC5324528411558D10755ED /* CXPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482E52DD67560D8F559AA687AAFADFB /* CXPicker.swift */; };
-		B153E5B399D90A12CBA34BF18CC233B9 /* CXPopupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupConfig.swift */; };
+		B153E5B399D90A12CBA34BF18CC233B9 /* CXPopupAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupAppearance.swift */; };
 		B5A42E4B34E5002311A192F407B1D56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		B81FBA3633ED7D618B67D52F70A7F342 /* CXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23803572A7086E08892EF97AF70FAD7C /* CXToast.swift */; };
 		C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */; };
@@ -110,7 +110,7 @@
 		89914A47043AA99E92FEEDD8A15EC6E3 /* UIKit+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
 		9074D33BA20920E979DA09AE7A0C614C /* CXAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXAlert.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXPopupConfig.swift; sourceTree = "<group>"; };
+		9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupAppearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXPopupAppearance.swift; sourceTree = "<group>"; };
 		9F71E9495799FB5A50804681A77E0518 /* Pods-CXPopupKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CXPopupKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A950BB0C8AA7F601CF26E81CD232B960 /* CXProgressBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXProgressBar.swift; sourceTree = "<group>"; };
 		AEF5DA4DED5B03437834BC23A35282FF /* CXPopup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXPopup.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 			children = (
 				8947542B7073A78FE0680D1F3E015CF3 /* CXDialog.swift */,
 				AEF5DA4DED5B03437834BC23A35282FF /* CXPopup.swift */,
-				9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupConfig.swift */,
+				9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupAppearance.swift */,
 				3C33C23422192C3C00636D6D /* CXControlablePopup.swift */,
 				3C33C23622192D6D00636D6D /* CXTappable.swift */,
 				C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */,
@@ -588,7 +588,7 @@
 				AFE21377BAC5324528411558D10755ED /* CXPicker.swift in Sources */,
 				2FEE25460D22A998056D190BDD4DD54B /* CXPopAnimation.swift in Sources */,
 				FD896DE2E57C03E309201D608325D47E /* CXPopup.swift in Sources */,
-				B153E5B399D90A12CBA34BF18CC233B9 /* CXPopupConfig.swift in Sources */,
+				B153E5B399D90A12CBA34BF18CC233B9 /* CXPopupAppearance.swift in Sources */,
 				6C62B1D2E1984E420B4A36517250BC30 /* CXPopupKit-dummy.m in Sources */,
 				C785D64848024E87BAB685970A3DEA33 /* CXProgressBar.swift in Sources */,
 				C4CE5274225C0BD3008AD6E2 /* CXLayout+Internal.swift in Sources */,

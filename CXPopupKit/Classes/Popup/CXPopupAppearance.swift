@@ -7,7 +7,7 @@
 
 import UIKit
 
-public struct CXPopupConfig {
+public struct CXPopupAppearance {
     public init() {}
 
     /// MARK - Layout Position & Size
@@ -50,39 +50,4 @@ public struct CXPopupConfig {
     // MARK - Properties: Internal Usage
     var padding: UIEdgeInsets = .zero
     var popupBackgroundColor: UIColor? = nil
-}
-
-extension CXLayoutStyle {    
-    mutating func update(size: CGSize) {
-        switch self {
-        case .left:
-            self = .left(width: size.width)
-        case .right:
-            self = .right(width: size.width)
-        case .top:
-            self = .top(height: size.height)
-        case .bottom:
-            self = .bottom(height: size.height)
-        case .topLeft:
-            self = .topLeft(size: size)
-        case .topRight:
-            self = .topRight(size: size)
-        case .bottomLeft:
-            self = .bottomLeft(size: size)
-        case .bottomRight:
-            self = .bottomRight(size: size)
-        case .centerLeft:
-            self = .centerLeft(size: size)
-        case .centerRight:
-            self = .centerRight(size: size)
-        case .center:
-            self = .center(size: size)
-        case .topCenter:
-            self = .topCenter(size: size)
-        case .bottomCenter:
-            self = .bottomCenter(size: size)
-        case .custom(let rect):
-            self = .custom(rect: CGRect(origin: rect.origin, size: size))
-        }
-    }
 }

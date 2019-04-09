@@ -8,9 +8,9 @@
 import UIKit
 
 final class CXPresentationManager: NSObject, UIViewControllerTransitioningDelegate {
-    let config: CXPopupConfig
+    let config: CXPopupAppearance
 
-    init(config: CXPopupConfig) {
+    init(config: CXPopupAppearance) {
         self.config = config
     }
 

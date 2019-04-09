@@ -187,14 +187,14 @@ public struct CXProgressConfig {
     public var progressBarSize: CXProgressBarSize = .small
     public var messageFont = UIFont.systemFont(ofSize: 13.0)
     public var messageTextColor = UIColor.black
-    public var popupConfig: CXPopupConfig
+    public var popupConfig: CXPopupAppearance
 
     // internal properties
     var lineProgressBarBorderWidth: CGFloat = 1.0
     var lineProgressBarCornerRadius: CGFloat = 3.0
 
     public init() {
-        popupConfig = CXPopupConfig()
+        popupConfig = CXPopupAppearance()
         popupConfig.layoutStyle = .center(size: .zero)
         popupConfig.isAutoRotateEnabled = false
         popupConfig.maskBackgroundColor = .clear

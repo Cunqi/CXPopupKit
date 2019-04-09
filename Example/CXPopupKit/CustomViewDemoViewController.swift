@@ -14,7 +14,7 @@ class CustomViewDemoViewController: UIViewController {
     
     private static let customViewSize = CGSize(width: 200, height: 200)
     private var customView = CustomView()
-    private var config = CXPopupConfig()
+    private var config = CXPopupAppearance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-        CXPopup.Builder(customView).withConfig(config).create().pop(on: self)
+        CXPopup.Builder(customView).withAppearance(config).create().pop(on: self)
     }
     
     
@@ -110,7 +110,7 @@ class CustomViewDemoViewController: UIViewController {
     
     
     @IBAction func didTapAnimationBarButtonItem(_ sender: Any) {
-        var animationPopupConfig = CXPopupConfig()
+        var animationPopupConfig = CXPopupAppearance()
         animationPopupConfig.layoutStyle = .bottomCenter(size: CGSize(width: 320, height: 220))
         animationPopupConfig.layoutInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         animationPopupConfig.animationTransition = CXAnimationTransition(.up)
@@ -121,7 +121,7 @@ class CustomViewDemoViewController: UIViewController {
                 self?.config.animationTransition = transition
             }
             CXPopup.Builder(animationChooser)
-                .withConfig(animationPopupConfig)
+                .withAppearance(animationPopupConfig)
                 .withDelegate(animationChooser)
                 .create()
                 .pop(on: self)

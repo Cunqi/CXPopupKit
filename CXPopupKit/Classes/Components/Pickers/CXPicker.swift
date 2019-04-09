@@ -188,7 +188,7 @@ extension CXPicker.Picker: CXPopupLifecycleDelegate {
 }
 
 public struct CXPickerConfig {
-    public var popupConfig = CXPopupConfig()
+    public var popupConfig = CXPopupAppearance()
 
     public var accessoryType = UITableViewCell.AccessoryType.none
     public var messageFont = UIFont.systemFont(ofSize: 14.0)

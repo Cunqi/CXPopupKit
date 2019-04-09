@@ -112,11 +112,11 @@ public struct CXAlertConfig {
 
     public var backgroundColor = UIColor(white: 0.98, alpha: 1.0)
     
-    var popupConfig: CXPopupConfig
+    var popupConfig: CXPopupAppearance
 
     public init(with style: CXAlertStyle) {
         self.style = style
-        self.popupConfig = CXPopupConfig()
+        self.popupConfig = CXPopupAppearance()
         switch style {
         case .actionSheet:
             popupConfig.allowTouchOutsideToDismiss = true

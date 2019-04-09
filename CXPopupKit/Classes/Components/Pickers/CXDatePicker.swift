@@ -70,12 +70,12 @@ extension UIDatePicker: CXDialog {
 }
 
 public struct CXDatePickerConfig {
-    public var popupConfig: CXPopupConfig
+    public var popupConfig: CXPopupAppearance
     public var pickerBackgroundColor = UIColor.white
     public var datePickerMode = UIDatePicker.Mode.date
 
     public init() {
-        popupConfig = CXPopupConfig()
+        popupConfig = CXPopupAppearance()
         popupConfig.layoutStyle = .bottom(height: 240)
         popupConfig.animationStyle = .basic
         popupConfig.animationTransition = CXAnimationTransition(.up)

@@ -21,7 +21,7 @@ public class CXPopup: UIViewController {
     }
 
     private let customView: CXView
-    private let config: CXPopupConfig
+    private let config: CXPopupAppearance
     private weak var delegate: CXPopupLifecycleDelegate?
     private var presentationManager: CXPresentationManager!
     private var action: CXPopupAction?
@@ -51,11 +51,11 @@ public class CXPopup: UIViewController {
         return view
     }()
 
-    convenience init(_ view: CXView, _ config: CXPopupConfig, _ delegate: CXPopupLifecycleDelegate?) {
+    convenience init(_ view: CXView, _ config: CXPopupAppearance, _ delegate: CXPopupLifecycleDelegate?) {
         self.init(view, config, delegate, nil)
     }
 
-    init(_ view: CXView, _ config: CXPopupConfig, _ delegate: CXPopupLifecycleDelegate?, _ presenting: UIViewController?) {
+    init(_ view: CXView, _ config: CXPopupAppearance, _ delegate: CXPopupLifecycleDelegate?, _ presenting: UIViewController?) {
         self.customView = view
         self.config = config
         self.delegate = delegate
@@ -134,16 +134,16 @@ extension CXPopup: CXPopupInteractable {
 extension CXPopup {
     public class Builder {
         let view: CXView
-        var config: CXPopupConfig
+        var appearance: CXPopupAppearance
         weak var delegate: CXPopupLifecycleDelegate?
         
         public init(_ view: CXView) {
             self.view = view
-            self.config = CXPopupConfig()
+            self.appearance = CXPopupAppearance()
         }
         
-        public func withConfig(_ config: CXPopupConfig) -> Self {
-            self.config = config
+        public func withAppearance(_ appearance: CXPopupAppearance) -> Self {
+            self.appearance = appearance
             return self
         }
         
@@ -153,7 +153,7 @@ extension CXPopup {
         }
         
         public func create() -> CXPopup {
-            return CXPopup(view, config, delegate)
+            return CXPopup(view, appearance, delegate)
         }
     }
 }

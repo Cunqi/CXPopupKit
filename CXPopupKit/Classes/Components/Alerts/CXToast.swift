@@ -61,22 +61,23 @@ public class CXToast: UIView, CXDialog {
         return label
     }()
 
-    var duration: CXToastDuration = .short
-    private let estimateWidth: CGFloat = 340
-
-    lazy var config: CXPopupConfig = {
-        var popupConfig = CXPopupConfig()
-        popupConfig.layoutStyle = .bottomCenter(size: .zero)
-        popupConfig.layoutInsets = UIEdgeInsets(top: 0, left: 0, bottom: CXSpacing.spacing6, right: 0)
-        popupConfig.animationStyle = .fade
-        popupConfig.animationTransition = CXAnimationTransition(.center)
-        popupConfig.maskBackgroundColor = .clear
-        return popupConfig
+    lazy var appearance: CXPopupAppearance = {
+        var popupAppearance = CXPopupAppearance()
+        popupAppearance.layoutStyle = .bottomCenter(size: .zero)
+        popupAppearance.layoutInsets = UIEdgeInsets(top: 0, left: 0, bottom: CXSpacing.spacing6, right: 0)
+        popupAppearance.animationStyle = .fade
+        popupAppearance.animationTransition = CXAnimationTransition(.center)
+        popupAppearance.maskBackgroundColor = .clear
+        return popupAppearance
     }()
+
+    var duration: CXToastDuration = .short
+
+    private let estimateWidth: CGFloat = 340
 
     public init(_ text: String, _ duration: CXToastDuration = .short) {
         super.init(frame: .zero)
-        label.text = text
+        self.label.text = text
         self.duration = duration
         self.backgroundColor = .black
     }
@@ -91,7 +92,7 @@ public class CXToast: UIView, CXDialog {
         let calculatedSize = CXTextUtil.getTextSize(for: label.text ?? "", with: estimateSize, font: label.font)
         let finalSize = CGSize(width: ceil(calculatedSize.width) + insets.horizontal, height: ceil(calculatedSize.height) + insets.vertical)
         CXLayoutUtil.fill(label, at: self, insets: insets)
-        config.layoutStyle.update(size: finalSize)
+        appearance.layoutStyle.update(size: finalSize)
     }
 
     private static func getMostTopViewController() -> UIViewController? {
@@ -105,7 +106,7 @@ public class CXToast: UIView, CXDialog {
     public func toast() {
         setupLayout()
         CXPopup.Builder(self)
-            .withConfig(config)
+            .withAppearance(appearance)
             .withDelegate(self)
             .create()
             .pop(on: CXToast.getMostTopViewController())

@@ -5,9 +5,9 @@
 //  Created by Cunqi Xiao on 1/22/19.
 //
 
-import Foundation
+import UIKit
 
-public protocol CXDialog where Self: UIView {
+public protocol CXDialog where Self: UIResponder {
     var cxPopup: CXPopup? { get }
 }
 
