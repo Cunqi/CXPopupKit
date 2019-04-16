@@ -33,6 +33,7 @@
 		B153E5B399D90A12CBA34BF18CC233B9 /* CXPopupAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupAppearance.swift */; };
 		B5A42E4B34E5002311A192F407B1D56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		B81FBA3633ED7D618B67D52F70A7F342 /* CXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23803572A7086E08892EF97AF70FAD7C /* CXToast.swift */; };
+		C403E83722667E050062FEC5 /* CXListPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403E83622667E050062FEC5 /* CXListPicker.swift */; };
 		C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */; };
 		C46ED00D225551CD00DB8432 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00C225551CD00DB8432 /* PresentationController.swift */; };
 		C46ED0112255659000DB8432 /* CXPopup+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */; };
@@ -122,6 +123,7 @@
 		B54A75FE3B7FE9B7C1B3A93864F8764E /* AlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B86F58B066C07BA6D4FA81CC49B38F10 /* Pods-CXPopupKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CXPopupKit_Example-resources.sh"; sourceTree = "<group>"; };
 		C16E1C12B1F01D4A716EBACE7738CC1B /* CXPopupKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = CXPopupKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C403E83622667E050062FEC5 /* CXListPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXListPicker.swift; sourceTree = "<group>"; };
 		C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPresentationManager.swift; sourceTree = "<group>"; };
 		C46ED00C225551CD00DB8432 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CXPopup+Lifecycle.swift"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				7AF78516F43D1C0AFC10B089C2E48380 /* CXDatePicker.swift */,
 				7482E52DD67560D8F559AA687AAFADFB /* CXPicker.swift */,
+				C403E83622667E050062FEC5 /* CXListPicker.swift */,
 			);
 			path = Pickers;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				3C33C22D2218C92200636D6D /* LabelLayoutBuilder.swift in Sources */,
 				F41E2851F3A8F1D63B5A760B323CF1F2 /* CXDialog.swift in Sources */,
 				6F2728CD3BBB46228ADCA4F21BD418BA /* CXFadeAnimation.swift in Sources */,
+				C403E83722667E050062FEC5 /* CXListPicker.swift in Sources */,
 				C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */,
 				AFE21377BAC5324528411558D10755ED /* CXPicker.swift in Sources */,
 				2FEE25460D22A998056D190BDD4DD54B /* CXPopAnimation.swift in Sources */,

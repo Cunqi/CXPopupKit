@@ -10,9 +10,25 @@ import UIKit
 public typealias CXView = UIView & CXDialog
 public typealias CXViewController = UIViewController & CXDialog
 
-public protocol CXPopupInteractable: class {
-    func dismiss()
+public protocol CXPopupable {
     func pop(on vc: UIViewController?)
+}
+
+public protocol CXDismissable {
+    func dismiss()
+    func commit()
+}
+
+public typealias CXPopupInteractable = CXPopupable & CXDismissable
+
+
+/// Describe why popup closed
+///
+/// - cancel: popup closed due to a cancel action.
+/// - confirm: popup closed due to a confirm action.
+public enum CXDismissType {
+    case cancel
+    case confirm
 }
 
 /// The base popup controller, define the basic behavior that a popup has,
@@ -40,6 +56,10 @@ public class BasePopupController: UIViewController {
 
     /// Customized presentation manager
     var presentationManager: CXPresentationManager!
+
+    /// Used to determine why you dismiss the popup
+    /// This value will be used in `viewDidDisappear` lifecycle ONLY
+    private var dismissType = CXDismissType.cancel
 
     /// Popup custom view with customized popup appearance
     ///
@@ -95,7 +115,7 @@ public class BasePopupController: UIViewController {
 
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        delegate?.viewDidDisappear()
+        delegate?.viewDidDisappear(dismissType)
     }
 
     @objc private func tapOutsideToDismiss() {
@@ -117,6 +137,12 @@ extension BasePopupController: UIGestureRecognizerDelegate {
 // MARK: - CXPopupInteractable
 extension BasePopupController: CXPopupInteractable {
     public func dismiss() {
+        dismissType = .cancel
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    public func commit() {
+        dismissType = .confirm
         self.dismiss(animated: true, completion: nil)
     }
 

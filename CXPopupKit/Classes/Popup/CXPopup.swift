@@ -105,7 +105,7 @@ public class CXPopup: UIViewController {
 
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        delegate?.viewDidDisappear()
+        delegate?.viewDidDisappear(.cancel)
     }
 }
 
@@ -150,4 +150,6 @@ extension CXPopup: CXPopupInteractable {
     public func pop(on vc: UIViewController?) {
         vc?.present(self, animated: true, completion: nil)
     }
+
+    public func commit() {}
 }

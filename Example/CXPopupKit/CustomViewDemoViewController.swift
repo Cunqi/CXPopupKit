@@ -41,7 +41,35 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-        CXPopupController(customView, appearance: config).pop(on: self)
+//        CXPopupController(customView, appearance: config).pop(on: self)
+        var popupAppearance: CXPopupAppearance = {
+            var popupAppearance = CXPopupAppearance()
+            popupAppearance.layoutStyle = .bottom(height: 0)
+            popupAppearance.animationStyle = .fade
+            popupAppearance.animationTransition = CXAnimationTransition(.up, .down)
+            popupAppearance.safeAreaStyle = .wrap
+            return popupAppearance
+        }()
+
+        let array = [
+            "Top",
+            "TopLeft",
+            "TopRight",
+            "TopCenter",
+            "Bottom",
+            "BottomLeft",
+            "BottomRight",
+            "BottomCenter",
+            "Left",
+            "CenterLeft",
+            "Right",
+            "CenterRight",
+            "Center"
+        ]
+
+
+        CXListPicker<String>(items: array, selectedItem: "Right", appearance: popupAppearance, handler: nil)
+            .pop(on: self)
     }
     
     

@@ -74,7 +74,7 @@ public class CXToast: UIView, CXDialog {
     private let duration: CXToastDuration
     private let estimateSize: CGSize = CGSize(width: 340, height: CGFloat(Double.greatestFiniteMagnitude))
 
-    public init(_ text: String, _ duration: CXToastDuration = .short) {
+    public init(text: String, duration: CXToastDuration = .short) {
         self.duration = duration
         super.init(frame: .zero)
         self.label.text = text
@@ -102,10 +102,16 @@ public class CXToast: UIView, CXDialog {
         }
         return topVC
     }
+}
 
+extension CXToast: CXPopupable {
     public func toast() {
         layout()
-        CXPopupController(self, appearance: appearance, self).pop(on: CXToast.getMostTopViewController())
+        pop(on: CXToast.getMostTopViewController())
+    }
+
+    public func pop(on vc: UIViewController?) {
+        CXPopupController(self, appearance: appearance, self).pop(on: vc)
     }
 }
 

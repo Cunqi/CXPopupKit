@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 public class CXPicker<T: CustomStringConvertible>: CXPopup {
     private let picker: Picker
     init(_ options: [T], _ config: CXPickerConfig, _ defaultIndex: Int?, _ message: String?, _ handler: ((T) -> Void)?, _ configuration: ((UITableView) -> Void)?, _ vc: UIViewController?) {

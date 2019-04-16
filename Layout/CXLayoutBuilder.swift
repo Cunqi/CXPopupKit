@@ -35,8 +35,11 @@ class CXLayoutBuilder {
             view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: insets.left).isActive = true
         case .right, .topRight, .centerRight, .bottomRight:
             view.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: -insets.right).isActive = true
-        case .center, .topCenter, .bottomCenter, .top, .bottom:
+        case .center, .topCenter, .bottomCenter:
             view.centerXAnchor.constraint(equalTo: rootView.centerXAnchor).isActive = true
+        case .bottom, .top:
+            view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: insets.left).isActive = true
+            view.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: -insets.right).isActive = true
         case .custom(let rect):
             view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: rect.origin.x).isActive = true
         }
@@ -44,11 +47,14 @@ class CXLayoutBuilder {
 
     private static func attachVerticalConstraint(_ view: UIView, _ rootView: UIView, _ layoutStyle: CXLayoutStyle, _ insets: UIEdgeInsets) {
         switch layoutStyle {
-        case .center, .centerLeft, .centerRight, .left, .right:
+        case .center, .centerLeft, .centerRight:
             view.centerYAnchor.constraint(equalTo: rootView.centerYAnchor).isActive = true
         case .top, .topLeft, .topCenter, .topRight:
             view.topAnchor.constraint(equalTo: rootView.topAnchor, constant: insets.top).isActive = true
         case .bottom, .bottomLeft, .bottomCenter, .bottomRight:
+            view.bottomAnchor.constraint(equalTo: rootView.bottomAnchor, constant: -insets.bottom).isActive = true
+        case .left, .right:
+            view.topAnchor.constraint(equalTo: rootView.topAnchor, constant: insets.top).isActive = true
             view.bottomAnchor.constraint(equalTo: rootView.bottomAnchor, constant: -insets.bottom).isActive = true
         case .custom(let rect):
             view.topAnchor.constraint(equalTo: rootView.topAnchor, constant: rect.origin.y)
