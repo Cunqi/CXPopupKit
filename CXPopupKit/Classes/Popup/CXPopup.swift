@@ -69,7 +69,6 @@ public class CXPopup: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = config.popupBackgroundColor
 
         if config.safeAreaStyle == .wrap {
             let wrapper = UIView()

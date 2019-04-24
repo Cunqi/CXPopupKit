@@ -99,6 +99,10 @@ public class BasePopupController: UIViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        delegate?.finalizeLayoutStyleBeforeInstallConstraints(appearance, { [weak self] (layoutStyle) in
+            self?.appearance.layoutStyle = layoutStyle
+        })
+
         // Allow user to tap outside of content to dismiss the popup
         if appearance.allowTouchOutsideToDismiss {
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOutsideToDismiss))

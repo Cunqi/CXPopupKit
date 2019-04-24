@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CXToast.appearance().font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
         CXToast.appearance().backgroundColor = .black
         CXToast.appearance().textAlignment = .natural
+
+        CXListPicker<String>.appearance().textColor = UIColor.white
+        CXListPicker<String>.appearance().textAlignment = .right
+        CXListPicker<String>.appearance().font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
+        CXListPicker<String>.appearance().backgroundColor = UIColor.black
         return true
     }
 

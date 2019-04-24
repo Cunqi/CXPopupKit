@@ -25,11 +25,11 @@ class CXLayoutBuilder {
     static func attachToRootView(_ view: UIView, _ rootView: UIView, _ layoutStyle: CXLayoutStyle, _ layoutInsets: UIEdgeInsets) {
         addSubView(view, rootView)
         let insets = layoutStyle.insets(layoutInsets)
-        attachHorizontalConstraint(view, rootView, layoutStyle, insets)
+        installHorizontalConstraint(view, rootView, layoutStyle, insets)
         attachVerticalConstraint(view, rootView, layoutStyle, insets)
     }
 
-    private static func attachHorizontalConstraint(_ view: UIView, _ rootView: UIView, _ layoutStyle: CXLayoutStyle, _ insets: UIEdgeInsets) {
+    private static func installHorizontalConstraint(_ view: UIView, _ rootView: UIView, _ layoutStyle: CXLayoutStyle, _ insets: UIEdgeInsets) {
         switch layoutStyle {
         case .left, .topLeft, .centerLeft, .bottomLeft:
             view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: insets.left).isActive = true
@@ -102,5 +102,14 @@ extension UIEdgeInsets {
                             left: left + another.left,
                             bottom: bottom + another.bottom,
                             right: right + another.right)
+    }
+}
+
+extension CGFloat {
+    var half: CGFloat {
+        return self * 0.5
+    }
+    var quarter: CGFloat {
+        return self * 0.25
     }
 }

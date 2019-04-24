@@ -9,20 +9,20 @@
 import UIKit
 
 extension CXLayoutStyle {
-    var screen: CGRect {
+    static var screen: CGRect {
         return UIScreen.main.bounds
     }
 
     var size: CGSize {
         switch self {
         case .left(let width):
-            return CGSize(width: width, height: screen.height)
+            return CGSize(width: width, height: CXLayoutStyle.screen.height)
         case .right(let width):
-            return CGSize(width: width, height: screen.height)
+            return CGSize(width: width, height: CXLayoutStyle.screen.height)
         case .top(let height):
-            return CGSize(width: screen.width, height: height)
+            return CGSize(width: CXLayoutStyle.screen.width, height: height)
         case .bottom(let height):
-            return CGSize(width: screen.width, height: height)
+            return CGSize(width: CXLayoutStyle.screen.width, height: height)
         case .center(let size):
             return size
         case .topLeft(let size):
@@ -79,36 +79,37 @@ extension CXLayoutStyle {
         }
     }
 
-    mutating func update(size: CGSize) {
+    @discardableResult
+    func update(size: CGSize) -> CXLayoutStyle {
         switch self {
         case .left:
-            self = .left(width: size.width)
+            return .left(width: size.width)
         case .right:
-            self = .right(width: size.width)
+            return .right(width: size.width)
         case .top:
-            self = .top(height: size.height)
+            return .top(height: size.height)
         case .bottom:
-            self = .bottom(height: size.height)
+            return .bottom(height: size.height)
         case .topLeft:
-            self = .topLeft(size: size)
+            return .topLeft(size: size)
         case .topRight:
-            self = .topRight(size: size)
+            return .topRight(size: size)
         case .bottomLeft:
-            self = .bottomLeft(size: size)
+            return .bottomLeft(size: size)
         case .bottomRight:
-            self = .bottomRight(size: size)
+            return .bottomRight(size: size)
         case .centerLeft:
-            self = .centerLeft(size: size)
+            return .centerLeft(size: size)
         case .centerRight:
-            self = .centerRight(size: size)
+            return .centerRight(size: size)
         case .center:
-            self = .center(size: size)
+            return .center(size: size)
         case .topCenter:
-            self = .topCenter(size: size)
+            return .topCenter(size: size)
         case .bottomCenter:
-            self = .bottomCenter(size: size)
+            return .bottomCenter(size: size)
         case .custom(let rect):
-            self = .custom(rect: CGRect(origin: rect.origin, size: size))
+            return .custom(rect: CGRect(origin: rect.origin, size: size))
         }
     }
 

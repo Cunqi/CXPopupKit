@@ -11,6 +11,7 @@ public class CXPopupController: BasePopupController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+
         // Add child view controller
         addChild(viewController)
         popupContainer.install(viewController.view)

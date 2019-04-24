@@ -39,6 +39,14 @@ class PopupContainer {
         return shadowContainer
     }
 
+    var backgroundColor: UIColor? {
+        get { return self.safeAreaContainer.backgroundColor }
+        set { if self.appearance.safeAreaGapColor == nil {
+            self.safeAreaContainer.backgroundColor = newValue
+            }
+        }
+    }
+
     init(_ appearance: CXPopupAppearance) {
         self.appearance = appearance
     }

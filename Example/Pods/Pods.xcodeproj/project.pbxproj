@@ -29,11 +29,11 @@
 		712617619A05901AC2F196B20E0348F1 /* CXDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF78516F43D1C0AFC10B089C2E48380 /* CXDatePicker.swift */; };
 		8D3521282CF246111BC0B1D4D49D791A /* Pods-CXPopupKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EF3287736066102368CA98A1AE611E /* Pods-CXPopupKit_Example-dummy.m */; };
 		9C56BE6D9FAF03A26EE8BE979C53970A /* CXBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEB9C3654AE903CA48BBF3382487F6 /* CXBasicAnimation.swift */; };
-		AFE21377BAC5324528411558D10755ED /* CXPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482E52DD67560D8F559AA687AAFADFB /* CXPicker.swift */; };
 		B153E5B399D90A12CBA34BF18CC233B9 /* CXPopupAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7A409187B6E7D09E64F59BAF7D81DB /* CXPopupAppearance.swift */; };
 		B5A42E4B34E5002311A192F407B1D56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		B81FBA3633ED7D618B67D52F70A7F342 /* CXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23803572A7086E08892EF97AF70FAD7C /* CXToast.swift */; };
 		C403E83722667E050062FEC5 /* CXListPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403E83622667E050062FEC5 /* CXListPicker.swift */; };
+		C42B21082270E4B600A8F281 /* CXBasePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B21072270E4B600A8F281 /* CXBasePicker.swift */; };
 		C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */; };
 		C46ED00D225551CD00DB8432 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00C225551CD00DB8432 /* PresentationController.swift */; };
 		C46ED0112255659000DB8432 /* CXPopup+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */; };
@@ -106,7 +106,6 @@
 		6416F45B78A31A448C572F5FB0C035A5 /* CXPopupKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CXPopupKit-dummy.m"; sourceTree = "<group>"; };
 		6C548B9A6FB28760453B75BEB5C431A7 /* AnimationFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationFactory.swift; sourceTree = "<group>"; };
 		6ED18B92F0C78E6DC6BEE865178BC87F /* CXZoomAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXZoomAnimation.swift; sourceTree = "<group>"; };
-		7482E52DD67560D8F559AA687AAFADFB /* CXPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXPicker.swift; sourceTree = "<group>"; };
 		7735E2F37CB973B903F3F44AB1C2A38C /* CXTextUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXTextUtil.swift; sourceTree = "<group>"; };
 		7AF78516F43D1C0AFC10B089C2E48380 /* CXDatePicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXDatePicker.swift; sourceTree = "<group>"; };
 		8592BBFC66996E4F86C3B89C6AA2F0D5 /* Pods-CXPopupKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CXPopupKit_Example.modulemap"; sourceTree = "<group>"; };
@@ -124,6 +123,7 @@
 		B86F58B066C07BA6D4FA81CC49B38F10 /* Pods-CXPopupKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CXPopupKit_Example-resources.sh"; sourceTree = "<group>"; };
 		C16E1C12B1F01D4A716EBACE7738CC1B /* CXPopupKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = CXPopupKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C403E83622667E050062FEC5 /* CXListPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXListPicker.swift; sourceTree = "<group>"; };
+		C42B21072270E4B600A8F281 /* CXBasePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXBasePicker.swift; sourceTree = "<group>"; };
 		C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPresentationManager.swift; sourceTree = "<group>"; };
 		C46ED00C225551CD00DB8432 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CXPopup+Lifecycle.swift"; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				7AF78516F43D1C0AFC10B089C2E48380 /* CXDatePicker.swift */,
-				7482E52DD67560D8F559AA687AAFADFB /* CXPicker.swift */,
 				C403E83622667E050062FEC5 /* CXListPicker.swift */,
+				C42B21072270E4B600A8F281 /* CXBasePicker.swift */,
 			);
 			path = Pickers;
 			sourceTree = "<group>";
@@ -578,6 +578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7C0C6AFB14A2F03091A92D873B32119 /* AlertView.swift in Sources */,
+				C42B21082270E4B600A8F281 /* CXBasePicker.swift in Sources */,
 				DA2B4B984D48C1162292B991C170E419 /* AnimationFactory.swift in Sources */,
 				3C2C9FF8225C62F9008F5B6B /* CXLayoutUtil.swift in Sources */,
 				C99ABC6C9A559BBCB082815D1451F2D8 /* CXActivityIndicator.swift in Sources */,
@@ -598,7 +599,6 @@
 				6F2728CD3BBB46228ADCA4F21BD418BA /* CXFadeAnimation.swift in Sources */,
 				C403E83722667E050062FEC5 /* CXListPicker.swift in Sources */,
 				C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */,
-				AFE21377BAC5324528411558D10755ED /* CXPicker.swift in Sources */,
 				2FEE25460D22A998056D190BDD4DD54B /* CXPopAnimation.swift in Sources */,
 				C4CE527C225D186A008AD6E2 /* BasePopupController.swift in Sources */,
 				FD896DE2E57C03E309201D608325D47E /* CXPopup.swift in Sources */,

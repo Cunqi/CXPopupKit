@@ -25,7 +25,7 @@ public struct CXPopupAppearance {
     
     /// MARK - Rotation
 
-    public var isAutoRotateEnabled = false
+    public var isAutoRotateEnabled = true
 
     /// MARK - Tap behavior
 
@@ -49,5 +49,4 @@ public struct CXPopupAppearance {
     
     // MARK - Properties: Internal Usage
     var padding: UIEdgeInsets = .zero
-    var popupBackgroundColor: UIColor? = nil
 }

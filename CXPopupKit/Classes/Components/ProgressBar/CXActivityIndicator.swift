@@ -25,7 +25,6 @@ public class CXActivityIndicator: CXPopup, CXActivityIndicatorInteractable {
             height: config.progressBarSize.size.height + CXSpacing.spacing4)
         self.config.popupConfig.layoutStyle.update(size: finalSize)
         self.config.popupConfig.padding = UIEdgeInsets(CXSpacing.spacing3)
-        self.config.popupConfig.popupBackgroundColor = self.config.backgroundColor
         self.activityIndicatorView = CXActivityIndicatorView()
         self.activityIndicatorView.config = config
         super.init(activityIndicatorView, self.config.popupConfig, activityIndicatorView, vc)

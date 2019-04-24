@@ -48,35 +48,35 @@ class AnimationChooser: UIView, CXDialog {
             "Center"
         ]
 
-        var pickerConfig = CXPickerConfig()
-        pickerConfig.accessoryType = .checkmark
-        pickerConfig.popupConfig.layoutStyle = .top(height: 220)
-        pickerConfig.popupConfig.animationTransition = CXAnimationTransition(.down)
-        pickerConfig.popupConfig.maskBackgroundColor = .clear
-        pickerConfig.popupConfig.safeAreaStyle = .wrap
-
-        let directionPicker = CXPicker<String>.Builder(array)
-            .withConfig(pickerConfig)
-            .withDefault(array.firstIndex(of: self.inDirection.desc))
-            .withOptionHandler { [weak self] (directionName) in
-                self?.inAnimationButton.setTitle(directionName, for: .normal)
-                switch directionName {
-                case "Up":
-                    self?.inDirection = .up
-                case "Down":
-                    self?.inDirection = .down
-                case "Left":
-                    self?.inDirection = .left
-                case "Right":
-                    self?.inDirection = .right
-                case "Center":
-                    self?.inDirection = .center
-                default:
-                    break
-                }
-            }
-            .create(on: self.cxPopup)
-        self.cxPopup?.present(directionPicker, animated: true, completion: nil)
+//        var pickerConfig = CXPickerConfig()
+//        pickerConfig.accessoryType = .checkmark
+//        pickerConfig.popupConfig.layoutStyle = .top(height: 220)
+//        pickerConfig.popupConfig.animationTransition = CXAnimationTransition(.down)
+//        pickerConfig.popupConfig.maskBackgroundColor = .clear
+//        pickerConfig.popupConfig.safeAreaStyle = .wrap
+//
+//        let directionPicker = CXPicker<String>.Builder(array)
+//            .withConfig(pickerConfig)
+//            .withDefault(array.firstIndex(of: self.inDirection.desc))
+//            .withOptionHandler { [weak self] (directionName) in
+//                self?.inAnimationButton.setTitle(directionName, for: .normal)
+//                switch directionName {
+//                case "Up":
+//                    self?.inDirection = .up
+//                case "Down":
+//                    self?.inDirection = .down
+//                case "Left":
+//                    self?.inDirection = .left
+//                case "Right":
+//                    self?.inDirection = .right
+//                case "Center":
+//                    self?.inDirection = .center
+//                default:
+//                    break
+//                }
+//            }
+//            .create(on: self.cxPopup)
+//        self.cxPopup?.present(directionPicker, animated: true, completion: nil)
     }
     
     @objc private func didTapOutAnimationButton() {
@@ -88,35 +88,35 @@ class AnimationChooser: UIView, CXDialog {
             "Center"
         ]
 
-        var pickerConfig = CXPickerConfig()
-        pickerConfig.accessoryType = .checkmark
-        pickerConfig.popupConfig.layoutStyle = .top(height: 220)
-        pickerConfig.popupConfig.animationTransition = CXAnimationTransition(.down)
-        pickerConfig.popupConfig.maskBackgroundColor = .clear
-        pickerConfig.popupConfig.safeAreaStyle = .wrap
-
-        let directionPicker = CXPicker<String>.Builder(array)
-            .withConfig(pickerConfig)
-            .withDefault(array.firstIndex(of: self.outDirection.desc))
-            .withOptionHandler { [weak self] (directionName) in
-                self?.outAnimationButton.setTitle(directionName, for: .normal)
-                switch directionName {
-                case "Up":
-                    self?.outDirection = .up
-                case "Down":
-                    self?.outDirection = .down
-                case "Left":
-                    self?.outDirection = .left
-                case "Right":
-                    self?.outDirection = .right
-                case "Center":
-                    self?.outDirection = .center
-                default:
-                    break
-                }
-            }
-            .create(on: self.cxPopup)
-        self.cxPopup?.present(directionPicker, animated: true, completion: nil)
+//        var pickerConfig = CXPickerConfig()
+//        pickerConfig.accessoryType = .checkmark
+//        pickerConfig.popupConfig.layoutStyle = .top(height: 220)
+//        pickerConfig.popupConfig.animationTransition = CXAnimationTransition(.down)
+//        pickerConfig.popupConfig.maskBackgroundColor = .clear
+//        pickerConfig.popupConfig.safeAreaStyle = .wrap
+//
+//        let directionPicker = CXPicker<String>.Builder(array)
+//            .withConfig(pickerConfig)
+//            .withDefault(array.firstIndex(of: self.outDirection.desc))
+//            .withOptionHandler { [weak self] (directionName) in
+//                self?.outAnimationButton.setTitle(directionName, for: .normal)
+//                switch directionName {
+//                case "Up":
+//                    self?.outDirection = .up
+//                case "Down":
+//                    self?.outDirection = .down
+//                case "Left":
+//                    self?.outDirection = .left
+//                case "Right":
+//                    self?.outDirection = .right
+//                case "Center":
+//                    self?.outDirection = .center
+//                default:
+//                    break
+//                }
+//            }
+//            .create(on: self.cxPopup)
+//        self.cxPopup?.present(directionPicker, animated: true, completion: nil)
     }
     
     @objc private func didTapAnimationStyleButton() {
@@ -128,35 +128,35 @@ class AnimationChooser: UIView, CXDialog {
             "Pop"
         ]
         
-        var pickerConfig = CXPickerConfig()
-        pickerConfig.accessoryType = .checkmark
-        pickerConfig.popupConfig.layoutStyle = .top(height: 220)
-        pickerConfig.popupConfig.animationTransition = CXAnimationTransition(.down)
-        pickerConfig.popupConfig.maskBackgroundColor = .clear
-        pickerConfig.popupConfig.safeAreaStyle = .wrap
-        
-        let animationPicker = CXPicker<String>.Builder(array)
-            .withConfig(pickerConfig)
-            .withDefault(array.firstIndex(of: self.animationStyle.desc))
-            .withOptionHandler { [weak self] (animationName) in
-                self?.animationStyleButton.setTitle(animationName, for: .normal)
-                switch animationName {
-                case "Basic":
-                    self?.animationStyle = .basic
-                case "Fade":
-                    self?.animationStyle = .fade
-                case "Bounce":
-                    self?.animationStyle = .bounce
-                case "Zoom":
-                    self?.animationStyle = .zoom
-                case "Pop":
-                    self?.animationStyle = .pop
-                default:
-                    break
-                }
-            }
-            .create(on: self.cxPopup)
-        self.cxPopup?.present(animationPicker, animated: true, completion: nil)
+//        var pickerConfig = CXPickerConfig()
+//        pickerConfig.accessoryType = .checkmark
+//        pickerConfig.popupConfig.layoutStyle = .top(height: 220)
+//        pickerConfig.popupConfig.animationTransition = CXAnimationTransition(.down)
+//        pickerConfig.popupConfig.maskBackgroundColor = .clear
+//        pickerConfig.popupConfig.safeAreaStyle = .wrap
+//        
+//        let animationPicker = CXPicker<String>.Builder(array)
+//            .withConfig(pickerConfig)
+//            .withDefault(array.firstIndex(of: self.animationStyle.desc))
+//            .withOptionHandler { [weak self] (animationName) in
+//                self?.animationStyleButton.setTitle(animationName, for: .normal)
+//                switch animationName {
+//                case "Basic":
+//                    self?.animationStyle = .basic
+//                case "Fade":
+//                    self?.animationStyle = .fade
+//                case "Bounce":
+//                    self?.animationStyle = .bounce
+//                case "Zoom":
+//                    self?.animationStyle = .zoom
+//                case "Pop":
+//                    self?.animationStyle = .pop
+//                default:
+//                    break
+//                }
+//            }
+//            .create(on: self.cxPopup)
+//        self.cxPopup?.present(animationPicker, animated: true, completion: nil)
     }
     
     @objc private func didTapApplyButton() {

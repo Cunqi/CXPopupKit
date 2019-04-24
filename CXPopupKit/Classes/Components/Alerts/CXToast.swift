@@ -72,7 +72,6 @@ public class CXToast: UIView, CXDialog {
     }()
 
     private let duration: CXToastDuration
-    private let estimateSize: CGSize = CGSize(width: 340, height: CGFloat(Double.greatestFiniteMagnitude))
 
     public init(text: String, duration: CXToastDuration = .short) {
         self.duration = duration
@@ -91,8 +90,7 @@ public class CXToast: UIView, CXDialog {
                                                 right: CXSpacing.spacing4)
 
         CXLayoutBuilder.fill(label, self, insets)
-        let constraint = label.widthAnchor.constraint(lessThanOrEqualToConstant: 340)
-        constraint.isActive = true
+        label.widthAnchor.constraint(lessThanOrEqualToConstant: 340).isActive = true
     }
 
     private static func getMostTopViewController() -> UIViewController? {
@@ -106,7 +104,6 @@ public class CXToast: UIView, CXDialog {
 
 extension CXToast: CXPopupable {
     public func toast() {
-        layout()
         pop(on: CXToast.getMostTopViewController())
     }
 
@@ -117,6 +114,7 @@ extension CXToast: CXPopupable {
 
 extension CXToast: CXPopupLifecycleDelegate {
     public func viewDidLoad() {
+        layout()
         setupDelayDismiss()
     }
 

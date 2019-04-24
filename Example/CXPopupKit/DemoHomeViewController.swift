@@ -65,7 +65,7 @@ extension DemoHomeViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = demoItemArray[indexPath.row]
         if item == DemoItem.toast {
-            CXToast(text: "In many apps that use a UITableView, when a UITableViewCell is ... This can be done programmatically in tableView:didSelectRowAtIndexPath:, but .... We'll do that with the tableView method “indexPathForSelectedRow()").toast()
+            CXToast(text: "Overriding methods declared in extensions is a bit tricky to do correctly. Objective-C supports it, but it's not absolutely safe. Swift aims to do it better. The proposal is not completed yet.").toast()
         } else {
             self.performSegue(withIdentifier: item, sender: nil)
         }
