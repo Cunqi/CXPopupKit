@@ -7,79 +7,65 @@
 
 import UIKit
 
-public typealias CXDateHandler = (Date) -> Void
+public class CXDatePicker: CXBasePicker, CXItemSelectable {
+    public static let defaultPopupAppearance: CXPopupAppearance = {
+        var appearance = CXPopupAppearance()
+        appearance.layoutStyle = .bottom(height: 240)
+        appearance.animationStyle = .fade
+        appearance.animationTransition = CXAnimationTransition(.up, .down)
+        appearance.safeAreaStyle = .wrap
+        return appearance
+    }()
 
-public class CXDatePicker: CXControlablePopup<UIDatePicker> {
-    private let datePicker: UIDatePicker
-    init(_ config: CXDatePickerConfig, _ message: String?, _ defaultDate: Date?, _ confirmText: String?, _ handler: CXDateHandler?, _ vc: UIViewController?) {
-        datePicker = UIDatePicker()
-        datePicker.datePickerMode = config.datePickerMode
-        datePicker.date = defaultDate ?? Date()
-        let rightText = confirmText ?? ""
-        super.init(datePicker,
-                   message,
-                   nil,
-                   (rightText, { (datePicker) in
-                    handler?(datePicker.date)
-                   }), config.popupConfig, nil, { (navigationBar) in
-                    navigationBar.barTintColor = config.pickerBackgroundColor
-                }, vc)
+    public typealias Item = Date
+
+    public var handler: ((Date) -> Void)?
+
+    public lazy var picker: UIDatePicker = {
+        let picker = UIDatePicker(frame: .zero)
+        return picker
+    }()
+
+    public override var textColor: UIColor {
+        get { return pickerAppearance.textColor }
+        set { pickerAppearance.textColor = newValue }
+    }
+
+    @objc public dynamic var datePickerMode: UIDatePicker.Mode {
+        get { return picker.datePickerMode }
+        set { picker.datePickerMode = newValue }
+    }
+
+    public convenience init(popupAppearance: CXPopupAppearance = CXDatePicker.defaultPopupAppearance) {
+        self.init(mode: .date, date: nil, popupAppearance: popupAppearance, handler: nil)
+    }
+
+    public init(mode: UIDatePicker.Mode = .date,
+                date: Date? = nil,
+                popupAppearance: CXPopupAppearance = CXDatePicker.defaultPopupAppearance,
+                handler: ((Date) -> Void)? = nil) {
+        super.init(popupAppearance)
+        self.handler = handler
+        self.picker.datePickerMode = mode
+        self.picker.date = date ?? Date()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public class Builder {
-        private var handler: CXDateHandler?
-        private var confirmText: String?
-        private var defaultDate: Date?
-        private var message: String?
-        private var config = CXDatePickerConfig()
-
-        public init() {}
-        
-        public func withConfirmHandler(_ text: String, _ handler: @escaping CXDateHandler) -> Self {
-            self.confirmText = text
-            self.handler = handler
-            return self
-        }
-
-        public func withDefault(_ date: Date) -> Self {
-            self.defaultDate = date
-            return self
-        }
-
-        public func withMessage(_ message: String) -> Self {
-            self.message = message
-            return self
-        }
-
-        public func withConfig(_ config: CXDatePickerConfig) -> Self {
-            self.config = config
-            return self
-        }
-
-        public func create(on vc: UIViewController?) -> CXPopup {
-            return CXDatePicker(config, message, defaultDate, confirmText, handler, vc)
-        }
+    override func layout() {
+        picker.setValue(pickerAppearance.textColor, forKey: "textColor")
+        CXLayoutBuilder.fill(picker, self, .zero)
     }
-}
 
-extension UIDatePicker: CXDialog {
-}
+    override func dismiss(for type: CXDismissType) {
+        guard type == .confirm else {
+            return
+        }
+        handler?(picker.date)
+    }
 
-public struct CXDatePickerConfig {
-    public var popupConfig: CXPopupAppearance
-    public var pickerBackgroundColor = UIColor.white
-    public var datePickerMode = UIDatePicker.Mode.date
-
-    public init() {
-        popupConfig = CXPopupAppearance()
-        popupConfig.layoutStyle = .bottom(height: 240)
-        popupConfig.animationStyle = .basic
-        popupConfig.animationTransition = CXAnimationTransition(.up)
-        popupConfig.safeAreaStyle = .wrap
-        popupConfig.safeAreaGapColor = .white
+    public override func viewDidAppear() {
     }
 }

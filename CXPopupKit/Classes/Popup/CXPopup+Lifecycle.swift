@@ -10,6 +10,7 @@ import UIKit
 public protocol CXPopupLifecycleDelegate: class {
     func viewDidLoad()
     func viewWillAppear()
+    func viewDidAppear()
     func viewDidDisappear(_ dismissType: CXDismissType)
     func finalizeLayoutStyleBeforeInstallConstraints(_ current: CXPopupAppearance, _ submit: (CXLayoutStyle) -> Void)
 }
@@ -17,6 +18,9 @@ public protocol CXPopupLifecycleDelegate: class {
 public extension CXPopupLifecycleDelegate {
     func viewDidLoad(){}
     func viewWillAppear(){}
+    func viewDidAppear(){}
     func viewDidDisappear(_ dismissType: CXDismissType){}
-    func finalizeLayoutStyleBeforeInstallConstraints(_ current: CXPopupAppearance, _ submit: (CXLayoutStyle) -> Void){}
+    func finalizeLayoutStyleBeforeInstallConstraints(_ current: CXPopupAppearance, _ submit: (CXLayoutStyle) -> Void){
+
+    }
 }

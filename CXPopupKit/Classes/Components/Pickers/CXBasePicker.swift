@@ -7,7 +7,12 @@
 
 import UIKit
 
-public class CXBasePicker<T: CustomStringConvertible>: UIView, CXDialog, CXPopupLifecycleDelegate {
+public protocol CXItemSelectable {
+    associatedtype Item: CustomStringConvertible
+    var handler: ((Item) -> Void)? { get set }
+}
+
+public class CXBasePicker: UIView, CXDialog, CXPopupLifecycleDelegate {
     struct PickerAppearance {
         var font = UIFont.systemFont(ofSize: 13.0)
         var textAlignment = NSTextAlignment.natural
@@ -37,16 +42,12 @@ public class CXBasePicker<T: CustomStringConvertible>: UIView, CXDialog, CXPopup
               self.backgroundColor = newValue
               self.popupController?.popupContainer.backgroundColor = newValue }
     }
-
-    var preferredHeight = UIScreen.main.bounds.height.quarter
+    
     var popupAppearance: CXPopupAppearance
     var pickerAppearance = PickerAppearance()
 
-    var handler: ((T) -> Void)?
-
-    init(_ popupAppearance: CXPopupAppearance, _ handler: ((T) -> Void)?) {
+    init(_ popupAppearance: CXPopupAppearance) {
         self.popupAppearance = popupAppearance
-        self.handler = handler
         super.init(frame: .zero)
     }
 
@@ -68,14 +69,16 @@ public class CXBasePicker<T: CustomStringConvertible>: UIView, CXDialog, CXPopup
         layout()
     }
 
+    public func viewDidAppear() {
+        
+    }
+
     public func viewDidDisappear(_ dismissType: CXDismissType) {
         dismiss(for: dismissType)
     }
 
     public func finalizeLayoutStyleBeforeInstallConstraints(_ current: CXPopupAppearance, _ submit: (CXLayoutStyle) -> Void) {
-        let size = CGSize(width: CXLayoutStyle.screen.size.width, height: preferredHeight)
-        let layoutStyle = current.layoutStyle.update(size: size)
-        submit(layoutStyle)
+        submit(current.layoutStyle)
     }
 }
 

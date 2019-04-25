@@ -117,6 +117,11 @@ public class BasePopupController: UIViewController {
         delegate?.viewWillAppear()
     }
 
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        delegate?.viewDidAppear()
+    }
+
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.viewDidDisappear(dismissType)

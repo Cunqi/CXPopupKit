@@ -26,7 +26,7 @@ class CXLayoutBuilder {
         addSubView(view, rootView)
         let insets = layoutStyle.insets(layoutInsets)
         installHorizontalConstraint(view, rootView, layoutStyle, insets)
-        attachVerticalConstraint(view, rootView, layoutStyle, insets)
+        installVerticalConstraint(view, rootView, layoutStyle, insets)
     }
 
     private static func installHorizontalConstraint(_ view: UIView, _ rootView: UIView, _ layoutStyle: CXLayoutStyle, _ insets: UIEdgeInsets) {
@@ -45,7 +45,7 @@ class CXLayoutBuilder {
         }
     }
 
-    private static func attachVerticalConstraint(_ view: UIView, _ rootView: UIView, _ layoutStyle: CXLayoutStyle, _ insets: UIEdgeInsets) {
+    private static func installVerticalConstraint(_ view: UIView, _ rootView: UIView, _ layoutStyle: CXLayoutStyle, _ insets: UIEdgeInsets) {
         switch layoutStyle {
         case .center, .centerLeft, .centerRight:
             view.centerYAnchor.constraint(equalTo: rootView.centerYAnchor).isActive = true

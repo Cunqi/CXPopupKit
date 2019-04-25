@@ -7,7 +7,10 @@
 
 import UIKit
 
-public class CXListPicker<T: CustomStringConvertible>: CXBasePicker<T>, UITableViewDataSource, UITableViewDelegate {
+public class CXListPicker<T: CustomStringConvertible>: CXBasePicker, CXItemSelectable, UITableViewDataSource, UITableViewDelegate {
+    public typealias Item = T
+
+    public var handler: ((T) -> Void)?
 
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -26,11 +29,17 @@ public class CXListPicker<T: CustomStringConvertible>: CXBasePicker<T>, UITableV
 
     private let cellIdentifier = "_CXListPickerItemIdentifier"
     private let standardRowHeight: CGFloat = 44
+    private let preferredHeight = CXLayoutStyle.screen.size.height.quarter
+
+    public convenience init(items: [T], selectedItem: T?, popupAppearance: CXPopupAppearance) {
+        self.init(items: items, selectedItem: selectedItem, popupAppearance: popupAppearance, handler: nil)
+    }
 
     public init(items: [T], selectedItem: T?, popupAppearance: CXPopupAppearance, handler: ((T) -> Void)?) {
         self.items = items
         self.selectedItem = selectedItem
-        super.init(popupAppearance, handler)
+        self.handler = handler
+        super.init(popupAppearance)
     }
 
     public required init?(coder aDecoder: NSCoder) {
