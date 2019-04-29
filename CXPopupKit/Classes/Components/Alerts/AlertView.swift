@@ -109,6 +109,6 @@ class AlertView: UIView, CXDialog {
 //        self.cxPopup?.dismiss({
 //            responsors.forEach { $0.handler(title) }
 //        })
-        self.cxPopup?.dismiss()
+        self.popupController?.dismiss()
     }
 }

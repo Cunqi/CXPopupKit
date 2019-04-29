@@ -78,10 +78,6 @@ public class CXBasePicker: UIView, CXDialog, CXPopupLifecycleDelegate {
         layout()
     }
 
-    public func viewDidAppear() {
-        
-    }
-
     public func viewDidDisappear(_ dismissType: CXDismissType) {
         dismiss(for: dismissType)
     }

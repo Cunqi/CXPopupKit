@@ -160,7 +160,7 @@ class AnimationChooser: UIView, CXDialog {
     }
     
     @objc private func didTapApplyButton() {
-        self.cxPopup?.dismiss()
+        self.popupController?.dismiss()
     }
 }
 
