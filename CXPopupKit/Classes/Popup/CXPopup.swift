@@ -142,6 +142,12 @@ extension CXPopup {
 }
 
 extension CXPopup: CXPopupInteractable {
+    public func didTapLeftBarButtonItem(_ action: CXPopupNavigateAction) {
+    }
+
+    public func didTapRightBarButtonItem(_ action: CXPopupNavigateAction) {
+    }
+
     public func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }

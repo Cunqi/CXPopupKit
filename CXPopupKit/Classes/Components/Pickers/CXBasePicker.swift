@@ -89,6 +89,6 @@ public class CXBasePicker: UIView, CXDialog, CXPopupLifecycleDelegate {
 
 extension CXBasePicker: CXPopupable {
     public func pop(on vc: UIViewController?) {
-        CXPopupController(self, appearance: self.popupAppearance, self).pop(on: vc)
+        CXPopupController(self, self.popupAppearance, self).pop(on: vc)
     }
 }

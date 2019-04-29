@@ -19,7 +19,12 @@ public protocol CXDismissable {
     func commit()
 }
 
-public typealias CXPopupInteractable = CXPopupable & CXDismissable
+public protocol CXNavigateable {
+    func didTapLeftBarButtonItem(_ action: CXPopupNavigateAction)
+    func didTapRightBarButtonItem(_ action: CXPopupNavigateAction)
+}
+
+public typealias CXPopupInteractable = CXPopupable & CXDismissable & CXNavigateable
 
 
 /// Describe why popup closed
@@ -61,13 +66,53 @@ public class BasePopupController: UIViewController {
     /// This value will be used in `viewDidDisappear` lifecycle ONLY
     private var dismissType = CXDismissType.cancel
 
+
+    /// Popup a navigateable view with customized popup appearance
+    ///
+    /// - Parameters:
+    ///   - content: customized popup view
+    ///   - title: title for the view
+    ///   - left: left action for navigation
+    ///   - right: right action for navigation
+    ///   - appearance: popup appearance
+    ///   - delegate: hook to popup lifecycle methods
+    public convenience init(content: CXView,
+                            title: String?,
+                            left: CXPopupNavigateAction?,
+                            right: CXPopupNavigateAction,
+                            appearance: CXPopupAppearance,
+                            delegate: CXPopupLifecycleDelegate? = nil) {
+        let navigationController = CXNavigationController(title: title, left: left, right: right, view: content)
+        self.init(navigationController, appearance, delegate)
+    }
+
+
+    /// Popup a navigateable view controller with customized popup appearance
+    ///
+    /// - Parameters:
+    ///   - content: customized popup view controller
+    ///   - title: title for the view controller
+    ///   - left: left action for navigation
+    ///   - right: right action for navigation
+    ///   - appearance: popup appearance
+    ///   - delegate: hook to popup lifecycle methods
+    public convenience init(content: CXViewController,
+                            title: String?,
+                            left: CXPopupNavigateAction?,
+                            right: CXPopupNavigateAction,
+                            appearance: CXPopupAppearance,
+                            delegate: CXPopupLifecycleDelegate? = nil) {
+        let navigationController = CXNavigationController(title: title, left: left, right: right, viewController: content)
+        self.init(navigationController, appearance, delegate)
+    }
+
     /// Popup custom view with customized popup appearance
     ///
     /// - Parameters:
     ///   - content: custom view
     ///   - appearance: popup appearance
     ///   - delegate: hook to popup lifecycle methods
-    public convenience init(_ content: CXView, appearance: CXPopupAppearance, _ delegate: CXPopupLifecycleDelegate? = nil) {
+    public convenience init(_ content: CXView, _ appearance: CXPopupAppearance, _ delegate: CXPopupLifecycleDelegate? = nil) {
         let contentContainer = PopupContentContainer(content)
         self.init(contentContainer, appearance, delegate)
     }
@@ -145,6 +190,12 @@ extension BasePopupController: UIGestureRecognizerDelegate {
 
 // MARK: - CXPopupInteractable
 extension BasePopupController: CXPopupInteractable {
+    public func didTapLeftBarButtonItem(_ action: CXPopupNavigateAction) {
+    }
+
+    public func didTapRightBarButtonItem(_ action: CXPopupNavigateAction) {
+    }
+
     public func dismiss() {
         dismissType = .cancel
         self.dismiss(animated: true, completion: nil)

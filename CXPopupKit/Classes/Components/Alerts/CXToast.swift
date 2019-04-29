@@ -108,7 +108,7 @@ extension CXToast: CXPopupable {
     }
 
     public func pop(on vc: UIViewController?) {
-        CXPopupController(self, appearance: appearance, self).pop(on: vc)
+        CXPopupController(self, appearance, self).pop(on: vc)
     }
 }
 

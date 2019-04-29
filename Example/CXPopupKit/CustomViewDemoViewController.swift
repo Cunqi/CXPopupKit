@@ -24,15 +24,16 @@ class CustomViewDemoViewController: UIViewController {
         
         customView.backgroundColor = UIColor(red: 1, green: 126 / 255.0, blue: 121 / 255.0, alpha: 1.0)
 
-        config.layoutStyle = .bottomLeft(size: CustomViewDemoViewController.customViewSize)
+        config.layoutStyle = .top(height: CustomViewDemoViewController.customViewSize.height)
         config.animationStyle = .bounce
         config.animationTransition = CXAnimationTransition(.down)
-        config.safeAreaStyle = .on
+        config.safeAreaStyle = .wrap
+        config.safeAreaGapColor = .white
         config.isAutoRotateEnabled = true
     }
 
     private func setupNavigator() {
-        title = "CustomView"
+        title = "Custom View"
         self.navigationController?.setToolbarHidden(false, animated: true)
     }
     
@@ -41,27 +42,32 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-//        CXPopupController(customView, appearance: config).pop(on: self)
-        let popupAppearance: CXPopupAppearance = {
-            var popupAppearance = CXPopupAppearance()
-            popupAppearance.layoutStyle = .bottom(height: 0)
-            popupAppearance.animationStyle = .fade
-            popupAppearance.animationTransition = CXAnimationTransition(.up, .down)
-            popupAppearance.safeAreaStyle = .wrap
-            popupAppearance.safeAreaGapColor = .red
-            return popupAppearance
-        }()
-
-        let array = [
-            "Top",
-            "TopLeft",
-        ]
-
-
-        CXListPicker<String>(items: array, selectedItem: "Right", popupAppearance: popupAppearance, handler: nil)
-            .pop(on: self)
+        CXPopupController(content: customView,
+                          title: "Custom View",
+                          left: .cancel(text: "Cancel"),
+                          right: .action(text: "Right"),
+                          appearance: config)
+        .pop(on: self)
+//        let popupAppearance: CXPopupAppearance = {
+//            var popupAppearance = CXPopupAppearance()
+//            popupAppearance.layoutStyle = .bottom(height: 0)
+//            popupAppearance.animationStyle = .fade
+//            popupAppearance.animationTransition = CXAnimationTransition(.up, .down)
+//            popupAppearance.safeAreaStyle = .wrap
+//            popupAppearance.safeAreaGapColor = .red
+//            return popupAppearance
+//        }()
+//
+//        let array = [
+//            "Top",
+//            "TopLeft",
+//        ]
+//
+//
+//        CXListPicker<String>(items: array, selectedItem: "Right", popupAppearance: popupAppearance, handler: nil)
+//            .pop(on: self)
     }
-    
+
     
     @IBAction func didTapLayoutBarButtonItem(_ sender: Any) {
         let array = [
