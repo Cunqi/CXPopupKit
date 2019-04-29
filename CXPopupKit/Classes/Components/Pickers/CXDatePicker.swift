@@ -8,14 +8,6 @@
 import UIKit
 
 public class CXDatePicker: CXBasePicker, CXItemSelectable {
-    public static let defaultPopupAppearance: CXPopupAppearance = {
-        var appearance = CXPopupAppearance()
-        appearance.layoutStyle = .bottom(height: 240)
-        appearance.animationStyle = .fade
-        appearance.animationTransition = CXAnimationTransition(.up, .down)
-        appearance.safeAreaStyle = .wrap
-        return appearance
-    }()
 
     public typealias Item = Date
 
@@ -36,13 +28,13 @@ public class CXDatePicker: CXBasePicker, CXItemSelectable {
         set { picker.datePickerMode = newValue }
     }
 
-    public convenience init(popupAppearance: CXPopupAppearance = CXDatePicker.defaultPopupAppearance) {
+    public convenience init(popupAppearance: CXPopupAppearance = CXDatePicker.bottomPopupAppearance) {
         self.init(mode: .date, date: nil, popupAppearance: popupAppearance, handler: nil)
     }
 
     public init(mode: UIDatePicker.Mode = .date,
                 date: Date? = nil,
-                popupAppearance: CXPopupAppearance = CXDatePicker.defaultPopupAppearance,
+                popupAppearance: CXPopupAppearance = CXDatePicker.bottomPopupAppearance,
                 handler: ((Date) -> Void)? = nil) {
         super.init(popupAppearance)
         self.handler = handler
@@ -64,8 +56,5 @@ public class CXDatePicker: CXBasePicker, CXItemSelectable {
             return
         }
         handler?(picker.date)
-    }
-
-    public override func viewDidAppear() {
     }
 }

@@ -21,6 +21,15 @@ public class CXBasePicker: UIView, CXDialog, CXPopupLifecycleDelegate {
         init(){}
     }
 
+    public static let bottomPopupAppearance: CXPopupAppearance = {
+        var appearance = CXPopupAppearance()
+        appearance.layoutStyle = .bottom(height: 240)
+        appearance.animationStyle = .fade
+        appearance.animationTransition = CXAnimationTransition(.up, .down)
+        appearance.safeAreaStyle = .wrap
+        return appearance
+    }()
+
     @objc public dynamic var font: UIFont {
         get {return pickerAppearance.font }
         set {pickerAppearance.font = newValue }

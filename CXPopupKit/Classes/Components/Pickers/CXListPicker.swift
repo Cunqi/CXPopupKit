@@ -31,7 +31,7 @@ public class CXListPicker<T: CustomStringConvertible>: CXBasePicker, CXItemSelec
     private let standardRowHeight: CGFloat = 44
     private let preferredHeight = CXLayoutStyle.screen.size.height.quarter
 
-    public convenience init(items: [T], selectedItem: T?, popupAppearance: CXPopupAppearance) {
+    public convenience init(items: [T], selectedItem: T?, popupAppearance: CXPopupAppearance = CXListPicker.bottomPopupAppearance) {
         self.init(items: items, selectedItem: selectedItem, popupAppearance: popupAppearance, handler: nil)
     }
 
