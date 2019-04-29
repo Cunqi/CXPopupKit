@@ -22,8 +22,7 @@ public enum CXPopupNavigateAction {
 }
 
 class CXNavigationController: UINavigationController, CXDialog {
-    weak var dialog: CXDialog?
-
+    private weak var dialog: CXDialog?
     private var leftAction: CXPopupNavigateAction?
     private var rightAction: CXPopupNavigateAction?
 
@@ -33,10 +32,8 @@ class CXNavigationController: UINavigationController, CXDialog {
     }
 
     init(title: String?, left: CXPopupNavigateAction?, right: CXPopupNavigateAction?, viewController: CXViewController) {
-        self.dialog = viewController
-        self.leftAction = left
-        self.rightAction = right
         super.init(rootViewController: viewController)
+        dialog = viewController
         viewController.navigationItem.title = title
         viewController.navigationController?.navigationBar.isTranslucent = false
 
@@ -60,10 +57,10 @@ class CXNavigationController: UINavigationController, CXDialog {
     }
 
     @objc private func didTapLeftBarButtonItem(_ sender: UIBarButtonItem) {
-        dialog?.popupController?.didTapLeftBarButtonItem(self.leftAction!)
+        dialog?.tapLeftBarButtonItem(self.leftAction!)
     }
 
     @objc private func didTapRightBarButtonItem(_ sender: UIBarButtonItem) {
-        dialog?.popupController?.didTapRightBarButtonItem(self.rightAction!)
+        dialog?.tapRightBarButtonItem(self.rightAction!)
     }
 }

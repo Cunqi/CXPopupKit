@@ -51,17 +51,42 @@ public class CXBasePicker: UIView, CXDialog, CXPopupLifecycleDelegate {
               self.backgroundColor = newValue
               self.popupController?.popupContainer.backgroundColor = newValue }
     }
+
+    public var title: String?
+    public var leftAction: CXPopupNavigateAction?
+    public var rightAction: CXPopupNavigateAction?
     
     var popupAppearance: CXPopupAppearance
     var pickerAppearance = PickerAppearance()
 
-    init(_ popupAppearance: CXPopupAppearance) {
+    init(_ title: String?, _ left: CXPopupNavigateAction?, _ right: CXPopupNavigateAction?, _ popupAppearance: CXPopupAppearance) {
+        self.title = title
+        self.leftAction = left
+        self.rightAction = right
         self.popupAppearance = popupAppearance
         super.init(frame: .zero)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK - CXNavigateable
+    public func tapLeftBarButtonItem(_ action: CXPopupNavigateAction) {
+        didTapAction(action)
+    }
+
+    public func tapRightBarButtonItem(_ action: CXPopupNavigateAction) {
+        didTapAction(action)
+    }
+
+    private func didTapAction(_ action: CXPopupNavigateAction) {
+        switch action {
+        case .cancel:
+            self.popupController?.dismiss()
+        case .action:
+            self.popupController?.commit()
+        }
     }
 
     // MARK - Subclasses should implement these two methods
@@ -89,6 +114,12 @@ public class CXBasePicker: UIView, CXDialog, CXPopupLifecycleDelegate {
 
 extension CXBasePicker: CXPopupable {
     public func pop(on vc: UIViewController?) {
-        CXPopupController(self, self.popupAppearance, self).pop(on: vc)
+        CXPopupController(content: self,
+                          title: self.title,
+                          left: self.leftAction,
+                          right: self.rightAction,
+                          appearance: self.popupAppearance,
+                          delegate: self)
+            .pop(on: vc)
     }
 }

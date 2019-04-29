@@ -19,12 +19,12 @@ public protocol CXDismissable {
     func commit()
 }
 
-public protocol CXNavigateable {
-    func didTapLeftBarButtonItem(_ action: CXPopupNavigateAction)
-    func didTapRightBarButtonItem(_ action: CXPopupNavigateAction)
+public protocol CXNavigateBar {
+    func tapLeftBarButtonItem(_ action: CXPopupNavigateAction)
+    func tapRightBarButtonItem(_ action: CXPopupNavigateAction)
 }
 
-public typealias CXPopupInteractable = CXPopupable & CXDismissable & CXNavigateable
+public typealias CXPopupInteractable = CXPopupable & CXDismissable
 
 
 /// Describe why popup closed
@@ -79,7 +79,7 @@ public class BasePopupController: UIViewController {
     public convenience init(content: CXView,
                             title: String?,
                             left: CXPopupNavigateAction?,
-                            right: CXPopupNavigateAction,
+                            right: CXPopupNavigateAction?,
                             appearance: CXPopupAppearance,
                             delegate: CXPopupLifecycleDelegate? = nil) {
         let navigationController = CXNavigationController(title: title, left: left, right: right, view: content)
@@ -190,12 +190,7 @@ extension BasePopupController: UIGestureRecognizerDelegate {
 
 // MARK: - CXPopupInteractable
 extension BasePopupController: CXPopupInteractable {
-    public func didTapLeftBarButtonItem(_ action: CXPopupNavigateAction) {
-    }
-
-    public func didTapRightBarButtonItem(_ action: CXPopupNavigateAction) {
-    }
-
+    
     public func dismiss() {
         dismissType = .cancel
         self.dismiss(animated: true, completion: nil)

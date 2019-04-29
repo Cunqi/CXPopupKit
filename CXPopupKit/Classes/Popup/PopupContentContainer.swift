@@ -27,5 +27,13 @@ class PopupContentContainer: UIViewController, CXDialog {
         super.loadView()
         view = content
     }
+
+    func tapLeftBarButtonItem(_ action: CXPopupNavigateAction) {
+        content.tapLeftBarButtonItem(action)
+    }
+
+    func tapRightBarButtonItem(_ action: CXPopupNavigateAction) {
+        content.tapRightBarButtonItem(action)
+    }
 }
 

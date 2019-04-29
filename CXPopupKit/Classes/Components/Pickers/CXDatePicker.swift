@@ -28,15 +28,14 @@ public class CXDatePicker: CXBasePicker, CXItemSelectable {
         set { picker.datePickerMode = newValue }
     }
 
-    public convenience init(popupAppearance: CXPopupAppearance = CXDatePicker.bottomPopupAppearance) {
-        self.init(mode: .date, date: nil, popupAppearance: popupAppearance, handler: nil)
-    }
-
-    public init(mode: UIDatePicker.Mode = .date,
+    public init(title: String?,
+                leftAction: CXPopupNavigateAction?,
+                rightAction: CXPopupNavigateAction?,
+                mode: UIDatePicker.Mode = .date,
                 date: Date? = nil,
                 popupAppearance: CXPopupAppearance = CXDatePicker.bottomPopupAppearance,
                 handler: ((Date) -> Void)? = nil) {
-        super.init(popupAppearance)
+        super.init(title, leftAction, rightAction, popupAppearance)
         self.handler = handler
         self.picker.datePickerMode = mode
         self.picker.date = date ?? Date()
@@ -48,6 +47,7 @@ public class CXDatePicker: CXBasePicker, CXItemSelectable {
 
     override func layout() {
         picker.setValue(pickerAppearance.textColor, forKey: "textColor")
+        self.popupController?.navigationController?.navigationBar.tintColor = pickerAppearance.textColor
         CXLayoutBuilder.fill(picker, self, .zero)
     }
 

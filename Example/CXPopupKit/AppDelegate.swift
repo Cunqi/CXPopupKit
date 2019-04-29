@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CXListPicker<String>.appearance().textAlignment = .right
         CXListPicker<String>.appearance().font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
         CXListPicker<String>.appearance().backgroundColor = UIColor.black
-        CXDatePicker.appearance().textColor = UIColor.white
         CXDatePicker.appearance().backgroundColor = UIColor.black
         return true
     }

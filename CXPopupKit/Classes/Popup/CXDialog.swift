@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol CXDialog where Self: UIResponder {
+public protocol CXDialog: CXNavigateBar where Self: UIResponder {
     var popupController: CXPopupController? { get }
 }
 
@@ -22,4 +22,7 @@ public extension CXDialog {
         }
         return nil
     }
+
+    public func tapLeftBarButtonItem(_ action: CXPopupNavigateAction) {}
+    public func tapRightBarButtonItem(_ action: CXPopupNavigateAction) {}
 }

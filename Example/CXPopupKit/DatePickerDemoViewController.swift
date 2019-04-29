@@ -19,9 +19,12 @@ class DatePickerDemoViewController: UIViewController {
     }
 
     @objc private func didTapTapMeButton() {
-        let datePicker = CXDatePicker(date: Date())
+        let datePicker = CXDatePicker(title: "Date Picker", leftAction: nil, rightAction: .action(text: "Confirm"))
         datePicker.picker.datePickerMode = .time
         datePicker.textColor = .white
+        datePicker.handler = { date in
+            print(date)
+        }
         datePicker.pop(on: self)
     }
 }
