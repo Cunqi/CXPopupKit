@@ -55,7 +55,7 @@ public class CXBasePicker: UIView, CXDialog, CXPopupLifecycleDelegate {
     public var title: String?
     public var leftAction: CXPopupNavigateAction?
     public var rightAction: CXPopupNavigateAction?
-    
+
     var popupAppearance: CXPopupAppearance
     var pickerAppearance = PickerAppearance()
 
@@ -114,12 +114,12 @@ public class CXBasePicker: UIView, CXDialog, CXPopupLifecycleDelegate {
 
 extension CXBasePicker: CXPopupable {
     public func pop(on vc: UIViewController?) {
-        CXPopupController(content: self,
-                          title: self.title,
-                          left: self.leftAction,
-                          right: self.rightAction,
-                          appearance: self.popupAppearance,
-                          delegate: self)
+        CXNavigatePopupController(content: self,
+                                  title: title,
+                                  left: leftAction,
+                                  right: rightAction,
+                                  appearance: popupAppearance,
+                                  delegate: self)
             .pop(on: vc)
     }
 }

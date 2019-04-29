@@ -42,7 +42,7 @@ class CustomViewDemoViewController: UIViewController {
     }
     
     @objc private func didTapTapMeButton() {
-        CXPopupController(content: customView,
+        CXNavigatePopupController(content: customView,
                           title: "Custom View",
                           left: .cancel(text: "Cancel"),
                           right: .action(text: "Right"),
@@ -86,50 +86,50 @@ class CustomViewDemoViewController: UIViewController {
             "Center"
         ]
         
-//        var pickerConfig = CXPickerConfig()
-//        pickerConfig.accessoryType = .checkmark
-//        pickerConfig.popupConfig.layoutStyle = .bottomLeft(size: CGSize(width: 160, height: 300))
-//        pickerConfig.popupConfig.layoutInsets = UIEdgeInsets(top: 0, left: 16, bottom: 80, right: 0)
-//        pickerConfig.popupConfig.animationTransition = CXAnimationTransition(.up)
-//        pickerConfig.popupConfig.maskBackgroundColor = .clear
+        var popupAppearance = CXPopupAppearance()
+        popupAppearance.layoutStyle = .bottomLeft(size: CGSize(width: 280, height: 300))
+        popupAppearance.layoutInsets = UIEdgeInsets(top: 0, left: 16, bottom: 80, right: 0)
+        popupAppearance.animationTransition = CXAnimationTransition(.up)
+        popupAppearance.maskBackgroundColor = .clear
 
-//        let layoutPicker = CXPicker<String>.Builder(array)
-//            .withConfig(pickerConfig)
-//            .withDefault(array.firstIndex(of: config.layoutStyle.desc))
-//            .withOptionHandler { [weak self] (layoutName) in
-//                switch layoutName {
-//                case "Top":
-//                    self?.config.layoutStyle = CXLayoutStyle.top(height: CustomViewDemoViewController.customViewSize.height)
-//                case "TopLeft":
-//                    self?.config.layoutStyle = CXLayoutStyle.topLeft(size: CustomViewDemoViewController.customViewSize)
-//                case "TopRight":
-//                    self?.config.layoutStyle = CXLayoutStyle.topRight(size: CustomViewDemoViewController.customViewSize)
-//                case "TopCenter":
-//                    self?.config.layoutStyle = CXLayoutStyle.topCenter(size: CustomViewDemoViewController.customViewSize)
-//                case "Bottom":
-//                    self?.config.layoutStyle = CXLayoutStyle.bottom(height: CustomViewDemoViewController.customViewSize.height)
-//                case "BottomLeft":
-//                    self?.config.layoutStyle = CXLayoutStyle.bottomLeft(size: CustomViewDemoViewController.customViewSize)
-//                case "BottomRight":
-//                    self?.config.layoutStyle = CXLayoutStyle.bottomRight(size: CustomViewDemoViewController.customViewSize)
-//                case "BottomCenter":
-//                    self?.config.layoutStyle = CXLayoutStyle.bottomCenter(size: CustomViewDemoViewController.customViewSize)
-//                case "Left":
-//                    self?.config.layoutStyle = CXLayoutStyle.left(width: CustomViewDemoViewController.customViewSize.width)
-//                case "CenterLeft":
-//                    self?.config.layoutStyle = CXLayoutStyle.centerLeft(size: CustomViewDemoViewController.customViewSize)
-//                case "Right":
-//                    self?.config.layoutStyle = CXLayoutStyle.right(width: CustomViewDemoViewController.customViewSize.width)
-//                case "CenterRight":
-//                    self?.config.layoutStyle = CXLayoutStyle.centerRight(size: CustomViewDemoViewController.customViewSize)
-//                case "Center":
-//                    self?.config.layoutStyle = CXLayoutStyle.center(size: CustomViewDemoViewController.customViewSize)
-//                default:
-//                    break
-//                }
-//            }
-//            .create(on: self)
-//        self.present(layoutPicker, animated: true, completion: nil)
+        let layoutPicker = CXListPicker<String>.init(title: "Layout",
+                                                     leftAction: nil,
+                                                     rightAction: .action(text: "Done"),
+                                                     items: array,
+                                                     selectedItem: config.layoutStyle.desc,
+                                                     popupAppearance: popupAppearance) { [weak self] (layoutName) in
+                                                            switch layoutName {
+                                                            case "Top":
+                                                                self?.config.layoutStyle = CXLayoutStyle.top(height: CustomViewDemoViewController.customViewSize.height)
+                                                            case "TopLeft":
+                                                                self?.config.layoutStyle = CXLayoutStyle.topLeft(size: CustomViewDemoViewController.customViewSize)
+                                                            case "TopRight":
+                                                                self?.config.layoutStyle = CXLayoutStyle.topRight(size: CustomViewDemoViewController.customViewSize)
+                                                            case "TopCenter":
+                                                                self?.config.layoutStyle = CXLayoutStyle.topCenter(size: CustomViewDemoViewController.customViewSize)
+                                                            case "Bottom":
+                                                                self?.config.layoutStyle = CXLayoutStyle.bottom(height: CustomViewDemoViewController.customViewSize.height)
+                                                            case "BottomLeft":
+                                                                self?.config.layoutStyle = CXLayoutStyle.bottomLeft(size: CustomViewDemoViewController.customViewSize)
+                                                            case "BottomRight":
+                                                                self?.config.layoutStyle = CXLayoutStyle.bottomRight(size: CustomViewDemoViewController.customViewSize)
+                                                            case "BottomCenter":
+                                                                self?.config.layoutStyle = CXLayoutStyle.bottomCenter(size: CustomViewDemoViewController.customViewSize)
+                                                            case "Left":
+                                                                self?.config.layoutStyle = CXLayoutStyle.left(width: CustomViewDemoViewController.customViewSize.width)
+                                                            case "CenterLeft":
+                                                                self?.config.layoutStyle = CXLayoutStyle.centerLeft(size: CustomViewDemoViewController.customViewSize)
+                                                            case "Right":
+                                                                self?.config.layoutStyle = CXLayoutStyle.right(width: CustomViewDemoViewController.customViewSize.width)
+                                                            case "CenterRight":
+                                                                self?.config.layoutStyle = CXLayoutStyle.centerRight(size: CustomViewDemoViewController.customViewSize)
+                                                            case "Center":
+                                                                self?.config.layoutStyle = CXLayoutStyle.center(size: CustomViewDemoViewController.customViewSize)
+                                                            default:
+                                                                break
+                                                            }
+                                                        }
+        layoutPicker.pop(on: self)
     }
     
     
@@ -160,31 +160,31 @@ class CustomViewDemoViewController: UIViewController {
             "Wrap",
         ]
 
-//        var pickerConfig = CXPickerConfig()
-//        pickerConfig.accessoryType = .checkmark
-//        pickerConfig.popupConfig.layoutStyle = .bottomRight(size: CGSize(width: 150, height: 300))
-//        pickerConfig.popupConfig.layoutInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 16)
-//        pickerConfig.popupConfig.animationTransition = CXAnimationTransition(.up)
-//        pickerConfig.popupConfig.maskBackgroundColor = .clear
-//
-//        let safeAreaPicker = CXPicker<String>.Builder(array)
-//            .withConfig(pickerConfig)
-//            .withDefault(array.firstIndex(of: config.safeAreaStyle.desc))
-//            .withOptionHandler { [weak self] (safeAreaName) in
-//                print("executed")
-//                switch safeAreaName {
-//                case "On":
-//                    self?.config.safeAreaStyle = .on
-//                case "Off":
-//                    self?.config.safeAreaStyle = .off
-//                case "Wrap":
-//                    self?.config.safeAreaStyle = .wrap
-//                default:
-//                    break
-//                }
-//            }
-//            .create(on: self)
-//        self.present(safeAreaPicker, animated: true, completion: nil)
+        var popupAppearance = CXPopupAppearance()
+        popupAppearance.layoutStyle = .bottomRight(size: CGSize(width: 240, height: 300))
+        popupAppearance.layoutInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 16)
+        popupAppearance.animationTransition = CXAnimationTransition(.up)
+        popupAppearance.maskBackgroundColor = .clear
+
+        let safeAreaPicker = CXListPicker<String>(title: "Safe Area",
+                                                  leftAction: nil,
+                                                  rightAction: .action(text: "Done"),
+                                                  items: array,
+                                                  selectedItem: config.safeAreaStyle.desc,
+                                                  popupAppearance: popupAppearance){ [weak self] (safeAreaName) in
+                                                        print("executed")
+                                                        switch safeAreaName {
+                                                        case "On":
+                                                            self?.config.safeAreaStyle = .on
+                                                        case "Off":
+                                                            self?.config.safeAreaStyle = .off
+                                                        case "Wrap":
+                                                            self?.config.safeAreaStyle = .wrap
+                                                        default:
+                                                            break
+                                                        }
+                                                  }
+        safeAreaPicker.pop(on: self)
     }
 }
 

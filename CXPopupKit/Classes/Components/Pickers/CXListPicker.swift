@@ -20,12 +20,9 @@ public class CXListPicker<T: CustomStringConvertible>: CXBasePicker, CXItemSelec
         return tableView
     }()
 
-    var items: [T]? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var items: [T]?
     var selectedItem: T?
+    var selectedIndexPath: IndexPath?
 
     private let cellIdentifier = "_CXListPickerItemIdentifier"
     private let standardRowHeight: CGFloat = 44
@@ -39,9 +36,12 @@ public class CXListPicker<T: CustomStringConvertible>: CXBasePicker, CXItemSelec
                 popupAppearance: CXPopupAppearance,
                 handler: ((T) -> Void)?) {
         self.items = items
-        self.selectedItem = selectedItem
+        if let item = selectedItem, let index = items.firstIndex(where: { $0.description == item.description }) {
+            self.selectedIndexPath = IndexPath(row: index, section: 0)
+            self.selectedItem = selectedItem
+        }
         self.handler = handler
-        super.init(title, leftAction, rightAction, popupAppearance)
+        super.init (title, leftAction, rightAction, popupAppearance)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -51,7 +51,8 @@ public class CXListPicker<T: CustomStringConvertible>: CXBasePicker, CXItemSelec
     // MARK - CXPopupLifecycleDelegate
     public override func finalizeLayoutStyleBeforeInstallConstraints(_ current: CXPopupAppearance, _ submit: (CXLayoutStyle) -> Void) {
         let height = min(preferredHeight, standardRowHeight * CGFloat(items?.count ?? 0))
-        let size = CGSize(width: CXLayoutStyle.screen.size.width, height: height)
+        let originSize = current.layoutStyle.size
+        let size = CGSize(width: originSize.width, height: height)
         let layoutStyle = current.layoutStyle.update(size: size)
         submit(layoutStyle)
     }
@@ -65,10 +66,11 @@ public class CXListPicker<T: CustomStringConvertible>: CXBasePicker, CXItemSelec
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
-            cell?.selectionStyle = .default
+            cell?.selectionStyle = .none
             cell?.textLabel?.font = pickerAppearance.font
             cell?.textLabel?.textColor = pickerAppearance.textColor
             cell?.textLabel?.textAlignment = pickerAppearance.textAlignment
+            cell?.tintColor = pickerAppearance.textColor
             cell?.backgroundColor = pickerAppearance.backgroundColor
         }
         let item = items?[indexPath.row]
@@ -83,8 +85,10 @@ public class CXListPicker<T: CustomStringConvertible>: CXBasePicker, CXItemSelec
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPaths = [indexPath, selectedIndexPath].compactMap { $0 }
+        self.selectedIndexPath = indexPath
         self.selectedItem = items?[indexPath.row]
-        self.popupController?.commit()
+        tableView.reloadRows(at: indexPaths, with: .none)
     }
 
     override func layout() {

@@ -10,18 +10,13 @@ import UIKit
 public typealias CXView = UIView & CXDialog
 public typealias CXViewController = UIViewController & CXDialog
 
-public protocol CXPopupable {
+@objc public protocol CXPopupable: class {
     func pop(on vc: UIViewController?)
 }
 
 public protocol CXDismissable {
     func dismiss()
     func commit()
-}
-
-public protocol CXNavigateBar {
-    func tapLeftBarButtonItem(_ action: CXPopupNavigateAction)
-    func tapRightBarButtonItem(_ action: CXPopupNavigateAction)
 }
 
 public typealias CXPopupInteractable = CXPopupable & CXDismissable
@@ -65,46 +60,6 @@ public class BasePopupController: UIViewController {
     /// Used to determine why you dismiss the popup
     /// This value will be used in `viewDidDisappear` lifecycle ONLY
     private var dismissType = CXDismissType.cancel
-
-
-    /// Popup a navigateable view with customized popup appearance
-    ///
-    /// - Parameters:
-    ///   - content: customized popup view
-    ///   - title: title for the view
-    ///   - left: left action for navigation
-    ///   - right: right action for navigation
-    ///   - appearance: popup appearance
-    ///   - delegate: hook to popup lifecycle methods
-    public convenience init(content: CXView,
-                            title: String?,
-                            left: CXPopupNavigateAction?,
-                            right: CXPopupNavigateAction?,
-                            appearance: CXPopupAppearance,
-                            delegate: CXPopupLifecycleDelegate? = nil) {
-        let navigationController = CXNavigationController(title: title, left: left, right: right, view: content)
-        self.init(navigationController, appearance, delegate)
-    }
-
-
-    /// Popup a navigateable view controller with customized popup appearance
-    ///
-    /// - Parameters:
-    ///   - content: customized popup view controller
-    ///   - title: title for the view controller
-    ///   - left: left action for navigation
-    ///   - right: right action for navigation
-    ///   - appearance: popup appearance
-    ///   - delegate: hook to popup lifecycle methods
-    public convenience init(content: CXViewController,
-                            title: String?,
-                            left: CXPopupNavigateAction?,
-                            right: CXPopupNavigateAction,
-                            appearance: CXPopupAppearance,
-                            delegate: CXPopupLifecycleDelegate? = nil) {
-        let navigationController = CXNavigationController(title: title, left: left, right: right, viewController: content)
-        self.init(navigationController, appearance, delegate)
-    }
 
     /// Popup custom view with customized popup appearance
     ///

@@ -35,6 +35,7 @@
 		C403E83722667E050062FEC5 /* CXListPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403E83622667E050062FEC5 /* CXListPicker.swift */; };
 		C42B21082270E4B600A8F281 /* CXBasePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B21072270E4B600A8F281 /* CXBasePicker.swift */; };
 		C42B210C2277727000A8F281 /* CXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B210B2277727000A8F281 /* CXNavigationController.swift */; };
+		C42B210E2277BA7E00A8F281 /* CXNavigatePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B210D2277BA7E00A8F281 /* CXNavigatePopupController.swift */; };
 		C46ED00B22554EE300DB8432 /* CXPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */; };
 		C46ED00D225551CD00DB8432 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED00C225551CD00DB8432 /* PresentationController.swift */; };
 		C46ED0112255659000DB8432 /* CXPopup+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */; };
@@ -126,6 +127,7 @@
 		C403E83622667E050062FEC5 /* CXListPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXListPicker.swift; sourceTree = "<group>"; };
 		C42B21072270E4B600A8F281 /* CXBasePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXBasePicker.swift; sourceTree = "<group>"; };
 		C42B210B2277727000A8F281 /* CXNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXNavigationController.swift; sourceTree = "<group>"; };
+		C42B210D2277BA7E00A8F281 /* CXNavigatePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXNavigatePopupController.swift; sourceTree = "<group>"; };
 		C46ED00A22554EE300DB8432 /* CXPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPresentationManager.swift; sourceTree = "<group>"; };
 		C46ED00C225551CD00DB8432 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		C46ED0102255659000DB8432 /* CXPopup+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CXPopup+Lifecycle.swift"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				C4CE527F225D2DD6008AD6E2 /* CXPopupController.swift */,
 				C4CE5283225D33B9008AD6E2 /* PopupContainer.swift */,
 				C42B210B2277727000A8F281 /* CXNavigationController.swift */,
+				C42B210D2277BA7E00A8F281 /* CXNavigatePopupController.swift */,
 			);
 			name = Popup;
 			path = CXPopupKit/Classes/Popup;
@@ -614,6 +617,7 @@
 				C4CE5274225C0BD3008AD6E2 /* CXLayout+Internal.swift in Sources */,
 				5E341C37F76A983ABCAFEA7127470D79 /* CXTextUtil.swift in Sources */,
 				B81FBA3633ED7D618B67D52F70A7F342 /* CXToast.swift in Sources */,
+				C42B210E2277BA7E00A8F281 /* CXNavigatePopupController.swift in Sources */,
 				5B21C6C43799B0F1ECABC18880815A09 /* CXZoomAnimation.swift in Sources */,
 				E299A2E471ABF13F4F3CDD45CEFD44E6 /* ProgressBarView.swift in Sources */,
 				3C33C2332218D71200636D6D /* UIColor+Extension.swift in Sources */,
