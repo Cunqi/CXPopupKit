@@ -11,19 +11,7 @@ import Foundation
 class CXDimensionUtil {
     static let defaultHeight: CGFloat = 44
 
-    static func getRect(width: CXEdgeSize, height: CXEdgeSize, position: CXPosition, safeAreaType: CXSafeAreaType, screen: CGSize) -> CGRect {
-
-        let calculatedWidth = width.getValue(based: screen.width)
-        let calculatedwHeight = height.getValue(based: screen.height)
-        let safeAreaMargin = getSafeAreaMargin(position, safeAreaType)
-        let w = calculatedWidth + safeAreaMargin.left + safeAreaMargin.right
-        let h = calculatedwHeight + safeAreaMargin.top + safeAreaMargin.bottom
-        let size = CGSize(width: w, height: h)
-        let origin = getOrigin(position, size: size, screen: screen, safeAreaType: safeAreaType)
-        return CGRect(origin: origin, size: size)
-    }
-
-    static var windowSafeAreaInsets: UIEdgeInsets {
+    static var keyWindowSafeAreInsets: UIEdgeInsets {
         if #available(iOS 11.0, *) {
             return UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
         } else {
@@ -31,37 +19,55 @@ class CXDimensionUtil {
         }
     }
 
-    private static func getSafeAreaMargin(_ position: CXPosition, _ safeAreaType: CXSafeAreaType) -> UIEdgeInsets {
-        guard safeAreaType == .wrapped else {
+    static func rect(_ width: CXEdge,
+                     _ height: CXEdge,
+                     _ position: CXPosition,
+                     _ policy: CXSafeAreaPolicy,
+                     _ screen: CGSize) -> CGRect {
+        let widthValue = width.value(screen.width)
+        let heightValue = height.value(screen.height)
+        let margin = safeAreaMargin(position, policy)
+        let size = CGSize(
+                width: widthValue + margin.left + margin.right,
+                height: heightValue + margin.top + margin.bottom)
+        return CGRect(origin: origin(position, size, screen, policy), size: size)
+    }
+
+    private static func safeAreaMargin(_ position: CXPosition, _ safeAreaType: CXSafeAreaPolicy) -> UIEdgeInsets {
+        guard safeAreaType == .auto else {
             return .zero
         }
-
+        let insets = CXDimensionUtil.keyWindowSafeAreInsets
         var result = UIEdgeInsets.zero
-        switch position.horizontal {
+
+        switch position.x {
         case .left:
-            result.left = CXDimensionUtil.windowSafeAreaInsets.left
+            result.left = insets.left
         case .right:
-            result.right = CXDimensionUtil.windowSafeAreaInsets.left
-        default:
+            result.right = insets.right
+        case .center, .custom:
+            fallthrough
+        @unknown default:
             break
         }
-
-        switch position.vertical {
+        switch position.y {
         case .top:
-            result.top = CXDimensionUtil.windowSafeAreaInsets.top
+            result.top = insets.top
         case .bottom:
-            result.bottom = CXDimensionUtil.windowSafeAreaInsets.bottom
-        default:
+            result.bottom = insets.bottom
+        case .center, .custom:
+            fallthrough
+        @unknown default:
             break
         }
-
+        
         return result
     }
 
-    private static func getOrigin(_ position: CXPosition, size: CGSize, screen: CGSize, safeAreaType: CXSafeAreaType) -> CGPoint {
-        let safeAreaInsets = safeAreaType == .default ? windowSafeAreaInsets : .zero
-        let x = position.horizontal.getXisValue(based: size.width, screen: screen.width, safeArea: safeAreaInsets)
-        let y = position.vertical.getXisValue(based: size.height, screen: screen.height, safeArea: safeAreaInsets)
-        return CGPoint(x: x, y: y)
+    private static func origin(_ position: CXPosition, _ size: CGSize, _ screen: CGSize, _ policy: CXSafeAreaPolicy) -> CGPoint {
+        let safeArea = policy == .system ? keyWindowSafeAreInsets : .zero
+        return CGPoint(
+                x: position.x.calculate(size.width, screen.width, safeArea),
+                y: position.y.calculate(size.height, screen.height, safeArea))
     }
 }

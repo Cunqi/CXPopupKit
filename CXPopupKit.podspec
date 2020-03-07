@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CXPopupKit'
-  s.version          = '1.1.4'
+  s.version          = '3.0.0'
   s.summary          = 'iOS popup kit written by swift'
 
 # This description is used to generate tags and improve search results.
@@ -39,5 +39,5 @@ iOS popup kit written by swift, support iOS 9 and above
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  s.swift_version = '4.2'
+  s.swift_version = '5'
 end

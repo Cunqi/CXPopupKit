@@ -9,87 +9,80 @@
 import UIKit
 
 class CXPresentationController: UIPresentationController {
-    var lastPresentedFrame: CGRect = .zero
+    let style: CXPopupStyle
     var contentView: UIView?
     var dimmingView: UIView?
 
-    var popupAppearance: CXPopupAppearance {
-        let popupController = self.presentedViewController as? CXBasePopupController
-        return popupController?.popupAppearance ?? CXPopupAppearance()
-    }
-
-    lazy var tapOutsideGestureRecognizer: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOutsideToDismiss))
-        return gesture
-    }()
-
-    lazy var animationController: UIViewControllerAnimatedTransitioning? = {
-        return AnimationFactory.getAnimationInstance(from: popupAppearance, presentationController: self)
+    lazy var animation: UIViewControllerAnimatedTransitioning = {
+        return AnimationFactory.animation(
+            self.style.animationStyle,
+            self.style.animationDuration,
+            self.style.animationTransition,
+            self.presentingViewController)
     }()
 
     var coordinator: UIViewControllerTransitionCoordinator? {
-        return self.presentingViewController.transitionCoordinator
+        self.presentingViewController.transitionCoordinator
     }
 
     override var frameOfPresentedViewInContainerView: CGRect {
         let containerBounds = self.containerView?.bounds ?? .zero
-        let rect = CXDimensionUtil.getRect(width: popupAppearance.width,
-                                           height: popupAppearance.height,
-                                           position: popupAppearance.position,
-                                           safeAreaType: popupAppearance.safeAreaType,
-                                           screen: containerBounds.size)
-        lastPresentedFrame = rect
+        let rect = CXDimensionUtil.rect(style.width, style.height, style.position, style.safeAreaPolicy, containerBounds.size)
         return rect
     }
 
     override var presentedView: UIView? {
-        return contentView
+        contentView
     }
 
-    @objc private func tapOutsideToDismiss() {
-        self.presentingViewController.dismiss(animated: true, completion: nil)
+    @objc
+    private func tapOutsideToDismiss() {
+        (self.presentedViewController as? CXPopupController)?.dismiss(animated: true, completion: nil)
     }
 
-    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
-        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-        self.presentedViewController.modalPresentationStyle = .custom
-        self.presentedViewController.transitioningDelegate = self
+    init(_ style: CXPopupStyle, _ presented: UIViewController, _ presenting: UIViewController) {
+        self.style = style
+        super.init(presentedViewController: presented, presenting: presenting)
+        presented.modalPresentationStyle = .custom
+        presented.transitioningDelegate = self
     }
 
     override func presentationTransitionWillBegin() {
         // contentView
         contentView = UIView(frame: self.frameOfPresentedViewInContainerView)
-        if popupAppearance.isShadowEnabled {
-            contentView?.layer.shadowOpacity = popupAppearance.shadowOpacity
-            contentView?.layer.shadowRadius = popupAppearance.shadowRadius
-            contentView?.layer.shadowOffset = popupAppearance.shadowOffset
-            contentView?.layer.shadowColor = popupAppearance.shadowColor.cgColor
+        if style.isShadowEnabled {
+            contentView?.layer.shadowOpacity = style.shadowOpacity
+            contentView?.layer.shadowRadius = style.shadowRadius
+            contentView?.layer.shadowOffset = style.shadowOffset
+            contentView?.layer.shadowColor = style.shadowColor.cgColor
         }
 
         // roundedCornerView
         let roundedCornerView = UIView(frame: contentView?.bounds ?? .zero)
-        roundedCornerView.layer.cornerRadius = popupAppearance.cornerRadius
+        roundedCornerView.layer.cornerRadius = style.cornerRadius
         roundedCornerView.layer.masksToBounds = true
 
         // super.presentedView
         let presentedView = super.presentedView ?? UIView()
         presentedView.frame = contentView?.bounds ?? .zero
+        
+        roundedCornerView.backgroundColor = .green
 
         // Add dependencies between each view
-        CXLayoutUtil.fill(presentedView, at: roundedCornerView)
-        CXLayoutUtil.fill(roundedCornerView, at: contentView)
+        CXLayoutUtil.fill(presentedView, roundedCornerView)
+        CXLayoutUtil.fill(roundedCornerView, contentView)
 
         // Dimming view
         dimmingView = UIView()
-        dimmingView?.backgroundColor = popupAppearance.maskBackgroundColor
+        dimmingView?.backgroundColor = style.maskBackgroundColor
         dimmingView?.alpha = 0
-        if popupAppearance.shouldDismissOnBackgroundTap {
-            dimmingView?.addGestureRecognizer(tapOutsideGestureRecognizer)
+        if style.shouldDismissOnBackgroundTap {
+            dimmingView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapOutsideToDismiss)))
         }
         containerView?.addSubview(dimmingView!)
         containerView?.addSubview(contentView!) // make sure content view is above dimming view
 
-        let destinationAlpha = popupAppearance.maskBackgroundAlpha
+        let destinationAlpha = style.maskBackgroundAlpha
         coordinator?.animate(alongsideTransition: { [weak self] (context) in
             self?.dimmingView?.alpha = destinationAlpha
         }, completion: nil)
@@ -140,14 +133,14 @@ class CXPresentationController: UIPresentationController {
 
 extension CXPresentationController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return self
+        self
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return self.animationController
+        self.animation
     }
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return self.animationController
+        self.animation
     }
 }

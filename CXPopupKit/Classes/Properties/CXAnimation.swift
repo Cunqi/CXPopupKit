@@ -1,79 +1,48 @@
-//
-//  CXAnimation.swift
-//  CXPopupKit
-//
-//  Created by Cunqi Xiao on 7/18/18.
-//  Copyright © 2018 Cunqi. All rights reserved.
-//
-
 import UIKit
 
 public protocol CXAnimation: UIViewControllerAnimatedTransitioning {
 }
 
 public enum CXAnimationStyle {
-    case basic
-    case fade
-    case bounce
-    case zoom
-    case pop
-    case custom(animator: UIViewControllerAnimatedTransitioning)
+    case basic, fade, bounce, zoom, pop
+    case custom(_ animation: CXAnimation)
 }
 
 public struct CXAnimationDuration {
-    let animateInDuration: TimeInterval
-    let animateOutDuration: TimeInterval
+    let `in`: TimeInterval
+    let out: TimeInterval
 
-    public init(`in`: TimeInterval, out: TimeInterval) {
-        self.animateInDuration = `in`
-        self.animateOutDuration = out
+    public init(_ `in`: TimeInterval, _ out: TimeInterval) {
+        self.in = `in`
+        self.out = out
     }
 
-    public init(round: TimeInterval) {
-        self.animateInDuration = round
-        self.animateOutDuration = round
+    public init(_ roundTrip: TimeInterval) {
+        self.in = roundTrip
+        self.out = roundTrip
     }
 }
 
-public enum CXAnimationDirection {
-    case up
-    case down
-    case left
-    case right
-    case center
+public enum CXAnimationDirection: Int {
+    case up = 1, left, center, right, down
 
     public var opposite: CXAnimationDirection {
-        switch self {
-        case .up:
-            return .down
-        case .down:
-            return .up
-        case .left:
-            return .right
-        case .right:
-            return .left
-        case .center:
-            return .center
-        }
+        CXAnimationDirection(rawValue: 6 - self.rawValue)!
     }
 }
 
 public struct CXAnimationTransition {
-    let animateInDirection: CXAnimationDirection
-    let animateOutDirection: CXAnimationDirection
+    let `in`: CXAnimationDirection
+    let out: CXAnimationDirection
 
-    public init(`in`: CXAnimationDirection, out: CXAnimationDirection) {
-        self.animateInDirection = `in`
-        self.animateOutDirection = out
+    public init(_ `in`: CXAnimationDirection, _ out: CXAnimationDirection) {
+        self.`in` = `in`
+        self.out = out
     }
 
-    public init(`in`: CXAnimationDirection, oppositeDirectionForOut: Bool = true) {
-        self.animateInDirection = `in`
-        if oppositeDirectionForOut {
-            self.animateOutDirection = `in`.opposite
-        } else {
-            self.animateOutDirection = `in`
-        }
+    public init(_ `in`: CXAnimationDirection, _ sameDirection: Bool = false) {
+        self.`in` = `in`
+        self.out = sameDirection ? `in` : `in`.opposite
     }
 }
 
@@ -81,44 +50,29 @@ public struct CXAnimationTransition {
 
 extension CGRect {
     func offsetForInitialPosition(direction: CXAnimationDirection, offsetSize: CGSize) -> CGRect {
-        let origin = direction.getDeparturePoint(base: self.origin, size: offsetSize)
+        let origin = direction.position(self.origin, offsetSize, true)
         return CGRect(origin: origin, size: self.size)
     }
 
     func offsetForFinalPosition(direction: CXAnimationDirection, offsetSize: CGSize) -> CGRect {
-        let origin = direction.getArrivalPoint(base: self.origin, size: offsetSize)
+        let origin = direction.position(self.origin, offsetSize, false)
         return CGRect(origin: origin, size: self.size)
     }
 }
 
 extension CXAnimationDirection {
-    func getDeparturePoint(base: CGPoint, size: CGSize) -> CGPoint {
+    func position(_ base: CGPoint, _ size: CGSize, _ isStart: Bool) -> CGPoint {
         switch self {
         case .up:
-            return CGPoint(x: base.x, y: base.y + size.height)
+            return CGPoint(x: base.x, y: isStart ? base.y + size.height : base.y - size.height)
         case .down:
-            return CGPoint(x: base.x, y: base.y - size.height)
+            return CGPoint(x: base.x, y: isStart ? base.y - size.height : base.y + size.height)
         case .center:
             return base
         case .left:
-            return CGPoint(x: base.x + size.width, y: base.y)
+            return CGPoint(x: isStart ? base.x + size.width : base.x - size.width, y: base.y)
         case .right:
-            return CGPoint(x: base.x - size.width, y: base.y)
-        }
-    }
-
-    func getArrivalPoint(base: CGPoint, size: CGSize) -> CGPoint {
-        switch self {
-        case .up:
-            return CGPoint(x: base.x, y: base.y - size.height)
-        case .down:
-            return CGPoint(x: base.x, y: base.y + size.height)
-        case .center:
-            return base
-        case .left:
-            return CGPoint(x: base.x - size.width, y: base.y)
-        case .right:
-            return CGPoint(x: base.x + size.width, y: base.y)
+            return CGPoint(x: isStart ? base.x - size.width : base.x + size.width, y: base.y)
         }
     }
 }

@@ -1,11 +1,3 @@
-//
-//  CXBounceAnimation.swift
-//  CXPopupKit
-//
-//  Created by Cunqi Xiao on 8/13/18.
-//  Copyright © 2018 Cunqi. All rights reserved.
-//
-
 import Foundation
 
 class CXBounceAnimation: CXBasicAnimation {
@@ -15,7 +7,7 @@ class CXBounceAnimation: CXBasicAnimation {
         }
         let container = context.containerView
         let toViewFinalFrame = context.finalFrame(for: toVC)
-        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.animateInDirection, offsetSize: container.bounds.size)
+        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.`in`, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         animateInFinalFrame = toViewFinalFrame
 
@@ -33,7 +25,7 @@ class CXBounceAnimation: CXBasicAnimation {
             return
         }
         let container = context.containerView
-        let fromViewFinalFrame = animateOutInitialFrame.offsetForFinalPosition(direction: transition.animateOutDirection, offsetSize: container.bounds.size)
+        let fromViewFinalFrame = animateInFinalFrame.offsetForFinalPosition(direction: transition.out, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
             fromView.frame = fromViewFinalFrame

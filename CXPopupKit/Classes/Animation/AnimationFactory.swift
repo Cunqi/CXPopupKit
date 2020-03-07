@@ -1,36 +1,21 @@
-//
-//  AnimationFactory.swift
-//  CXPopupKit
-//
-//  Created by Cunqi Xiao on 7/18/18.
-//  Copyright © 2018 Cunqi. All rights reserved.
-//
-
 import UIKit
 
 class AnimationFactory {
-    static func getAnimationInstance(from appearance: CXPopupAppearance, presentationController: UIPresentationController) -> UIViewControllerAnimatedTransitioning? {
-        switch appearance.animationStyle {
+    static func animation(_ style: CXAnimationStyle,
+                          _ duration: CXAnimationDuration,
+                          _ transition: CXAnimationTransition,
+                          _ presenting: UIViewController) -> UIViewControllerAnimatedTransitioning {
+        switch style {
         case .basic:
-            return CXBasicAnimation(presenting: presentationController.presentingViewController,
-                                    duration: appearance.animationDuration,
-                                    transition: appearance.animationTransition)
+            return CXBasicAnimation(presenting, duration, transition)
         case .fade:
-            return CXFadeAnimation(presenting: presentationController.presentingViewController,
-                                   duration: appearance.animationDuration,
-                                   transition: appearance.animationTransition)
+            return CXFadeAnimation(presenting, duration, transition)
         case .bounce:
-            return CXBounceAnimation(presenting: presentationController.presentingViewController,
-                                     duration: appearance.animationDuration,
-                                     transition: appearance.animationTransition)
+            return CXBounceAnimation(presenting, duration, transition)
         case .zoom:
-            return CXZoomAnimation(presenting: presentationController.presentingViewController,
-                                   duration: appearance.animationDuration,
-                                   transition: appearance.animationTransition)
+            return CXZoomAnimation(presenting, duration, transition)
         case .pop:
-            return CXPopAnimation(presenting: presentationController.presentingViewController,
-                            duration: appearance.animationDuration,
-                            transition: appearance.animationTransition)
+            return CXPopAnimation(presenting, duration, transition)
         case .custom(let animator):
             return animator
         }

@@ -1,11 +1,3 @@
-//
-//  CXBasicAnimation.swift
-//  CXPopupKit
-//
-//  Created by Cunqi Xiao on 7/18/18.
-//  Copyright © 2018 Cunqi. All rights reserved.
-//
-
 import UIKit
 
 class CXBasicAnimation: NSObject, CXAnimation {
@@ -18,17 +10,8 @@ class CXBasicAnimation: NSObject, CXAnimation {
     weak var presentingViewController: UIViewController?
 
     var animateInFinalFrame: CGRect = .zero
-    var animateOutInitialFrame: CGRect {
-        get {
-            return animateInFinalFrame
-        }
 
-        set {
-            animateInFinalFrame = newValue
-        }
-    }
-
-    init(presenting: UIViewController, duration: CXAnimationDuration, transition: CXAnimationTransition) {
+    init(_ presenting: UIViewController, _ duration: CXAnimationDuration, _ transition: CXAnimationTransition) {
         self.presentingViewController = presenting
         self.duration = duration
         self.transition = transition
@@ -36,9 +19,9 @@ class CXBasicAnimation: NSObject, CXAnimation {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         if isPresenting(transitionContext) {
-            return duration.animateInDuration
+            return duration.in
         } else {
-            return duration.animateOutDuration
+            return duration.out
         }
     }
 
@@ -52,13 +35,15 @@ class CXBasicAnimation: NSObject, CXAnimation {
         }
         let container = context.containerView
         let toViewFinalFrame = context.finalFrame(for: toVC)
-        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.animateInDirection, offsetSize: container.bounds.size)
+        let toViewInitialFrame = toViewFinalFrame.offsetForInitialPosition(direction: transition.`in`, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         animateInFinalFrame = toViewFinalFrame
 
         toView.frame = toViewInitialFrame
+        toView.alpha = 0
         UIView.animate(withDuration: duration, animations: {
             toView.frame = toViewFinalFrame
+            toView.alpha = 1
         }, completion: { finished in
             let wasCancelled = context.transitionWasCancelled
             context.completeTransition(!wasCancelled)
@@ -70,10 +55,11 @@ class CXBasicAnimation: NSObject, CXAnimation {
             return
         }
         let container = context.containerView
-        let fromViewFinalFrame = animateOutInitialFrame.offsetForFinalPosition(direction: transition.animateOutDirection, offsetSize: container.bounds.size)
+        let fromViewFinalFrame = animateInFinalFrame.offsetForFinalPosition(direction: transition.out, offsetSize: container.bounds.size)
         let duration = transitionDuration(using: context)
         UIView.animate(withDuration: duration, animations: {
             fromView.frame = fromViewFinalFrame
+            fromView.alpha = 0
         }, completion: { finished in
             let wasCancelled = context.transitionWasCancelled
             context.completeTransition(!wasCancelled)

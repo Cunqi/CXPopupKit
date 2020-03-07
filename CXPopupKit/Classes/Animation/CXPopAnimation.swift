@@ -1,11 +1,3 @@
-//
-//  CXPopAnimation.swift
-//  CXPopupKit
-//
-//  Created by Cunqi Xiao on 8/13/18.
-//  Copyright © 2018 Cunqi. All rights reserved.
-//
-
 import Foundation
 
 class CXZoomAnimation: CXBasicAnimation {

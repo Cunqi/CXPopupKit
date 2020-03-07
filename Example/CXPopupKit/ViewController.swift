@@ -18,54 +18,40 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapButton(_ sender: Any) {
-        //        let view = MyView()
-        //        view.backgroundColor = .red
-        //        var appearance = CXPopupAppearance()
-        //        appearance.width = .full
-        //        appearance.height = .part(ratio: 0.5)
-        //        appearance.position = CXPosition(horizontal: .left, vertical: .top)
-        //        appearance.backgroundColor = .blue
-        //        appearance.animationStyle = .pop
-        //        appearance.animationDuration = CXAnimationDuration(round: 0.35)
-        //        appearance.animationTransition = CXAnimationTransition(in: .center)
-        //        appearance.safeAreaType = .wrapped
-        //
-        //        let popup = CXPopupBuilder(content: view, presenting: self)
-        //                    .withAppearance(appearance)
-        //                    .build()
-        //        self.present(popup, animated: true, completion: nil)
-        
-        //        let dataSet = [["one", "two", "three"], ["one", "two", "three"]]
-        //        let picker = CXPickerBuilder<String>(title: "Test", at: self)
-        //                        .withComplexData(dataSet)
-        //                        .withComplexDataSelected({ actions in
-        //                            for action in actions {
-        //                                print(action)
-        //                            }
-        //                        })
-        //                        .build()
-        //        self.present(picker, animated: true, completion: nil)
-        
-        //        let toast = CXToastBuilder(message: "2018-10-02 19:54:31.682618-0700 CXPopupKitDemo[1874:61352] [AXMediaCommon] Unexpected physical screen orientation").build()
-        //        self.present(toast, animated: true, completion: nil)
-        
-        let datePicker = CXDatePickerBuilder(title: "Test DateTime", at: self)
-            .withDateTimeSelected { date in
-                print(date)
-            }
-            .build()
-        self.present(datePicker, animated: true, completion: nil)
-        
-        //        let alertView = CXAlertBuilder(type: .actionSheet, at: self)
-        //            .withTitle("Hello World This is a testing title for test CXAlert")
-        //            .withMessage("Jackson helps you actually communicate with your cat by properly learning their body language. And trust us, your cat’s body language is very different than your dog’s! ")
-        //            .withCancel("Cancel")
-        //            .withActions(["Sure", "No Problem"])
-        //            .build()
-        //        self.present(alertView, animated: true, completion: nil)
+        let displayedVC = DisplayedViewController()
+        let popup = CXPopupController(self, displayedVC)
+        popup.style.width = .ratio(ratio: 0.5)
+        popup.style.height = .ratio(ratio: 0.5)
+        popup.style.position = CXPosition(.center, .center)
+        popup.style.safeAreaPolicy = .auto
+        popup.style.animationStyle = .pop
+        popup.style.cornerRadius = 12
+        popup.style.animationDuration = CXAnimationDuration(0.35, 0.067)
+        present(popup, animated: true, completion: nil)
     }
 }
 
-class MyView: UIView, CXPopupable {
+class DisplayedViewController: UIViewController, CXPopupControlDelegate {
+    var button: UIButton!
+    func notifyPopupControllerDismissal() -> Bool {
+        true
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .blue
+        
+        button = UIButton(type: .system)
+        button.setTitle("Tap", for: .normal)
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+    }
+    
+    @objc
+    private func didTapButton() {
+        self.parent?.dismiss(animated: true, completion: nil)
+    }
 }
