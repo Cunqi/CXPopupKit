@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 
 class DisplayedViewController: UIViewController, CXPopupControlDelegate {
     var button: UIButton!
-    func notifyPopupControllerDismissal() -> Bool {
+    func needsToDismissPopupController() -> Bool {
         true
     }
     

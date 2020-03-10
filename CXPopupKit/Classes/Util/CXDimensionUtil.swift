@@ -1,22 +1,10 @@
-//
-//  CXDimensionUtil.swift
-//  CXPopupKit
-//
-//  Created by Cunqi Xiao on 7/17/18.
-//  Copyright © 2018 Cunqi. All rights reserved.
-//
-
 import Foundation
 
 class CXDimensionUtil {
     static let defaultHeight: CGFloat = 44
 
     static var keyWindowSafeAreInsets: UIEdgeInsets {
-        if #available(iOS 11.0, *) {
-            return UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
-        } else {
-            return .zero
-        }
+        return UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
     }
 
     static func rect(_ width: CXEdge,
@@ -67,7 +55,7 @@ class CXDimensionUtil {
     private static func origin(_ position: CXPosition, _ size: CGSize, _ screen: CGSize, _ policy: CXSafeAreaPolicy) -> CGPoint {
         let safeArea = policy == .system ? keyWindowSafeAreInsets : .zero
         return CGPoint(
-                x: position.x.calculate(size.width, screen.width, safeArea),
-                y: position.y.calculate(size.height, screen.height, safeArea))
+                x: position.x.offset(size.width, screen.width, safeArea),
+                y: position.y.offset(size.height, screen.height, safeArea))
     }
 }

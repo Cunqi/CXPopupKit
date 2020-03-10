@@ -3,19 +3,23 @@ import UIKit
 public typealias PopupContainableViewController = UIViewController & CXPopupControlDelegate
 
 public protocol CXPopupControlDelegate {
-    func notifyPopupControllerDismissal() -> Bool
+    func needsToDismissPopupController() -> Bool
 }
 
 public class CXPopupController: UIViewController {
     public var style: CXPopupStyle
 
     private let containableViewController: PopupContainableViewController
-    private var cxPresentationController: CXPresentationController?
+    private var popupPresentationController: CXPresentationController?
     private let dismissalCompletionBlock: (( )-> Void)?
-
-    // MARK - Initialization & De-initialization
-
-    public init(_ attachedViewController: UIViewController,
+    
+    /// The only initializer method to create a popup
+    /// - Parameters:
+    ///   - attachedAtViewController: the
+    ///   - containableViewController: the view controller which intents to present the popup
+    ///   - style: popup style
+    ///   - dismissalCompletionBlock: dismiss action after the popup dismissed
+    public init(_ attachedAtViewController: UIViewController,
                 _ containableViewController: PopupContainableViewController,
                 _ style: CXPopupStyle = CXPopupStyle(),
                 dismissalCompletionBlock: (() -> Void)? = nil) {
@@ -23,7 +27,7 @@ public class CXPopupController: UIViewController {
         self.containableViewController = containableViewController
         self.dismissalCompletionBlock = dismissalCompletionBlock
         super.init(nibName: nil, bundle: nil)
-        self.cxPresentationController = CXPresentationController(style, self, attachedViewController)
+        self.popupPresentationController = CXPresentationController(style, self, attachedAtViewController)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -48,7 +52,7 @@ public class CXPopupController: UIViewController {
     }
 
     public override func dismiss(animated flag: Bool, completion _: (() -> ())?) {
-        if containableViewController.notifyPopupControllerDismissal() {
+        if containableViewController.needsToDismissPopupController() {
             super.dismiss(animated: flag, completion: dismissalCompletionBlock)
         }
     }
@@ -57,7 +61,7 @@ public class CXPopupController: UIViewController {
 
     private func setupUI() {
         view.backgroundColor = style.backgroundColor
-        CXLayoutUtil.setupFill(containableViewController.view, self.view, style.position.padding(style.safeAreaPolicy))
+        CXLayoutUtil.setupFill(containableViewController.view, view, style.position.padding(style.safeAreaPolicy))
     }
 }
 

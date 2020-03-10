@@ -1,12 +1,5 @@
 import UIKit
 
-public enum CXSafeAreaPolicy {
-    case system
-    case auto
-    case disable
-}
-
-
 public class CXPopupStyle: NSObject {
     /*Dimension*/
     public var width: CXEdge = .full

@@ -1,11 +1,3 @@
-//
-//  CXLayoutUtil.swift
-//  CXPopupKit
-//
-//  Created by Cunqi on 9/18/18.
-//  Copyright © 2018 Cunqi. All rights reserved.
-//
-
 import UIKit
 
 class CXLayoutUtil {

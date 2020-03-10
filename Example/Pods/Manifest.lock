@@ -1,27 +1,16 @@
 PODS:
-  - CXPopupKit (1.1.4)
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
+  - CXPopupKit (3.0.0)
 
 DEPENDENCIES:
   - CXPopupKit (from `../`)
-  - FBSnapshotTestCase (~> 2.1.4)
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - FBSnapshotTestCase
 
 EXTERNAL SOURCES:
   CXPopupKit:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CXPopupKit: 39ef0d485cfdb9e362211e320a63806a2adc3845
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  CXPopupKit: f213d35c4ca7ed0b5cf087beef9d23bea07a3d3d
 
-PODFILE CHECKSUM: 23b2f0f7e28266e03e048dd1c0949bd39084142b
+PODFILE CHECKSUM: a7249a2c991d4483da13a60207de7e64d8e5a9d7
 
 COCOAPODS: 1.9.0

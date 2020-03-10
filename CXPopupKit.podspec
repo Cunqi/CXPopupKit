@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-iOS popup kit written by swift, support iOS 9 and above
+iOS popup kit written by swift, support iOS 11 and above
                        DESC
 
   s.homepage         = 'https://github.com/Cunqi/CXPopupKit'
@@ -28,7 +28,7 @@ iOS popup kit written by swift, support iOS 9 and above
   s.source           = { :git => 'https://github.com/Cunqi/CXPopupKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
 
   s.source_files = 'CXPopupKit/Classes/**/*'
   
