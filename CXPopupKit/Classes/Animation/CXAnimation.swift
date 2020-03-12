@@ -3,7 +3,7 @@ import UIKit
 public protocol CXAnimation: UIViewControllerAnimatedTransitioning {
 }
 
-public enum CXAnimationStyle {
+public enum CXAnimationType {
     case basic, fade, bounce, zoom, pop
     case custom(_ animation: CXAnimation)
 }
@@ -38,11 +38,6 @@ public struct CXAnimationTransition {
     public init(_ `in`: CXAnimationDirection, _ out: CXAnimationDirection) {
         self.`in` = `in`
         self.out = out
-    }
-
-    public init(_ `in`: CXAnimationDirection, _ sameDirection: Bool = false) {
-        self.`in` = `in`
-        self.out = sameDirection ? `in` : `in`.opposite
     }
 }
 

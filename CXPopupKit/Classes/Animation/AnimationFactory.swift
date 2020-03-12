@@ -1,7 +1,7 @@
 import UIKit
 
 class AnimationFactory {
-    static func animation(_ style: CXAnimationStyle,
+    static func animation(_ style: CXAnimationType,
                           _ duration: CXAnimationDuration,
                           _ transition: CXAnimationTransition,
                           _ presenting: UIViewController) -> UIViewControllerAnimatedTransitioning {

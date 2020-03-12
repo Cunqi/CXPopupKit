@@ -15,7 +15,7 @@ class CXPresentationController: UIPresentationController {
 
     lazy var animation: UIViewControllerAnimatedTransitioning = {
         return AnimationFactory.animation(
-            self.style.animationStyle,
+            self.style.animationType,
             self.style.animationDuration,
             self.style.animationTransition,
             self.presentingViewController)
@@ -27,7 +27,7 @@ class CXPresentationController: UIPresentationController {
 
     override var frameOfPresentedViewInContainerView: CGRect {
         let containerBounds = self.containerView?.bounds ?? .zero
-        let rect = CXDimensionUtil.rect(style.width, style.height, style.position, style.safeAreaPolicy, containerBounds.size)
+        let rect = CXLayoutUtil.rect(style.width, style.height, style.position, style.safeAreaPolicy, containerBounds.size)
         return rect
     }
 

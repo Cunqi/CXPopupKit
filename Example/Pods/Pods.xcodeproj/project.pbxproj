@@ -25,7 +25,6 @@
 		B74F42378ACFE5B0DB10ACAD72354809 /* CXFadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37695365F31D77340CC94C42CDC3AF /* CXFadeAnimation.swift */; };
 		C2E33DD54D03FEED3F5D3EA6EABA606D /* CXPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8AC52C2688BA011E3F91B8096E8548 /* CXPopupController.swift */; };
 		C583B321322A16E2CF384C4AF4047A8F /* CXPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0348995192E8EB9F0DCAC29AC14595 /* CXPresentationController.swift */; };
-		D896D43DF58A4F5EAFC50038989FBD2E /* CXDimensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF85C503C8582A2C385DBB22910B202 /* CXDimensionUtil.swift */; };
 		DBAE3C8F51CF84D9EFF46EC8BA820F9C /* Pods-CXPopupKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2881C9EB437E3AE7723C37AE0C64E6 /* Pods-CXPopupKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2F35D1A6D423B8DC53352F7CAE61E35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		EC8D3A7FF999F233CD704F6721B083A0 /* Pods-CXPopupKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B302237211EA2E1EAC11A03E02C2F0 /* Pods-CXPopupKit_Example-dummy.m */; };
@@ -73,7 +72,6 @@
 		9752EAFF0F2A96B80A33F0483D904B3C /* Pods_CXPopupKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CXPopupKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B06629AB303C5853F69E33175788D39 /* Pods-CXPopupKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CXPopupKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		ABF85C503C8582A2C385DBB22910B202 /* CXDimensionUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXDimensionUtil.swift; sourceTree = "<group>"; };
 		B1B452B90E7CEE7A9AC6C693C72191B5 /* CXPopupKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CXPopupKit.modulemap; sourceTree = "<group>"; };
 		B8703BE5B0DE6EBD5692BE3F26DC956F /* Pods-CXPopupKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CXPopupKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CCEFC90208A579BDCA0447A262F2A1AF /* CXPopupKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CXPopupKit-Info.plist"; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 		DA7D1397665ABBBB5E2BC9CB19138213 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				ABF85C503C8582A2C385DBB22910B202 /* CXDimensionUtil.swift */,
 				D80E28B89B73D5F07F363A96018E6E9C /* CXLayoutUtil.swift */,
 			);
 			name = Util;
@@ -435,7 +432,6 @@
 				ACCD1EBF1AE1A314F075D060E94F9604 /* CXBasicAnimation.swift in Sources */,
 				3C1AD99B24177FCA00030D79 /* CXPopupEnums.swift in Sources */,
 				99D7B18A8177615CA7C9D6CE2E09ABCC /* CXBounceAnimation.swift in Sources */,
-				D896D43DF58A4F5EAFC50038989FBD2E /* CXDimensionUtil.swift in Sources */,
 				B74F42378ACFE5B0DB10ACAD72354809 /* CXFadeAnimation.swift in Sources */,
 				9E575BAEC564720A834DF42C30650F88 /* CXLayoutUtil.swift in Sources */,
 				73A142AFB28D4D24A92883FAEC764740 /* CXPopAnimation.swift in Sources */,

@@ -20,11 +20,11 @@ class ViewController: UIViewController {
     @IBAction func didTapButton(_ sender: Any) {
         let displayedVC = DisplayedViewController()
         let popup = CXPopupController(self, displayedVC)
-        popup.style.width = .ratio(ratio: 0.5)
-        popup.style.height = .ratio(ratio: 0.5)
+        popup.style.width = .ratio(0.5)
+        popup.style.height = .ratio(0.5)
         popup.style.position = CXPosition(.center, .center)
         popup.style.safeAreaPolicy = .auto
-        popup.style.animationStyle = .pop
+        popup.style.animationType = .pop
         popup.style.cornerRadius = 12
         popup.style.animationDuration = CXAnimationDuration(0.35, 0.067)
         present(popup, animated: true, completion: nil)
