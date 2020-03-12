@@ -2,8 +2,8 @@ import UIKit
 
 public class CXPopupStyle: NSObject {
     /*Dimension*/
-    public var width: CXEdge = .full
-    public var height: CXEdge = .full
+    public var width: CXEdge = .ratio(0.8)
+    public var height: CXEdge = .ratio(0.5)
     public var position: CXPosition = .center
     public var safeAreaPolicy: CXSafeAreaPolicy = .system
     
