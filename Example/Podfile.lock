@@ -1,8 +1,14 @@
 PODS:
   - CXPopupKit (3.0.0)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - CXPopupKit (from `../`)
+  - SnapKit (~> 5.0.0)
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
 
 EXTERNAL SOURCES:
   CXPopupKit:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CXPopupKit: f213d35c4ca7ed0b5cf087beef9d23bea07a3d3d
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: a7249a2c991d4483da13a60207de7e64d8e5a9d7
+PODFILE CHECKSUM: b31d84e44fa8bcc5dedb4b30a95079231acff849
 
 COCOAPODS: 1.9.0
