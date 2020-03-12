@@ -1,8 +1,8 @@
 import UIKit
 
 /// Control the way popup handle the safe area
-public enum CXSafeAreaPolicy {
-    case system // Follow system default safe area behavior
+public enum CXSafeAreaPolicy: Int {
+    case system = 0 // Follow system default safe area behavior
     case auto   // Popup will ignore system safe area behavior and add the safe are inside the view
     case disable // Disable safe area
 }

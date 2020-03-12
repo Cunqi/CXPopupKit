@@ -55,6 +55,12 @@ class DemoPlaygroundViewController: UIViewController {
         
         pickSafeAreaPolicyButton.setTitle("Safe Area", for: .normal)
         pickSafeAreaPolicyButton.addTarget(self, action: #selector(didTapPickSafeAreaButton), for: .touchUpInside)
+
+        pickSizeButton.setTitle("Size", for: .normal)
+        pickSizeButton.addTarget(self, action: #selector(didTapPickSizeButton), for: .touchUpInside)
+
+        pickPositionButton.setTitle("Position", for: .normal)
+        pickPositionButton.addTarget(self, action: #selector(didTapPickPositionButton), for: .touchUpInside)
         
         let dimensionStackView = UIStackView(arrangedSubviews: [pickSafeAreaPolicyButton, pickSizeButton, pickPositionButton])
         let animationStackView = UIStackView(arrangedSubviews: [pickAnimationTypeButton, pickAnimationDurationButton, pickAnimationTransitionButton])
@@ -91,15 +97,43 @@ class DemoPlaygroundViewController: UIViewController {
     }
     
     @objc
-    private func didTapPickSafeAreaButton() {
-        
-    }
-    
-    @objc
     private func didTapOpenPopupButton() {
         let popupController = CXPopupController(self, DemoPopupViewController(), popupStyle) {
             print("Dismissed")
         }
         present(popupController, animated: true, completion: nil)
+    }
+
+    @objc
+    private func didTapPickSafeAreaButton() {
+        let safeAreaVC = DemoSafeAreaPickViewController()
+        let popupController = CXPopupController(self, safeAreaVC.wrapped, popupStyle) {
+            self.popupStyle.safeAreaPolicy = CXSafeAreaPolicy(rawValue: safeAreaVC.picker.selectedRow(inComponent: 0)) ?? .system
+        }
+        popupController.style = CXPopupStyle.style(axisY: .bottom)
+        popupController.style.height = .fixed(240)
+        popupController.style.safeAreaPolicy = .auto
+        popupController.style.backgroundColor = .white
+        present(popupController, animated: true, completion: nil)
+    }
+
+    @objc
+    private func didTapPickSizeButton() {
+        let sizeVC = DemoSizePickerViewController()
+        let popupController = CXPopupController(self, sizeVC.wrapped, popupStyle) {
+            self.popupStyle.width = CXEdge.value(from: sizeVC.picker.selectedRow(inComponent: 0))
+            self.popupStyle.height = CXEdge.value(from: sizeVC.picker.selectedRow(inComponent: 1))
+            print(self.popupStyle)
+        }
+        popupController.style = CXPopupStyle.style(axisY: .bottom)
+        popupController.style.height = .fixed(240)
+        popupController.style.safeAreaPolicy = .auto
+        popupController.style.backgroundColor = .white
+        present(popupController, animated: true, completion: nil)
+    }
+
+    @objc
+    private func didTapPickPositionButton() {
+        
     }
 }

@@ -18,7 +18,4 @@ class DemoPopupViewController: UIViewController {
 }
 
 extension DemoPopupViewController: CXPopupControlDelegate {
-    func needsToDismissPopupController() -> Bool {
-        return true
-    }
 }

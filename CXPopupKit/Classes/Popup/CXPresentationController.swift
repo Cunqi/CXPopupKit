@@ -9,7 +9,7 @@
 import UIKit
 
 class CXPresentationController: UIPresentationController {
-    let style: CXPopupStyle
+    var style: CXPopupStyle
     var contentView: UIView?
     var dimmingView: UIView?
 
@@ -37,7 +37,7 @@ class CXPresentationController: UIPresentationController {
 
     @objc
     private func tapOutsideToDismiss() {
-        (self.presentedViewController as? CXPopupController)?.dismiss(animated: true, completion: nil)
+        presentingViewController.dismiss(animated: true, completion: nil)
     }
 
     init(_ style: CXPopupStyle, _ presented: UIViewController, _ presenting: UIViewController) {

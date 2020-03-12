@@ -2,12 +2,29 @@ import UIKit
 
 public typealias PopupContainableViewController = UIViewController & CXPopupControlDelegate
 
-public protocol CXPopupControlDelegate {
-    func needsToDismissPopupController() -> Bool
+public protocol CXPopupControlDelegate: UIViewController {
+    var popup: CXPopupController? { get }
+}
+
+public extension CXPopupControlDelegate {
+    var popup: CXPopupController? {
+        var parent = self.parent
+        while parent != nil {
+            if parent is CXPopupController {
+                return parent as? CXPopupController
+            }
+            parent = parent?.parent
+        }
+        return nil
+    }
 }
 
 public class CXPopupController: UIViewController {
-    public var style: CXPopupStyle
+    public var style: CXPopupStyle {
+        didSet {
+            self.popupPresentationController?.style = style
+        }
+    }
 
     private let containableViewController: PopupContainableViewController
     private var popupPresentationController: CXPresentationController?
@@ -52,9 +69,7 @@ public class CXPopupController: UIViewController {
     }
 
     public override func dismiss(animated flag: Bool, completion _: (() -> ())?) {
-        if containableViewController.needsToDismissPopupController() {
-            super.dismiss(animated: flag, completion: dismissalCompletionBlock)
-        }
+        super.dismiss(animated: flag, completion: dismissalCompletionBlock)
     }
 
     // MARK - private helper methods
