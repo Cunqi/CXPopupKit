@@ -14,7 +14,6 @@ class DemoPlaygroundViewController: UIViewController {
     private var openButton: UIButton!
     private var pickAnimationTypeButton: UIButton!
     private var pickAnimationTransitionButton: UIButton!
-    private var pickAnimationDurationButton: UIButton!
     private var pickSafeAreaPolicyButton: UIButton!
     private var pickSizeButton: UIButton!
     private var pickPositionButton: UIButton!
@@ -28,7 +27,6 @@ class DemoPlaygroundViewController: UIViewController {
         openButton = UIButton(type: .system)
         pickAnimationTypeButton = UIButton(type: .system)
         pickAnimationTransitionButton = UIButton(type: .system)
-        pickAnimationDurationButton = UIButton(type: .system)
         pickSafeAreaPolicyButton = UIButton(type: .system)
         pickSizeButton = UIButton(type: .system)
         pickPositionButton = UIButton(type: .system)
@@ -62,8 +60,14 @@ class DemoPlaygroundViewController: UIViewController {
         pickPositionButton.setTitle("Position", for: .normal)
         pickPositionButton.addTarget(self, action: #selector(didTapPickPositionButton), for: .touchUpInside)
         
+        pickAnimationTypeButton.setTitle("Style", for: .normal)
+        pickAnimationTypeButton.addTarget(self, action: #selector(didTapPickAnimationTypeButton), for: .touchUpInside)
+        
+        pickAnimationTransitionButton.setTitle("Transition", for: .normal)
+        pickAnimationTransitionButton.addTarget(self, action: #selector(didTapPickAnimationTransitionButton), for: .touchUpInside)
+        
         let dimensionStackView = UIStackView(arrangedSubviews: [pickSafeAreaPolicyButton, pickSizeButton, pickPositionButton])
-        let animationStackView = UIStackView(arrangedSubviews: [pickAnimationTypeButton, pickAnimationDurationButton, pickAnimationTransitionButton])
+        let animationStackView = UIStackView(arrangedSubviews: [pickAnimationTypeButton, pickAnimationTransitionButton, UIView()])
         let othersStackView = UIStackView()
         
         let gridStackView = UIStackView(arrangedSubviews: [dimensionStackView, animationStackView, othersStackView])
@@ -140,6 +144,34 @@ class DemoPlaygroundViewController: UIViewController {
             let x = CXAxisX.value(from: positionVC.picker.selectedRow(inComponent: 0))
             let y = CXAxisY.value(from: positionVC.picker.selectedRow(inComponent: 1))
             self.popupStyle.position = CXPosition(x, y)
+        }
+        popupController.style = CXPopupStyle.style(axisY: .bottom)
+        popupController.style.height = .fixed(240)
+        popupController.style.safeAreaPolicy = .auto
+        popupController.style.backgroundColor = .white
+        present(popupController, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func didTapPickAnimationTypeButton() {
+        let animationTypeVC = DemoAnimationTypePickerViewController()
+        let popupController = CXPopupController(self, animationTypeVC.wrapped, popupStyle) {
+            self.popupStyle.animationType = CXAnimationType.value(for: animationTypeVC.picker.selectedRow(inComponent: 0))
+        }
+        popupController.style = CXPopupStyle.style(axisY: .bottom)
+        popupController.style.height = .fixed(240)
+        popupController.style.safeAreaPolicy = .auto
+        popupController.style.backgroundColor = .white
+        present(popupController, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func didTapPickAnimationTransitionButton() {
+        let animationTransitionVC = DemoAnimationTransitionPickerViewController()
+        let popupController = CXPopupController(self, animationTransitionVC.wrapped, popupStyle) {
+            let animationIn = CXAnimationDirection.value(from: animationTransitionVC.picker.selectedRow(inComponent: 0))
+            let animationOut = CXAnimationDirection.value(from: animationTransitionVC.picker.selectedRow(inComponent: 1))
+            self.popupStyle.animationTransition = CXAnimationTransition(animationIn, animationOut)
         }
         popupController.style = CXPopupStyle.style(axisY: .bottom)
         popupController.style.height = .fixed(240)
