@@ -16,6 +16,11 @@ class DemoHomeViewController: UIViewController {
         navigationController?.pushViewController(demoPlaygroundVC, animated: true)
     }
     
+    @IBAction func didTapCustomDemoButton(_ sender: Any) {
+        let demoCustomVC = DemoCustomViewController()
+        navigationController?.pushViewController(demoCustomVC, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

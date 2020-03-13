@@ -36,10 +36,26 @@ protocol CXAxisLiteral {
     ///   - screenEdge: length of the screen edge (width / height)
     ///   - insets: additional insets
     func offset(_ edge: CGFloat, _ screenEdge: CGFloat, _ insets: UIEdgeInsets) -> CGFloat
+    
+    /// Calculate the offset for custom
+    /// - Parameters:
+    ///   - value: current point axis value (x/y)
+    ///   - edge: popup edge value (width / height)
+    ///   - screenEdge: screen edge value (width / height)
+    func calculateOffset(_ value: CGFloat, _ edge: CGFloat, _ screenEdge: CGFloat) -> CGFloat
 
     /// Update the padding between the content view and the popupController
     /// - Parameter insets: safe area insets
     func updateInsets(_ insets: UIEdgeInsets) -> UIEdgeInsets
+}
+
+extension CXAxisLiteral {
+    func calculateOffset(_ value: CGFloat, _ edge: CGFloat, _ screenEdge: CGFloat) -> CGFloat {
+        guard value + edge <= screenEdge else {
+            return value - edge
+        }
+        return value
+    }
 }
 
 public enum CXAxisX {
@@ -60,7 +76,7 @@ extension CXAxisX: CXAxisLiteral {
         case .center:
             return (screenEdge - edge) / 2.0
         case .custom(let x):
-            return x
+            return calculateOffset(x, edge, screenEdge)
         }
     }
 
@@ -91,7 +107,7 @@ extension CXAxisY: CXAxisLiteral {
         case .center:
             return (screenEdge - edge) / 2.0
         case .custom(let y):
-            return y
+            return calculateOffset(y, edge, screenEdge)
         }
     }
 

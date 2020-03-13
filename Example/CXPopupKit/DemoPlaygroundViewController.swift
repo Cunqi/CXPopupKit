@@ -102,9 +102,7 @@ class DemoPlaygroundViewController: UIViewController {
     
     @objc
     private func didTapOpenPopupButton() {
-        let popupController = CXPopupController(self, DemoPopupViewController(), popupStyle) {
-            print("Dismissed")
-        }
+        let popupController = CXPopupController(self, DemoPopupViewController(), popupStyle)
         popupController.style.backgroundColor = .orange
         present(popupController, animated: true, completion: nil)
     }

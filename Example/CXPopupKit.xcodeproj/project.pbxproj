@@ -14,6 +14,7 @@
 		3C1AD9A3241B462D00030D79 /* DemoPositionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1AD9A2241B462D00030D79 /* DemoPositionPickerViewController.swift */; };
 		3C1AD9A5241B4B9800030D79 /* DemoAnimationTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1AD9A4241B4B9800030D79 /* DemoAnimationTypePickerViewController.swift */; };
 		3C1AD9A7241B515700030D79 /* DemoAnimationTransitionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1AD9A6241B515700030D79 /* DemoAnimationTransitionPickerViewController.swift */; };
+		3C1AD9A9241B552400030D79 /* DemoCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1AD9A8241B552400030D79 /* DemoCustomViewController.swift */; };
 		5DEAE2A151059D4427DBDFB7 /* Pods_CXPopupKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201FC527657A18DBC33FFFBE /* Pods_CXPopupKit_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		3C1AD9A2241B462D00030D79 /* DemoPositionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPositionPickerViewController.swift; sourceTree = "<group>"; };
 		3C1AD9A4241B4B9800030D79 /* DemoAnimationTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAnimationTypePickerViewController.swift; sourceTree = "<group>"; };
 		3C1AD9A6241B515700030D79 /* DemoAnimationTransitionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAnimationTransitionPickerViewController.swift; sourceTree = "<group>"; };
+		3C1AD9A8241B552400030D79 /* DemoCustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCustomViewController.swift; sourceTree = "<group>"; };
 		3F6142380EA2DE32EEEE8677 /* Pods-CXPopupKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPopupKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CXPopupKit_Example/Pods-CXPopupKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		424E8FE11855E22F51EC725A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CXPopupKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXPopupKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 				3C1AD9A2241B462D00030D79 /* DemoPositionPickerViewController.swift */,
 				3C1AD9A4241B4B9800030D79 /* DemoAnimationTypePickerViewController.swift */,
 				3C1AD9A6241B515700030D79 /* DemoAnimationTransitionPickerViewController.swift */,
+				3C1AD9A8241B552400030D79 /* DemoCustomViewController.swift */,
 			);
 			name = pickers;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			files = (
 				3C1AD9A3241B462D00030D79 /* DemoPositionPickerViewController.swift in Sources */,
 				3C1AD9A1241A122000030D79 /* DemoPopupViewController.swift in Sources */,
+				3C1AD9A9241B552400030D79 /* DemoCustomViewController.swift in Sources */,
 				3C1AD99F241A0A3000030D79 /* DemoHomeViewController.swift in Sources */,
 				C4BA42B2241ABC3500352576 /* DemoSafeAreaPickViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
