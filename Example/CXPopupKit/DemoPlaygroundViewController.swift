@@ -101,6 +101,7 @@ class DemoPlaygroundViewController: UIViewController {
         let popupController = CXPopupController(self, DemoPopupViewController(), popupStyle) {
             print("Dismissed")
         }
+        popupController.style.backgroundColor = .orange
         present(popupController, animated: true, completion: nil)
     }
 
@@ -134,6 +135,16 @@ class DemoPlaygroundViewController: UIViewController {
 
     @objc
     private func didTapPickPositionButton() {
-        
+        let positionVC = DemoPositionPickerViewController()
+        let popupController = CXPopupController(self, positionVC.wrapped, popupStyle) {
+            let x = CXAxisX.value(from: positionVC.picker.selectedRow(inComponent: 0))
+            let y = CXAxisY.value(from: positionVC.picker.selectedRow(inComponent: 1))
+            self.popupStyle.position = CXPosition(x, y)
+        }
+        popupController.style = CXPopupStyle.style(axisY: .bottom)
+        popupController.style.height = .fixed(240)
+        popupController.style.safeAreaPolicy = .auto
+        popupController.style.backgroundColor = .white
+        present(popupController, animated: true, completion: nil)
     }
 }

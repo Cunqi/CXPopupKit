@@ -37,8 +37,7 @@ class DemoSafeAreaPickViewController: UIViewController, CXPopupControlDelegate {
 
     @objc
     private func didTapApplyBarButtonItem() {
-        print(self.parent)
-        navigationController?.dismiss(animated: true, completion: nil)
+        popup?.dismiss(animated: true, completion: nil)
     }
 }
 

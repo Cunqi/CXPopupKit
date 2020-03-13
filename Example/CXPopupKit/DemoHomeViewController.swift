@@ -9,8 +9,14 @@
 import UIKit
 
 class DemoHomeViewController: UIViewController {
+    @IBOutlet weak var stackView: UIStackView!
+    
     @IBAction func didTapBasicDemoButton(_ sender: Any) {
         let demoPlaygroundVC = DemoPlaygroundViewController()
         navigationController?.pushViewController(demoPlaygroundVC, animated: true)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }

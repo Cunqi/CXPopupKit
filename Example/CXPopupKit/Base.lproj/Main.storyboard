@@ -65,12 +65,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="u05-sZ-6H9" firstAttribute="width" secondItem="S3k-Ss-dd9" secondAttribute="width" multiplier="0.8" id="6Tp-SV-eBw"/>
                             <constraint firstItem="u05-sZ-6H9" firstAttribute="centerY" secondItem="S3k-Ss-dd9" secondAttribute="centerY" id="76R-Dz-wF3"/>
-                            <constraint firstItem="u05-sZ-6H9" firstAttribute="width" secondItem="S3k-Ss-dd9" secondAttribute="width" multiplier="0.8" id="LnR-np-HgH"/>
                             <constraint firstItem="u05-sZ-6H9" firstAttribute="centerX" secondItem="S3k-Ss-dd9" secondAttribute="centerX" id="StA-KU-fFn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4se-e1-14c"/>
+                    <connections>
+                        <outlet property="stackView" destination="u05-sZ-6H9" id="xj0-wj-KIP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubP-OK-6sj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

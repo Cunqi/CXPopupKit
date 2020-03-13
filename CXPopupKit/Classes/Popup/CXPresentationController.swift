@@ -65,8 +65,6 @@ class CXPresentationController: UIPresentationController {
         // super.presentedView
         let presentedView = super.presentedView ?? UIView()
         presentedView.frame = contentView?.bounds ?? .zero
-        
-        roundedCornerView.backgroundColor = .green
 
         // Add dependencies between each view
         CXLayoutUtil.fill(presentedView, roundedCornerView)
