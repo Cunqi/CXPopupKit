@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CXPopupKit'
-  s.version          = '3.0.5'
+  s.version          = '3.0.6'
   s.summary          = 'iOS popup kit written by swift'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,7 @@ iOS popup kit written by swift, support iOS 11 and above
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'CXPopupKit/Classes/**/*'
   
   # s.resource_bundles = {
   #   'CXPopupKit' => ['CXPopupKit/Assets/*.png']
