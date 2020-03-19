@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CXPopupKit'
-  s.version          = '3.0.0'
+  s.version          = '3.0.4'
   s.summary          = 'iOS popup kit written by swift'
 
 # This description is used to generate tags and improve search results.
