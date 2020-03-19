@@ -1,6 +1,6 @@
 {
   "name": "CXPopupKit",
-  "version": "3.0.0",
+  "version": "3.0.6",
   "summary": "iOS popup kit written by swift",
   "description": "iOS popup kit written by swift, support iOS 11 and above",
   "homepage": "https://github.com/Cunqi/CXPopupKit",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/Cunqi/CXPopupKit.git",
-    "tag": "3.0.0"
+    "tag": "3.0.6"
   },
   "platforms": {
     "ios": "11.0"

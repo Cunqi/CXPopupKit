@@ -1,5 +1,5 @@
 PODS:
-  - CXPopupKit (3.0.0)
+  - CXPopupKit (3.0.6)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CXPopupKit: f213d35c4ca7ed0b5cf087beef9d23bea07a3d3d
+  CXPopupKit: ca2424fbc90dd9fa844e0592412c045579e70539
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
 PODFILE CHECKSUM: b31d84e44fa8bcc5dedb4b30a95079231acff849
