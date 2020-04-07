@@ -10,9 +10,9 @@ public class CXPopupStyle: NSObject {
     /*Shadow*/
     public var isShadowEnabled: Bool = true
     public var shadowColor: UIColor = .black
-    public var shadowOpacity: Float = 0.8
-    public var shadowRadius: CGFloat = 13.0
-    public var shadowOffset: CGSize = CGSize(width: 0, height: 6.0)
+    public var shadowOpacity: Float = 0.6
+    public var shadowRadius: CGFloat = 10.0
+    public var shadowOffset: CGSize = CGSize(width: 0, height: 10.0)
     
     /*UI*/
     public var backgroundColor: UIColor = .clear

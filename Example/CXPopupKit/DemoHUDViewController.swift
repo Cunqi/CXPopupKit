@@ -34,6 +34,9 @@ class DemoHUDViewController: UIViewController {
     
     @objc
     private func didTapView(recognizer: UITapGestureRecognizer) {
+        CXHUD.backgroundColor = UIColor(white: 0, alpha: 1)
+        CXHUD.tintColor = .white
+        CXHUD.hudStyle = .large
         CXHUD.showLoading(with: "Loading", self.view)
     }
 }
