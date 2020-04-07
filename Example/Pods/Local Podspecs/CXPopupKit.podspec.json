@@ -18,7 +18,7 @@
   "platforms": {
     "ios": "11.0"
   },
-  "source_files": "CXPopupKit/Classes/**/*",
+  "source_files": "CXPopupKit/**/*",
   "swift_versions": "5.0",
   "swift_version": "5.0"
 }

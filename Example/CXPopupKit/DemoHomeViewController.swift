@@ -21,6 +21,11 @@ class DemoHomeViewController: UIViewController {
         navigationController?.pushViewController(demoCustomVC, animated: true)
     }
     
+    @IBAction func didTapHUDDemoButton(_ sender: Any) {
+        let demoHUDVC = DemoHUDViewController()
+        navigationController?.pushViewController(demoHUDVC, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

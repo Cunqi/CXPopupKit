@@ -50,10 +50,16 @@ class CXHUDViewController: PopupContainableViewController {
     }
     
     private func setupLayouts() {
-        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
         view.addSubview(activityIndicatorView)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        activityIndicatorView.startAnimating()
     }
 }
 
@@ -62,7 +68,11 @@ extension CXPopupStyle {
         let style = CXPopupStyle.style(axisX: .center)
         style.width = .fixed(120)
         style.height = .fixed(120)
-        style.backgroundColor = .black
+        style.maskBackgroundAlpha = 0
+        style.maskBackgroundColor = .clear
+        style.backgroundColor = .lightGray
+        style.maskBackgroundAlpha = 0.6
+        style.shouldDismissOnBackgroundTap = false
         return style
     }
 }

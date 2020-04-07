@@ -30,7 +30,7 @@ iOS popup kit written by swift, support iOS 11 and above
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'CXPopupKit/Classes/**/*'
+  s.source_files = 'CXPopupKit/**/*'
   
   # s.resource_bundles = {
   #   'CXPopupKit' => ['CXPopupKit/Assets/*.png']

@@ -31,7 +31,7 @@ HUD, ProgressBar, Toast, etc.
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'CXPopupUI/Classes/**/*'
+  s.source_files = 'CXPopupUI/**/*'
   
   # s.resource_bundles = {
   #   'CXPopupKit' => ['CXPopupKit/Assets/*.png']
