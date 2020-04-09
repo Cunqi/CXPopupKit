@@ -22,6 +22,9 @@
   "dependencies": {
     "CXPopupKit": [
       "~> 3"
+    ],
+    "SnapKit": [
+      "~> 5.0.0"
     ]
   },
   "swift_versions": "5.0",

@@ -40,5 +40,6 @@ HUD, ProgressBar, Toast, etc.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'CXPopupKit', '~> 3'
+  s.dependency 'SnapKit', '~> 5.0.0'
   s.swift_version = '5.0'
 end
