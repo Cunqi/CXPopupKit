@@ -35,7 +35,9 @@ class DemoCustomViewController: UIViewController {
     private func didTapView(recognizer: UITapGestureRecognizer) {
         let touchPoint = recognizer.location(in: view)
         
-        let popupController = CXPopupController(self, DemoPopupViewController())
+        let popupController = CXPopupController(self, DemoPopupViewController()) {
+            print("Dismissed")
+        }
         popupController.style.backgroundColor = .blue
         popupController.style.width = .fixed(120)
         popupController.style.height = .fixed(120)

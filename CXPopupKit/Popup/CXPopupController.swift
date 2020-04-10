@@ -1,9 +1,11 @@
 import UIKit
 
-public typealias PopupContainableViewController = UIViewController & CXPopupControlDelegate
+public typealias CXPopupContainableViewController = UIViewController & CXPopupControlDelegate
 
 public protocol CXPopupControlDelegate: UIViewController {
     var popup: CXPopupController? { get }
+    
+    func shouldOutsideTouchTriggerDismissalCompletionBlock() -> Bool
 }
 
 public extension CXPopupControlDelegate {
@@ -17,6 +19,10 @@ public extension CXPopupControlDelegate {
         }
         return nil
     }
+    
+    func shouldOutsideTouchTriggerDismissalCompletionBlock() -> Bool {
+        return false
+    }
 }
 
 public class CXPopupController: UIViewController {
@@ -25,10 +31,11 @@ public class CXPopupController: UIViewController {
             self.popupPresentationController?.style = style
         }
     }
+    
+    public var dismissalCompletionBlock: (( )-> Void)?
 
-    private let containableViewController: PopupContainableViewController
+    private let containableViewController: CXPopupContainableViewController
     private var popupPresentationController: CXPresentationController?
-    private let dismissalCompletionBlock: (( )-> Void)?
     
     /// The only initializer method to create a popup
     /// - Parameters:
@@ -37,18 +44,22 @@ public class CXPopupController: UIViewController {
     ///   - style: popup style
     ///   - dismissalCompletionBlock: dismiss action after the popup dismissed
     public init(_ attachedAtViewController: UIViewController,
-                _ containableViewController: PopupContainableViewController,
+                _ containableViewController: CXPopupContainableViewController,
                 _ style: CXPopupStyle = CXPopupStyle(),
                 dismissalCompletionBlock: (() -> Void)? = nil) {
         self.style = style
         self.containableViewController = containableViewController
-        self.dismissalCompletionBlock = dismissalCompletionBlock
         super.init(nibName: nil, bundle: nil)
+        self.dismissalCompletionBlock = dismissalCompletionBlock
         self.popupPresentationController = CXPresentationController(style, self, attachedAtViewController)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("PopupController deinited.")
     }
 
     // MARK - Lifecycle override
@@ -61,6 +72,11 @@ public class CXPopupController: UIViewController {
         setupUI()
     }
     
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        popupPresentationController = nil
+    }
+    
     override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: { [weak self] _ in
@@ -68,11 +84,15 @@ public class CXPopupController: UIViewController {
         }, completion: nil)
     }
 
-    public override func dismiss(animated flag: Bool, completion _: (() -> ())?) {
-        super.dismiss(animated: flag, completion: dismissalCompletionBlock)
+    public override func dismiss(animated flag: Bool, completion : (() -> ())?) {
+        super.dismiss(animated: flag, completion: completion ?? dismissalCompletionBlock)
     }
 
     // MARK - private helper methods
+    
+    func shouldOutsideTouchTriggerDismissalCompletionBlock() -> Bool {
+        containableViewController.shouldOutsideTouchTriggerDismissalCompletionBlock()
+    }
 
     private func setupUI() {
         view.backgroundColor = style.backgroundColor

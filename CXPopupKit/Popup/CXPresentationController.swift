@@ -20,6 +20,10 @@ class CXPresentationController: UIPresentationController {
             self.style.animationTransition,
             self.presentingViewController)
     }()
+    
+    var popup: CXPopupController? {
+        return presentedViewController as? CXPopupController
+    }
 
     var coordinator: UIViewControllerTransitionCoordinator? {
         self.presentingViewController.transitionCoordinator
@@ -37,7 +41,11 @@ class CXPresentationController: UIPresentationController {
 
     @objc
     private func tapOutsideToDismiss() {
-        presentingViewController.dismiss(animated: true, completion: nil)
+        if popup?.shouldOutsideTouchTriggerDismissalCompletionBlock() ?? false {
+            popup?.dismiss(animated: true, completion: nil)
+        } else {
+            presentingViewController.dismiss(animated: true, completion: nil)
+        }
     }
 
     init(_ style: CXPopupStyle, _ presented: UIViewController, _ presenting: UIViewController) {

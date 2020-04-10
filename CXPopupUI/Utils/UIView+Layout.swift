@@ -14,8 +14,8 @@ extension UIView {
         wrapper.translatesAutoresizingMaskIntoConstraints = true
         wrapper.addSubview(self)
         self.snp.makeConstraints { (maker) in
-            maker.center.equalToSuperview()
             guard insets != .zero else {
+                maker.center.equalToSuperview()
                 return
             }
             maker.edges.equalToSuperview().inset(insets)

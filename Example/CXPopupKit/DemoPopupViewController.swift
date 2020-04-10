@@ -14,8 +14,19 @@ class DemoPopupViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .orange
+        
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressForDismissal))
+        view.addGestureRecognizer(longPressGestureRecognizer)
+    }
+    
+    @objc
+    private func didLongPressForDismissal() {
+        popup?.dismiss(animated: true, completion: nil)
     }
 }
 
 extension DemoPopupViewController: CXPopupControlDelegate {
+    func shouldOutsideTouchTriggerDismissalCompletionBlock() -> Bool {
+        return false
+    }
 }

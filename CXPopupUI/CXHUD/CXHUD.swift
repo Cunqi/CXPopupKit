@@ -5,14 +5,15 @@ import SnapKit
 public class CXHUD {
     
     public enum Style {
-        case medium
-        case large
+        case systemDefault
     }
     
-    var hudInstance: CXHUDViewController
+    static let size = CGSize(width: 150, height: 150)
+    
+    var hudInstance: CXHUDViewController?
     
     var hudTintColor: UIColor = .black
-    var hudStyle: CXHUD.Style = .large
+    var hudStyle: CXHUD.Style = .systemDefault
     var hudTextFont: UIFont = .systemFont(ofSize: 15.0, weight: .medium)
     
     let popupStyle: CXPopupStyle
@@ -41,8 +42,6 @@ public class CXHUD {
         }
         set {
             CXHUD.shared.hudStyle = newValue
-            CXHUD.shared.popupStyle.width = .fixed(newValue.size.width)
-            CXHUD.shared.popupStyle.height = .fixed(newValue.size.height)
         }
     }
     
@@ -58,7 +57,6 @@ public class CXHUD {
     static let shared = CXHUD()
     
     private init() {
-        hudInstance = CXHUDViewController()
         popupStyle = CXPopupStyle.styleForHUD()
     }
     
@@ -66,8 +64,16 @@ public class CXHUD {
     /// - Parameters:
     ///   - delay: time delay for dismissing the HUD
     ///   - completion: completion after dismissed
-    public static func dismissHUD(_ delay: TimeInterval = 0, _ completion: (() -> Void)? = nil) {
-        
+    public static func dismissHUD(after delay: TimeInterval = 0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            CXHUD.shared.hudInstance?.dismiss(animated: true) {
+                CXHUD.shared.hudInstance = nil
+            }
+        }
+    }
+    
+    public static func dismissHUD() {
+        dismissHUD(after: 0)
     }
     
     public static func showLoading(with text: String?, _ anchorView: UIView) {
@@ -75,20 +81,20 @@ public class CXHUD {
             return
         }
         
+        let instance = CXHUDViewController()
         func applyHUDStyle(to popupStyle: CXPopupStyle) -> CXPopupStyle {
-            CXHUD.shared.hudInstance.setupForLoading(text)
-            popupStyle.width = .fixed(CXHUD.shared.hudStyle.size.width)
-            popupStyle.height = .fixed(CXHUD.shared.hudStyle.size.height)
+            instance.setupForLoading(text)
             return popupStyle
         }
         
         let popup = CXPopupController(
             presentingVC,
-            CXHUD.shared.hudInstance,
+            instance,
             applyHUDStyle(to: CXHUD.shared.popupStyle),
             dismissalCompletionBlock: nil)
         
         presentingVC.present(popup, animated: true)
+        CXHUD.shared.hudInstance = instance
     }
     
     private static func getTopMostVC(from view: UIView) -> UIViewController? {
@@ -99,7 +105,7 @@ public class CXHUD {
     }
 }
 
-class CXHUDViewController: PopupContainableViewController {
+class CXHUDViewController: CXPopupContainableViewController {
     let stackView = UIStackView()
     var activityIndicatorView: UIActivityIndicatorView!
     var label: UILabel?
@@ -111,9 +117,12 @@ class CXHUDViewController: PopupContainableViewController {
     }
     
     func setupForLoading(_ loadingText: String?) {
-        activityIndicatorView = UIActivityIndicatorView(style: CXHUD.shared.hudStyle.asActivityIndicatorStyle)
-        activityIndicatorView.color = CXHUD.shared.hudTintColor
-        stackView.addArrangedSubview(activityIndicatorView.embed(.zero))
+        switch CXHUD.hudStyle {
+        case .systemDefault:
+            activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+                activityIndicatorView.color = CXHUD.shared.hudTintColor
+                stackView.addArrangedSubview(activityIndicatorView.embed(.zero))
+        }
         
         guard let text = loadingText else {
             return
@@ -128,7 +137,7 @@ class CXHUDViewController: PopupContainableViewController {
         
         let labelHeight = CXTextUtil.textSize(
             text,
-            CGSize(width: CXHUD.shared.hudStyle.size.width, height: CGFloat.greatestFiniteMagnitude),
+            CGSize(width: CXHUD.size.width, height: CGFloat.greatestFiniteMagnitude),
             CXHUD.shared.hudTextFont).height
         
         self.label = label
@@ -161,43 +170,13 @@ class CXHUDViewController: PopupContainableViewController {
 extension CXPopupStyle {
     static func styleForHUD() -> CXPopupStyle {
         let style = CXPopupStyle.style(axisX: .center)
-        style.width = .fixed(CXHUD.Style.medium.size.width)
-        style.height = .fixed(CXHUD.Style.medium.size.height)
+        style.width = .fixed(CXHUD.size.width)
+        style.height = .fixed(CXHUD.size.height)
         style.maskBackgroundAlpha = 0.5
         style.maskBackgroundColor = .black
         style.backgroundColor = .darkGray
         style.shouldDismissOnBackgroundTap = false
+        style.cornerRadius = 16
         return style
-    }
-}
-
-extension CXHUD.Style {
-    var asActivityIndicatorStyle: UIActivityIndicatorView.Style {
-        if #available(iOS 13, *) {
-            return self == .medium ? .medium : .large
-        }
-        return self == .medium ? .white : .whiteLarge
-    }
-    
-    var size: CGSize {
-        switch self {
-        case .medium:
-            return CGSize(width: 120, height: 120)
-        case .large:
-            return CGSize(width: 150, height: 150)
-        }
-    }
-}
-
-extension UIActivityIndicatorView.Style {
-    var asHUDStyle: CXHUD.Style {
-        if #available(iOS 13, *) {
-            if self == .medium || self == .gray || self == .white {
-                return .medium
-            } else {
-                return .large
-            }
-        }
-        return self == .whiteLarge ? .large : .medium
     }
 }
