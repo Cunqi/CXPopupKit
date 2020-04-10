@@ -105,7 +105,7 @@ public class CXHUD {
     }
 }
 
-class CXHUDViewController: CXPopupContainableViewController {
+class CXHUDViewController: UIViewController, CXPopupControlDelegate {
     let stackView = UIStackView()
     var activityIndicatorView: UIActivityIndicatorView!
     var label: UILabel?
