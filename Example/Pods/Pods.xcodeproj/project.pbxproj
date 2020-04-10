@@ -29,6 +29,7 @@
 		3CE6994636147DB934FA13328A1B8EF5 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038D2FAA2F6B073D1B64B8635F4E3E6 /* Debugging.swift */; };
 		3CF045D0243EDDA900CC26D6 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF045CE243EDD5F00CC26D6 /* UIView+Layout.swift */; };
 		3CF045D3243EE10700CC26D6 /* CXSapcing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF045D1243EE03700CC26D6 /* CXSapcing.swift */; };
+		3CF045D624404D0C00CC26D6 /* CXViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF045D424404C9C00CC26D6 /* CXViewControllerUtils.swift */; };
 		3EA68F43ED3ACDA365114683B129C480 /* CXPopupKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2506969F6CA07A7CF49DD9F3E7B0A62A /* CXPopupKit-dummy.m */; };
 		45CC98E3480B0BD372F98EE9FDADAC86 /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C5188AE61F0E667CD9E7ED28CDD61C /* ConstraintLayoutGuide.swift */; };
 		479DFB503EB932DED5F662721BF25EF9 /* CXPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C2E722B48B1DC8E21A912D520ED27B /* CXPopupController.swift */; };
@@ -149,6 +150,7 @@
 		3BCC2F30BAEB096ACC9B07EE782A5F68 /* CXLayoutUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CXLayoutUtil.swift; sourceTree = "<group>"; };
 		3CF045CE243EDD5F00CC26D6 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		3CF045D1243EE03700CC26D6 /* CXSapcing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXSapcing.swift; sourceTree = "<group>"; };
+		3CF045D424404C9C00CC26D6 /* CXViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXViewControllerUtils.swift; sourceTree = "<group>"; };
 		3D705690D879064ED84970813189D8D4 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		41A8B5856ECBBD2AE3E239BB3708BF5B /* CXPopupKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CXPopupKit.modulemap; sourceTree = "<group>"; };
 		44B302237211EA2E1EAC11A03E02C2F0 /* Pods-CXPopupKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CXPopupKit_Example-dummy.m"; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				04D7EFEDB493CB184023A691AE69F0C4 /* CXTextUtil.swift */,
 				3CF045CE243EDD5F00CC26D6 /* UIView+Layout.swift */,
 				3CF045D1243EE03700CC26D6 /* CXSapcing.swift */,
+				3CF045D424404C9C00CC26D6 /* CXViewControllerUtils.swift */,
 			);
 			name = Utils;
 			path = CXPopupUI/Utils;
@@ -779,6 +782,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CF045D0243EDDA900CC26D6 /* UIView+Layout.swift in Sources */,
+				3CF045D624404D0C00CC26D6 /* CXViewControllerUtils.swift in Sources */,
 				7BF7775326CB526DD71DAE5BAE78A19B /* CXHUD.swift in Sources */,
 				DAE3941209018F844F9D5B8389C91B1A /* CXPopupUI-dummy.m in Sources */,
 				D3E681A5074DEC1A0055FA5F443DF423 /* CXTextUtil.swift in Sources */,

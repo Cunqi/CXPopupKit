@@ -76,8 +76,8 @@ public class CXHUD {
         dismissHUD(after: 0)
     }
     
-    public static func showLoading(with text: String?, _ anchorView: UIView) {
-        guard let presentingVC = getTopMostVC(from: anchorView) else {
+    public static func showLoading(with text: String?) {
+        guard let presentingVC = CXViewControllerUtils.getTopMostViewController() else {
             return
         }
         
@@ -95,13 +95,6 @@ public class CXHUD {
         
         presentingVC.present(popup, animated: true)
         CXHUD.shared.hudInstance = instance
-    }
-    
-    private static func getTopMostVC(from view: UIView) -> UIViewController? {
-        if #available(iOS 13, *) {
-            return view.window?.rootViewController
-        }
-        return UIApplication.shared.delegate?.window??.rootViewController
     }
 }
 
